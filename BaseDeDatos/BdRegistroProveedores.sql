@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 11-01-2015 a las 16:21:56
+-- Tiempo de generación: 11-01-2015 a las 17:12:35
 -- Versión del servidor: 5.6.21
 -- Versión de PHP: 5.5.14
 
@@ -218,6 +218,7 @@ CREATE TABLE IF NOT EXISTS `bdv_empresa` (
   `id_banco_cuenta2` int(11) DEFAULT NULL,
   `id_banco_cuenta3` int(11) DEFAULT NULL,
   `otro_producto` varchar(100) DEFAULT NULL,
+  `finalizo_registro` tinyint(1) NOT NULL DEFAULT '0',
   `id_recaudos` int(11) DEFAULT NULL,
   `activado_desactivado_por` varchar(50) DEFAULT NULL,
   `fecha_registro` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -1925,9 +1926,9 @@ CREATE TABLE IF NOT EXISTS `bdv_user` (
 CREATE TABLE IF NOT EXISTS `bdv_user_backend` (
 `id_user` int(11) NOT NULL,
   `userBackend` varchar(50) NOT NULL,
-  `password` varchar(50) NOT NULL,
-  `status` tinyint(4) NOT NULL DEFAULT '1'
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `contrasenia` varchar(50) NOT NULL,
+  `activo` tinyint(1) NOT NULL DEFAULT '1'
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -2044,7 +2045,7 @@ ALTER TABLE `bdv_user`
 -- Indices de la tabla `bdv_user_backend`
 --
 ALTER TABLE `bdv_user_backend`
- ADD PRIMARY KEY (`id_user`), ADD UNIQUE KEY `user` (`userBackend`,`password`), ADD KEY `id_user` (`id_user`);
+ ADD PRIMARY KEY (`id_user`), ADD UNIQUE KEY `user` (`userBackend`,`contrasenia`), ADD KEY `id_user` (`id_user`);
 
 --
 -- Indices de la tabla `bdv_user_roles`
@@ -2125,7 +2126,7 @@ MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT;
 -- AUTO_INCREMENT de la tabla `bdv_user_backend`
 --
 ALTER TABLE `bdv_user_backend`
-MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- Restricciones para tablas volcadas
 --
