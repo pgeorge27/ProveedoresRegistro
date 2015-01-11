@@ -152,7 +152,7 @@ public class BdvCategoriaProducto implements Serializable {
 
     @Override
     public String toString() {
-        return "org.bdv.modelo.BdvCategoriaProducto[ idCategoriaProducto=" + idCategoriaProducto + " ]";
+        return descrCategoria;
     }
     
 }

@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns="http://www.w3.org/1999/xhtml"
+                template="./templateUser.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:define name="body">
+
+            <h:form id="BdvUserChangePassForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="3" >
+
+                        <p:outputLabel value="Contraseña actual:" for="contraseniaVieja" />
+                        <p:outputPanel>
+                            <p:password id="contraseniaVieja" value="" maxlength="15"
+                                        title="#{bundle.CreateBdvUserTitle_contrasenia}" required="true"
+                                        requiredMessage="##{bundle.CreateBdvUserRequiredMessage_contrasenia}" feedback="true"
+                                        promptLabel="#{bundle.MsgPromptLabel}" weakLabel="#{bundle.MsgWeakLabel}"
+                                        goodLabel="#{bundle.MsgGoodLabel}" strongLabel="#{bundle.MsgStrongLabel}" />
+                            <br />
+                            <p:outputLabel value="#{bundle.MsgPassword}"  />
+                        </p:outputPanel>
+                        <p:outputLabel value="#{bundle.MsgPassword2}"  />
+
+                        <p:outputLabel value="Nueva contraseña:" for="contrasenia" />
+                        <p:outputPanel>
+                            <p:password id="contrasenia" maxlength="15" value=""
+                                        title="#{bundle.CreateBdvUserTitle_contrasenia}" required="true"
+                                        requiredMessage="##{bundle.CreateBdvUserRequiredMessage_contrasenia}" feedback="true"
+                                        promptLabel="#{bundle.MsgPromptLabel}" weakLabel="#{bundle.MsgWeakLabel}"
+                                        goodLabel="#{bundle.MsgGoodLabel}" strongLabel="#{bundle.MsgStrongLabel}" match="password2"/>
+                            <br />
+                            <p:outputLabel value="#{bundle.MsgPassword}"  />
+                        </p:outputPanel>
+                        <p:outputLabel value="#{bundle.MsgPassword2}"  />
+
+                        <p:outputLabel value="Nueva contraseña:" for="password2" />
+                        <p:password id="password2" maxlength="15"
+                                    title="#{bundle.CreateBdvUserTitle_contrasenia}" required="true"
+                                    requiredMessage="#{bundle.CreateBdvUserRequiredMessage_contrasenia}" feedback="true"
+                                    promptLabel="#{bundle.MsgPromptLabel}" weakLabel="#{bundle.MsgWeakLabel}"
+                                    goodLabel="#{bundle.MsgGoodLabel}" strongLabel="#{bundle.MsgStrongLabel}" />
+                        <p:outputLabel value="#{bundle.MsgPassword3}"  />
+
+                    </p:panelGrid>
+                    <p:button outcome="./login.xhtml" value="#{bundle.Cancel}" icon="ui-icon-closethick"/>
+                    <p:commandButton value="#{bundle.Save}" update="display,:growl" oncomplete="handleSubmit(args,'BdvUserCreateDialog');">
+                        <!--<f:actionListener binding="{bdvUserController.create()}"/>--> 
+                        <!--<f:actionListener binding="{sendMail.enviarEmail(bdvUserController.selected.email)}"/>--> 
+                    </p:commandButton>
+                </h:panelGroup>
+            </h:form>
+
+    </ui:define>
+
+</ui:composition>

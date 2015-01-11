@@ -217,7 +217,7 @@ public class BdvRepresentateLegal implements Serializable {
 
     @Override
     public String toString() {
-        return primerApellido;
+        return "org.bdv.modelo.BdvRepresentateLegal[ idRepresentateLegal=" + idRepresentateLegal + " ]";
     }
     
 }

@@ -1,0 +1,75 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <title><ui:insert name="title">Default Title</ui:insert></title>
+        <h:outputStylesheet library="css" name="jsfcrud.css"/>
+        <h:outputScript library="js" name="jsfcrud.js"/>
+    </h:head>
+
+    <h:body>
+
+        <p:growl id="growl" life="3000" />
+
+        <p:layout fullPage="true">
+            <p:layoutUnit position="north" size="165">
+                <div align="center">
+                    <p:graphicImage value="../resources/image/cintillo-2.png" />
+                    <p:graphicImage value="../resources/image/cintillo-1.png" />
+                </div> 
+            </p:layoutUnit>
+
+            <p:layoutUnit position="south" size="25">
+                <ui:insert name="footer">
+                    <div align="center">
+                        <h:outputLabel value="#{bundle.Copyright}" style="font-size: 1rem }" />
+                    </div> 
+                </ui:insert>
+            </p:layoutUnit>
+
+            <p:layoutUnit position="center">
+                <ui:insert name="body"/>
+            </p:layoutUnit>
+
+            <p:layoutUnit position="west" size="200" header="Mis Opciones" collapsible="true">
+               <h:form>
+                   <p:panelMenu style="ui-state-active">
+                        <p:menuitem value="#{bundle.Home}" outcome="/homeUser" icon="ui-icon-home"/>
+                        <p:submenu label="Proveedores">
+                            <p:menuitem value="Lista de Proveedores" outcome="/bdvUser/List" />
+                        </p:submenu>
+                        <p:submenu label="Usuarios Internos">
+                            <p:menuitem value="Lista de Usuarios" disabled="true" />
+                        </p:submenu>
+                        <p:submenu label="Administración">
+                            <p:menuitem outcome="/bdvBancosNac/List" value="Lista de Bancos Nacionales"/>
+                            <p:menuitem outcome="/bdvCategoriaProducto/List" value="Lista de Categorias"/>
+                            <p:menuitem outcome="/bdvMcbeUbicGeo/List" value="Lista de Ubicaciones Geograficas"/>
+                            <p:menuitem outcome="/bdvNacionalidad/List" value="Lista de Nacionalidades"/>
+                            <p:menuitem outcome="/bdvNaturalezaCliente/List" value="Lista de Naturaleza de Cliente"/>
+                            <p:menuitem outcome="/bdvRole/List" value="Lista de Roles"/>
+                            <p:menuitem outcome="/bdvSectorGremio/List" value="Lista de Sectores"/>
+                            <p:menuitem outcome="/bdvTipoCuenta/List" value="Lista de Tipos de Cuentas"/>
+                        </p:submenu>
+                        <p:submenu label="Opciones">
+                            <p:menuitem value="Mi Perfil" disabled="true" />
+                            <p:menuitem value="Cambiar Mi Clave"  />
+                            <p:separator />
+                            <p:menuitem value="Salir" actionListener="#{bdvUserController.logOut()}"  />
+                        </p:submenu>
+                        
+                        
+                    </p:panelMenu>
+                </h:form>
+
+            </p:layoutUnit>
+            
+        </p:layout>
+
+    </h:body>
+
+</html>

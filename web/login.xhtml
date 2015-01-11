@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns="http://www.w3.org/1999/xhtml"
+                template="./template2.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui">
+
+    <ui:define name="title">
+        login
+    </ui:define>
+
+    <ui:define name="body">
+
+        <div align="center">
+            <h1>#{bundle.Welcome}</h1>
+        </div>
+        <div align="center">
+            <h2>#{bundle.EnterData}</h2>
+        </div>     
+        <br />
+        <br />
+
+        <h:form id="BdvUserCreateForm" title="#{bdvUserController.prepareCreate2()}">
+            <p:messages id="growl"/>
+            <h:panelGroup id="display"  >
+                <h:panelGrid columns="2" >
+
+                    <h:outputLabel for="email" value="#{bundle.User}" />
+                    <p:inputText id="email" value="#{bdvUserController.selected2.email}" title="#{bundle.CreateBdvUserTitle_email}" required="true" requiredMessage="#{bundle.CreateBdvUserRequiredMessage_email}"/>
+                    <h:outputLabel for="contrasenia" value="#{bundle.Password}" />
+                    <p:password id="contrasenia" value="#{bdvUserController.selected2.contrasenia}" maxlength="15"
+                            title="#{bundle.CreateBdvUserTitle_contrasenia}" required="true"
+                            requiredMessage="##{bundle.CreateBdvUserRequiredMessage_contrasenia}" />
+                            
+                    <p:outputPanel/>
+                    <p:commandButton update="display,growl" action="#{bdvUserController.entrarHomeUser(bdvUserController.selected2.email,bdvUserController.selected2.contrasenia)}" value="#{bundle.Enter}"  />
+                    
+                    <p:outputPanel/>
+                    <p:link outcome="olvidoContrasenia" value="#{bundle.Forgotpassword}" />
+
+                    <p:outputPanel/>
+                    <p:link outcome="#{bundle.LinkRegistro}" value="#{bundle.Register}" />
+
+                    
+                    
+                </h:panelGrid>
+            </h:panelGroup>
+        </h:form>
+       
+    </ui:define>
+
+</ui:composition>

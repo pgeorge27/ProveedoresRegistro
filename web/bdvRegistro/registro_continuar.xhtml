@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns="http://www.w3.org/1999/xhtml"
+                template="../template.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:define name="title">
+        Registro
+    </ui:define>
+
+    <ui:define name="body">
+        <h:form >
+            <!--enctype="multipart/form-data"-->
+            <p:wizard id="wizard" showNavBar="false" widgetVar="wizardWV" showStepStatus="true" >
+
+                <p:tab id="paso3" title="Paso 3">
+                    <ui:include src="Paso3.xhtml"/>
+                    <p:commandButton icon="ui-icon-arrowthick-1-e" process="@this" value="Siguiente" onclick="PF('wizardWV').next();" />
+                </p:tab>
+
+                <p:tab id="paso4" title="Paso 4">
+                    <ui:include src="Paso4.xhtml"/>
+                    <p:commandButton value="Volver" icon="ui-icon-arrow-1-w" onclick="PF('wizardWV').back();" />
+                    <p:commandButton icon="ui-icon-arrowthick-1-e" process="@this" value="Siguiente"  onclick="PF('wizardWV').next();" />
+                </p:tab>
+
+                <p:tab id="paso5" title="Paso 5">
+                    <ui:include src="Paso5.xhtml"/>
+                    <p:commandButton value="Volver" icon="ui-icon-arrow-1-w" onclick="PF('wizardWV').back();" />
+                    <p:commandButton icon="ui-icon-arrowthick-1-e" process="@this" value="Siguiente"  onclick="PF('wizardWV').next();" />
+                </p:tab>
+
+                <p:tab id="paso6" title="Paso 6">
+                    <ui:include src="Paso6.xhtml"/>
+                    <p:commandButton value="Volver" icon="ui-icon-arrow-1-w" onclick="PF('wizardWV').back();" />
+                    <p:commandButton icon="ui-icon-arrowthick-1-e" process="@this" value="Siguiente"  onclick="PF('wizardWV').next();" />
+                </p:tab>
+
+<!--            <p:tab id="paso7" title="Paso 7">
+                    <ui:include src="Paso7.xhtml"/>
+                    <p:commandButton value="Volver" onclick="PF('wizardWV').back();" />
+                    <p:commandButton process="@this" value="Siguiente"  onclick="PF('wizardWV').next();" />
+                </p:tab>-->
+
+                <p:tab id="paso8" title="Paso 8">
+                    <ui:include src="Paso8.xhtml"/>
+                    <p:commandButton value="Volver" icon="ui-icon-arrow-1-w" onclick="PF('wizardWV').back();" />
+                    <p:commandButton value="Aceptar" icon="ui-icon-check" actionListener="#{bdvUserController.completarRegistro()}" />
+                </p:tab>
+
+            </p:wizard>
+            </h:form>
+    </ui:define>
+
+</ui:composition>

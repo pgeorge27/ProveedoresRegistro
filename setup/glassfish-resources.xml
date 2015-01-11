@@ -11,4 +11,6 @@
         <property name="driverClass" value="com.mysql.jdbc.Driver"/>
     </jdbc-connection-pool>
     <jdbc-resource enabled="true" jndi-name="ProveedoresRegistro" object-type="user" pool-name="mysql_BdRegistroProveedores_rootPool"/>
+    <jdbc-resource enabled="true" jndi-name="RegistroProveedoresBdv" object-type="user" pool-name="mysql_BdRegistroProveedores_rootPool"/>
+    <jdbc-resource enabled="true" jndi-name="jdbcRegistroProveedor" object-type="user" pool-name="mysql_BdRegistroProveedores_rootPool"/>
 </resources>

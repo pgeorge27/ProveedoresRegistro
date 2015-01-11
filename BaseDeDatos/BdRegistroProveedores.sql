@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 11-01-2015 a las 17:12:35
+-- Tiempo de generación: 11-01-2015 a las 21:13:41
 -- Versión del servidor: 5.6.21
 -- Versión de PHP: 5.5.14
 
@@ -1914,7 +1914,8 @@ CREATE TABLE IF NOT EXISTS `bdv_user` (
   `id_empresa` int(11) DEFAULT NULL,
   `email` varchar(100) NOT NULL,
   `contrasenia` varchar(15) NOT NULL,
-  `activo` tinyint(1) NOT NULL DEFAULT '0'
+  `activo` tinyint(1) NOT NULL DEFAULT '0',
+  `emailValido` tinyint(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -2184,8 +2185,8 @@ ADD CONSTRAINT `bdv_user_ibfk_1` FOREIGN KEY (`id_empresa`) REFERENCES `bdv_empr
 -- Filtros para la tabla `bdv_user_roles`
 --
 ALTER TABLE `bdv_user_roles`
-ADD CONSTRAINT `bdv_user_roles_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `bdv_user_backend` (`id_user`) ON DELETE CASCADE ON UPDATE CASCADE,
-ADD CONSTRAINT `bdv_user_roles_ibfk_2` FOREIGN KEY (`id_role`) REFERENCES `bdv_role` (`id_role`) ON DELETE CASCADE ON UPDATE CASCADE;
+ADD CONSTRAINT `bdv_user_roles_ibfk_1` FOREIGN KEY (`id_role`) REFERENCES `bdv_role` (`id_role`) ON DELETE CASCADE ON UPDATE CASCADE,
+ADD CONSTRAINT `bdv_user_roles_ibfk_2` FOREIGN KEY (`id_user`) REFERENCES `bdv_user_backend` (`id_user`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

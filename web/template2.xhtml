@@ -1,0 +1,70 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+
+    <h:head>
+        <title><ui:insert name="title">Default Title</ui:insert></title>
+        <h:outputStylesheet library="css" name="jsfcrud.css"/>
+        <h:outputScript library="js" name="jsfcrud.js"/>
+    </h:head>
+
+    <h:body>
+
+        <p:growl id="growl" life="3000" />
+
+        <p:layout fullPage="true">
+            <p:layoutUnit position="north" size="165" >
+                <div align="center">
+                    <!--<h1>{bundle.AppName}</h1>-->
+                    <p:graphicImage value="../resources/image/cintillo-2.png" />
+                    <p:graphicImage value="../resources/image/cintillo-1.png" />
+                </div> 
+            </p:layoutUnit>
+
+            <p:layoutUnit position="center">
+                <ui:insert name="body"/>
+            </p:layoutUnit>
+
+            <p:layoutUnit position="west" size="300" header="#{bundle.AlertasNotificaciones}" collapsible="false">
+               #{bundle.AlertaNotificacionesMsj}
+            </p:layoutUnit>
+
+            <p:layoutUnit position="east" size="300" header="Sistema de Contratación" collapsible="false">
+                <h:form>
+                    <p:panelMenu>
+                        <p:submenu label="Registrarse">
+                            <p:menuitem value="Como Proveedor de Estado" icon="ui-icon-disk" />
+                            <p:menuitem value="Como Entidad Contratante"  icon="ui-icon-arrowrefresh-1-w" />
+                        </p:submenu>
+                        <p:separator />
+                        <p:submenu label="Busqueda">
+                            <p:menuitem value="De Procesos"   ajax="false" icon="ui-icon-close"/>
+                            <p:menuitem value="De Emergencias" icon="ui-icon-home" />
+                            <p:menuitem value="De Pagina Especial" icon="ui-icon-document" />
+                            <p:menuitem value="De ProcesosEspeciales"  icon="ui-icon-arrowthick-1-s" />
+                            <p:menuitem value="Reporte de adquisiciones de obras"  icon="ui-icon-wrench" />
+                        </p:submenu>
+                        <p:submenu label="Enlaces de Interes">
+                            <p:menuitem value="Lorem Ipsum" icon="ui-icon-disk" />
+                            <p:menuitem value="Lorem Ipsum"  icon="ui-icon-arrowrefresh-1-w" />
+                        </p:submenu>
+                    </p:panelMenu>
+                </h:form>
+            </p:layoutUnit>
+
+            <p:layoutUnit position="south" size="60">
+                <ui:insert name="footer">
+                    <div align="center">
+                        <h:outputLabel value="#{bundle.Copyright}" style="font-size: 1rem }" />
+                    </div> 
+                </ui:insert>
+            </p:layoutUnit>
+        </p:layout>
+
+    </h:body>
+
+</html>

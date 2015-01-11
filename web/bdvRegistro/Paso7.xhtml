@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+  xmlns:h="http://xmlns.jcp.org/jsf/html"
+  xmlns:f="http://xmlns.jcp.org/jsf/core"
+  xmlns:p="http://primefaces.org/ui">
+
+  <ui:composition>
+
+    <p:panel header="Carga de Documentos">
+      <p:messages />
+        <h:panelGroup>
+          <h:panelGrid columns="2" columnClasses="label, value">
+            <p:outputLabel value="#{bundle.CreateBdvRecaudosLabel_certificadoSnc}" for="certificadoSnc" />
+            <p:fileUpload id="certificadoSnc" value="#{bdvUserController.selected.idEmpresa.idRecaudos.certificadoSnc}" 
+                          required="true" sizeLimit="200000" fileUploadListener="#{bdvRecaudosController.upload}"
+                          allowTypes="/(\.|\/)(pdf)$/" cancelLabel="Cancelar"
+                      uploadLabel="Subir Archivo" label="Elegir" 
+                          requiredMessage="#{bundle.CreateBdvRecaudosRequiredMessage_certificadoSnc}" />
+
+            <p:outputLabel value="#{bundle.CreateBdvRecaudosLabel_planillaRnc}" for="planillaRnc" />
+            <p:fileUpload id="planillaRnc" value="#{bdvUserController.selected.idEmpresa.idRecaudos.planillaRnc}" 
+                          required="true" mode="simple" sizeLimit="200000" 
+                          allowTypes="/(\.|\/)(pdf)$/" 
+                          requiredMessage="#{bundle.CreateBdvRecaudosRequiredMessage_certificadoSnc}" />
+            
+            <p:outputLabel value="#{bundle.CreateBdvRecaudosLabel_comunicacionRepresentante}" for="comunicacionRepresentante" />
+            <p:fileUpload id="comunicacionRepresentante" value="#{bdvUserController.selected.idEmpresa.idRecaudos.comunicacionRepresentante}" 
+                          required="true" mode="simple" sizeLimit="200000" 
+                          allowTypes="/(\.|\/)(pdf)$/" 
+                          requiredMessage="#{bundle.CreateBdvRecaudosRequiredMessage_comunicacionRepresentante}" />
+            
+            <p:outputLabel value="#{bundle.CreateBdvRecaudosLabel_solvenciaSso}" for="solvenciaSso" />
+            <p:fileUpload id="solvenciaSso" value="#{bdvUserController.selected.idEmpresa.idRecaudos.solvenciaSso}" 
+                          required="true" mode="simple" sizeLimit="200000" 
+                          allowTypes="/(\.|\/)(pdf)$/" 
+                          requiredMessage="#{bundle.CreateBdvRecaudosRequiredMessage_solvenciaSso}" />
+            
+            <p:outputLabel value="#{bundle.CreateBdvRecaudosLabel_solvenciaLaboral}" for="solvenciaLaboral" />
+            <p:fileUpload id="solvenciaLaboral" value="#{bdvUserController.selected.idEmpresa.idRecaudos.solvenciaLaboral}" 
+                          required="true" mode="simple" sizeLimit="200000" 
+                          allowTypes="/(\.|\/)(pdf)$/" 
+                          requiredMessage="#{bundle.CreateBdvRecaudosRequiredMessage_solvenciaLaboral}" />
+            
+            <p:outputLabel value="#{bundle.CreateBdvRecaudosLabel_solvenciaInce}" for="solvenciaInce" />
+            <p:fileUpload id="solvenciaInce" value="#{bdvUserController.selected.idEmpresa.idRecaudos.solvenciaInce}" 
+                          required="true" mode="simple" sizeLimit="200000" 
+                          allowTypes="/(\.|\/)(pdf)$/" 
+                          requiredMessage="#{bundle.CreateBdvRecaudosRequiredMessage_solvenciaInce}" />
+            
+            <p:outputLabel value="#{bundle.CreateBdvRecaudosLabel_organigrama}" for="organigrama" />
+            <p:fileUpload id="organigrama" value="#{bdvUserController.selected.idEmpresa.idRecaudos.organigrama}" 
+                          required="true" mode="simple" sizeLimit="200000" 
+                          allowTypes="/(\.|\/)(pdf)$/" 
+                          requiredMessage="#{bundle.CreateBdvRecaudosRequiredMessage_organigrama}" />
+            
+            <p:outputLabel value="#{bundle.CreateBdvRecaudosLabel_listaProductos}" for="listaProductos" />
+            <p:fileUpload id="listaProductos" value="#{bdvUserController.selected.idEmpresa.idRecaudos.listaProductos}" 
+                          required="true" mode="simple" sizeLimit="200000" 
+                          allowTypes="/(\.|\/)(pdf)$/" 
+                          requiredMessage="#{bundle.CreateBdvRecaudosRequiredMessage_listaProductos}" />
+            
+            <p:outputLabel value="#{bundle.CreateBdvRecaudosLabel_referenciaBancaria}" for="referenciaBancaria" />
+            <p:fileUpload id="referenciaBancaria" value="#{bdvUserController.selected.idEmpresa.idRecaudos.referenciaBancaria}" 
+                          required="true" mode="simple" sizeLimit="200000" 
+                          allowTypes="/(\.|\/)(pdf)$/" 
+                          requiredMessage="#{bundle.CreateBdvRecaudosRequiredMessage_referenciaBancaria}" />
+            
+            <p:outputLabel value="#{bundle.CreateBdvRecaudosLabel_referenciaComercial}" for="referenciaComercial" />
+            <p:fileUpload id="referenciaComercial" value="#{bdvUserController.selected.idEmpresa.idRecaudos.referenciaComercial}" 
+                          required="true" mode="simple" sizeLimit="200000" 
+                          allowTypes="/(\.|\/)(pdf)$/" 
+                          requiredMessage="#{bundle.CreateBdvRecaudosRequiredMessage_referenciaComercial}" />
+            <p:outputLabel value="#{bundle.CreateBdvRecaudosLabel_dateRegister}" for="dateRegister" />
+                        <p:calendar id="dateRegister" pattern="MM/dd/yyyy HH:mm:ss" value="#{bdvUserController.selected.idEmpresa.idRecaudos.dateRegister}" title="#{bundle.EditBdvRecaudosTitle_dateRegister}" required="true" requiredMessage="#{bundle.EditBdvRecaudosRequiredMessage_dateRegister}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateBdvRecaudosLabel_dateUpdate}" for="dateUpdate" />
+                        <p:calendar id="dateUpdate" pattern="MM/dd/yyyy HH:mm:ss" value="#{bdvUserController.selected.idEmpresa.idRecaudos.dateUpdate}" title="#{bundle.EditBdvRecaudosTitle_dateUpdate}" required="true" requiredMessage="#{bundle.EditBdvRecaudosRequiredMessage_dateUpdate}" showOn="button"/>
+                    
+          </h:panelGrid>
+        </h:panelGroup>
+    </p:panel>
+    
+  </ui:composition>
+</html>

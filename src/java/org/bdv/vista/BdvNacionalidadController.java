@@ -19,12 +19,13 @@ import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 
-@ManagedBean(name = "bdvNacionalidadController")
+
+@ManagedBean(name="bdvNacionalidadController")
 @SessionScoped
 public class BdvNacionalidadController implements Serializable {
 
-    @EJB
-    private org.bdv.controlador.BdvNacionalidadFacade ejbFacade;
+
+    @EJB private org.bdv.controlador.BdvNacionalidadFacade ejbFacade;
     private List<BdvNacionalidad> items = null;
     private BdvNacionalidad selected;
 
@@ -109,6 +110,7 @@ public class BdvNacionalidadController implements Serializable {
         }
     }
 
+
     public List<BdvNacionalidad> getItemsAvailableSelectMany() {
         return getFacade().findAll();
     }
@@ -117,7 +119,7 @@ public class BdvNacionalidadController implements Serializable {
         return getFacade().findAll();
     }
 
-    @FacesConverter(forClass = BdvNacionalidad.class)
+    @FacesConverter(forClass=BdvNacionalidad.class)
     public static class BdvNacionalidadControllerConverter implements Converter {
 
         @Override
@@ -125,7 +127,7 @@ public class BdvNacionalidadController implements Serializable {
             if (value == null || value.length() == 0) {
                 return null;
             }
-            BdvNacionalidadController controller = (BdvNacionalidadController) facesContext.getApplication().getELResolver().
+            BdvNacionalidadController controller = (BdvNacionalidadController)facesContext.getApplication().getELResolver().
                     getValue(facesContext.getELContext(), null, "bdvNacionalidadController");
             return controller.getFacade().find(getKey(value));
         }

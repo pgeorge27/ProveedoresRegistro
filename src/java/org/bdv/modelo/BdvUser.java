@@ -18,6 +18,7 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -33,7 +34,9 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "BdvUser.findByIdUser", query = "SELECT b FROM BdvUser b WHERE b.idUser = :idUser"),
     @NamedQuery(name = "BdvUser.findByEmail", query = "SELECT b FROM BdvUser b WHERE b.email = :email"),
     @NamedQuery(name = "BdvUser.findByContrasenia", query = "SELECT b FROM BdvUser b WHERE b.contrasenia = :contrasenia"),
-    @NamedQuery(name = "BdvUser.findByActivo", query = "SELECT b FROM BdvUser b WHERE b.activo = :activo")})
+    @NamedQuery(name = "BdvUser.findByEmailAndContrasenia", query = "SELECT b FROM BdvUser b WHERE b.email = :email AND b.contrasenia = :contrasenia"),
+    @NamedQuery(name = "BdvUser.findByActivo", query = "SELECT b FROM BdvUser b WHERE b.activo = :activo"),
+    @NamedQuery(name = "BdvUser.findByEmailValido", query = "SELECT b FROM BdvUser b WHERE b.emailValido = :emailValido")})
 public class BdvUser implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -41,7 +44,7 @@ public class BdvUser implements Serializable {
     @Basic(optional = false)
     @Column(name = "id_user")
     private Integer idUser;
-    // @Pattern(regexp="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message="Correo electrónico no válido")//if the field contains email address consider using this annotation to enforce field validation
+    @Pattern(regexp="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message="Correo electrónico no válido")//if the field contains email address consider using this annotation to enforce field validation
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 100)
@@ -56,22 +59,34 @@ public class BdvUser implements Serializable {
     @NotNull
     @Column(name = "activo")
     private boolean activo;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "email_valido")
+    private boolean emailValido;
     @JoinColumn(name = "id_empresa", referencedColumnName = "id_empresa")
     @ManyToOne
     private BdvEmpresa idEmpresa;
 
     public BdvUser() {
+        System.out.println("En Constructor de Usuario");
+        this.emailValido = false;
+//        idEmpresa = new BdvEmpresa();
+    }
+    
+    public BdvUser(boolean a) {//Usado para usuarios ya registrados
+        idEmpresa = new BdvEmpresa();
     }
 
     public BdvUser(Integer idUser) {
         this.idUser = idUser;
     }
 
-    public BdvUser(Integer idUser, String email, String contrasenia, boolean activo) {
+    public BdvUser(Integer idUser, String email, String contrasenia, boolean activo, boolean emailValido) {
         this.idUser = idUser;
         this.email = email;
         this.contrasenia = contrasenia;
         this.activo = activo;
+        this.emailValido = emailValido;
     }
 
     public Integer getIdUser() {
@@ -106,6 +121,14 @@ public class BdvUser implements Serializable {
         this.activo = activo;
     }
 
+    public boolean getEmailValido() {
+        return emailValido;
+    }
+
+    public void setEmailValido(boolean emailValido) {
+        this.emailValido = emailValido;
+    }
+
     public BdvEmpresa getIdEmpresa() {
         return idEmpresa;
     }
@@ -136,7 +159,7 @@ public class BdvUser implements Serializable {
 
     @Override
     public String toString() {
-        return email;
+        return "org.bdv.modelo.BdvUser[ idUser=" + idUser + " ]";
     }
     
 }

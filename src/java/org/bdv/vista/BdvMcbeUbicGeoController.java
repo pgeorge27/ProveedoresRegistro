@@ -19,12 +19,13 @@ import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 
-@ManagedBean(name = "bdvMcbeUbicGeoController")
+
+@ManagedBean(name="bdvMcbeUbicGeoController")
 @SessionScoped
 public class BdvMcbeUbicGeoController implements Serializable {
 
-    @EJB
-    private org.bdv.controlador.BdvMcbeUbicGeoFacade ejbFacade;
+
+    @EJB private org.bdv.controlador.BdvMcbeUbicGeoFacade ejbFacade;
     private List<BdvMcbeUbicGeo> items = null;
     private BdvMcbeUbicGeo selected;
 
@@ -109,6 +110,7 @@ public class BdvMcbeUbicGeoController implements Serializable {
         }
     }
 
+
     public List<BdvMcbeUbicGeo> getItemsAvailableSelectMany() {
         return getFacade().findAll();
     }
@@ -117,7 +119,7 @@ public class BdvMcbeUbicGeoController implements Serializable {
         return getFacade().findAll();
     }
 
-    @FacesConverter(forClass = BdvMcbeUbicGeo.class)
+    @FacesConverter(forClass=BdvMcbeUbicGeo.class)
     public static class BdvMcbeUbicGeoControllerConverter implements Converter {
 
         @Override
@@ -125,7 +127,7 @@ public class BdvMcbeUbicGeoController implements Serializable {
             if (value == null || value.length() == 0) {
                 return null;
             }
-            BdvMcbeUbicGeoController controller = (BdvMcbeUbicGeoController) facesContext.getApplication().getELResolver().
+            BdvMcbeUbicGeoController controller = (BdvMcbeUbicGeoController)facesContext.getApplication().getELResolver().
                     getValue(facesContext.getELContext(), null, "bdvMcbeUbicGeoController");
             return controller.getFacade().find(getKey(value));
         }

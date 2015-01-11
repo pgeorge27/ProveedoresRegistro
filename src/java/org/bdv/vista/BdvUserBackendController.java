@@ -19,12 +19,13 @@ import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 
-@ManagedBean(name = "bdvUserBackendController")
+
+@ManagedBean(name="bdvUserBackendController")
 @SessionScoped
 public class BdvUserBackendController implements Serializable {
 
-    @EJB
-    private org.bdv.controlador.BdvUserBackendFacade ejbFacade;
+
+    @EJB private org.bdv.controlador.BdvUserBackendFacade ejbFacade;
     private List<BdvUserBackend> items = null;
     private BdvUserBackend selected;
 
@@ -109,6 +110,7 @@ public class BdvUserBackendController implements Serializable {
         }
     }
 
+
     public List<BdvUserBackend> getItemsAvailableSelectMany() {
         return getFacade().findAll();
     }
@@ -117,7 +119,7 @@ public class BdvUserBackendController implements Serializable {
         return getFacade().findAll();
     }
 
-    @FacesConverter(forClass = BdvUserBackend.class)
+    @FacesConverter(forClass=BdvUserBackend.class)
     public static class BdvUserBackendControllerConverter implements Converter {
 
         @Override
@@ -125,7 +127,7 @@ public class BdvUserBackendController implements Serializable {
             if (value == null || value.length() == 0) {
                 return null;
             }
-            BdvUserBackendController controller = (BdvUserBackendController) facesContext.getApplication().getELResolver().
+            BdvUserBackendController controller = (BdvUserBackendController)facesContext.getApplication().getELResolver().
                     getValue(facesContext.getELContext(), null, "bdvUserBackendController");
             return controller.getFacade().find(getKey(value));
         }

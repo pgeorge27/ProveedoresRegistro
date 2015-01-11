@@ -53,6 +53,7 @@ public class BdvBancoCuentaVnz implements Serializable {
     private List<BdvEmpresa> bdvEmpresaList1;
 
     public BdvBancoCuentaVnz() {
+        idTipoCuenta = new BdvTipoCuenta();
     }
 
     public BdvBancoCuentaVnz(Integer idBancoCuentaVnz) {

@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns="http://www.w3.org/1999/xhtml"
+                template="../template.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:define name="title">
+        Registro
+    </ui:define>
+
+    <ui:define name="body">
+        <h:form>
+            <p:wizard id="wizard" showNavBar="false" widgetVar="wizardWV" showStepStatus="true" >
+                <p:tab id="paso1" title="Paso 1 ">
+                    <ui:include src="/bdvRegistro/Paso1.xhtml"/>
+                    <!--<p:commandButton id="siguiente" process="@this" disabled="#{!wizardManagedBean.checked}" value="Siguiente" actionListener="#{bdvUserController.prepareCreate()}" oncomplete="PF('wizardWV').next();"  />-->
+                    <p:button outcome="/faces/login.xhtml" value="#{bundle.Cancel}" icon="ui-icon-closethick"/>
+                    <p:commandButton icon="ui-icon-arrowthick-1-e" id="siguiente" process="@this" disabled="#{!wizardManagedBean.checked}" value="Siguiente" oncomplete="PF('wizardWV').next();">
+                        <f:actionListener binding="#{bdvUserController.prepareCreate()}"/> 
+                    </p:commandButton>
+                </p:tab>
+
+                <p:tab id="paso2" title="Paso 2">
+                    <ui:include src="/bdvRegistro/Paso2.xhtml"/>
+                    <p:commandButton value="Volver" icon="ui-icon-arrow-1-w" onclick="PF('wizardWV').back();" />
+                    <p:commandButton value="#{bundle.Acept}" icon="ui-icon-check" update="wizard,:growl">
+                        <f:actionListener binding="#{bdvUserController.registrarProveedor(bdvUserController.selected.email)}"/> 
+<!--                        <f:actionListener binding="{bdvUserController.create()}"/> -->
+                        <!--<f:actionListener binding="{sendMail.enviarEmail(bdvUserController.selected.email)}"/>--> 
+                    </p:commandButton>
+                </p:tab>
+            </p:wizard>
+            </h:form>
+    </ui:define>
+
+</ui:composition>

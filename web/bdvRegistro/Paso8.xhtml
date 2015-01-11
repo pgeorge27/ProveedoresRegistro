@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:panel header="#{bundle.DatosProveedor}">
+            <h:panelGroup>
+                <p:panelGrid columns="2">
+
+                    <h:outputText value="#{bundle.ViewBdvUserLabel_email}"/>
+                    <h:outputText value="#{bdvUserController.selected.email}" title="#{bundle.ViewBdvUserTitle_email}"/>
+                    
+                    <p:outputLabel value="#{bundle.CreateBdvEmpresaLabel_tipoPersona}" />
+                    <p:outputLabel value="#{bdvUserController.selected.idEmpresa.tipoPersona}"/>
+                    <p:outputLabel value="#{bundle.CreateBdvEmpresaLabel_origen}" />
+                    <p:outputLabel value="#{bdvUserController.selected.idEmpresa.origen}" />
+                    <p:outputLabel value="#{bundle.CreateBdvEmpresaLabel_ente}" />
+                    <p:outputLabel value="#{bdvUserController.selected.idEmpresa.ente}" />
+                    <p:outputLabel value="#{bundle.CreateBdvEmpresaLabel_rif}"/>
+                    <p:outputPanel>
+                        <p:outputLabel value="#{bdvUserController.selected.idEmpresa.tipoRif}"/>
+                        <p:outputLabel value="#{bdvUserController.selected.idEmpresa.rif}" />
+                    </p:outputPanel>
+                    <p:outputLabel value="#{bundle.CreateBdvEmpresaLabel_idNacionalidad}" />
+                    <p:outputLabel value="#{bdvUserController.selected.idEmpresa.idNacionalidad.descripcion}" />
+
+                    <p:outputLabel value="#{bundle.CreateBdvEmpresaLabel_idNaturalezaCliente}" />
+                    <p:outputLabel value="#{bdvUserController.selected.idEmpresa.idNaturalezaCliente.descripcion}" />
+                    
+                    <p:outputLabel value="#{bundle.CreateBdvEmpresaLabel_razonSocial}"  />
+                    <p:outputLabel value="#{bdvUserController.selected.idEmpresa.razonSocial}"/>
+                    <p:outputLabel value="#{bundle.CreateBdvEmpresaLabel_nombreComercial}" />
+                    <p:outputLabel value="#{bdvUserController.selected.idEmpresa.nombreComercial}"/>
+
+                    <p:outputLabel value="#{bundle.CreateBdvEmpresaLabel_paginaWeb}" />
+                    <p:outputLabel value="#{bdvUserController.selected.idEmpresa.paginaWeb}"/>
+
+                    <p:outputLabel value="#{bundle.CreateBdvEmpresaLabel_anioInicioActividades}" />
+                    <p:outputLabel value="#{bdvUserController.selected.idEmpresa.anioInicioActividades}" />
+
+                </p:panelGrid>
+            </h:panelGroup>
+        </p:panel>
+
+        <p:panel header="#{bundle.DatosRepresentanteLegal} 1">
+            <h:panelGroup>
+                <h:panelGrid columns="2" >
+                    <p:outputLabel value="#{bundle.CreateBdvRepresentateLegalLabel_primerNombre}" for="primerNombreRepre1" />
+                    <p:outputLabel value="#{bdvUserController.selected.idEmpresa.idRepresentateLegal1.primerApellido}" title="#{bundle.CreateBdvRepresentateLegalTitle_primerNombre}" />
+
+                    <p:outputLabel value="#{bundle.CreateBdvRepresentateLegalLabel_segundoNombre}" for="segundoNombreRepre1" />
+                    <p:outputLabel value="#{bdvUserController.selected.idEmpresa.idRepresentateLegal1.segundoNombre}" title="#{bundle.CreateBdvRepresentateLegalTitle_segundoNombre}" />
+
+                    <p:outputLabel value="#{bundle.CreateBdvRepresentateLegalLabel_primerApellido}" for="primerApellidoRepre1" />
+                    <p:outputLabel value="#{bdvUserController.selected.idEmpresa.idRepresentateLegal1.primerApellido}" title="#{bundle.CreateBdvRepresentateLegalTitle_primerApellido}" />
+
+                    <p:outputLabel value="#{bundle.CreateBdvRepresentateLegalLabel_segundoApellido}" for="segundoApellidoRepre1" />
+                    <p:outputLabel value="#{bdvUserController.selected.idEmpresa.idRepresentateLegal1.segundoApellido}" title="#{bundle.CreateBdvRepresentateLegalTitle_segundoApellido}"/>
+
+                    <p:outputLabel value="#{bundle.CreateBdvRepresentateLegalLabel_sexo}" for="sexoRepre1" />
+                    <p:outputLabel value="#{bdvUserController.selected.idEmpresa.idRepresentateLegal1.sexo}" />
+
+                    <p:outputLabel value="#{bundle.CreateBdvRepresentateLegalLabel_documentoIdentidad}" for="documentoIdentidadRepre1" />
+                    <p:outputLabel value="#{bdvUserController.selected.idEmpresa.idRepresentateLegal1.documentoIdentidad}" />
+
+                    <p:outputLabel value="#{bundle.CreateBdvRepresentateLegalLabel_numeroIdentidad}" for="numeroIdentidadRepre1" />
+                    <p:outputLabel value="#{bdvUserController.selected.idEmpresa.idRepresentateLegal1.numeroIdentidad}" title="#{bundle.CreateBdvRepresentateLegalTitle_numeroIdentidad}" />
+
+                    <p:outputLabel value="#{bundle.CreateBdvRepresentateLegalLabel_cargo}" for="cargoRepre1" />
+                    <p:outputLabel value="#{bdvUserController.selected.idEmpresa.idRepresentateLegal1.cargo}" title="#{bundle.CreateBdvRepresentateLegalTitle_cargo}" />
+
+                    <p:outputLabel value="#{bundle.CreateBdvRepresentateLegalLabel_areaOcupacional}" for="areaOcupacionalRepre1" />
+                    <p:outputLabel value="#{bdvUserController.selected.idEmpresa.idRepresentateLegal1.areaOcupacional}" title="#{bundle.CreateBdvRepresentateLegalTitle_areaOcupacional}" />
+
+                </h:panelGrid>
+            </h:panelGroup>
+        </p:panel>
+
+        <p:panel header="#{bundle.DatosRepresentanteLegal} 2" rendered="#{wizardManagedBean.repre2}">
+            <h:panelGroup>
+                <h:panelGrid columns="2" >
+                    <p:outputLabel value="#{bundle.CreateBdvRepresentateLegalLabel_primerNombre}" for="primerNombreRepre2" />
+                    <p:outputLabel value="#{bdvUserController.selected.idEmpresa.idRepresentateLegal2.primerApellido}" title="#{bundle.CreateBdvRepresentateLegalTitle_primerNombre}"  />
+
+                    <p:outputLabel value="#{bundle.CreateBdvRepresentateLegalLabel_segundoNombre}" for="segundoNombreRepre2" />
+                    <p:outputLabel value="#{bdvUserController.selected.idEmpresa.idRepresentateLegal2.segundoNombre}" title="#{bundle.CreateBdvRepresentateLegalTitle_segundoNombre}" />
+
+                    <p:outputLabel value="#{bundle.CreateBdvRepresentateLegalLabel_primerApellido}" for="primerApellidoRepre2" />
+                    <p:outputLabel value="#{bdvUserController.selected.idEmpresa.idRepresentateLegal2.primerApellido}" title="#{bundle.CreateBdvRepresentateLegalTitle_primerApellido}" />
+
+                    <p:outputLabel value="#{bundle.CreateBdvRepresentateLegalLabel_segundoApellido}" for="segundoApellidoRepre2" />
+                    <p:outputLabel value="#{bdvUserController.selected.idEmpresa.idRepresentateLegal2.segundoApellido}" title="#{bundle.CreateBdvRepresentateLegalTitle_segundoApellido}" />
+
+                    <p:outputLabel value="#{bundle.CreateBdvRepresentateLegalLabel_sexo}" for="sexoRepre2" />
+                    <p:outputLabel value="#{bdvUserController.selected.idEmpresa.idRepresentateLegal2.sexo}" />
+
+                    <p:outputLabel value="#{bundle.CreateBdvRepresentateLegalLabel_documentoIdentidad}" for="documentoIdentidadRepre2" />
+                    <p:outputLabel value="#{bdvUserController.selected.idEmpresa.idRepresentateLegal2.documentoIdentidad}" />
+
+                    <p:outputLabel value="#{bundle.CreateBdvRepresentateLegalLabel_numeroIdentidad}" for="numeroIdentidadRepre2" />
+                    <p:outputLabel value="#{bdvUserController.selected.idEmpresa.idRepresentateLegal2.numeroIdentidad}" title="#{bundle.CreateBdvRepresentateLegalTitle_numeroIdentidad}"  />
+
+                    <p:outputLabel value="#{bundle.CreateBdvRepresentateLegalLabel_cargo}" for="cargoRepre2" />
+                    <p:outputLabel value="#{bdvUserController.selected.idEmpresa.idRepresentateLegal2.cargo}" title="#{bundle.CreateBdvRepresentateLegalTitle_cargo}"  />
+
+                    <p:outputLabel value="#{bundle.CreateBdvRepresentateLegalLabel_areaOcupacional}" for="areaOcupacionalRepre2" />
+                    <p:outputLabel value="#{bdvUserController.selected.idEmpresa.idRepresentateLegal2.areaOcupacional}" title="#{bundle.CreateBdvRepresentateLegalTitle_areaOcupacional}"  />
+
+                </h:panelGrid>
+            </h:panelGroup>
+        </p:panel>
+
+        <p:panel header="#{bundle.DatosRepresentanteLegal} 3" rendered="#{wizardManagedBean.repre3}">
+            <h:panelGroup>
+                <h:panelGrid columns="2" >
+                    <p:outputLabel value="#{bundle.CreateBdvRepresentateLegalLabel_primerNombre}" for="primerNombreRepre3" />
+                    <p:outputLabel value="#{bdvUserController.selected.idEmpresa.idRepresentateLegal3.primerApellido}" title="#{bundle.CreateBdvRepresentateLegalTitle_primerNombre}" />
+
+                    <p:outputLabel value="#{bundle.CreateBdvRepresentateLegalLabel_segundoNombre}" for="segundoNombreRepre3" />
+                    <p:outputLabel value="#{bdvUserController.selected.idEmpresa.idRepresentateLegal3.segundoNombre}" title="#{bundle.CreateBdvRepresentateLegalTitle_segundoNombre}"  />
+
+                    <p:outputLabel value="#{bundle.CreateBdvRepresentateLegalLabel_primerApellido}" for="primerApellidoRepre3" />
+                    <p:outputLabel value="#{bdvUserController.selected.idEmpresa.idRepresentateLegal3.primerApellido}" title="#{bundle.CreateBdvRepresentateLegalTitle_primerApellido}"  />
+
+                    <p:outputLabel value="#{bundle.CreateBdvRepresentateLegalLabel_segundoApellido}" for="segundoApellidoRepre3" />
+                    <p:outputLabel value="#{bdvUserController.selected.idEmpresa.idRepresentateLegal3.segundoApellido}" title="#{bundle.CreateBdvRepresentateLegalTitle_segundoApellido}"  />
+
+                    <p:outputLabel value="#{bundle.CreateBdvRepresentateLegalLabel_sexo}" for="sexoRepre3" />
+                    <p:outputLabel value="#{bdvUserController.selected.idEmpresa.idRepresentateLegal3.sexo}" />
+
+                    <p:outputLabel value="#{bundle.CreateBdvRepresentateLegalLabel_documentoIdentidad}" for="documentoIdentidadRepre3" />
+                    <p:outputLabel value="#{bdvUserController.selected.idEmpresa.idRepresentateLegal3.documentoIdentidad}" />
+
+                    <p:outputLabel value="#{bundle.CreateBdvRepresentateLegalLabel_numeroIdentidad}" for="numeroIdentidadRepre3" />
+                    <p:outputLabel value="#{bdvUserController.selected.idEmpresa.idRepresentateLegal3.numeroIdentidad}" title="#{bundle.CreateBdvRepresentateLegalTitle_numeroIdentidad}" />
+
+                    <p:outputLabel value="#{bundle.CreateBdvRepresentateLegalLabel_cargo}" for="cargoRepre3" />
+                    <p:outputLabel value="#{bdvUserController.selected.idEmpresa.idRepresentateLegal3.cargo}" title="#{bundle.CreateBdvRepresentateLegalTitle_cargo}"  />
+
+                    <p:outputLabel value="#{bundle.CreateBdvRepresentateLegalLabel_areaOcupacional}" for="areaOcupacionalRepre3" />
+                    <p:outputLabel value="#{bdvUserController.selected.idEmpresa.idRepresentateLegal3.areaOcupacional}" title="#{bundle.CreateBdvRepresentateLegalTitle_areaOcupacional}"  />
+
+                </h:panelGrid>
+            </h:panelGroup>
+        </p:panel>
+
+        <p:panel  header="#{bundle.CuentaBancariaBancoVenezuela} #1">
+            <h:panelGroup>
+                <h:panelGrid columns="2">
+                    <p:outputLabel value="#{bundle.CreateBdvBancoCuentaVnzLabel_codigoCuenta}" for="codigoCuentaReferenciaVnz1" />
+                    <p:outputLabel value="#{bdvUserController.selected.idEmpresa.idBancoCuentaVnz1.codigoCuenta}" title="#{bundle.CreateBdvBancoCuentaVnzTitle_codigoCuenta}" />
+
+                    <p:outputLabel value="#{bundle.CreateBdvBancoCuentaVnzLabel_idTipoCuenta}" for="idTipoCuentaReferenciaVnz1" />
+                    <p:outputLabel  value="#{bdvUserController.selected.idEmpresa.idBancoCuentaVnz1.idTipoCuenta.descripcion}"/>
+
+                </h:panelGrid>
+            </h:panelGroup>
+        </p:panel> 
+
+        <p:panel header="#{bundle.CuentaBancariaBancoVenezuela} #2" rendered="#{wizardManagedBean.cuentaBancoVnz2}">
+            <h:panelGroup>
+                <h:panelGrid columns="2" >
+                    <p:outputLabel value="#{bundle.CreateBdvBancoCuentaVnzLabel_codigoCuenta}"  />
+                    <p:outputLabel value="#{bdvUserController.selected.idEmpresa.idBancoCuentaVnz2.codigoCuenta}" title="#{bundle.CreateBdvBancoCuentaVnzTitle_codigoCuenta}" />
+
+                    <p:outputLabel value="#{bundle.CreateBdvBancoCuentaVnzLabel_idTipoCuenta}" />
+                    <p:outputLabel  value="#{bdvUserController.selected.idEmpresa.idBancoCuentaVnz2.idTipoCuenta.descripcion}"/>
+
+                </h:panelGrid>
+            </h:panelGroup>
+        </p:panel> 
+        
+        <p:panel header="#{bundle.ReferenciaBancaria} #1">
+            <h:panelGroup>
+                <h:panelGrid columns="2" >
+                    <p:outputLabel value="#{bundle.CreateBdvBancoCuentaLabel_codigoCuenta}"  />
+                    <p:outputLabel value="#{bdvUserController.selected.idEmpresa.idBancoCuenta1.codigoCuenta}" title="#{bundle.CreateBdvBancoCuentaTitle_codigoCuenta}" />
+
+                    <p:outputLabel value="#{bundle.CreateBdvBancoCuentaLabel_idTipoCuenta}" />
+                    <p:outputLabel value="#{bdvUserController.selected.idEmpresa.idBancoCuenta1.idTipoCuenta.descripcion}" />
+
+                    <p:outputLabel value="#{bundle.CreateBdvBancoCuentaLabel_idBanco}" />
+                    <p:outputLabel value="#{bdvUserController.selected.idEmpresa.idBancoCuenta1.idBanco.bancoDescripcion}" />
+
+                    <p:outputLabel value="#{bundle.CreateBdvBancoCuentaLabel_telefono}" />
+                    <p:outputLabel value="#{bdvUserController.selected.idEmpresa.idBancoCuenta1.telefono}" title="#{bundle.CreateBdvBancoCuentaTitle_telefono}" />
+
+                </h:panelGrid>
+            </h:panelGroup>
+        </p:panel>   
+
+        <p:panel header="#{bundle.ReferenciaBancaria} #2" rendered="#{wizardManagedBean.cuentaBanco2}">
+            <h:panelGroup>
+                <h:panelGrid columns="2" >
+                    <p:outputLabel value="#{bundle.CreateBdvBancoCuentaLabel_codigoCuenta}" />
+                    <p:outputLabel value="#{bdvUserController.selected.idEmpresa.idBancoCuenta2.codigoCuenta}" title="#{bundle.CreateBdvBancoCuentaTitle_codigoCuenta}" />
+
+                    <p:outputLabel value="#{bundle.CreateBdvBancoCuentaLabel_idTipoCuenta}" />
+                    <p:outputLabel value="#{bdvUserController.selected.idEmpresa.idBancoCuenta2.idTipoCuenta.descripcion}" />
+
+                    <p:outputLabel value="#{bundle.CreateBdvBancoCuentaLabel_idBanco}" />
+                    <p:outputLabel value="#{bdvUserController.selected.idEmpresa.idBancoCuenta2.idBanco.bancoDescripcion}" />
+
+                    <p:outputLabel value="#{bundle.CreateBdvBancoCuentaLabel_telefono}" />
+                    <p:outputLabel value="#{bdvUserController.selected.idEmpresa.idBancoCuenta2.telefono}" title="#{bundle.CreateBdvBancoCuentaTitle_telefono}" />
+
+                </h:panelGrid>
+            </h:panelGroup>
+        </p:panel> 
+
+        <p:panel header="#{bundle.ReferenciaBancaria} #3" rendered="#{wizardManagedBean.cuentaBanco3}">
+            <h:panelGroup>
+                <h:panelGrid columns="2" >
+                    <p:outputLabel value="#{bundle.CreateBdvBancoCuentaLabel_codigoCuenta}" />
+                    <p:outputLabel value="#{bdvUserController.selected.idEmpresa.idBancoCuenta3.codigoCuenta}" title="#{bundle.CreateBdvBancoCuentaTitle_codigoCuenta}"  />
+
+                    <p:outputLabel value="#{bundle.CreateBdvBancoCuentaLabel_idTipoCuenta}" />
+                    <p:outputLabel value="#{bdvUserController.selected.idEmpresa.idBancoCuenta3.idTipoCuenta.descripcion}" />
+
+                    <p:outputLabel value="#{bundle.CreateBdvBancoCuentaLabel_idBanco}" />
+                    <p:outputLabel value="#{bdvUserController.selected.idEmpresa.idBancoCuenta3.idBanco.bancoDescripcion}" />
+
+
+                    <p:outputLabel value="#{bundle.CreateBdvBancoCuentaLabel_telefono}"/>
+                    <p:outputLabel value="#{bdvUserController.selected.idEmpresa.idBancoCuenta3.telefono}" title="#{bundle.CreateBdvBancoCuentaTitle_telefono}" />
+
+                </h:panelGrid>
+            </h:panelGroup>
+        </p:panel> 
+
+        <p:panel header="#{bundle.DatosGremio}">
+            <h:panelGroup>
+                <h:panelGrid columns="2" >                               
+                    <p:outputLabel value="#{bundle.CreateBdvEmpresaLabel_idSector}" />
+                    <p:outputLabel  value="#{bdvUserController.selected.idEmpresa.idSector.descripcion}" />
+                </h:panelGrid> 
+            </h:panelGroup>
+        </p:panel>
+
+    </ui:composition>
+</html>

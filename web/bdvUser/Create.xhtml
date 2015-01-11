@@ -20,6 +20,8 @@
                         <p:inputText id="contrasenia" value="#{bdvUserController.selected.contrasenia}" title="#{bundle.CreateBdvUserTitle_contrasenia}" required="true" requiredMessage="#{bundle.CreateBdvUserRequiredMessage_contrasenia}"/>
                         <p:outputLabel value="#{bundle.CreateBdvUserLabel_activo}" for="activo" />
                         <p:selectBooleanCheckbox id="activo" value="#{bdvUserController.selected.activo}" required="true" requiredMessage="#{bundle.EditBdvUserRequiredMessage_activo}"/>
+                        <p:outputLabel value="#{bundle.CreateBdvUserLabel_emailValido}" for="emailValido" />
+                        <p:selectBooleanCheckbox id="emailValido" value="#{bdvUserController.selected.emailValido}" required="true" requiredMessage="#{bundle.EditBdvUserRequiredMessage_emailValido}"/>
                         <p:outputLabel value="#{bundle.CreateBdvUserLabel_idEmpresa}" for="idEmpresa" />
                         <p:selectOneMenu id="idEmpresa" value="#{bdvUserController.selected.idEmpresa}" >
                             <f:selectItems value="#{bdvEmpresaController.itemsAvailableSelectOne}"

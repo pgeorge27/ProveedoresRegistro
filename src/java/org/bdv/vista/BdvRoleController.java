@@ -117,7 +117,7 @@ public class BdvRoleController implements Serializable {
         return getFacade().findAll();
     }
 
-    @FacesConverter(value = "BdvRoleControllerConverter", forClass = BdvRole.class)
+    @FacesConverter(value="BdvRoleControllerConverter",forClass = BdvRole.class)
     public static class BdvRoleControllerConverter implements Converter {
 
         @Override

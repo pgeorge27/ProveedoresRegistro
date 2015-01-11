@@ -19,12 +19,13 @@ import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 
-@ManagedBean(name = "bdvSectorGremioController")
+
+@ManagedBean(name="bdvSectorGremioController")
 @SessionScoped
 public class BdvSectorGremioController implements Serializable {
 
-    @EJB
-    private org.bdv.controlador.BdvSectorGremioFacade ejbFacade;
+
+    @EJB private org.bdv.controlador.BdvSectorGremioFacade ejbFacade;
     private List<BdvSectorGremio> items = null;
     private BdvSectorGremio selected;
 
@@ -109,6 +110,7 @@ public class BdvSectorGremioController implements Serializable {
         }
     }
 
+
     public List<BdvSectorGremio> getItemsAvailableSelectMany() {
         return getFacade().findAll();
     }
@@ -117,7 +119,7 @@ public class BdvSectorGremioController implements Serializable {
         return getFacade().findAll();
     }
 
-    @FacesConverter(forClass = BdvSectorGremio.class)
+    @FacesConverter(forClass=BdvSectorGremio.class)
     public static class BdvSectorGremioControllerConverter implements Converter {
 
         @Override
@@ -125,7 +127,7 @@ public class BdvSectorGremioController implements Serializable {
             if (value == null || value.length() == 0) {
                 return null;
             }
-            BdvSectorGremioController controller = (BdvSectorGremioController) facesContext.getApplication().getELResolver().
+            BdvSectorGremioController controller = (BdvSectorGremioController)facesContext.getApplication().getELResolver().
                     getValue(facesContext.getELContext(), null, "bdvSectorGremioController");
             return controller.getFacade().find(getKey(value));
         }

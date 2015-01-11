@@ -19,12 +19,13 @@ import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 
-@ManagedBean(name = "bdvNaturalezaClienteController")
+
+@ManagedBean(name="bdvNaturalezaClienteController")
 @SessionScoped
 public class BdvNaturalezaClienteController implements Serializable {
 
-    @EJB
-    private org.bdv.controlador.BdvNaturalezaClienteFacade ejbFacade;
+
+    @EJB private org.bdv.controlador.BdvNaturalezaClienteFacade ejbFacade;
     private List<BdvNaturalezaCliente> items = null;
     private BdvNaturalezaCliente selected;
 
@@ -109,6 +110,7 @@ public class BdvNaturalezaClienteController implements Serializable {
         }
     }
 
+
     public List<BdvNaturalezaCliente> getItemsAvailableSelectMany() {
         return getFacade().findAll();
     }
@@ -117,7 +119,7 @@ public class BdvNaturalezaClienteController implements Serializable {
         return getFacade().findAll();
     }
 
-    @FacesConverter(forClass = BdvNaturalezaCliente.class)
+    @FacesConverter(forClass=BdvNaturalezaCliente.class)
     public static class BdvNaturalezaClienteControllerConverter implements Converter {
 
         @Override
@@ -125,7 +127,7 @@ public class BdvNaturalezaClienteController implements Serializable {
             if (value == null || value.length() == 0) {
                 return null;
             }
-            BdvNaturalezaClienteController controller = (BdvNaturalezaClienteController) facesContext.getApplication().getELResolver().
+            BdvNaturalezaClienteController controller = (BdvNaturalezaClienteController)facesContext.getApplication().getELResolver().
                     getValue(facesContext.getELContext(), null, "bdvNaturalezaClienteController");
             return controller.getFacade().find(getKey(value));
         }

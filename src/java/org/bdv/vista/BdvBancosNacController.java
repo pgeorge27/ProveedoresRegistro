@@ -19,12 +19,13 @@ import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 
-@ManagedBean(name = "bdvBancosNacController")
+
+@ManagedBean(name="bdvBancosNacController")
 @SessionScoped
 public class BdvBancosNacController implements Serializable {
 
-    @EJB
-    private org.bdv.controlador.BdvBancosNacFacade ejbFacade;
+
+    @EJB private org.bdv.controlador.BdvBancosNacFacade ejbFacade;
     private List<BdvBancosNac> items = null;
     private BdvBancosNac selected;
 
@@ -109,6 +110,7 @@ public class BdvBancosNacController implements Serializable {
         }
     }
 
+
     public List<BdvBancosNac> getItemsAvailableSelectMany() {
         return getFacade().findAll();
     }
@@ -117,7 +119,7 @@ public class BdvBancosNacController implements Serializable {
         return getFacade().findAll();
     }
 
-    @FacesConverter(forClass = BdvBancosNac.class)
+    @FacesConverter(forClass=BdvBancosNac.class)
     public static class BdvBancosNacControllerConverter implements Converter {
 
         @Override
@@ -125,7 +127,7 @@ public class BdvBancosNacController implements Serializable {
             if (value == null || value.length() == 0) {
                 return null;
             }
-            BdvBancosNacController controller = (BdvBancosNacController) facesContext.getApplication().getELResolver().
+            BdvBancosNacController controller = (BdvBancosNacController)facesContext.getApplication().getELResolver().
                     getValue(facesContext.getELContext(), null, "bdvBancosNacController");
             return controller.getFacade().find(getKey(value));
         }

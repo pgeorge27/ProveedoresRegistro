@@ -13,8 +13,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -58,10 +56,7 @@ public class BdvUserBackend implements Serializable {
     @NotNull
     @Column(name = "activo")
     private boolean activo;
-    @JoinTable(name = "bdv_user_roles", joinColumns = {
-        @JoinColumn(name = "id_user", referencedColumnName = "id_user")}, inverseJoinColumns = {
-        @JoinColumn(name = "id_role", referencedColumnName = "id_role")})
-    @ManyToMany
+    @ManyToMany(mappedBy = "bdvUserBackendList")
     private List<BdvRole> bdvRoleList;
 
     public BdvUserBackend() {
@@ -141,7 +136,7 @@ public class BdvUserBackend implements Serializable {
 
     @Override
     public String toString() {
-        return userBackend;
+        return "org.bdv.modelo.BdvUserBackend[ idUser=" + idUser + " ]";
     }
     
 }

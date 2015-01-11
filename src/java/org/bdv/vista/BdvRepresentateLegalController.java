@@ -19,12 +19,13 @@ import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 
-@ManagedBean(name = "bdvRepresentateLegalController")
+
+@ManagedBean(name="bdvRepresentateLegalController")
 @SessionScoped
 public class BdvRepresentateLegalController implements Serializable {
 
-    @EJB
-    private org.bdv.controlador.BdvRepresentateLegalFacade ejbFacade;
+
+    @EJB private org.bdv.controlador.BdvRepresentateLegalFacade ejbFacade;
     private List<BdvRepresentateLegal> items = null;
     private BdvRepresentateLegal selected;
 
@@ -109,6 +110,7 @@ public class BdvRepresentateLegalController implements Serializable {
         }
     }
 
+
     public List<BdvRepresentateLegal> getItemsAvailableSelectMany() {
         return getFacade().findAll();
     }
@@ -117,7 +119,7 @@ public class BdvRepresentateLegalController implements Serializable {
         return getFacade().findAll();
     }
 
-    @FacesConverter(forClass = BdvRepresentateLegal.class)
+    @FacesConverter(forClass=BdvRepresentateLegal.class)
     public static class BdvRepresentateLegalControllerConverter implements Converter {
 
         @Override
@@ -125,7 +127,7 @@ public class BdvRepresentateLegalController implements Serializable {
             if (value == null || value.length() == 0) {
                 return null;
             }
-            BdvRepresentateLegalController controller = (BdvRepresentateLegalController) facesContext.getApplication().getELResolver().
+            BdvRepresentateLegalController controller = (BdvRepresentateLegalController)facesContext.getApplication().getELResolver().
                     getValue(facesContext.getELContext(), null, "bdvRepresentateLegalController");
             return controller.getFacade().find(getKey(value));
         }

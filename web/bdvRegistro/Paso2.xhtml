@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+  xmlns:h="http://xmlns.jcp.org/jsf/html"
+  xmlns:f="http://xmlns.jcp.org/jsf/core"
+  xmlns:p="http://primefaces.org/ui">
+
+  <ui:composition>
+
+      <p:panel header="#{bundle.InformacionGeneral}" >
+        <p:messages />
+            <h:panelGroup>
+                <p:panelGrid columns="3">
+                    <p:outputLabel value="#{bundle.CreateBdvUserLabel_email}" for="email" />
+                    <p:outputPanel>
+                        <p:inputText id="email" value="#{bdvUserController.selected.email}" title="#{bundle.CreateBdvUserTitle_email}" required="true" requiredMessage="#{bundle.CreateBdvUserRequiredMessage_email}" placeholder="paulparedes81@empresa.com"/>
+                        <!--<p:outputLabel value="{bundle.MsgUser}"  />-->
+                    </p:outputPanel>
+                    <p:outputLabel value="#{bundle.MsgEmail2}"  />
+
+                    <p:outputLabel value="#{bundle.CreateBdvUserLabel_contrasenia}" for="contrasenia" />
+                    <p:outputPanel>
+                        <p:password id="contrasenia" value="#{bdvUserController.selected.contrasenia}" maxlength="15"
+                            title="#{bundle.CreateBdvUserTitle_contrasenia}" required="true"
+                            requiredMessage="##{bundle.CreateBdvUserRequiredMessage_contrasenia}" feedback="true"
+                            promptLabel="#{bundle.MsgPromptLabel}" weakLabel="#{bundle.MsgWeakLabel}"
+                            goodLabel="#{bundle.MsgGoodLabel}" strongLabel="#{bundle.MsgStrongLabel}" match="password2"/>
+                            <br />
+                            <p:outputLabel value="#{bundle.MsgPassword}"  />
+                        </p:outputPanel>
+                        <p:outputLabel value="#{bundle.MsgPassword2}"  />
+
+                        <p:outputLabel value="#{bundle.CreateBdvUserLabel_contrasenia}" for="password2" />
+                        <p:password id="password2" maxlength="15"
+                            title="#{bundle.CreateBdvUserTitle_contrasenia}" required="true"
+                            requiredMessage="#{bundle.CreateBdvUserRequiredMessage_contrasenia}" feedback="true"
+                            promptLabel="#{bundle.MsgPromptLabel}" weakLabel="#{bundle.MsgWeakLabel}"
+                            goodLabel="#{bundle.MsgGoodLabel}" strongLabel="#{bundle.MsgStrongLabel}" />
+                            <p:outputLabel value="#{bundle.MsgPassword3}"  />
+
+                        </p:panelGrid>
+                    </h:panelGroup>
+            </p:panel>
+
+        </ui:composition>
+    </html>

@@ -14,52 +14,52 @@
         </ui:define>
 
         <ui:define name="body">
-            <h:form id="BdvMcbeUbicGeoListForm">
-                <p:panel header="#{bundle.ListBdvMcbeUbicGeoTitle}">
-                    <p:dataTable id="datalist" value="#{bdvMcbeUbicGeoController.items}" var="item"
-                                 selectionMode="single" selection="#{bdvMcbeUbicGeoController.selected}"
-                                 paginator="true"
-                                 rowKey="#{item.idUbicGeo}"
-                                 rows="10"
-                                 rowsPerPageTemplate="10,20,30,40,50"
-                                 >
+                <h:form id="BdvMcbeUbicGeoListForm">
+                    <p:panel header="#{bundle.ListBdvMcbeUbicGeoTitle}">
+                        <p:dataTable id="datalist" value="#{bdvMcbeUbicGeoController.items}" var="item"
+                            selectionMode="single" selection="#{bdvMcbeUbicGeoController.selected}"
+                            paginator="true"
+                            rowKey="#{item.idUbicGeo}"
+                            rows="10"
+                            rowsPerPageTemplate="10,20,30,40,50"
+                            >
 
-                        <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
-                        <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+                            <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
+                            <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
 
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListBdvMcbeUbicGeoTitle_idUbicGeo}"/>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListBdvMcbeUbicGeoTitle_idUbicGeo}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.idUbicGeo}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListBdvMcbeUbicGeoTitle_descripcion}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.descripcion}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListBdvMcbeUbicGeoTitle_nivel}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.nivel}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListBdvMcbeUbicGeoTitle_idPadre}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.idPadre}"/>
+                            </p:column>
+                            <f:facet name="footer">
+                                <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{bdvMcbeUbicGeoController.prepareCreate}" update=":BdvMcbeUbicGeoCreateForm" oncomplete="PF('BdvMcbeUbicGeoCreateDialog').show()"/>
+                                <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":BdvMcbeUbicGeoViewForm" oncomplete="PF('BdvMcbeUbicGeoViewDialog').show()" disabled="#{empty bdvMcbeUbicGeoController.selected}"/>
+                                <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":BdvMcbeUbicGeoEditForm" oncomplete="PF('BdvMcbeUbicGeoEditDialog').show()" disabled="#{empty bdvMcbeUbicGeoController.selected}"/>
+                                <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{bdvMcbeUbicGeoController.destroy}" update=":growl,datalist" disabled="#{empty bdvMcbeUbicGeoController.selected}"/>
                             </f:facet>
-                            <h:outputText value="#{item.idUbicGeo}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListBdvMcbeUbicGeoTitle_descripcion}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.descripcion}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListBdvMcbeUbicGeoTitle_nivel}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.nivel}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListBdvMcbeUbicGeoTitle_idPadre}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.idPadre}"/>
-                        </p:column>
-                        <f:facet name="footer">
-                            <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{bdvMcbeUbicGeoController.prepareCreate}" update=":BdvMcbeUbicGeoCreateForm" oncomplete="PF('BdvMcbeUbicGeoCreateDialog').show()"/>
-                            <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":BdvMcbeUbicGeoViewForm" oncomplete="PF('BdvMcbeUbicGeoViewDialog').show()" disabled="#{empty bdvMcbeUbicGeoController.selected}"/>
-                            <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":BdvMcbeUbicGeoEditForm" oncomplete="PF('BdvMcbeUbicGeoEditDialog').show()" disabled="#{empty bdvMcbeUbicGeoController.selected}"/>
-                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{bdvMcbeUbicGeoController.destroy}" update=":growl,datalist" disabled="#{empty bdvMcbeUbicGeoController.selected}"/>
-                        </f:facet>
-                    </p:dataTable>
-                </p:panel>
-            </h:form>
+                        </p:dataTable>
+                    </p:panel>
+                </h:form>
 
             <ui:include src="Create.xhtml"/>
             <ui:include src="Edit.xhtml"/>
