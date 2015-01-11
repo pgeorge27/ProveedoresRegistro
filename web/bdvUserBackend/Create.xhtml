@@ -19,15 +19,11 @@
                         <p:outputLabel value="#{bundle.CreateBdvUserBackendLabel_password}" for="password" />
                         <p:inputText id="password" value="#{bdvUserBackendController.selected.password}" title="#{bundle.CreateBdvUserBackendTitle_password}" required="true" requiredMessage="#{bundle.CreateBdvUserBackendRequiredMessage_password}"/>
                         <p:outputLabel value="#{bundle.CreateBdvUserBackendLabel_status}" for="status" />
-                        <p:inputText id="status" value="#{bdvUserBackendController.selected.status}" title="#{bundle.CreateBdvUserBackendTitle_status}" required="true" requiredMessage="#{bundle.CreateBdvUserBackendRequiredMessage_status}"/>
-                         <p:outputLabel value="#{bundle.CreateBdvRoleTitle_idRole}" for="role" />
-                        <p:selectCheckboxMenu id="role" label="Role" value="#{bdvUserBackendController.selected.bdvRoleList}" 
-                                              filter="true" filterMatchMode="startsWith" panelStyle="width:250px">
-                            <f:selectItems value="#{bdvRoleController.itemsAvailableSelectMany}"
-                                           var="role"
-                                           itemValue="#{role}"/>
-                            <f:converter converterId="BdvRoleControllerConverter" />
-                        </p:selectCheckboxMenu>
+                        <p:selectBooleanCheckbox id="status" value="#{bdvUserBackendController.selected.status}" required="true" requiredMessage="#{bundle.EditBdvUserBackendRequiredMessage_status}"/>
+                        <p:outputLabel value="#{bundle.CreateBdvUserBackendLabel_contrasenia}" for="contrasenia" />
+                        <p:inputText id="contrasenia" value="#{bdvUserBackendController.selected.contrasenia}" title="#{bundle.CreateBdvUserBackendTitle_contrasenia}" required="true" requiredMessage="#{bundle.CreateBdvUserBackendRequiredMessage_contrasenia}"/>
+                        <p:outputLabel value="#{bundle.CreateBdvUserBackendLabel_activo}" for="activo" />
+                        <p:selectBooleanCheckbox id="activo" value="#{bdvUserBackendController.selected.activo}" required="true" requiredMessage="#{bundle.EditBdvUserBackendRequiredMessage_activo}"/>
                     </p:panelGrid>
                     <p:commandButton actionListener="#{bdvUserBackendController.create}" value="#{bundle.Save}" update="display,:BdvUserBackendListForm:datalist,:growl" oncomplete="handleSubmit(args,'BdvUserBackendCreateDialog');"/>
                     <p:commandButton value="#{bundle.Cancel}" onclick="BdvUserBackendCreateDialog.hide()"/>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="BdvUserViewDlg" widgetVar="BdvUserViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewBdvUserTitle}">
+            <h:form id="BdvUserViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{bdvUserController.selected != null}">
+                        <h:outputText value="#{bundle.ViewBdvUserLabel_idUser}"/>
+                        <h:outputText value="#{bdvUserController.selected.idUser}" title="#{bundle.ViewBdvUserTitle_idUser}"/>
+                        <h:outputText value="#{bundle.ViewBdvUserLabel_email}"/>
+                        <h:outputText value="#{bdvUserController.selected.email}" title="#{bundle.ViewBdvUserTitle_email}"/>
+                        <h:outputText value="#{bundle.ViewBdvUserLabel_contrasenia}"/>
+                        <h:outputText value="#{bdvUserController.selected.contrasenia}" title="#{bundle.ViewBdvUserTitle_contrasenia}"/>
+                        <h:outputText value="#{bundle.ViewBdvUserLabel_activo}"/>
+                        <p:selectBooleanCheckbox value="#{bdvUserController.selected.activo}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewBdvUserLabel_idEmpresa}"/>
+                        <h:outputText value="#{bdvUserController.selected.idEmpresa}" title="#{bundle.ViewBdvUserTitle_idEmpresa}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="BdvUserViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

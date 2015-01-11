@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="BdvRepresentateLegalViewDlg" widgetVar="BdvRepresentateLegalViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewBdvRepresentateLegalTitle}">
+            <h:form id="BdvRepresentateLegalViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{bdvRepresentateLegalController.selected != null}">
+                        <h:outputText value="#{bundle.ViewBdvRepresentateLegalLabel_idRepresentateLegal}"/>
+                        <h:outputText value="#{bdvRepresentateLegalController.selected.idRepresentateLegal}" title="#{bundle.ViewBdvRepresentateLegalTitle_idRepresentateLegal}"/>
+                        <h:outputText value="#{bundle.ViewBdvRepresentateLegalLabel_primerNombre}"/>
+                        <h:outputText value="#{bdvRepresentateLegalController.selected.primerNombre}" title="#{bundle.ViewBdvRepresentateLegalTitle_primerNombre}"/>
+                        <h:outputText value="#{bundle.ViewBdvRepresentateLegalLabel_segundoNombre}"/>
+                        <h:outputText value="#{bdvRepresentateLegalController.selected.segundoNombre}" title="#{bundle.ViewBdvRepresentateLegalTitle_segundoNombre}"/>
+                        <h:outputText value="#{bundle.ViewBdvRepresentateLegalLabel_primerApellido}"/>
+                        <h:outputText value="#{bdvRepresentateLegalController.selected.primerApellido}" title="#{bundle.ViewBdvRepresentateLegalTitle_primerApellido}"/>
+                        <h:outputText value="#{bundle.ViewBdvRepresentateLegalLabel_segundoApellido}"/>
+                        <h:outputText value="#{bdvRepresentateLegalController.selected.segundoApellido}" title="#{bundle.ViewBdvRepresentateLegalTitle_segundoApellido}"/>
+                        <h:outputText value="#{bundle.ViewBdvRepresentateLegalLabel_sexo}"/>
+                        <h:outputText value="#{bdvRepresentateLegalController.selected.sexo}" title="#{bundle.ViewBdvRepresentateLegalTitle_sexo}"/>
+                        <h:outputText value="#{bundle.ViewBdvRepresentateLegalLabel_documentoIdentidad}"/>
+                        <h:outputText value="#{bdvRepresentateLegalController.selected.documentoIdentidad}" title="#{bundle.ViewBdvRepresentateLegalTitle_documentoIdentidad}"/>
+                        <h:outputText value="#{bundle.ViewBdvRepresentateLegalLabel_numeroIdentidad}"/>
+                        <h:outputText value="#{bdvRepresentateLegalController.selected.numeroIdentidad}" title="#{bundle.ViewBdvRepresentateLegalTitle_numeroIdentidad}"/>
+                        <h:outputText value="#{bundle.ViewBdvRepresentateLegalLabel_cargo}"/>
+                        <h:outputText value="#{bdvRepresentateLegalController.selected.cargo}" title="#{bundle.ViewBdvRepresentateLegalTitle_cargo}"/>
+                        <h:outputText value="#{bundle.ViewBdvRepresentateLegalLabel_areaOcupacional}"/>
+                        <h:outputText value="#{bdvRepresentateLegalController.selected.areaOcupacional}" title="#{bundle.ViewBdvRepresentateLegalTitle_areaOcupacional}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="BdvRepresentateLegalViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

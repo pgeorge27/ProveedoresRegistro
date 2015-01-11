@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="BdvRecaudosViewDlg" widgetVar="BdvRecaudosViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewBdvRecaudosTitle}">
+            <h:form id="BdvRecaudosViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{bdvRecaudosController.selected != null}">
+                        <h:outputText value="#{bundle.ViewBdvRecaudosLabel_idRecaudos}"/>
+                        <h:outputText value="#{bdvRecaudosController.selected.idRecaudos}" title="#{bundle.ViewBdvRecaudosTitle_idRecaudos}"/>
+                        <h:outputText value="#{bundle.ViewBdvRecaudosLabel_certificadoSnc}"/>
+                        <h:outputText value="#{bdvRecaudosController.selected.certificadoSnc}" title="#{bundle.ViewBdvRecaudosTitle_certificadoSnc}"/>
+                        <h:outputText value="#{bundle.ViewBdvRecaudosLabel_planillaRnc}"/>
+                        <h:outputText value="#{bdvRecaudosController.selected.planillaRnc}" title="#{bundle.ViewBdvRecaudosTitle_planillaRnc}"/>
+                        <h:outputText value="#{bundle.ViewBdvRecaudosLabel_comunicacionRepresentante}"/>
+                        <h:outputText value="#{bdvRecaudosController.selected.comunicacionRepresentante}" title="#{bundle.ViewBdvRecaudosTitle_comunicacionRepresentante}"/>
+                        <h:outputText value="#{bundle.ViewBdvRecaudosLabel_solvenciaSso}"/>
+                        <h:outputText value="#{bdvRecaudosController.selected.solvenciaSso}" title="#{bundle.ViewBdvRecaudosTitle_solvenciaSso}"/>
+                        <h:outputText value="#{bundle.ViewBdvRecaudosLabel_solvenciaLaboral}"/>
+                        <h:outputText value="#{bdvRecaudosController.selected.solvenciaLaboral}" title="#{bundle.ViewBdvRecaudosTitle_solvenciaLaboral}"/>
+                        <h:outputText value="#{bundle.ViewBdvRecaudosLabel_solvenciaInce}"/>
+                        <h:outputText value="#{bdvRecaudosController.selected.solvenciaInce}" title="#{bundle.ViewBdvRecaudosTitle_solvenciaInce}"/>
+                        <h:outputText value="#{bundle.ViewBdvRecaudosLabel_organigrama}"/>
+                        <h:outputText value="#{bdvRecaudosController.selected.organigrama}" title="#{bundle.ViewBdvRecaudosTitle_organigrama}"/>
+                        <h:outputText value="#{bundle.ViewBdvRecaudosLabel_listaProductos}"/>
+                        <h:outputText value="#{bdvRecaudosController.selected.listaProductos}" title="#{bundle.ViewBdvRecaudosTitle_listaProductos}"/>
+                        <h:outputText value="#{bundle.ViewBdvRecaudosLabel_referenciaBancaria}"/>
+                        <h:outputText value="#{bdvRecaudosController.selected.referenciaBancaria}" title="#{bundle.ViewBdvRecaudosTitle_referenciaBancaria}"/>
+                        <h:outputText value="#{bundle.ViewBdvRecaudosLabel_referenciaComercial}"/>
+                        <h:outputText value="#{bdvRecaudosController.selected.referenciaComercial}" title="#{bundle.ViewBdvRecaudosTitle_referenciaComercial}"/>
+                        <h:outputText value="#{bundle.ViewBdvRecaudosLabel_dateRegister}"/>
+                        <h:outputText value="#{bdvRecaudosController.selected.dateRegister}" title="#{bundle.ViewBdvRecaudosTitle_dateRegister}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewBdvRecaudosLabel_dateUpdate}"/>
+                        <h:outputText value="#{bdvRecaudosController.selected.dateUpdate}" title="#{bundle.ViewBdvRecaudosTitle_dateUpdate}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="BdvRecaudosViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

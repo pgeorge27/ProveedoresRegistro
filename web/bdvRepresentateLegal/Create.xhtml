@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="BdvRepresentateLegalCreateDlg" widgetVar="BdvRepresentateLegalCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateBdvRepresentateLegalTitle}">
+            <h:form id="BdvRepresentateLegalCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{bdvRepresentateLegalController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateBdvRepresentateLegalLabel_idRepresentateLegal}" for="idRepresentateLegal" />
+                        <p:inputText id="idRepresentateLegal" value="#{bdvRepresentateLegalController.selected.idRepresentateLegal}" title="#{bundle.CreateBdvRepresentateLegalTitle_idRepresentateLegal}" required="true" requiredMessage="#{bundle.CreateBdvRepresentateLegalRequiredMessage_idRepresentateLegal}"/>
+                        <p:outputLabel value="#{bundle.CreateBdvRepresentateLegalLabel_primerNombre}" for="primerNombre" />
+                        <p:inputText id="primerNombre" value="#{bdvRepresentateLegalController.selected.primerNombre}" title="#{bundle.CreateBdvRepresentateLegalTitle_primerNombre}" />
+                        <p:outputLabel value="#{bundle.CreateBdvRepresentateLegalLabel_segundoNombre}" for="segundoNombre" />
+                        <p:inputText id="segundoNombre" value="#{bdvRepresentateLegalController.selected.segundoNombre}" title="#{bundle.CreateBdvRepresentateLegalTitle_segundoNombre}" />
+                        <p:outputLabel value="#{bundle.CreateBdvRepresentateLegalLabel_primerApellido}" for="primerApellido" />
+                        <p:inputText id="primerApellido" value="#{bdvRepresentateLegalController.selected.primerApellido}" title="#{bundle.CreateBdvRepresentateLegalTitle_primerApellido}" />
+                        <p:outputLabel value="#{bundle.CreateBdvRepresentateLegalLabel_segundoApellido}" for="segundoApellido" />
+                        <p:inputText id="segundoApellido" value="#{bdvRepresentateLegalController.selected.segundoApellido}" title="#{bundle.CreateBdvRepresentateLegalTitle_segundoApellido}" />
+                        <p:outputLabel value="#{bundle.CreateBdvRepresentateLegalLabel_sexo}" for="sexo" />
+                        <p:inputText id="sexo" value="#{bdvRepresentateLegalController.selected.sexo}" title="#{bundle.CreateBdvRepresentateLegalTitle_sexo}" />
+                        <p:outputLabel value="#{bundle.CreateBdvRepresentateLegalLabel_documentoIdentidad}" for="documentoIdentidad" />
+                        <p:inputText id="documentoIdentidad" value="#{bdvRepresentateLegalController.selected.documentoIdentidad}" title="#{bundle.CreateBdvRepresentateLegalTitle_documentoIdentidad}" />
+                        <p:outputLabel value="#{bundle.CreateBdvRepresentateLegalLabel_numeroIdentidad}" for="numeroIdentidad" />
+                        <p:inputText id="numeroIdentidad" value="#{bdvRepresentateLegalController.selected.numeroIdentidad}" title="#{bundle.CreateBdvRepresentateLegalTitle_numeroIdentidad}" />
+                        <p:outputLabel value="#{bundle.CreateBdvRepresentateLegalLabel_cargo}" for="cargo" />
+                        <p:inputText id="cargo" value="#{bdvRepresentateLegalController.selected.cargo}" title="#{bundle.CreateBdvRepresentateLegalTitle_cargo}" />
+                        <p:outputLabel value="#{bundle.CreateBdvRepresentateLegalLabel_areaOcupacional}" for="areaOcupacional" />
+                        <p:inputText id="areaOcupacional" value="#{bdvRepresentateLegalController.selected.areaOcupacional}" title="#{bundle.CreateBdvRepresentateLegalTitle_areaOcupacional}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{bdvRepresentateLegalController.create}" value="#{bundle.Save}" update="display,:BdvRepresentateLegalListForm:datalist,:growl" oncomplete="handleSubmit(args,'BdvRepresentateLegalCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="BdvRepresentateLegalCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

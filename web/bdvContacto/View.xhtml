@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="BdvContactoViewDlg" widgetVar="BdvContactoViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewBdvContactoTitle}">
+            <h:form id="BdvContactoViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{bdvContactoController.selected != null}">
+                        <h:outputText value="#{bundle.ViewBdvContactoLabel_idContacto}"/>
+                        <h:outputText value="#{bdvContactoController.selected.idContacto}" title="#{bundle.ViewBdvContactoTitle_idContacto}"/>
+                        <h:outputText value="#{bundle.ViewBdvContactoLabel_primerApellido}"/>
+                        <h:outputText value="#{bdvContactoController.selected.primerApellido}" title="#{bundle.ViewBdvContactoTitle_primerApellido}"/>
+                        <h:outputText value="#{bundle.ViewBdvContactoLabel_segundoApellido}"/>
+                        <h:outputText value="#{bdvContactoController.selected.segundoApellido}" title="#{bundle.ViewBdvContactoTitle_segundoApellido}"/>
+                        <h:outputText value="#{bundle.ViewBdvContactoLabel_primerNombre}"/>
+                        <h:outputText value="#{bdvContactoController.selected.primerNombre}" title="#{bundle.ViewBdvContactoTitle_primerNombre}"/>
+                        <h:outputText value="#{bundle.ViewBdvContactoLabel_segundoNombre}"/>
+                        <h:outputText value="#{bdvContactoController.selected.segundoNombre}" title="#{bundle.ViewBdvContactoTitle_segundoNombre}"/>
+                        <h:outputText value="#{bundle.ViewBdvContactoLabel_sexo}"/>
+                        <h:outputText value="#{bdvContactoController.selected.sexo}" title="#{bundle.ViewBdvContactoTitle_sexo}"/>
+                        <h:outputText value="#{bundle.ViewBdvContactoLabel_documentoIdentidad}"/>
+                        <h:outputText value="#{bdvContactoController.selected.documentoIdentidad}" title="#{bundle.ViewBdvContactoTitle_documentoIdentidad}"/>
+                        <h:outputText value="#{bundle.ViewBdvContactoLabel_numeroIdentidad}"/>
+                        <h:outputText value="#{bdvContactoController.selected.numeroIdentidad}" title="#{bundle.ViewBdvContactoTitle_numeroIdentidad}"/>
+                        <h:outputText value="#{bundle.ViewBdvContactoLabel_cargo}"/>
+                        <h:outputText value="#{bdvContactoController.selected.cargo}" title="#{bundle.ViewBdvContactoTitle_cargo}"/>
+                        <h:outputText value="#{bundle.ViewBdvContactoLabel_areaOcupacional}"/>
+                        <h:outputText value="#{bdvContactoController.selected.areaOcupacional}" title="#{bundle.ViewBdvContactoTitle_areaOcupacional}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="BdvContactoViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

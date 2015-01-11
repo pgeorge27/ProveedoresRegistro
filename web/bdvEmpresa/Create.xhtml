@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="BdvEmpresaCreateDlg" widgetVar="BdvEmpresaCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateBdvEmpresaTitle}">
+            <h:form id="BdvEmpresaCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{bdvEmpresaController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateBdvEmpresaLabel_idEmpresa}" for="idEmpresa" />
+                        <p:inputText id="idEmpresa" value="#{bdvEmpresaController.selected.idEmpresa}" title="#{bundle.CreateBdvEmpresaTitle_idEmpresa}" required="true" requiredMessage="#{bundle.CreateBdvEmpresaRequiredMessage_idEmpresa}"/>
+                        <p:outputLabel value="#{bundle.CreateBdvEmpresaLabel_tipoPersona}" for="tipoPersona" />
+                        <p:inputText id="tipoPersona" value="#{bdvEmpresaController.selected.tipoPersona}" title="#{bundle.CreateBdvEmpresaTitle_tipoPersona}" />
+                        <p:outputLabel value="#{bundle.CreateBdvEmpresaLabel_origen}" for="origen" />
+                        <p:inputText id="origen" value="#{bdvEmpresaController.selected.origen}" title="#{bundle.CreateBdvEmpresaTitle_origen}" />
+                        <p:outputLabel value="#{bundle.CreateBdvEmpresaLabel_ente}" for="ente" />
+                        <p:inputText id="ente" value="#{bdvEmpresaController.selected.ente}" title="#{bundle.CreateBdvEmpresaTitle_ente}" />
+                        <p:outputLabel value="#{bundle.CreateBdvEmpresaLabel_tipoRif}" for="tipoRif" />
+                        <p:inputText id="tipoRif" value="#{bdvEmpresaController.selected.tipoRif}" title="#{bundle.CreateBdvEmpresaTitle_tipoRif}" />
+                        <p:outputLabel value="#{bundle.CreateBdvEmpresaLabel_rif}" for="rif" />
+                        <p:inputText id="rif" value="#{bdvEmpresaController.selected.rif}" title="#{bundle.CreateBdvEmpresaTitle_rif}" />
+                        <p:outputLabel value="#{bundle.CreateBdvEmpresaLabel_razonSocial}" for="razonSocial" />
+                        <p:inputText id="razonSocial" value="#{bdvEmpresaController.selected.razonSocial}" title="#{bundle.CreateBdvEmpresaTitle_razonSocial}" />
+                        <p:outputLabel value="#{bundle.CreateBdvEmpresaLabel_nombreComercial}" for="nombreComercial" />
+                        <p:inputText id="nombreComercial" value="#{bdvEmpresaController.selected.nombreComercial}" title="#{bundle.CreateBdvEmpresaTitle_nombreComercial}" />
+                        <p:outputLabel value="#{bundle.CreateBdvEmpresaLabel_paginaWeb}" for="paginaWeb" />
+                        <p:inputText id="paginaWeb" value="#{bdvEmpresaController.selected.paginaWeb}" title="#{bundle.CreateBdvEmpresaTitle_paginaWeb}" />
+                        <p:outputLabel value="#{bundle.CreateBdvEmpresaLabel_anioInicioActividades}" for="anioInicioActividades" />
+                        <p:inputText id="anioInicioActividades" value="#{bdvEmpresaController.selected.anioInicioActividades}" title="#{bundle.CreateBdvEmpresaTitle_anioInicioActividades}" />
+                        <p:outputLabel value="#{bundle.CreateBdvEmpresaLabel_domicilioTributario}" for="domicilioTributario" />
+                        <p:inputText id="domicilioTributario" value="#{bdvEmpresaController.selected.domicilioTributario}" title="#{bundle.CreateBdvEmpresaTitle_domicilioTributario}" />
+                        <p:outputLabel value="#{bundle.CreateBdvEmpresaLabel_interseccionReferencia}" for="interseccionReferencia" />
+                        <p:inputText id="interseccionReferencia" value="#{bdvEmpresaController.selected.interseccionReferencia}" title="#{bundle.CreateBdvEmpresaTitle_interseccionReferencia}" />
+                        <p:outputLabel value="#{bundle.CreateBdvEmpresaLabel_numero}" for="numero" />
+                        <p:inputText id="numero" value="#{bdvEmpresaController.selected.numero}" title="#{bundle.CreateBdvEmpresaTitle_numero}" />
+                        <p:outputLabel value="#{bundle.CreateBdvEmpresaLabel_edificioReferencia}" for="edificioReferencia" />
+                        <p:inputText id="edificioReferencia" value="#{bdvEmpresaController.selected.edificioReferencia}" title="#{bundle.CreateBdvEmpresaTitle_edificioReferencia}" />
+                        <p:outputLabel value="#{bundle.CreateBdvEmpresaLabel_departamentoOficina}" for="departamentoOficina" />
+                        <p:inputText id="departamentoOficina" value="#{bdvEmpresaController.selected.departamentoOficina}" title="#{bundle.CreateBdvEmpresaTitle_departamentoOficina}" />
+                        <p:outputLabel value="#{bundle.CreateBdvEmpresaLabel_pais}" for="pais" />
+                        <p:inputText id="pais" value="#{bdvEmpresaController.selected.pais}" title="#{bundle.CreateBdvEmpresaTitle_pais}" />
+                        <p:outputLabel value="#{bundle.CreateBdvEmpresaLabel_tlfOficina}" for="tlfOficina" />
+                        <p:inputText id="tlfOficina" value="#{bdvEmpresaController.selected.tlfOficina}" title="#{bundle.CreateBdvEmpresaTitle_tlfOficina}" />
+                        <p:outputLabel value="#{bundle.CreateBdvEmpresaLabel_tlfCelular}" for="tlfCelular" />
+                        <p:inputText id="tlfCelular" value="#{bdvEmpresaController.selected.tlfCelular}" title="#{bundle.CreateBdvEmpresaTitle_tlfCelular}" />
+                        <p:outputLabel value="#{bundle.CreateBdvEmpresaLabel_tlfOpcional}" for="tlfOpcional" />
+                        <p:inputText id="tlfOpcional" value="#{bdvEmpresaController.selected.tlfOpcional}" title="#{bundle.CreateBdvEmpresaTitle_tlfOpcional}" />
+                        <p:outputLabel value="#{bundle.CreateBdvEmpresaLabel_otroProducto}" for="otroProducto" />
+                        <p:inputText id="otroProducto" value="#{bdvEmpresaController.selected.otroProducto}" title="#{bundle.CreateBdvEmpresaTitle_otroProducto}" />
+                        <p:outputLabel value="#{bundle.CreateBdvEmpresaLabel_finalizoRegistro}" for="finalizoRegistro" />
+                        <p:selectBooleanCheckbox id="finalizoRegistro" value="#{bdvEmpresaController.selected.finalizoRegistro}" required="true" requiredMessage="#{bundle.EditBdvEmpresaRequiredMessage_finalizoRegistro}"/>
+                        <p:outputLabel value="#{bundle.CreateBdvEmpresaLabel_activadoDesactivadoPor}" for="activadoDesactivadoPor" />
+                        <p:inputText id="activadoDesactivadoPor" value="#{bdvEmpresaController.selected.activadoDesactivadoPor}" title="#{bundle.CreateBdvEmpresaTitle_activadoDesactivadoPor}" />
+                        <p:outputLabel value="#{bundle.CreateBdvEmpresaLabel_fechaRegistro}" for="fechaRegistro" />
+                        <p:calendar id="fechaRegistro" pattern="MM/dd/yyyy HH:mm:ss" value="#{bdvEmpresaController.selected.fechaRegistro}" title="#{bundle.EditBdvEmpresaTitle_fechaRegistro}" required="true" requiredMessage="#{bundle.EditBdvEmpresaRequiredMessage_fechaRegistro}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateBdvEmpresaLabel_fechaActualizado}" for="fechaActualizado" />
+                        <p:calendar id="fechaActualizado" pattern="MM/dd/yyyy HH:mm:ss" value="#{bdvEmpresaController.selected.fechaActualizado}" title="#{bundle.EditBdvEmpresaTitle_fechaActualizado}" required="true" requiredMessage="#{bundle.EditBdvEmpresaRequiredMessage_fechaActualizado}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateBdvEmpresaLabel_fechaActivadoDesactivado}" for="fechaActivadoDesactivado" />
+                        <p:calendar id="fechaActivadoDesactivado" pattern="MM/dd/yyyy HH:mm:ss" value="#{bdvEmpresaController.selected.fechaActivadoDesactivado}" title="#{bundle.EditBdvEmpresaTitle_fechaActivadoDesactivado}" required="true" requiredMessage="#{bundle.EditBdvEmpresaRequiredMessage_fechaActivadoDesactivado}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateBdvEmpresaLabel_idRepresentateLegal1}" for="idRepresentateLegal1" />
+                        <p:selectOneMenu id="idRepresentateLegal1" value="#{bdvEmpresaController.selected.idRepresentateLegal1}" >
+                            <f:selectItems value="#{bdvRepresentateLegalController.itemsAvailableSelectOne}"
+                                           var="idRepresentateLegal1Item"
+                                           itemValue="#{idRepresentateLegal1Item}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateBdvEmpresaLabel_idNacionalidad}" for="idNacionalidad" />
+                        <p:selectOneMenu id="idNacionalidad" value="#{bdvEmpresaController.selected.idNacionalidad}" >
+                            <f:selectItems value="#{bdvNacionalidadController.itemsAvailableSelectOne}"
+                                           var="idNacionalidadItem"
+                                           itemValue="#{idNacionalidadItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateBdvEmpresaLabel_idRepresentateLegal2}" for="idRepresentateLegal2" />
+                        <p:selectOneMenu id="idRepresentateLegal2" value="#{bdvEmpresaController.selected.idRepresentateLegal2}" >
+                            <f:selectItems value="#{bdvRepresentateLegalController.itemsAvailableSelectOne}"
+                                           var="idRepresentateLegal2Item"
+                                           itemValue="#{idRepresentateLegal2Item}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateBdvEmpresaLabel_idRepresentateLegal3}" for="idRepresentateLegal3" />
+                        <p:selectOneMenu id="idRepresentateLegal3" value="#{bdvEmpresaController.selected.idRepresentateLegal3}" >
+                            <f:selectItems value="#{bdvRepresentateLegalController.itemsAvailableSelectOne}"
+                                           var="idRepresentateLegal3Item"
+                                           itemValue="#{idRepresentateLegal3Item}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateBdvEmpresaLabel_idContacto1}" for="idContacto1" />
+                        <p:selectOneMenu id="idContacto1" value="#{bdvEmpresaController.selected.idContacto1}" >
+                            <f:selectItems value="#{bdvContactoController.itemsAvailableSelectOne}"
+                                           var="idContacto1Item"
+                                           itemValue="#{idContacto1Item}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateBdvEmpresaLabel_estado}" for="estado" />
+                        <p:selectOneMenu id="estado" value="#{bdvEmpresaController.selected.estado}" >
+                            <f:selectItems value="#{bdvMcbeUbicGeoController.itemsAvailableSelectOne}"
+                                           var="estadoItem"
+                                           itemValue="#{estadoItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateBdvEmpresaLabel_idBancoCuenta1}" for="idBancoCuenta1" />
+                        <p:selectOneMenu id="idBancoCuenta1" value="#{bdvEmpresaController.selected.idBancoCuenta1}" >
+                            <f:selectItems value="#{bdvBancoCuentaController.itemsAvailableSelectOne}"
+                                           var="idBancoCuenta1Item"
+                                           itemValue="#{idBancoCuenta1Item}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateBdvEmpresaLabel_idBancoCuenta2}" for="idBancoCuenta2" />
+                        <p:selectOneMenu id="idBancoCuenta2" value="#{bdvEmpresaController.selected.idBancoCuenta2}" >
+                            <f:selectItems value="#{bdvBancoCuentaController.itemsAvailableSelectOne}"
+                                           var="idBancoCuenta2Item"
+                                           itemValue="#{idBancoCuenta2Item}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateBdvEmpresaLabel_idBancoCuenta3}" for="idBancoCuenta3" />
+                        <p:selectOneMenu id="idBancoCuenta3" value="#{bdvEmpresaController.selected.idBancoCuenta3}" >
+                            <f:selectItems value="#{bdvBancoCuentaController.itemsAvailableSelectOne}"
+                                           var="idBancoCuenta3Item"
+                                           itemValue="#{idBancoCuenta3Item}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateBdvEmpresaLabel_idBancoCuentaVnz1}" for="idBancoCuentaVnz1" />
+                        <p:selectOneMenu id="idBancoCuentaVnz1" value="#{bdvEmpresaController.selected.idBancoCuentaVnz1}" >
+                            <f:selectItems value="#{bdvBancoCuentaVnzController.itemsAvailableSelectOne}"
+                                           var="idBancoCuentaVnz1Item"
+                                           itemValue="#{idBancoCuentaVnz1Item}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateBdvEmpresaLabel_idBancoCuentaVnz2}" for="idBancoCuentaVnz2" />
+                        <p:selectOneMenu id="idBancoCuentaVnz2" value="#{bdvEmpresaController.selected.idBancoCuentaVnz2}" >
+                            <f:selectItems value="#{bdvBancoCuentaVnzController.itemsAvailableSelectOne}"
+                                           var="idBancoCuentaVnz2Item"
+                                           itemValue="#{idBancoCuentaVnz2Item}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateBdvEmpresaLabel_idSector}" for="idSector" />
+                        <p:selectOneMenu id="idSector" value="#{bdvEmpresaController.selected.idSector}" >
+                            <f:selectItems value="#{bdvSectorGremioController.itemsAvailableSelectOne}"
+                                           var="idSectorItem"
+                                           itemValue="#{idSectorItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateBdvEmpresaLabel_idRecaudos}" for="idRecaudos" />
+                        <p:selectOneMenu id="idRecaudos" value="#{bdvEmpresaController.selected.idRecaudos}" >
+                            <f:selectItems value="#{bdvRecaudosController.itemsAvailableSelectOne}"
+                                           var="idRecaudosItem"
+                                           itemValue="#{idRecaudosItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateBdvEmpresaLabel_idNaturalezaCliente}" for="idNaturalezaCliente" />
+                        <p:selectOneMenu id="idNaturalezaCliente" value="#{bdvEmpresaController.selected.idNaturalezaCliente}" >
+                            <f:selectItems value="#{bdvNaturalezaClienteController.itemsAvailableSelectOne}"
+                                           var="idNaturalezaClienteItem"
+                                           itemValue="#{idNaturalezaClienteItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateBdvEmpresaLabel_idContacto3}" for="idContacto3" />
+                        <p:selectOneMenu id="idContacto3" value="#{bdvEmpresaController.selected.idContacto3}" >
+                            <f:selectItems value="#{bdvContactoController.itemsAvailableSelectOne}"
+                                           var="idContacto3Item"
+                                           itemValue="#{idContacto3Item}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateBdvEmpresaLabel_parroquia}" for="parroquia" />
+                        <p:selectOneMenu id="parroquia" value="#{bdvEmpresaController.selected.parroquia}" >
+                            <f:selectItems value="#{bdvMcbeUbicGeoController.itemsAvailableSelectOne}"
+                                           var="parroquiaItem"
+                                           itemValue="#{parroquiaItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateBdvEmpresaLabel_idContacto2}" for="idContacto2" />
+                        <p:selectOneMenu id="idContacto2" value="#{bdvEmpresaController.selected.idContacto2}" >
+                            <f:selectItems value="#{bdvContactoController.itemsAvailableSelectOne}"
+                                           var="idContacto2Item"
+                                           itemValue="#{idContacto2Item}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateBdvEmpresaLabel_municipio}" for="municipio" />
+                        <p:selectOneMenu id="municipio" value="#{bdvEmpresaController.selected.municipio}" >
+                            <f:selectItems value="#{bdvMcbeUbicGeoController.itemsAvailableSelectOne}"
+                                           var="municipioItem"
+                                           itemValue="#{municipioItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{bdvEmpresaController.create}" value="#{bundle.Save}" update="display,:BdvEmpresaListForm:datalist,:growl" oncomplete="handleSubmit(args,'BdvEmpresaCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="BdvEmpresaCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

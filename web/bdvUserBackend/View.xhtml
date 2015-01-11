@@ -19,7 +19,11 @@
                         <h:outputText value="#{bundle.ViewBdvUserBackendLabel_password}"/>
                         <h:outputText value="#{bdvUserBackendController.selected.password}" title="#{bundle.ViewBdvUserBackendTitle_password}"/>
                         <h:outputText value="#{bundle.ViewBdvUserBackendLabel_status}"/>
-                        <h:outputText value="#{bdvUserBackendController.selected.status}" title="#{bundle.ViewBdvUserBackendTitle_status}"/>
+                        <p:selectBooleanCheckbox value="#{bdvUserBackendController.selected.status}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewBdvUserBackendLabel_contrasenia}"/>
+                        <h:outputText value="#{bdvUserBackendController.selected.contrasenia}" title="#{bundle.ViewBdvUserBackendTitle_contrasenia}"/>
+                        <h:outputText value="#{bundle.ViewBdvUserBackendLabel_activo}"/>
+                        <p:selectBooleanCheckbox value="#{bdvUserBackendController.selected.activo}" disabled="true"/>
                     </p:panelGrid>
                     <p:commandButton value="#{bundle.Close}" onclick="BdvUserBackendViewDialog.hide()"/>
                 </h:panelGroup>

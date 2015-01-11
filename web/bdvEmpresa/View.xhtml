@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="BdvEmpresaViewDlg" widgetVar="BdvEmpresaViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewBdvEmpresaTitle}">
+            <h:form id="BdvEmpresaViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{bdvEmpresaController.selected != null}">
+                        <h:outputText value="#{bundle.ViewBdvEmpresaLabel_idEmpresa}"/>
+                        <h:outputText value="#{bdvEmpresaController.selected.idEmpresa}" title="#{bundle.ViewBdvEmpresaTitle_idEmpresa}"/>
+                        <h:outputText value="#{bundle.ViewBdvEmpresaLabel_tipoPersona}"/>
+                        <h:outputText value="#{bdvEmpresaController.selected.tipoPersona}" title="#{bundle.ViewBdvEmpresaTitle_tipoPersona}"/>
+                        <h:outputText value="#{bundle.ViewBdvEmpresaLabel_origen}"/>
+                        <h:outputText value="#{bdvEmpresaController.selected.origen}" title="#{bundle.ViewBdvEmpresaTitle_origen}"/>
+                        <h:outputText value="#{bundle.ViewBdvEmpresaLabel_ente}"/>
+                        <h:outputText value="#{bdvEmpresaController.selected.ente}" title="#{bundle.ViewBdvEmpresaTitle_ente}"/>
+                        <h:outputText value="#{bundle.ViewBdvEmpresaLabel_tipoRif}"/>
+                        <h:outputText value="#{bdvEmpresaController.selected.tipoRif}" title="#{bundle.ViewBdvEmpresaTitle_tipoRif}"/>
+                        <h:outputText value="#{bundle.ViewBdvEmpresaLabel_rif}"/>
+                        <h:outputText value="#{bdvEmpresaController.selected.rif}" title="#{bundle.ViewBdvEmpresaTitle_rif}"/>
+                        <h:outputText value="#{bundle.ViewBdvEmpresaLabel_razonSocial}"/>
+                        <h:outputText value="#{bdvEmpresaController.selected.razonSocial}" title="#{bundle.ViewBdvEmpresaTitle_razonSocial}"/>
+                        <h:outputText value="#{bundle.ViewBdvEmpresaLabel_nombreComercial}"/>
+                        <h:outputText value="#{bdvEmpresaController.selected.nombreComercial}" title="#{bundle.ViewBdvEmpresaTitle_nombreComercial}"/>
+                        <h:outputText value="#{bundle.ViewBdvEmpresaLabel_paginaWeb}"/>
+                        <h:outputText value="#{bdvEmpresaController.selected.paginaWeb}" title="#{bundle.ViewBdvEmpresaTitle_paginaWeb}"/>
+                        <h:outputText value="#{bundle.ViewBdvEmpresaLabel_anioInicioActividades}"/>
+                        <h:outputText value="#{bdvEmpresaController.selected.anioInicioActividades}" title="#{bundle.ViewBdvEmpresaTitle_anioInicioActividades}"/>
+                        <h:outputText value="#{bundle.ViewBdvEmpresaLabel_domicilioTributario}"/>
+                        <h:outputText value="#{bdvEmpresaController.selected.domicilioTributario}" title="#{bundle.ViewBdvEmpresaTitle_domicilioTributario}"/>
+                        <h:outputText value="#{bundle.ViewBdvEmpresaLabel_interseccionReferencia}"/>
+                        <h:outputText value="#{bdvEmpresaController.selected.interseccionReferencia}" title="#{bundle.ViewBdvEmpresaTitle_interseccionReferencia}"/>
+                        <h:outputText value="#{bundle.ViewBdvEmpresaLabel_numero}"/>
+                        <h:outputText value="#{bdvEmpresaController.selected.numero}" title="#{bundle.ViewBdvEmpresaTitle_numero}"/>
+                        <h:outputText value="#{bundle.ViewBdvEmpresaLabel_edificioReferencia}"/>
+                        <h:outputText value="#{bdvEmpresaController.selected.edificioReferencia}" title="#{bundle.ViewBdvEmpresaTitle_edificioReferencia}"/>
+                        <h:outputText value="#{bundle.ViewBdvEmpresaLabel_departamentoOficina}"/>
+                        <h:outputText value="#{bdvEmpresaController.selected.departamentoOficina}" title="#{bundle.ViewBdvEmpresaTitle_departamentoOficina}"/>
+                        <h:outputText value="#{bundle.ViewBdvEmpresaLabel_pais}"/>
+                        <h:outputText value="#{bdvEmpresaController.selected.pais}" title="#{bundle.ViewBdvEmpresaTitle_pais}"/>
+                        <h:outputText value="#{bundle.ViewBdvEmpresaLabel_tlfOficina}"/>
+                        <h:outputText value="#{bdvEmpresaController.selected.tlfOficina}" title="#{bundle.ViewBdvEmpresaTitle_tlfOficina}"/>
+                        <h:outputText value="#{bundle.ViewBdvEmpresaLabel_tlfCelular}"/>
+                        <h:outputText value="#{bdvEmpresaController.selected.tlfCelular}" title="#{bundle.ViewBdvEmpresaTitle_tlfCelular}"/>
+                        <h:outputText value="#{bundle.ViewBdvEmpresaLabel_tlfOpcional}"/>
+                        <h:outputText value="#{bdvEmpresaController.selected.tlfOpcional}" title="#{bundle.ViewBdvEmpresaTitle_tlfOpcional}"/>
+                        <h:outputText value="#{bundle.ViewBdvEmpresaLabel_otroProducto}"/>
+                        <h:outputText value="#{bdvEmpresaController.selected.otroProducto}" title="#{bundle.ViewBdvEmpresaTitle_otroProducto}"/>
+                        <h:outputText value="#{bundle.ViewBdvEmpresaLabel_finalizoRegistro}"/>
+                        <p:selectBooleanCheckbox value="#{bdvEmpresaController.selected.finalizoRegistro}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewBdvEmpresaLabel_activadoDesactivadoPor}"/>
+                        <h:outputText value="#{bdvEmpresaController.selected.activadoDesactivadoPor}" title="#{bundle.ViewBdvEmpresaTitle_activadoDesactivadoPor}"/>
+                        <h:outputText value="#{bundle.ViewBdvEmpresaLabel_fechaRegistro}"/>
+                        <h:outputText value="#{bdvEmpresaController.selected.fechaRegistro}" title="#{bundle.ViewBdvEmpresaTitle_fechaRegistro}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewBdvEmpresaLabel_fechaActualizado}"/>
+                        <h:outputText value="#{bdvEmpresaController.selected.fechaActualizado}" title="#{bundle.ViewBdvEmpresaTitle_fechaActualizado}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewBdvEmpresaLabel_fechaActivadoDesactivado}"/>
+                        <h:outputText value="#{bdvEmpresaController.selected.fechaActivadoDesactivado}" title="#{bundle.ViewBdvEmpresaTitle_fechaActivadoDesactivado}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewBdvEmpresaLabel_idRepresentateLegal1}"/>
+                        <h:outputText value="#{bdvEmpresaController.selected.idRepresentateLegal1}" title="#{bundle.ViewBdvEmpresaTitle_idRepresentateLegal1}"/>
+                        <h:outputText value="#{bundle.ViewBdvEmpresaLabel_idNacionalidad}"/>
+                        <h:outputText value="#{bdvEmpresaController.selected.idNacionalidad}" title="#{bundle.ViewBdvEmpresaTitle_idNacionalidad}"/>
+                        <h:outputText value="#{bundle.ViewBdvEmpresaLabel_idRepresentateLegal2}"/>
+                        <h:outputText value="#{bdvEmpresaController.selected.idRepresentateLegal2}" title="#{bundle.ViewBdvEmpresaTitle_idRepresentateLegal2}"/>
+                        <h:outputText value="#{bundle.ViewBdvEmpresaLabel_idRepresentateLegal3}"/>
+                        <h:outputText value="#{bdvEmpresaController.selected.idRepresentateLegal3}" title="#{bundle.ViewBdvEmpresaTitle_idRepresentateLegal3}"/>
+                        <h:outputText value="#{bundle.ViewBdvEmpresaLabel_idContacto1}"/>
+                        <h:outputText value="#{bdvEmpresaController.selected.idContacto1}" title="#{bundle.ViewBdvEmpresaTitle_idContacto1}"/>
+                        <h:outputText value="#{bundle.ViewBdvEmpresaLabel_estado}"/>
+                        <h:outputText value="#{bdvEmpresaController.selected.estado}" title="#{bundle.ViewBdvEmpresaTitle_estado}"/>
+                        <h:outputText value="#{bundle.ViewBdvEmpresaLabel_idBancoCuenta1}"/>
+                        <h:outputText value="#{bdvEmpresaController.selected.idBancoCuenta1}" title="#{bundle.ViewBdvEmpresaTitle_idBancoCuenta1}"/>
+                        <h:outputText value="#{bundle.ViewBdvEmpresaLabel_idBancoCuenta2}"/>
+                        <h:outputText value="#{bdvEmpresaController.selected.idBancoCuenta2}" title="#{bundle.ViewBdvEmpresaTitle_idBancoCuenta2}"/>
+                        <h:outputText value="#{bundle.ViewBdvEmpresaLabel_idBancoCuenta3}"/>
+                        <h:outputText value="#{bdvEmpresaController.selected.idBancoCuenta3}" title="#{bundle.ViewBdvEmpresaTitle_idBancoCuenta3}"/>
+                        <h:outputText value="#{bundle.ViewBdvEmpresaLabel_idBancoCuentaVnz1}"/>
+                        <h:outputText value="#{bdvEmpresaController.selected.idBancoCuentaVnz1}" title="#{bundle.ViewBdvEmpresaTitle_idBancoCuentaVnz1}"/>
+                        <h:outputText value="#{bundle.ViewBdvEmpresaLabel_idBancoCuentaVnz2}"/>
+                        <h:outputText value="#{bdvEmpresaController.selected.idBancoCuentaVnz2}" title="#{bundle.ViewBdvEmpresaTitle_idBancoCuentaVnz2}"/>
+                        <h:outputText value="#{bundle.ViewBdvEmpresaLabel_idSector}"/>
+                        <h:outputText value="#{bdvEmpresaController.selected.idSector}" title="#{bundle.ViewBdvEmpresaTitle_idSector}"/>
+                        <h:outputText value="#{bundle.ViewBdvEmpresaLabel_idRecaudos}"/>
+                        <h:outputText value="#{bdvEmpresaController.selected.idRecaudos}" title="#{bundle.ViewBdvEmpresaTitle_idRecaudos}"/>
+                        <h:outputText value="#{bundle.ViewBdvEmpresaLabel_idNaturalezaCliente}"/>
+                        <h:outputText value="#{bdvEmpresaController.selected.idNaturalezaCliente}" title="#{bundle.ViewBdvEmpresaTitle_idNaturalezaCliente}"/>
+                        <h:outputText value="#{bundle.ViewBdvEmpresaLabel_idContacto3}"/>
+                        <h:outputText value="#{bdvEmpresaController.selected.idContacto3}" title="#{bundle.ViewBdvEmpresaTitle_idContacto3}"/>
+                        <h:outputText value="#{bundle.ViewBdvEmpresaLabel_parroquia}"/>
+                        <h:outputText value="#{bdvEmpresaController.selected.parroquia}" title="#{bundle.ViewBdvEmpresaTitle_parroquia}"/>
+                        <h:outputText value="#{bundle.ViewBdvEmpresaLabel_idContacto2}"/>
+                        <h:outputText value="#{bdvEmpresaController.selected.idContacto2}" title="#{bundle.ViewBdvEmpresaTitle_idContacto2}"/>
+                        <h:outputText value="#{bundle.ViewBdvEmpresaLabel_municipio}"/>
+                        <h:outputText value="#{bdvEmpresaController.selected.municipio}" title="#{bundle.ViewBdvEmpresaTitle_municipio}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="BdvEmpresaViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="BdvBancoCuentaCreateDlg" widgetVar="BdvBancoCuentaCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateBdvBancoCuentaTitle}">
+            <h:form id="BdvBancoCuentaCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{bdvBancoCuentaController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateBdvBancoCuentaLabel_idBancoCuenta}" for="idBancoCuenta" />
+                        <p:inputText id="idBancoCuenta" value="#{bdvBancoCuentaController.selected.idBancoCuenta}" title="#{bundle.CreateBdvBancoCuentaTitle_idBancoCuenta}" required="true" requiredMessage="#{bundle.CreateBdvBancoCuentaRequiredMessage_idBancoCuenta}"/>
+                        <p:outputLabel value="#{bundle.CreateBdvBancoCuentaLabel_codigoCuenta}" for="codigoCuenta" />
+                        <p:inputText id="codigoCuenta" value="#{bdvBancoCuentaController.selected.codigoCuenta}" title="#{bundle.CreateBdvBancoCuentaTitle_codigoCuenta}" />
+                        <p:outputLabel value="#{bundle.CreateBdvBancoCuentaLabel_telefono}" for="telefono" />
+                        <p:inputText id="telefono" value="#{bdvBancoCuentaController.selected.telefono}" title="#{bundle.CreateBdvBancoCuentaTitle_telefono}" />
+                        <p:outputLabel value="#{bundle.CreateBdvBancoCuentaLabel_idBanco}" for="idBanco" />
+                        <p:selectOneMenu id="idBanco" value="#{bdvBancoCuentaController.selected.idBanco}" required="true" requiredMessage="#{bundle.EditBdvBancoCuentaRequiredMessage_idBanco}">
+                            <f:selectItems value="#{bdvBancosNacController.itemsAvailableSelectOne}"
+                                           var="idBancoItem"
+                                           itemValue="#{idBancoItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateBdvBancoCuentaLabel_idTipoCuenta}" for="idTipoCuenta" />
+                        <p:selectOneMenu id="idTipoCuenta" value="#{bdvBancoCuentaController.selected.idTipoCuenta}" required="true" requiredMessage="#{bundle.EditBdvBancoCuentaRequiredMessage_idTipoCuenta}">
+                            <f:selectItems value="#{bdvTipoCuentaController.itemsAvailableSelectOne}"
+                                           var="idTipoCuentaItem"
+                                           itemValue="#{idTipoCuentaItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{bdvBancoCuentaController.create}" value="#{bundle.Save}" update="display,:BdvBancoCuentaListForm:datalist,:growl" oncomplete="handleSubmit(args,'BdvBancoCuentaCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="BdvBancoCuentaCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

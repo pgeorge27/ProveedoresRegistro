@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="BdvContactoEditDlg" widgetVar="BdvContactoEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditBdvContactoTitle}">
+            <h:form id="BdvContactoEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{bdvContactoController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditBdvContactoLabel_idContacto}" for="idContacto" />
+                        <p:inputText id="idContacto" value="#{bdvContactoController.selected.idContacto}" title="#{bundle.EditBdvContactoTitle_idContacto}" required="true" requiredMessage="#{bundle.EditBdvContactoRequiredMessage_idContacto}"/>
+                        <p:outputLabel value="#{bundle.EditBdvContactoLabel_primerApellido}" for="primerApellido" />
+                        <p:inputText id="primerApellido" value="#{bdvContactoController.selected.primerApellido}" title="#{bundle.EditBdvContactoTitle_primerApellido}" />
+                        <p:outputLabel value="#{bundle.EditBdvContactoLabel_segundoApellido}" for="segundoApellido" />
+                        <p:inputText id="segundoApellido" value="#{bdvContactoController.selected.segundoApellido}" title="#{bundle.EditBdvContactoTitle_segundoApellido}" />
+                        <p:outputLabel value="#{bundle.EditBdvContactoLabel_primerNombre}" for="primerNombre" />
+                        <p:inputText id="primerNombre" value="#{bdvContactoController.selected.primerNombre}" title="#{bundle.EditBdvContactoTitle_primerNombre}" />
+                        <p:outputLabel value="#{bundle.EditBdvContactoLabel_segundoNombre}" for="segundoNombre" />
+                        <p:inputText id="segundoNombre" value="#{bdvContactoController.selected.segundoNombre}" title="#{bundle.EditBdvContactoTitle_segundoNombre}" />
+                        <p:outputLabel value="#{bundle.EditBdvContactoLabel_sexo}" for="sexo" />
+                        <p:inputText id="sexo" value="#{bdvContactoController.selected.sexo}" title="#{bundle.EditBdvContactoTitle_sexo}" />
+                        <p:outputLabel value="#{bundle.EditBdvContactoLabel_documentoIdentidad}" for="documentoIdentidad" />
+                        <p:inputText id="documentoIdentidad" value="#{bdvContactoController.selected.documentoIdentidad}" title="#{bundle.EditBdvContactoTitle_documentoIdentidad}" />
+                        <p:outputLabel value="#{bundle.EditBdvContactoLabel_numeroIdentidad}" for="numeroIdentidad" />
+                        <p:inputText id="numeroIdentidad" value="#{bdvContactoController.selected.numeroIdentidad}" title="#{bundle.EditBdvContactoTitle_numeroIdentidad}" />
+                        <p:outputLabel value="#{bundle.EditBdvContactoLabel_cargo}" for="cargo" />
+                        <p:inputText id="cargo" value="#{bdvContactoController.selected.cargo}" title="#{bundle.EditBdvContactoTitle_cargo}" />
+                        <p:outputLabel value="#{bundle.EditBdvContactoLabel_areaOcupacional}" for="areaOcupacional" />
+                        <p:inputText id="areaOcupacional" value="#{bdvContactoController.selected.areaOcupacional}" title="#{bundle.EditBdvContactoTitle_areaOcupacional}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{bdvContactoController.update}" value="#{bundle.Save}" update="display,:BdvContactoListForm:datalist,:growl" oncomplete="handleSubmit(args, 'BdvContactoEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="BdvContactoEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

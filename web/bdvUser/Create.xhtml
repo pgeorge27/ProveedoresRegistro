@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="BdvUserCreateDlg" widgetVar="BdvUserCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateBdvUserTitle}">
+            <h:form id="BdvUserCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{bdvUserController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateBdvUserLabel_idUser}" for="idUser" />
+                        <p:inputText id="idUser" value="#{bdvUserController.selected.idUser}" title="#{bundle.CreateBdvUserTitle_idUser}" required="true" requiredMessage="#{bundle.CreateBdvUserRequiredMessage_idUser}"/>
+                        <p:outputLabel value="#{bundle.CreateBdvUserLabel_email}" for="email" />
+                        <p:inputText id="email" value="#{bdvUserController.selected.email}" title="#{bundle.CreateBdvUserTitle_email}" required="true" requiredMessage="#{bundle.CreateBdvUserRequiredMessage_email}"/>
+                        <p:outputLabel value="#{bundle.CreateBdvUserLabel_contrasenia}" for="contrasenia" />
+                        <p:inputText id="contrasenia" value="#{bdvUserController.selected.contrasenia}" title="#{bundle.CreateBdvUserTitle_contrasenia}" required="true" requiredMessage="#{bundle.CreateBdvUserRequiredMessage_contrasenia}"/>
+                        <p:outputLabel value="#{bundle.CreateBdvUserLabel_activo}" for="activo" />
+                        <p:selectBooleanCheckbox id="activo" value="#{bdvUserController.selected.activo}" required="true" requiredMessage="#{bundle.EditBdvUserRequiredMessage_activo}"/>
+                        <p:outputLabel value="#{bundle.CreateBdvUserLabel_idEmpresa}" for="idEmpresa" />
+                        <p:selectOneMenu id="idEmpresa" value="#{bdvUserController.selected.idEmpresa}" >
+                            <f:selectItems value="#{bdvEmpresaController.itemsAvailableSelectOne}"
+                                           var="idEmpresaItem"
+                                           itemValue="#{idEmpresaItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{bdvUserController.create}" value="#{bundle.Save}" update="display,:BdvUserListForm:datalist,:growl" oncomplete="handleSubmit(args,'BdvUserCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="BdvUserCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

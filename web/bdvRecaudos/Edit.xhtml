@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="BdvRecaudosEditDlg" widgetVar="BdvRecaudosEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditBdvRecaudosTitle}">
+            <h:form id="BdvRecaudosEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{bdvRecaudosController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditBdvRecaudosLabel_idRecaudos}" for="idRecaudos" />
+                        <p:inputText id="idRecaudos" value="#{bdvRecaudosController.selected.idRecaudos}" title="#{bundle.EditBdvRecaudosTitle_idRecaudos}" required="true" requiredMessage="#{bundle.EditBdvRecaudosRequiredMessage_idRecaudos}"/>
+                        <p:outputLabel value="#{bundle.EditBdvRecaudosLabel_certificadoSnc}" for="certificadoSnc" />
+                        <p:inputText id="certificadoSnc" value="#{bdvRecaudosController.selected.certificadoSnc}" title="#{bundle.EditBdvRecaudosTitle_certificadoSnc}" />
+                        <p:outputLabel value="#{bundle.EditBdvRecaudosLabel_planillaRnc}" for="planillaRnc" />
+                        <p:inputText id="planillaRnc" value="#{bdvRecaudosController.selected.planillaRnc}" title="#{bundle.EditBdvRecaudosTitle_planillaRnc}" />
+                        <p:outputLabel value="#{bundle.EditBdvRecaudosLabel_comunicacionRepresentante}" for="comunicacionRepresentante" />
+                        <p:inputText id="comunicacionRepresentante" value="#{bdvRecaudosController.selected.comunicacionRepresentante}" title="#{bundle.EditBdvRecaudosTitle_comunicacionRepresentante}" />
+                        <p:outputLabel value="#{bundle.EditBdvRecaudosLabel_solvenciaSso}" for="solvenciaSso" />
+                        <p:inputText id="solvenciaSso" value="#{bdvRecaudosController.selected.solvenciaSso}" title="#{bundle.EditBdvRecaudosTitle_solvenciaSso}" />
+                        <p:outputLabel value="#{bundle.EditBdvRecaudosLabel_solvenciaLaboral}" for="solvenciaLaboral" />
+                        <p:inputText id="solvenciaLaboral" value="#{bdvRecaudosController.selected.solvenciaLaboral}" title="#{bundle.EditBdvRecaudosTitle_solvenciaLaboral}" />
+                        <p:outputLabel value="#{bundle.EditBdvRecaudosLabel_solvenciaInce}" for="solvenciaInce" />
+                        <p:inputText id="solvenciaInce" value="#{bdvRecaudosController.selected.solvenciaInce}" title="#{bundle.EditBdvRecaudosTitle_solvenciaInce}" />
+                        <p:outputLabel value="#{bundle.EditBdvRecaudosLabel_organigrama}" for="organigrama" />
+                        <p:inputText id="organigrama" value="#{bdvRecaudosController.selected.organigrama}" title="#{bundle.EditBdvRecaudosTitle_organigrama}" />
+                        <p:outputLabel value="#{bundle.EditBdvRecaudosLabel_listaProductos}" for="listaProductos" />
+                        <p:inputText id="listaProductos" value="#{bdvRecaudosController.selected.listaProductos}" title="#{bundle.EditBdvRecaudosTitle_listaProductos}" />
+                        <p:outputLabel value="#{bundle.EditBdvRecaudosLabel_referenciaBancaria}" for="referenciaBancaria" />
+                        <p:inputText id="referenciaBancaria" value="#{bdvRecaudosController.selected.referenciaBancaria}" title="#{bundle.EditBdvRecaudosTitle_referenciaBancaria}" />
+                        <p:outputLabel value="#{bundle.EditBdvRecaudosLabel_referenciaComercial}" for="referenciaComercial" />
+                        <p:inputText id="referenciaComercial" value="#{bdvRecaudosController.selected.referenciaComercial}" title="#{bundle.EditBdvRecaudosTitle_referenciaComercial}" />
+                        <p:outputLabel value="#{bundle.EditBdvRecaudosLabel_dateRegister}" for="dateRegister" />
+                        <p:calendar id="dateRegister" pattern="MM/dd/yyyy HH:mm:ss" value="#{bdvRecaudosController.selected.dateRegister}" title="#{bundle.EditBdvRecaudosTitle_dateRegister}" required="true" requiredMessage="#{bundle.EditBdvRecaudosRequiredMessage_dateRegister}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditBdvRecaudosLabel_dateUpdate}" for="dateUpdate" />
+                        <p:calendar id="dateUpdate" pattern="MM/dd/yyyy HH:mm:ss" value="#{bdvRecaudosController.selected.dateUpdate}" title="#{bundle.EditBdvRecaudosTitle_dateUpdate}" required="true" requiredMessage="#{bundle.EditBdvRecaudosRequiredMessage_dateUpdate}" showOn="button"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{bdvRecaudosController.update}" value="#{bundle.Save}" update="display,:BdvRecaudosListForm:datalist,:growl" oncomplete="handleSubmit(args, 'BdvRecaudosEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="BdvRecaudosEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

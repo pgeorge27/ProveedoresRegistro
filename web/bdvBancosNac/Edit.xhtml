@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="BdvBancosNacEditDlg" widgetVar="BdvBancosNacEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditBdvBancosNacTitle}">
+            <h:form id="BdvBancosNacEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{bdvBancosNacController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditBdvBancosNacLabel_bancoId}" for="bancoId" />
+                        <p:inputText id="bancoId" value="#{bdvBancosNacController.selected.bancoId}" title="#{bundle.EditBdvBancosNacTitle_bancoId}" required="true" requiredMessage="#{bundle.EditBdvBancosNacRequiredMessage_bancoId}"/>
+                        <p:outputLabel value="#{bundle.EditBdvBancosNacLabel_bancoDescripcion}" for="bancoDescripcion" />
+                        <p:inputText id="bancoDescripcion" value="#{bdvBancosNacController.selected.bancoDescripcion}" title="#{bundle.EditBdvBancosNacTitle_bancoDescripcion}" required="true" requiredMessage="#{bundle.EditBdvBancosNacRequiredMessage_bancoDescripcion}"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{bdvBancosNacController.update}" value="#{bundle.Save}" update="display,:BdvBancosNacListForm:datalist,:growl" oncomplete="handleSubmit(args, 'BdvBancosNacEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="BdvBancosNacEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

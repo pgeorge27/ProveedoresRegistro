@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="BdvBancoCuentaViewDlg" widgetVar="BdvBancoCuentaViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewBdvBancoCuentaTitle}">
+            <h:form id="BdvBancoCuentaViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{bdvBancoCuentaController.selected != null}">
+                        <h:outputText value="#{bundle.ViewBdvBancoCuentaLabel_idBancoCuenta}"/>
+                        <h:outputText value="#{bdvBancoCuentaController.selected.idBancoCuenta}" title="#{bundle.ViewBdvBancoCuentaTitle_idBancoCuenta}"/>
+                        <h:outputText value="#{bundle.ViewBdvBancoCuentaLabel_codigoCuenta}"/>
+                        <h:outputText value="#{bdvBancoCuentaController.selected.codigoCuenta}" title="#{bundle.ViewBdvBancoCuentaTitle_codigoCuenta}"/>
+                        <h:outputText value="#{bundle.ViewBdvBancoCuentaLabel_telefono}"/>
+                        <h:outputText value="#{bdvBancoCuentaController.selected.telefono}" title="#{bundle.ViewBdvBancoCuentaTitle_telefono}"/>
+                        <h:outputText value="#{bundle.ViewBdvBancoCuentaLabel_idBanco}"/>
+                        <h:outputText value="#{bdvBancoCuentaController.selected.idBanco}" title="#{bundle.ViewBdvBancoCuentaTitle_idBanco}"/>
+                        <h:outputText value="#{bundle.ViewBdvBancoCuentaLabel_idTipoCuenta}"/>
+                        <h:outputText value="#{bdvBancoCuentaController.selected.idTipoCuenta}" title="#{bundle.ViewBdvBancoCuentaTitle_idTipoCuenta}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="BdvBancoCuentaViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

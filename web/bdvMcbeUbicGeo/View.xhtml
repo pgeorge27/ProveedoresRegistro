@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="BdvMcbeUbicGeoViewDlg" widgetVar="BdvMcbeUbicGeoViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewBdvMcbeUbicGeoTitle}">
+            <h:form id="BdvMcbeUbicGeoViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{bdvMcbeUbicGeoController.selected != null}">
+                        <h:outputText value="#{bundle.ViewBdvMcbeUbicGeoLabel_idUbicGeo}"/>
+                        <h:outputText value="#{bdvMcbeUbicGeoController.selected.idUbicGeo}" title="#{bundle.ViewBdvMcbeUbicGeoTitle_idUbicGeo}"/>
+                        <h:outputText value="#{bundle.ViewBdvMcbeUbicGeoLabel_descripcion}"/>
+                        <h:outputText value="#{bdvMcbeUbicGeoController.selected.descripcion}" title="#{bundle.ViewBdvMcbeUbicGeoTitle_descripcion}"/>
+                        <h:outputText value="#{bundle.ViewBdvMcbeUbicGeoLabel_nivel}"/>
+                        <h:outputText value="#{bdvMcbeUbicGeoController.selected.nivel}" title="#{bundle.ViewBdvMcbeUbicGeoTitle_nivel}"/>
+                        <h:outputText value="#{bundle.ViewBdvMcbeUbicGeoLabel_idPadre}"/>
+                        <h:outputText value="#{bdvMcbeUbicGeoController.selected.idPadre}" title="#{bundle.ViewBdvMcbeUbicGeoTitle_idPadre}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="BdvMcbeUbicGeoViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

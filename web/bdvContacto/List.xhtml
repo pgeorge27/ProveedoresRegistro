@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+
+
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListBdvContactoTitle}"></h:outputText>
+        </ui:define>
+
+        <ui:define name="body">
+            <h:form id="BdvContactoListForm">
+                <p:panel header="#{bundle.ListBdvContactoTitle}">
+                    <p:dataTable id="datalist" value="#{bdvContactoController.items}" var="item"
+                                 selectionMode="single" selection="#{bdvContactoController.selected}"
+                                 paginator="true"
+                                 rowKey="#{item.idContacto}"
+                                 rows="10"
+                                 rowsPerPageTemplate="10,20,30,40,50"
+                                 >
+
+                        <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
+                        <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListBdvContactoTitle_idContacto}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idContacto}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListBdvContactoTitle_primerApellido}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.primerApellido}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListBdvContactoTitle_segundoApellido}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.segundoApellido}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListBdvContactoTitle_primerNombre}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.primerNombre}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListBdvContactoTitle_segundoNombre}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.segundoNombre}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListBdvContactoTitle_sexo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.sexo}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListBdvContactoTitle_documentoIdentidad}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.documentoIdentidad}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListBdvContactoTitle_numeroIdentidad}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.numeroIdentidad}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListBdvContactoTitle_cargo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.cargo}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListBdvContactoTitle_areaOcupacional}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.areaOcupacional}"/>
+                        </p:column>
+                        <f:facet name="footer">
+                            <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{bdvContactoController.prepareCreate}" update=":BdvContactoCreateForm" oncomplete="PF('BdvContactoCreateDialog').show()"/>
+                            <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":BdvContactoViewForm" oncomplete="PF('BdvContactoViewDialog').show()" disabled="#{empty bdvContactoController.selected}"/>
+                            <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":BdvContactoEditForm" oncomplete="PF('BdvContactoEditDialog').show()" disabled="#{empty bdvContactoController.selected}"/>
+                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{bdvContactoController.destroy}" update=":growl,datalist" disabled="#{empty bdvContactoController.selected}"/>
+                        </f:facet>
+                    </p:dataTable>
+                </p:panel>
+            </h:form>
+
+            <ui:include src="Create.xhtml"/>
+            <ui:include src="Edit.xhtml"/>
+            <ui:include src="View.xhtml"/>
+        </ui:define>
+    </ui:composition>
+
+</html>

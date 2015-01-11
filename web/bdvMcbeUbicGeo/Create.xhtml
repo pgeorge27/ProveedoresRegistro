@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="BdvMcbeUbicGeoCreateDlg" widgetVar="BdvMcbeUbicGeoCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateBdvMcbeUbicGeoTitle}">
+            <h:form id="BdvMcbeUbicGeoCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{bdvMcbeUbicGeoController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateBdvMcbeUbicGeoLabel_idUbicGeo}" for="idUbicGeo" />
+                        <p:inputText id="idUbicGeo" value="#{bdvMcbeUbicGeoController.selected.idUbicGeo}" title="#{bundle.CreateBdvMcbeUbicGeoTitle_idUbicGeo}" required="true" requiredMessage="#{bundle.CreateBdvMcbeUbicGeoRequiredMessage_idUbicGeo}"/>
+                        <p:outputLabel value="#{bundle.CreateBdvMcbeUbicGeoLabel_descripcion}" for="descripcion" />
+                        <p:inputText id="descripcion" value="#{bdvMcbeUbicGeoController.selected.descripcion}" title="#{bundle.CreateBdvMcbeUbicGeoTitle_descripcion}" required="true" requiredMessage="#{bundle.CreateBdvMcbeUbicGeoRequiredMessage_descripcion}"/>
+                        <p:outputLabel value="#{bundle.CreateBdvMcbeUbicGeoLabel_nivel}" for="nivel" />
+                        <p:inputText id="nivel" value="#{bdvMcbeUbicGeoController.selected.nivel}" title="#{bundle.CreateBdvMcbeUbicGeoTitle_nivel}" required="true" requiredMessage="#{bundle.CreateBdvMcbeUbicGeoRequiredMessage_nivel}"/>
+                        <p:outputLabel value="#{bundle.CreateBdvMcbeUbicGeoLabel_idPadre}" for="idPadre" />
+                        <p:inputText id="idPadre" value="#{bdvMcbeUbicGeoController.selected.idPadre}" title="#{bundle.CreateBdvMcbeUbicGeoTitle_idPadre}" required="true" requiredMessage="#{bundle.CreateBdvMcbeUbicGeoRequiredMessage_idPadre}"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{bdvMcbeUbicGeoController.create}" value="#{bundle.Save}" update="display,:BdvMcbeUbicGeoListForm:datalist,:growl" oncomplete="handleSubmit(args,'BdvMcbeUbicGeoCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="BdvMcbeUbicGeoCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>
