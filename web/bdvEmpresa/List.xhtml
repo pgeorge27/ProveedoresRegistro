@@ -185,15 +185,21 @@
                         </p:column>
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListBdvEmpresaTitle_idRepresentateLegal1}"/>
+                                <h:outputText value="#{bundle.ListBdvEmpresaTitle_idBancoCuenta2}"/>
                             </f:facet>
-                            <h:outputText value="#{item.idRepresentateLegal1}"/>
+                            <h:outputText value="#{item.idBancoCuenta2}"/>
                         </p:column>
                         <p:column>
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListBdvEmpresaTitle_idNacionalidad}"/>
                             </f:facet>
                             <h:outputText value="#{item.idNacionalidad}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListBdvEmpresaTitle_idRepresentateLegal1}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idRepresentateLegal1}"/>
                         </p:column>
                         <p:column>
                             <f:facet name="header">
@@ -209,27 +215,9 @@
                         </p:column>
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListBdvEmpresaTitle_idContacto1}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.idContacto1}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListBdvEmpresaTitle_estado}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.estado}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
                                 <h:outputText value="#{bundle.ListBdvEmpresaTitle_idBancoCuenta1}"/>
                             </f:facet>
                             <h:outputText value="#{item.idBancoCuenta1}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListBdvEmpresaTitle_idBancoCuenta2}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.idBancoCuenta2}"/>
                         </p:column>
                         <p:column>
                             <f:facet name="header">
@@ -245,33 +233,21 @@
                         </p:column>
                         <p:column>
                             <f:facet name="header">
+                                <h:outputText value="#{bundle.ListBdvEmpresaTitle_idContacto3}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idContacto3}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
                                 <h:outputText value="#{bundle.ListBdvEmpresaTitle_idBancoCuentaVnz2}"/>
                             </f:facet>
                             <h:outputText value="#{item.idBancoCuentaVnz2}"/>
                         </p:column>
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListBdvEmpresaTitle_idSector}"/>
+                                <h:outputText value="#{bundle.ListBdvEmpresaTitle_idContacto1}"/>
                             </f:facet>
-                            <h:outputText value="#{item.idSector}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListBdvEmpresaTitle_idRecaudos}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.idRecaudos}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListBdvEmpresaTitle_idNaturalezaCliente}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.idNaturalezaCliente}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListBdvEmpresaTitle_idContacto3}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.idContacto3}"/>
+                            <h:outputText value="#{item.idContacto1}"/>
                         </p:column>
                         <p:column>
                             <f:facet name="header">
@@ -287,9 +263,33 @@
                         </p:column>
                         <p:column>
                             <f:facet name="header">
+                                <h:outputText value="#{bundle.ListBdvEmpresaTitle_idSector}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idSector}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
                                 <h:outputText value="#{bundle.ListBdvEmpresaTitle_municipio}"/>
                             </f:facet>
                             <h:outputText value="#{item.municipio}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListBdvEmpresaTitle_idRecaudos}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idRecaudos}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListBdvEmpresaTitle_idNaturalezaCliente}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idNaturalezaCliente}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListBdvEmpresaTitle_estado}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.estado}"/>
                         </p:column>
                         <f:facet name="footer">
                             <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{bdvEmpresaController.prepareCreate}" update=":BdvEmpresaCreateForm" oncomplete="PF('BdvEmpresaCreateDialog').show()"/>

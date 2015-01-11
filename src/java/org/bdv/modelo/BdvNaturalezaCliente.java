@@ -27,45 +27,45 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author georgeperez
  */
 @Entity
-@Table(name = "bdv_nacionalidad")
+@Table(name = "bdv_naturaleza_cliente")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "BdvNacionalidad.findAll", query = "SELECT b FROM BdvNacionalidad b"),
-    @NamedQuery(name = "BdvNacionalidad.findById", query = "SELECT b FROM BdvNacionalidad b WHERE b.id = :id"),
-    @NamedQuery(name = "BdvNacionalidad.findByDescripcion", query = "SELECT b FROM BdvNacionalidad b WHERE b.descripcion = :descripcion")})
-public class BdvNacionalidad implements Serializable {
+    @NamedQuery(name = "BdvNaturalezaCliente.findAll", query = "SELECT b FROM BdvNaturalezaCliente b"),
+    @NamedQuery(name = "BdvNaturalezaCliente.findByIdNaturalezaCliente", query = "SELECT b FROM BdvNaturalezaCliente b WHERE b.idNaturalezaCliente = :idNaturalezaCliente"),
+    @NamedQuery(name = "BdvNaturalezaCliente.findByDescripcion", query = "SELECT b FROM BdvNaturalezaCliente b WHERE b.descripcion = :descripcion")})
+public class BdvNaturalezaCliente implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "id")
-    private Integer id;
+    @Column(name = "id_naturaleza_cliente")
+    private Integer idNaturalezaCliente;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 100)
     @Column(name = "descripcion")
     private String descripcion;
-    @OneToMany(mappedBy = "idNacionalidad")
+    @OneToMany(mappedBy = "idNaturalezaCliente")
     private List<BdvEmpresa> bdvEmpresaList;
 
-    public BdvNacionalidad() {
+    public BdvNaturalezaCliente() {
     }
 
-    public BdvNacionalidad(Integer id) {
-        this.id = id;
+    public BdvNaturalezaCliente(Integer idNaturalezaCliente) {
+        this.idNaturalezaCliente = idNaturalezaCliente;
     }
 
-    public BdvNacionalidad(Integer id, String descripcion) {
-        this.id = id;
+    public BdvNaturalezaCliente(Integer idNaturalezaCliente, String descripcion) {
+        this.idNaturalezaCliente = idNaturalezaCliente;
         this.descripcion = descripcion;
     }
 
-    public Integer getId() {
-        return id;
+    public Integer getIdNaturalezaCliente() {
+        return idNaturalezaCliente;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setIdNaturalezaCliente(Integer idNaturalezaCliente) {
+        this.idNaturalezaCliente = idNaturalezaCliente;
     }
 
     public String getDescripcion() {
@@ -88,18 +88,18 @@ public class BdvNacionalidad implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
+        hash += (idNaturalezaCliente != null ? idNaturalezaCliente.hashCode() : 0);
         return hash;
     }
 
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof BdvNacionalidad)) {
+        if (!(object instanceof BdvNaturalezaCliente)) {
             return false;
         }
-        BdvNacionalidad other = (BdvNacionalidad) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+        BdvNaturalezaCliente other = (BdvNaturalezaCliente) object;
+        if ((this.idNaturalezaCliente == null && other.idNaturalezaCliente != null) || (this.idNaturalezaCliente != null && !this.idNaturalezaCliente.equals(other.idNaturalezaCliente))) {
             return false;
         }
         return true;
@@ -107,7 +107,7 @@ public class BdvNacionalidad implements Serializable {
 
     @Override
     public String toString() {
-        return "org.bdv.modelo.BdvNacionalidad[ id=" + id + " ]";
+        return descripcion;
     }
     
 }

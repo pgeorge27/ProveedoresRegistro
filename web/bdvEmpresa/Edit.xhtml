@@ -62,12 +62,12 @@
                         <p:calendar id="fechaActualizado" pattern="MM/dd/yyyy HH:mm:ss" value="#{bdvEmpresaController.selected.fechaActualizado}" title="#{bundle.EditBdvEmpresaTitle_fechaActualizado}" required="true" requiredMessage="#{bundle.EditBdvEmpresaRequiredMessage_fechaActualizado}" showOn="button"/>
                         <p:outputLabel value="#{bundle.EditBdvEmpresaLabel_fechaActivadoDesactivado}" for="fechaActivadoDesactivado" />
                         <p:calendar id="fechaActivadoDesactivado" pattern="MM/dd/yyyy HH:mm:ss" value="#{bdvEmpresaController.selected.fechaActivadoDesactivado}" title="#{bundle.EditBdvEmpresaTitle_fechaActivadoDesactivado}" required="true" requiredMessage="#{bundle.EditBdvEmpresaRequiredMessage_fechaActivadoDesactivado}" showOn="button"/>
-                        <p:outputLabel value="#{bundle.EditBdvEmpresaLabel_idRepresentateLegal1}" for="idRepresentateLegal1" />
-                        <p:selectOneMenu id="idRepresentateLegal1" value="#{bdvEmpresaController.selected.idRepresentateLegal1}" >
+                        <p:outputLabel value="#{bundle.EditBdvEmpresaLabel_idBancoCuenta2}" for="idBancoCuenta2" />
+                        <p:selectOneMenu id="idBancoCuenta2" value="#{bdvEmpresaController.selected.idBancoCuenta2}" >
                             <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
-                            <f:selectItems value="#{bdvRepresentateLegalController.itemsAvailableSelectOne}"
-                                           var="idRepresentateLegal1Item"
-                                           itemValue="#{idRepresentateLegal1Item}"/>
+                            <f:selectItems value="#{bdvBancoCuentaController.itemsAvailableSelectOne}"
+                                           var="idBancoCuenta2Item"
+                                           itemValue="#{idBancoCuenta2Item}"/>
                         </p:selectOneMenu>
                         <p:outputLabel value="#{bundle.EditBdvEmpresaLabel_idNacionalidad}" for="idNacionalidad" />
                         <p:selectOneMenu id="idNacionalidad" value="#{bdvEmpresaController.selected.idNacionalidad}" >
@@ -75,6 +75,13 @@
                             <f:selectItems value="#{bdvNacionalidadController.itemsAvailableSelectOne}"
                                            var="idNacionalidadItem"
                                            itemValue="#{idNacionalidadItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditBdvEmpresaLabel_idRepresentateLegal1}" for="idRepresentateLegal1" />
+                        <p:selectOneMenu id="idRepresentateLegal1" value="#{bdvEmpresaController.selected.idRepresentateLegal1}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{bdvRepresentateLegalController.itemsAvailableSelectOne}"
+                                           var="idRepresentateLegal1Item"
+                                           itemValue="#{idRepresentateLegal1Item}"/>
                         </p:selectOneMenu>
                         <p:outputLabel value="#{bundle.EditBdvEmpresaLabel_idRepresentateLegal2}" for="idRepresentateLegal2" />
                         <p:selectOneMenu id="idRepresentateLegal2" value="#{bdvEmpresaController.selected.idRepresentateLegal2}" >
@@ -90,33 +97,12 @@
                                            var="idRepresentateLegal3Item"
                                            itemValue="#{idRepresentateLegal3Item}"/>
                         </p:selectOneMenu>
-                        <p:outputLabel value="#{bundle.EditBdvEmpresaLabel_idContacto1}" for="idContacto1" />
-                        <p:selectOneMenu id="idContacto1" value="#{bdvEmpresaController.selected.idContacto1}" >
-                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
-                            <f:selectItems value="#{bdvContactoController.itemsAvailableSelectOne}"
-                                           var="idContacto1Item"
-                                           itemValue="#{idContacto1Item}"/>
-                        </p:selectOneMenu>
-                        <p:outputLabel value="#{bundle.EditBdvEmpresaLabel_estado}" for="estado" />
-                        <p:selectOneMenu id="estado" value="#{bdvEmpresaController.selected.estado}" >
-                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
-                            <f:selectItems value="#{bdvMcbeUbicGeoController.itemsAvailableSelectOne}"
-                                           var="estadoItem"
-                                           itemValue="#{estadoItem}"/>
-                        </p:selectOneMenu>
                         <p:outputLabel value="#{bundle.EditBdvEmpresaLabel_idBancoCuenta1}" for="idBancoCuenta1" />
                         <p:selectOneMenu id="idBancoCuenta1" value="#{bdvEmpresaController.selected.idBancoCuenta1}" >
                             <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
                             <f:selectItems value="#{bdvBancoCuentaController.itemsAvailableSelectOne}"
                                            var="idBancoCuenta1Item"
                                            itemValue="#{idBancoCuenta1Item}"/>
-                        </p:selectOneMenu>
-                        <p:outputLabel value="#{bundle.EditBdvEmpresaLabel_idBancoCuenta2}" for="idBancoCuenta2" />
-                        <p:selectOneMenu id="idBancoCuenta2" value="#{bdvEmpresaController.selected.idBancoCuenta2}" >
-                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
-                            <f:selectItems value="#{bdvBancoCuentaController.itemsAvailableSelectOne}"
-                                           var="idBancoCuenta2Item"
-                                           itemValue="#{idBancoCuenta2Item}"/>
                         </p:selectOneMenu>
                         <p:outputLabel value="#{bundle.EditBdvEmpresaLabel_idBancoCuenta3}" for="idBancoCuenta3" />
                         <p:selectOneMenu id="idBancoCuenta3" value="#{bdvEmpresaController.selected.idBancoCuenta3}" >
@@ -132,6 +118,13 @@
                                            var="idBancoCuentaVnz1Item"
                                            itemValue="#{idBancoCuentaVnz1Item}"/>
                         </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditBdvEmpresaLabel_idContacto3}" for="idContacto3" />
+                        <p:selectOneMenu id="idContacto3" value="#{bdvEmpresaController.selected.idContacto3}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{bdvContactoController.itemsAvailableSelectOne}"
+                                           var="idContacto3Item"
+                                           itemValue="#{idContacto3Item}"/>
+                        </p:selectOneMenu>
                         <p:outputLabel value="#{bundle.EditBdvEmpresaLabel_idBancoCuentaVnz2}" for="idBancoCuentaVnz2" />
                         <p:selectOneMenu id="idBancoCuentaVnz2" value="#{bdvEmpresaController.selected.idBancoCuentaVnz2}" >
                             <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
@@ -139,33 +132,12 @@
                                            var="idBancoCuentaVnz2Item"
                                            itemValue="#{idBancoCuentaVnz2Item}"/>
                         </p:selectOneMenu>
-                        <p:outputLabel value="#{bundle.EditBdvEmpresaLabel_idSector}" for="idSector" />
-                        <p:selectOneMenu id="idSector" value="#{bdvEmpresaController.selected.idSector}" >
-                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
-                            <f:selectItems value="#{bdvSectorGremioController.itemsAvailableSelectOne}"
-                                           var="idSectorItem"
-                                           itemValue="#{idSectorItem}"/>
-                        </p:selectOneMenu>
-                        <p:outputLabel value="#{bundle.EditBdvEmpresaLabel_idRecaudos}" for="idRecaudos" />
-                        <p:selectOneMenu id="idRecaudos" value="#{bdvEmpresaController.selected.idRecaudos}" >
-                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
-                            <f:selectItems value="#{bdvRecaudosController.itemsAvailableSelectOne}"
-                                           var="idRecaudosItem"
-                                           itemValue="#{idRecaudosItem}"/>
-                        </p:selectOneMenu>
-                        <p:outputLabel value="#{bundle.EditBdvEmpresaLabel_idNaturalezaCliente}" for="idNaturalezaCliente" />
-                        <p:selectOneMenu id="idNaturalezaCliente" value="#{bdvEmpresaController.selected.idNaturalezaCliente}" >
-                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
-                            <f:selectItems value="#{bdvNaturalezaClienteController.itemsAvailableSelectOne}"
-                                           var="idNaturalezaClienteItem"
-                                           itemValue="#{idNaturalezaClienteItem}"/>
-                        </p:selectOneMenu>
-                        <p:outputLabel value="#{bundle.EditBdvEmpresaLabel_idContacto3}" for="idContacto3" />
-                        <p:selectOneMenu id="idContacto3" value="#{bdvEmpresaController.selected.idContacto3}" >
+                        <p:outputLabel value="#{bundle.EditBdvEmpresaLabel_idContacto1}" for="idContacto1" />
+                        <p:selectOneMenu id="idContacto1" value="#{bdvEmpresaController.selected.idContacto1}" >
                             <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
                             <f:selectItems value="#{bdvContactoController.itemsAvailableSelectOne}"
-                                           var="idContacto3Item"
-                                           itemValue="#{idContacto3Item}"/>
+                                           var="idContacto1Item"
+                                           itemValue="#{idContacto1Item}"/>
                         </p:selectOneMenu>
                         <p:outputLabel value="#{bundle.EditBdvEmpresaLabel_parroquia}" for="parroquia" />
                         <p:selectOneMenu id="parroquia" value="#{bdvEmpresaController.selected.parroquia}" >
@@ -181,12 +153,40 @@
                                            var="idContacto2Item"
                                            itemValue="#{idContacto2Item}"/>
                         </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditBdvEmpresaLabel_idSector}" for="idSector" />
+                        <p:selectOneMenu id="idSector" value="#{bdvEmpresaController.selected.idSector}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{bdvSectorGremioController.itemsAvailableSelectOne}"
+                                           var="idSectorItem"
+                                           itemValue="#{idSectorItem}"/>
+                        </p:selectOneMenu>
                         <p:outputLabel value="#{bundle.EditBdvEmpresaLabel_municipio}" for="municipio" />
                         <p:selectOneMenu id="municipio" value="#{bdvEmpresaController.selected.municipio}" >
                             <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
                             <f:selectItems value="#{bdvMcbeUbicGeoController.itemsAvailableSelectOne}"
                                            var="municipioItem"
                                            itemValue="#{municipioItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditBdvEmpresaLabel_idRecaudos}" for="idRecaudos" />
+                        <p:selectOneMenu id="idRecaudos" value="#{bdvEmpresaController.selected.idRecaudos}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{bdvRecaudosController.itemsAvailableSelectOne}"
+                                           var="idRecaudosItem"
+                                           itemValue="#{idRecaudosItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditBdvEmpresaLabel_idNaturalezaCliente}" for="idNaturalezaCliente" />
+                        <p:selectOneMenu id="idNaturalezaCliente" value="#{bdvEmpresaController.selected.idNaturalezaCliente}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{bdvNaturalezaClienteController.itemsAvailableSelectOne}"
+                                           var="idNaturalezaClienteItem"
+                                           itemValue="#{idNaturalezaClienteItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditBdvEmpresaLabel_estado}" for="estado" />
+                        <p:selectOneMenu id="estado" value="#{bdvEmpresaController.selected.estado}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{bdvMcbeUbicGeoController.itemsAvailableSelectOne}"
+                                           var="estadoItem"
+                                           itemValue="#{estadoItem}"/>
                         </p:selectOneMenu>
                     </p:panelGrid>
                     <p:commandButton actionListener="#{bdvEmpresaController.update}" value="#{bundle.Save}" update="display,:BdvEmpresaListForm:datalist,:growl" oncomplete="handleSubmit(args, 'BdvEmpresaEditDialog');"/>

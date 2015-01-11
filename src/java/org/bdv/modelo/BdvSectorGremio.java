@@ -27,45 +27,45 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author georgeperez
  */
 @Entity
-@Table(name = "bdv_naturaleza_cliente")
+@Table(name = "bdv_sector_gremio")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "BdvNaturalezaCliente.findAll", query = "SELECT b FROM BdvNaturalezaCliente b"),
-    @NamedQuery(name = "BdvNaturalezaCliente.findByIdNaturalezaCliente", query = "SELECT b FROM BdvNaturalezaCliente b WHERE b.idNaturalezaCliente = :idNaturalezaCliente"),
-    @NamedQuery(name = "BdvNaturalezaCliente.findByDescripcion", query = "SELECT b FROM BdvNaturalezaCliente b WHERE b.descripcion = :descripcion")})
-public class BdvNaturalezaCliente implements Serializable {
+    @NamedQuery(name = "BdvSectorGremio.findAll", query = "SELECT b FROM BdvSectorGremio b"),
+    @NamedQuery(name = "BdvSectorGremio.findByIdSeector", query = "SELECT b FROM BdvSectorGremio b WHERE b.idSeector = :idSeector"),
+    @NamedQuery(name = "BdvSectorGremio.findByDescripcion", query = "SELECT b FROM BdvSectorGremio b WHERE b.descripcion = :descripcion")})
+public class BdvSectorGremio implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "id_naturaleza_cliente")
-    private Integer idNaturalezaCliente;
+    @Column(name = "id_seector")
+    private Integer idSeector;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 100)
     @Column(name = "descripcion")
     private String descripcion;
-    @OneToMany(mappedBy = "idNaturalezaCliente")
+    @OneToMany(mappedBy = "idSector")
     private List<BdvEmpresa> bdvEmpresaList;
 
-    public BdvNaturalezaCliente() {
+    public BdvSectorGremio() {
     }
 
-    public BdvNaturalezaCliente(Integer idNaturalezaCliente) {
-        this.idNaturalezaCliente = idNaturalezaCliente;
+    public BdvSectorGremio(Integer idSeector) {
+        this.idSeector = idSeector;
     }
 
-    public BdvNaturalezaCliente(Integer idNaturalezaCliente, String descripcion) {
-        this.idNaturalezaCliente = idNaturalezaCliente;
+    public BdvSectorGremio(Integer idSeector, String descripcion) {
+        this.idSeector = idSeector;
         this.descripcion = descripcion;
     }
 
-    public Integer getIdNaturalezaCliente() {
-        return idNaturalezaCliente;
+    public Integer getIdSeector() {
+        return idSeector;
     }
 
-    public void setIdNaturalezaCliente(Integer idNaturalezaCliente) {
-        this.idNaturalezaCliente = idNaturalezaCliente;
+    public void setIdSeector(Integer idSeector) {
+        this.idSeector = idSeector;
     }
 
     public String getDescripcion() {
@@ -88,18 +88,18 @@ public class BdvNaturalezaCliente implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (idNaturalezaCliente != null ? idNaturalezaCliente.hashCode() : 0);
+        hash += (idSeector != null ? idSeector.hashCode() : 0);
         return hash;
     }
 
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof BdvNaturalezaCliente)) {
+        if (!(object instanceof BdvSectorGremio)) {
             return false;
         }
-        BdvNaturalezaCliente other = (BdvNaturalezaCliente) object;
-        if ((this.idNaturalezaCliente == null && other.idNaturalezaCliente != null) || (this.idNaturalezaCliente != null && !this.idNaturalezaCliente.equals(other.idNaturalezaCliente))) {
+        BdvSectorGremio other = (BdvSectorGremio) object;
+        if ((this.idSeector == null && other.idSeector != null) || (this.idSeector != null && !this.idSeector.equals(other.idSeector))) {
             return false;
         }
         return true;
@@ -107,7 +107,7 @@ public class BdvNaturalezaCliente implements Serializable {
 
     @Override
     public String toString() {
-        return "org.bdv.modelo.BdvNaturalezaCliente[ idNaturalezaCliente=" + idNaturalezaCliente + " ]";
+        return descripcion;
     }
     
 }

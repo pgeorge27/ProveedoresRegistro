@@ -106,7 +106,7 @@ public class BdvBancosNac implements Serializable {
 
     @Override
     public String toString() {
-        return "org.bdv.modelo.BdvBancosNac[ bancoId=" + bancoId + " ]";
+        return bancoDescripcion;
     }
     
 }

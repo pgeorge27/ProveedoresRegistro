@@ -74,9 +74,9 @@ public class BdvContacto implements Serializable {
     @Size(max = 100)
     @Column(name = "area_ocupacional")
     private String areaOcupacional;
-    @OneToMany(mappedBy = "idContacto1")
-    private List<BdvEmpresa> bdvEmpresaList;
     @OneToMany(mappedBy = "idContacto3")
+    private List<BdvEmpresa> bdvEmpresaList;
+    @OneToMany(mappedBy = "idContacto1")
     private List<BdvEmpresa> bdvEmpresaList1;
     @OneToMany(mappedBy = "idContacto2")
     private List<BdvEmpresa> bdvEmpresaList2;

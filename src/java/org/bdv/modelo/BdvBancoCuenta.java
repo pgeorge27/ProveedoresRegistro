@@ -54,9 +54,9 @@ public class BdvBancoCuenta implements Serializable {
     @JoinColumn(name = "id_tipo_cuenta", referencedColumnName = "id_tipo_cuenta")
     @ManyToOne(optional = false)
     private BdvTipoCuenta idTipoCuenta;
-    @OneToMany(mappedBy = "idBancoCuenta1")
-    private List<BdvEmpresa> bdvEmpresaList;
     @OneToMany(mappedBy = "idBancoCuenta2")
+    private List<BdvEmpresa> bdvEmpresaList;
+    @OneToMany(mappedBy = "idBancoCuenta1")
     private List<BdvEmpresa> bdvEmpresaList1;
     @OneToMany(mappedBy = "idBancoCuenta3")
     private List<BdvEmpresa> bdvEmpresaList2;

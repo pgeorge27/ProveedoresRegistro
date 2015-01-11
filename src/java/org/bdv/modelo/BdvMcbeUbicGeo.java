@@ -53,11 +53,11 @@ public class BdvMcbeUbicGeo implements Serializable {
     @NotNull
     @Column(name = "id_padre")
     private int idPadre;
-    @OneToMany(mappedBy = "estado")
-    private List<BdvEmpresa> bdvEmpresaList;
     @OneToMany(mappedBy = "parroquia")
-    private List<BdvEmpresa> bdvEmpresaList1;
+    private List<BdvEmpresa> bdvEmpresaList;
     @OneToMany(mappedBy = "municipio")
+    private List<BdvEmpresa> bdvEmpresaList1;
+    @OneToMany(mappedBy = "estado")
     private List<BdvEmpresa> bdvEmpresaList2;
 
     public BdvMcbeUbicGeo() {
@@ -155,7 +155,7 @@ public class BdvMcbeUbicGeo implements Serializable {
 
     @Override
     public String toString() {
-        return "org.bdv.modelo.BdvMcbeUbicGeo[ idUbicGeo=" + idUbicGeo + " ]";
+        return descripcion;
     }
     
 }

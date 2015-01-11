@@ -6,7 +6,6 @@
 package org.bdv.modelo;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -36,8 +35,8 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "BdvUserBackend.findAll", query = "SELECT b FROM BdvUserBackend b"),
     @NamedQuery(name = "BdvUserBackend.findByIdUser", query = "SELECT b FROM BdvUserBackend b WHERE b.idUser = :idUser"),
     @NamedQuery(name = "BdvUserBackend.findByUserBackend", query = "SELECT b FROM BdvUserBackend b WHERE b.userBackend = :userBackend"),
-    @NamedQuery(name = "BdvUserBackend.findByPassword", query = "SELECT b FROM BdvUserBackend b WHERE b.password = :password"),
-    @NamedQuery(name = "BdvUserBackend.findByStatus", query = "SELECT b FROM BdvUserBackend b WHERE b.status = :status")})
+    @NamedQuery(name = "BdvUserBackend.findByContrasenia", query = "SELECT b FROM BdvUserBackend b WHERE b.contrasenia = :contrasenia"),
+    @NamedQuery(name = "BdvUserBackend.findByActivo", query = "SELECT b FROM BdvUserBackend b WHERE b.activo = :activo")})
 public class BdvUserBackend implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -53,12 +52,12 @@ public class BdvUserBackend implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 50)
-    @Column(name = "password")
-    private String password;
+    @Column(name = "contrasenia")
+    private String contrasenia;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "status")
-    private short status;
+    @Column(name = "activo")
+    private boolean activo;
     @JoinTable(name = "bdv_user_roles", joinColumns = {
         @JoinColumn(name = "id_user", referencedColumnName = "id_user")}, inverseJoinColumns = {
         @JoinColumn(name = "id_role", referencedColumnName = "id_role")})
@@ -66,18 +65,17 @@ public class BdvUserBackend implements Serializable {
     private List<BdvRole> bdvRoleList;
 
     public BdvUserBackend() {
-        bdvRoleList = new ArrayList<>();
     }
 
     public BdvUserBackend(Integer idUser) {
         this.idUser = idUser;
     }
 
-    public BdvUserBackend(Integer idUser, String userBackend, String password, short status) {
+    public BdvUserBackend(Integer idUser, String userBackend, String contrasenia, boolean activo) {
         this.idUser = idUser;
         this.userBackend = userBackend;
-        this.password = password;
-        this.status = status;
+        this.contrasenia = contrasenia;
+        this.activo = activo;
     }
 
     public Integer getIdUser() {
@@ -96,20 +94,20 @@ public class BdvUserBackend implements Serializable {
         this.userBackend = userBackend;
     }
 
-    public String getPassword() {
-        return password;
+    public String getContrasenia() {
+        return contrasenia;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setContrasenia(String contrasenia) {
+        this.contrasenia = contrasenia;
     }
 
-    public short getStatus() {
-        return status;
+    public boolean getActivo() {
+        return activo;
     }
 
-    public void setStatus(short status) {
-        this.status = status;
+    public void setActivo(boolean activo) {
+        this.activo = activo;
     }
 
     @XmlTransient
@@ -143,7 +141,7 @@ public class BdvUserBackend implements Serializable {
 
     @Override
     public String toString() {
-        return "org.bdv.modelo.BdvUserBackend[ idUser=" + idUser + " ]";
+        return userBackend;
     }
     
 }

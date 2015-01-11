@@ -153,60 +153,60 @@ public class BdvEmpresa implements Serializable {
         @JoinColumn(name = "id_categoria_producto", referencedColumnName = "id_categoria_producto")})
     @ManyToMany
     private List<BdvCategoriaProducto> bdvCategoriaProductoList;
-    @JoinColumn(name = "id_representate_legal1", referencedColumnName = "id_representate_legal")
+    @JoinColumn(name = "id_banco_cuenta2", referencedColumnName = "id_banco_cuenta")
     @ManyToOne
-    private BdvRepresentateLegal idRepresentateLegal1;
+    private BdvBancoCuenta idBancoCuenta2;
     @JoinColumn(name = "id_nacionalidad", referencedColumnName = "id")
     @ManyToOne
     private BdvNacionalidad idNacionalidad;
+    @JoinColumn(name = "id_representate_legal1", referencedColumnName = "id_representate_legal")
+    @ManyToOne
+    private BdvRepresentateLegal idRepresentateLegal1;
     @JoinColumn(name = "id_representate_legal2", referencedColumnName = "id_representate_legal")
     @ManyToOne
     private BdvRepresentateLegal idRepresentateLegal2;
     @JoinColumn(name = "id_representate_legal3", referencedColumnName = "id_representate_legal")
     @ManyToOne
     private BdvRepresentateLegal idRepresentateLegal3;
-    @JoinColumn(name = "id_contacto1", referencedColumnName = "id_contacto")
-    @ManyToOne
-    private BdvContacto idContacto1;
-    @JoinColumn(name = "estado", referencedColumnName = "id_ubic_geo")
-    @ManyToOne
-    private BdvMcbeUbicGeo estado;
     @JoinColumn(name = "id_banco_cuenta1", referencedColumnName = "id_banco_cuenta")
     @ManyToOne
     private BdvBancoCuenta idBancoCuenta1;
-    @JoinColumn(name = "id_banco_cuenta2", referencedColumnName = "id_banco_cuenta")
-    @ManyToOne
-    private BdvBancoCuenta idBancoCuenta2;
     @JoinColumn(name = "id_banco_cuenta3", referencedColumnName = "id_banco_cuenta")
     @ManyToOne
     private BdvBancoCuenta idBancoCuenta3;
     @JoinColumn(name = "id_banco_cuenta_vnz1", referencedColumnName = "id_banco_cuenta_vnz")
     @ManyToOne
     private BdvBancoCuentaVnz idBancoCuentaVnz1;
-    @JoinColumn(name = "id_banco_cuenta_vnz2", referencedColumnName = "id_banco_cuenta_vnz")
-    @ManyToOne
-    private BdvBancoCuentaVnz idBancoCuentaVnz2;
-    @JoinColumn(name = "id_sector", referencedColumnName = "id_seector")
-    @ManyToOne
-    private BdvSectorGremio idSector;
-    @JoinColumn(name = "id_recaudos", referencedColumnName = "id_recaudos")
-    @ManyToOne
-    private BdvRecaudos idRecaudos;
-    @JoinColumn(name = "id_naturaleza_cliente", referencedColumnName = "id_naturaleza_cliente")
-    @ManyToOne
-    private BdvNaturalezaCliente idNaturalezaCliente;
     @JoinColumn(name = "id_contacto3", referencedColumnName = "id_contacto")
     @ManyToOne
     private BdvContacto idContacto3;
+    @JoinColumn(name = "id_banco_cuenta_vnz2", referencedColumnName = "id_banco_cuenta_vnz")
+    @ManyToOne
+    private BdvBancoCuentaVnz idBancoCuentaVnz2;
+    @JoinColumn(name = "id_contacto1", referencedColumnName = "id_contacto")
+    @ManyToOne
+    private BdvContacto idContacto1;
     @JoinColumn(name = "parroquia", referencedColumnName = "id_ubic_geo")
     @ManyToOne
     private BdvMcbeUbicGeo parroquia;
     @JoinColumn(name = "id_contacto2", referencedColumnName = "id_contacto")
     @ManyToOne
     private BdvContacto idContacto2;
+    @JoinColumn(name = "id_sector", referencedColumnName = "id_seector")
+    @ManyToOne
+    private BdvSectorGremio idSector;
     @JoinColumn(name = "municipio", referencedColumnName = "id_ubic_geo")
     @ManyToOne
     private BdvMcbeUbicGeo municipio;
+    @JoinColumn(name = "id_recaudos", referencedColumnName = "id_recaudos")
+    @ManyToOne
+    private BdvRecaudos idRecaudos;
+    @JoinColumn(name = "id_naturaleza_cliente", referencedColumnName = "id_naturaleza_cliente")
+    @ManyToOne
+    private BdvNaturalezaCliente idNaturalezaCliente;
+    @JoinColumn(name = "estado", referencedColumnName = "id_ubic_geo")
+    @ManyToOne
+    private BdvMcbeUbicGeo estado;
     @OneToMany(mappedBy = "idEmpresa")
     private List<BdvUser> bdvUserList;
 
@@ -434,12 +434,12 @@ public class BdvEmpresa implements Serializable {
         this.bdvCategoriaProductoList = bdvCategoriaProductoList;
     }
 
-    public BdvRepresentateLegal getIdRepresentateLegal1() {
-        return idRepresentateLegal1;
+    public BdvBancoCuenta getIdBancoCuenta2() {
+        return idBancoCuenta2;
     }
 
-    public void setIdRepresentateLegal1(BdvRepresentateLegal idRepresentateLegal1) {
-        this.idRepresentateLegal1 = idRepresentateLegal1;
+    public void setIdBancoCuenta2(BdvBancoCuenta idBancoCuenta2) {
+        this.idBancoCuenta2 = idBancoCuenta2;
     }
 
     public BdvNacionalidad getIdNacionalidad() {
@@ -448,6 +448,14 @@ public class BdvEmpresa implements Serializable {
 
     public void setIdNacionalidad(BdvNacionalidad idNacionalidad) {
         this.idNacionalidad = idNacionalidad;
+    }
+
+    public BdvRepresentateLegal getIdRepresentateLegal1() {
+        return idRepresentateLegal1;
+    }
+
+    public void setIdRepresentateLegal1(BdvRepresentateLegal idRepresentateLegal1) {
+        this.idRepresentateLegal1 = idRepresentateLegal1;
     }
 
     public BdvRepresentateLegal getIdRepresentateLegal2() {
@@ -466,36 +474,12 @@ public class BdvEmpresa implements Serializable {
         this.idRepresentateLegal3 = idRepresentateLegal3;
     }
 
-    public BdvContacto getIdContacto1() {
-        return idContacto1;
-    }
-
-    public void setIdContacto1(BdvContacto idContacto1) {
-        this.idContacto1 = idContacto1;
-    }
-
-    public BdvMcbeUbicGeo getEstado() {
-        return estado;
-    }
-
-    public void setEstado(BdvMcbeUbicGeo estado) {
-        this.estado = estado;
-    }
-
     public BdvBancoCuenta getIdBancoCuenta1() {
         return idBancoCuenta1;
     }
 
     public void setIdBancoCuenta1(BdvBancoCuenta idBancoCuenta1) {
         this.idBancoCuenta1 = idBancoCuenta1;
-    }
-
-    public BdvBancoCuenta getIdBancoCuenta2() {
-        return idBancoCuenta2;
-    }
-
-    public void setIdBancoCuenta2(BdvBancoCuenta idBancoCuenta2) {
-        this.idBancoCuenta2 = idBancoCuenta2;
     }
 
     public BdvBancoCuenta getIdBancoCuenta3() {
@@ -514,6 +498,14 @@ public class BdvEmpresa implements Serializable {
         this.idBancoCuentaVnz1 = idBancoCuentaVnz1;
     }
 
+    public BdvContacto getIdContacto3() {
+        return idContacto3;
+    }
+
+    public void setIdContacto3(BdvContacto idContacto3) {
+        this.idContacto3 = idContacto3;
+    }
+
     public BdvBancoCuentaVnz getIdBancoCuentaVnz2() {
         return idBancoCuentaVnz2;
     }
@@ -522,36 +514,12 @@ public class BdvEmpresa implements Serializable {
         this.idBancoCuentaVnz2 = idBancoCuentaVnz2;
     }
 
-    public BdvSectorGremio getIdSector() {
-        return idSector;
+    public BdvContacto getIdContacto1() {
+        return idContacto1;
     }
 
-    public void setIdSector(BdvSectorGremio idSector) {
-        this.idSector = idSector;
-    }
-
-    public BdvRecaudos getIdRecaudos() {
-        return idRecaudos;
-    }
-
-    public void setIdRecaudos(BdvRecaudos idRecaudos) {
-        this.idRecaudos = idRecaudos;
-    }
-
-    public BdvNaturalezaCliente getIdNaturalezaCliente() {
-        return idNaturalezaCliente;
-    }
-
-    public void setIdNaturalezaCliente(BdvNaturalezaCliente idNaturalezaCliente) {
-        this.idNaturalezaCliente = idNaturalezaCliente;
-    }
-
-    public BdvContacto getIdContacto3() {
-        return idContacto3;
-    }
-
-    public void setIdContacto3(BdvContacto idContacto3) {
-        this.idContacto3 = idContacto3;
+    public void setIdContacto1(BdvContacto idContacto1) {
+        this.idContacto1 = idContacto1;
     }
 
     public BdvMcbeUbicGeo getParroquia() {
@@ -570,12 +538,44 @@ public class BdvEmpresa implements Serializable {
         this.idContacto2 = idContacto2;
     }
 
+    public BdvSectorGremio getIdSector() {
+        return idSector;
+    }
+
+    public void setIdSector(BdvSectorGremio idSector) {
+        this.idSector = idSector;
+    }
+
     public BdvMcbeUbicGeo getMunicipio() {
         return municipio;
     }
 
     public void setMunicipio(BdvMcbeUbicGeo municipio) {
         this.municipio = municipio;
+    }
+
+    public BdvRecaudos getIdRecaudos() {
+        return idRecaudos;
+    }
+
+    public void setIdRecaudos(BdvRecaudos idRecaudos) {
+        this.idRecaudos = idRecaudos;
+    }
+
+    public BdvNaturalezaCliente getIdNaturalezaCliente() {
+        return idNaturalezaCliente;
+    }
+
+    public void setIdNaturalezaCliente(BdvNaturalezaCliente idNaturalezaCliente) {
+        this.idNaturalezaCliente = idNaturalezaCliente;
+    }
+
+    public BdvMcbeUbicGeo getEstado() {
+        return estado;
+    }
+
+    public void setEstado(BdvMcbeUbicGeo estado) {
+        this.estado = estado;
     }
 
     @XmlTransient

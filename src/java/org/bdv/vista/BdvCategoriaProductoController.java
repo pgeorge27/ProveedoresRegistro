@@ -117,7 +117,7 @@ public class BdvCategoriaProductoController implements Serializable {
         return getFacade().findAll();
     }
 
-    @FacesConverter(forClass = BdvCategoriaProducto.class)
+    @FacesConverter(value = "BdvCategoriaProductoControllerConverter", forClass = BdvCategoriaProducto.class)
     public static class BdvCategoriaProductoControllerConverter implements Converter {
 
         @Override

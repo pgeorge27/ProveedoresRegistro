@@ -107,7 +107,7 @@ public class BdvRole implements Serializable {
 
     @Override
     public String toString() {
-        return "org.bdv.modelo.BdvRole[ idRole=" + idRole + " ]";
+        return roleNombre;
     }
     
 }

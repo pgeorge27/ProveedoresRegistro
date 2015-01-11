@@ -27,45 +27,45 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author georgeperez
  */
 @Entity
-@Table(name = "bdv_sector_gremio")
+@Table(name = "bdv_nacionalidad")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "BdvSectorGremio.findAll", query = "SELECT b FROM BdvSectorGremio b"),
-    @NamedQuery(name = "BdvSectorGremio.findByIdSeector", query = "SELECT b FROM BdvSectorGremio b WHERE b.idSeector = :idSeector"),
-    @NamedQuery(name = "BdvSectorGremio.findByDescripcion", query = "SELECT b FROM BdvSectorGremio b WHERE b.descripcion = :descripcion")})
-public class BdvSectorGremio implements Serializable {
+    @NamedQuery(name = "BdvNacionalidad.findAll", query = "SELECT b FROM BdvNacionalidad b"),
+    @NamedQuery(name = "BdvNacionalidad.findById", query = "SELECT b FROM BdvNacionalidad b WHERE b.id = :id"),
+    @NamedQuery(name = "BdvNacionalidad.findByDescripcion", query = "SELECT b FROM BdvNacionalidad b WHERE b.descripcion = :descripcion")})
+public class BdvNacionalidad implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "id_seector")
-    private Integer idSeector;
+    @Column(name = "id")
+    private Integer id;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 100)
     @Column(name = "descripcion")
     private String descripcion;
-    @OneToMany(mappedBy = "idSector")
+    @OneToMany(mappedBy = "idNacionalidad")
     private List<BdvEmpresa> bdvEmpresaList;
 
-    public BdvSectorGremio() {
+    public BdvNacionalidad() {
     }
 
-    public BdvSectorGremio(Integer idSeector) {
-        this.idSeector = idSeector;
+    public BdvNacionalidad(Integer id) {
+        this.id = id;
     }
 
-    public BdvSectorGremio(Integer idSeector, String descripcion) {
-        this.idSeector = idSeector;
+    public BdvNacionalidad(Integer id, String descripcion) {
+        this.id = id;
         this.descripcion = descripcion;
     }
 
-    public Integer getIdSeector() {
-        return idSeector;
+    public Integer getId() {
+        return id;
     }
 
-    public void setIdSeector(Integer idSeector) {
-        this.idSeector = idSeector;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getDescripcion() {
@@ -88,18 +88,18 @@ public class BdvSectorGremio implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (idSeector != null ? idSeector.hashCode() : 0);
+        hash += (id != null ? id.hashCode() : 0);
         return hash;
     }
 
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof BdvSectorGremio)) {
+        if (!(object instanceof BdvNacionalidad)) {
             return false;
         }
-        BdvSectorGremio other = (BdvSectorGremio) object;
-        if ((this.idSeector == null && other.idSeector != null) || (this.idSeector != null && !this.idSeector.equals(other.idSeector))) {
+        BdvNacionalidad other = (BdvNacionalidad) object;
+        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
         return true;
@@ -107,7 +107,7 @@ public class BdvSectorGremio implements Serializable {
 
     @Override
     public String toString() {
-        return "org.bdv.modelo.BdvSectorGremio[ idSeector=" + idSeector + " ]";
+        return descripcion;
     }
     
 }
