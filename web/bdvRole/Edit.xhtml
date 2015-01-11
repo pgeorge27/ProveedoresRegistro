@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="BdvRoleEditDlg" widgetVar="BdvRoleEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditBdvRoleTitle}">
+            <h:form id="BdvRoleEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{bdvRoleController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditBdvRoleLabel_idRole}" for="idRole" />
+                        <p:inputText id="idRole" value="#{bdvRoleController.selected.idRole}" title="#{bundle.EditBdvRoleTitle_idRole}" required="true" requiredMessage="#{bundle.EditBdvRoleRequiredMessage_idRole}"/>
+                        <p:outputLabel value="#{bundle.EditBdvRoleLabel_roleNombre}" for="roleNombre" />
+                        <p:inputText id="roleNombre" value="#{bdvRoleController.selected.roleNombre}" title="#{bundle.EditBdvRoleTitle_roleNombre}" required="true" requiredMessage="#{bundle.EditBdvRoleRequiredMessage_roleNombre}"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{bdvRoleController.update}" value="#{bundle.Save}" update="display,:BdvRoleListForm:datalist,:growl" oncomplete="handleSubmit(args, 'BdvRoleEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="BdvRoleEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>
