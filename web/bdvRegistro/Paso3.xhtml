@@ -11,7 +11,7 @@
         <p:panel header="#{bundle.DatosProveedor}">
             <p:messages />
             <h:panelGroup>
-                <h:panelGrid columns="3" columnClasses="label, value">
+                <h:panelGrid columns="3" columnClasses="column1,column2,column3">
                     <p:outputLabel value="#{bundle.CreateBdvEmpresaLabel_tipoPersona}" for="tipoPersona" />
                     <p:selectOneRadio id="tipoPersona" value="#{bdvUserController.selected.idEmpresa.tipoPersona}" required="true" requiredMessage="#{bundle.CreateBdvEmpresaRequiredMessage_tipoPersona}">
                         <f:selectItem itemLabel="NATURAL" itemValue="NATURAL" />
@@ -31,16 +31,18 @@
                         <f:selectItem itemLabel="PRIVADO" itemValue="PRIVADO" />
                     </p:selectOneMenu>
                     <p:outputLabel value="#{bundle.EnteMsj}"  />
-                    <p:outputLabel value="#{bundle.CreateBdvEmpresaLabel_rif}" for="tipoRif" />
                     <p:outputPanel>
-                        <p:selectOneMenu id="tipoRif" value="#{bdvUserController.selected.idEmpresa.tipoRif}" required="true" requiredMessage="#{bundle.CreateBdvEmpresaRequiredMessage_tipoRif}" >
+                    <p:outputLabel class="required" value="*" style="color: red; margin-right: .5em;font-weight: bold;" /> 
+                    <p:outputLabel value="#{bundle.CreateBdvEmpresaLabel_rif}" />
+                    </p:outputPanel>
+                    <p:outputPanel>
+                        <p:selectOneMenu id="tipoRif" class="ui-selectonemenu--min" value="#{bdvUserController.selected.idEmpresa.tipoRif}" required="true" requiredMessage="#{bundle.CreateBdvEmpresaRequiredMessage_tipoRif}" >
                             <f:selectItem itemLabel="-" itemValue="" noSelectionOption="true" />
                             <f:selectItem itemLabel="V" itemValue="V" />
                             <f:selectItem itemLabel="E" itemValue="E" />
                             <f:selectItem itemLabel="J" itemValue="J" />
                         </p:selectOneMenu>
-                        <br />
-                        <p:inputText id="rif" value="#{bdvUserController.selected.idEmpresa.rif}" title="#{bundle.CreateBdvEmpresaTitle_rif}" required="true" requiredMessage="#{bundle.CreateBdvEmpresaRequiredMessage_rif}"/>
+                        <p:inputMask id="rif" class="ui-inputmask--min" value="#{bdvUserController.selected.idEmpresa.rif}" title="#{bundle.CreateBdvEmpresaTitle_rif}" required="true" requiredMessage="#{bundle.CreateBdvEmpresaRequiredMessage_rif}" mask="999999999"/>
                     </p:outputPanel>
                     <p:outputLabel value="#{bundle.RifMsj}"  />
                     <p:outputLabel value="#{bundle.CreateBdvEmpresaLabel_idNacionalidad}" for="nacionalidad" />
@@ -81,7 +83,7 @@
         </p:panel>
         <p:panel id="repre1" header="#{bundle.DatosRepresentanteLegal} 1">
             <h:panelGroup>
-                <h:panelGrid columns="3" columnClasses="label, value">
+                <h:panelGrid columns="3" columnClasses="column1,column2,column3">
                     <p:outputLabel value="#{bundle.CreateBdvRepresentateLegalLabel_primerNombre}" for="primerNombreRepre1" />
                     <p:inputText id="primerNombreRepre1" value="#{bdvUserController.selected.idEmpresa.idRepresentateLegal1.primerNombre}" title="#{bundle.CreateBdvRepresentateLegalTitle_primerNombre}" required="true" requiredMessage="#{bundle.CreateBdvRepresentateLegalRequiredMessage_primerNombre}"/>
                     <p:outputLabel value="#{bundle.PrimerNombreMsj}"  />
@@ -109,6 +111,8 @@
                     <p:outputLabel value="#{bundle.DocumentoIdentificacionMsj}"  />
                     <p:outputLabel value="#{bundle.CreateBdvRepresentateLegalLabel_numeroIdentidad}" for="numeroIdentidadRepre1" />
                     <p:inputText id="numeroIdentidadRepre1" value="#{bdvUserController.selected.idEmpresa.idRepresentateLegal1.numeroIdentidad}" title="#{bundle.CreateBdvRepresentateLegalTitle_numeroIdentidad}" required="true" requiredMessage="#{bundle.CreateBdvRepresentateLegalRequiredMessage_numeroIdentidad}"/>
+                    
+                    
                     <p:outputLabel value="#{bundle.NumeroIdentificacionMsj}"  />
                     <p:outputLabel value="#{bundle.CreateBdvRepresentateLegalLabel_cargo}" for="cargoRepre1" />
                     <p:inputText id="cargoRepre1" value="#{bdvUserController.selected.idEmpresa.idRepresentateLegal1.cargo}" title="#{bundle.CreateBdvRepresentateLegalTitle_cargo}" required="true" requiredMessage="#{bundle.CreateBdvRepresentateLegalRequiredMessage_cargo}"/>
@@ -123,7 +127,7 @@
 
         <p:panel id="repre2" header="#{bundle.DatosRepresentanteLegal} 2" rendered="#{wizardManagedBean.repre2}">
             <h:panelGroup>
-                <h:panelGrid columns="3" columnClasses="label, value">
+                <h:panelGrid columns="3" columnClasses="column1,column2,column3">
                     <p:outputLabel value="#{bundle.CreateBdvRepresentateLegalLabel_primerNombre}" for="primerNombreRepre2" />
                     <p:inputText id="primerNombreRepre2" value="#{bdvUserController.selected.idEmpresa.idRepresentateLegal2.primerNombre}" title="#{bundle.CreateBdvRepresentateLegalTitle_primerNombre}" required="true" requiredMessage="#{bundle.CreateBdvRepresentateLegalRequiredMessage_primerNombre}"/>
                     <p:outputLabel value="#{bundle.PrimerNombreMsj}"  />
@@ -166,7 +170,7 @@
 
         <p:panel id="repre3" header="#{bundle.DatosRepresentanteLegal} 3" rendered="#{wizardManagedBean.repre3}">
             <h:panelGroup>
-                <h:panelGrid columns="3" columnClasses="label, value">
+                <h:panelGrid columns="3" columnClasses="column1,column2,column3">
                     <p:outputLabel value="#{bundle.CreateBdvRepresentateLegalLabel_primerNombre}" for="primerNombreRepre3" />
                     <p:inputText id="primerNombreRepre3" value="#{bdvUserController.selected.idEmpresa.idRepresentateLegal3.primerNombre}" title="#{bundle.CreateBdvRepresentateLegalTitle_primerNombre}" required="true" requiredMessage="#{bundle.CreateBdvRepresentateLegalRequiredMessage_primerNombre}"/>
                     <p:outputLabel value="#{bundle.PrimerNombreMsj}"  />
@@ -208,9 +212,9 @@
 
         <p:panel  header="#{bundle.CuentaBancariaBancoVenezuela} #1">
             <h:panelGroup>
-                <h:panelGrid columns="3" columnClasses="label, value">
+                <h:panelGrid columns="3" columnClasses="column1,column2,column3">
                     <p:outputLabel value="#{bundle.CreateBdvBancoCuentaVnzLabel_codigoCuenta}" for="codigoCuentaReferenciaVnz1" />
-                    <p:inputText id="codigoCuentaReferenciaVnz1" value="#{bdvUserController.selected.idEmpresa.idBancoCuentaVnz1.codigoCuenta}" title="#{bundle.CreateBdvBancoCuentaVnzTitle_codigoCuenta}" required="true" requiredMessage="#{bundle.CreateBdvBancoCuentaVnzRequiredMessage_codigoCuenta}"/>
+                    <p:inputText id="codigoCuentaReferenciaVnz1" value="#{bdvUserController.selected.idEmpresa.idBancoCuentaVnz1.codigoCuenta}" title="#{bundle.CreateBdvBancoCuentaVnzTitle_codigoCuenta}" required="true" requiredMessage="#{bundle.CreateBdvBancoCuentaVnzRequiredMessage_codigoCuenta}" maxlength="20"/>
                     <p:outputLabel value="#{bundle.CodigoCuentaClienteMsj}"  />
                     <p:outputLabel value="#{bundle.CreateBdvBancoCuentaVnzLabel_idTipoCuenta}" for="idTipoCuentaReferenciaVnz1" />
                     <p:selectOneMenu id="idTipoCuentaReferenciaVnz1" value="#{bdvUserController.selected.idEmpresa.idBancoCuentaVnz1.idTipoCuenta}" required="true" requiredMessage="#{bundle.EditBdvBancoCuentaVnzRequiredMessage_idTipoCuenta}">
@@ -227,9 +231,9 @@
 
         <p:panel header="#{bundle.CuentaBancariaBancoVenezuela} #2" rendered="#{wizardManagedBean.cuentaBancoVnz2}">
             <h:panelGroup>
-                <h:panelGrid columns="3" columnClasses="label, value">
+                <h:panelGrid columns="3" columnClasses="column1,column2,column3">
                     <p:outputLabel value="#{bundle.CreateBdvBancoCuentaVnzLabel_codigoCuenta}" for="codigoCuentaReferenciaVnz2" />
-                    <p:inputText id="codigoCuentaReferenciaVnz2" value="#{bdvUserController.selected.idEmpresa.idBancoCuentaVnz2.codigoCuenta}" title="#{bundle.CreateBdvBancoCuentaVnzTitle_codigoCuenta}" required="true" requiredMessage="#{bundle.CreateBdvBancoCuentaVnzRequiredMessage_codigoCuenta}"/>
+                    <p:inputText id="codigoCuentaReferenciaVnz2" value="#{bdvUserController.selected.idEmpresa.idBancoCuentaVnz2.codigoCuenta}" title="#{bundle.CreateBdvBancoCuentaVnzTitle_codigoCuenta}" required="true" requiredMessage="#{bundle.CreateBdvBancoCuentaVnzRequiredMessage_codigoCuenta}" maxlength="20"/>
                     <p:outputLabel value="#{bundle.CodigoCuentaClienteMsj}"  />
                     <p:outputLabel value="#{bundle.CreateBdvBancoCuentaVnzLabel_idTipoCuenta}" for="idTipoCuentaReferenciaVnz2" />
                     <p:selectOneMenu id="idTipoCuentaReferenciaVnz2" value="#{bdvUserController.selected.idEmpresa.idBancoCuentaVnz2.idTipoCuenta}" required="true" requiredMessage="#{bundle.EditBdvBancoCuentaVnzRequiredMessage_idTipoCuenta}">
@@ -246,7 +250,7 @@
 
         <p:panel header="#{bundle.ReferenciaBancaria} #1">
             <h:panelGroup>
-                <h:panelGrid columns="3" columnClasses="label, value">
+                <h:panelGrid columns="3" columnClasses="column1,column2,column3">
                     <p:outputLabel value="#{bundle.CreateBdvBancoCuentaLabel_codigoCuenta}" for="codigoCuentaReferencia1" />
                     <p:inputText id="codigoCuentaReferencia1" value="#{bdvUserController.selected.idEmpresa.idBancoCuenta1.codigoCuenta}" title="#{bundle.CreateBdvBancoCuentaTitle_codigoCuenta}" required="true" requiredMessage="#{bundle.CreateBdvBancoCuentaRequiredMessage_codigoCuenta}" maxlength="20"/>
                     <p:outputLabel value="#{bundle.CodigoCuentaClienteMsj}"  />
@@ -276,7 +280,7 @@
 
         <p:panel header="#{bundle.ReferenciaBancaria} #2" rendered="#{wizardManagedBean.cuentaBanco2}">
             <h:panelGroup>
-                <h:panelGrid columns="3" columnClasses="label, value">
+                <h:panelGrid columns="3" columnClasses="column1,column2,column3">
                     <p:outputLabel value="#{bundle.CreateBdvBancoCuentaLabel_codigoCuenta}" for="codigoCuentaReferencia2" />
                     <p:inputText id="codigoCuentaReferencia2" value="#{bdvUserController.selected.idEmpresa.idBancoCuenta2.codigoCuenta}" title="#{bundle.CreateBdvBancoCuentaTitle_codigoCuenta}" required="true" requiredMessage="#{bundle.CreateBdvBancoCuentaRequiredMessage_codigoCuenta}" maxlength="20"/>
                     <p:outputLabel value="#{bundle.CodigoCuentaClienteMsj}"  />
@@ -307,7 +311,7 @@
 
         <p:panel header="#{bundle.ReferenciaBancaria} #3" rendered="#{wizardManagedBean.cuentaBanco3}">
             <h:panelGroup>
-                <h:panelGrid columns="3" columnClasses="label, value">
+                <h:panelGrid columns="3" columnClasses="column1,column2,column3">
                     <p:outputLabel value="#{bundle.CreateBdvBancoCuentaLabel_codigoCuenta}" for="codigoCuentaReferencia3" />
                     <p:inputText id="codigoCuentaReferencia3" value="#{bdvUserController.selected.idEmpresa.idBancoCuenta3.codigoCuenta}" title="#{bundle.CreateBdvBancoCuentaTitle_codigoCuenta}" required="true" requiredMessage="#{bundle.CreateBdvBancoCuentaRequiredMessage_codigoCuenta}" maxlength="20"/>
                     <p:outputLabel value="#{bundle.CodigoCuentaClienteMsj}"  />
@@ -337,7 +341,7 @@
 
         <p:panel header="#{bundle.DatosGremio}">
             <h:panelGroup>
-                <h:panelGrid columns="3" columnClasses="label, value">                               
+                <h:panelGrid columns="3" columnClasses="column1,column2,column3">                               
                     <p:outputLabel value="#{bundle.CreateBdvEmpresaLabel_idSector}" for="idSector" />
                     <p:selectOneMenu id="idSector" value="#{bdvUserController.selected.idEmpresa.idSector}" required="true" requiredMessage="#{bundle.EditBdvEmpresaRequiredMessage_idSector}">
                         <f:selectItem itemLabel="#{bundle.SelectOneMessage}" itemValue="" noSelectionOption="true" />
