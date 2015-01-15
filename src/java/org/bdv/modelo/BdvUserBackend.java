@@ -33,6 +33,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "BdvUserBackend.findAll", query = "SELECT b FROM BdvUserBackend b"),
     @NamedQuery(name = "BdvUserBackend.findByIdUser", query = "SELECT b FROM BdvUserBackend b WHERE b.idUser = :idUser"),
     @NamedQuery(name = "BdvUserBackend.findByUserBackend", query = "SELECT b FROM BdvUserBackend b WHERE b.userBackend = :userBackend"),
+    @NamedQuery(name = "BdvUserBackend.findByUserContrasenia", query = "SELECT b FROM BdvUserBackend b WHERE b.userBackend = :userBackend AND b.contrasenia = :contrasenia"),
     @NamedQuery(name = "BdvUserBackend.findByContrasenia", query = "SELECT b FROM BdvUserBackend b WHERE b.contrasenia = :contrasenia"),
     @NamedQuery(name = "BdvUserBackend.findByActivo", query = "SELECT b FROM BdvUserBackend b WHERE b.activo = :activo")})
 public class BdvUserBackend implements Serializable {

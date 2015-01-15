@@ -107,7 +107,7 @@ public class BdvNacionalidad implements Serializable {
 
     @Override
     public String toString() {
-        return descripcion;
+        return descripcion.toUpperCase();
     }
     
 }

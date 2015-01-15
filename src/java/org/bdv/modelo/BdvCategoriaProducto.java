@@ -152,7 +152,7 @@ public class BdvCategoriaProducto implements Serializable {
 
     @Override
     public String toString() {
-        return descrCategoria;
+        return descrCategoria.toUpperCase();
     }
     
 }

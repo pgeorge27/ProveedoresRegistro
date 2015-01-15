@@ -7,7 +7,7 @@ Categoria de productos (Preguntar si es obligatorio)
 Cumplir con el estándar para las contraseñas
 Cifrar contraseñas
 Integraciión con LdapXXXX
-CrearBundle para envios de email y cosas diferentes
+√ CrearBundle para envios de email y cosas diferentes
 
 Frontend
 
@@ -16,7 +16,7 @@ Frontend
 √ Botón para agregar u ocultar las cuentas bancarias 2 y 3 en otras instituciones.
 Enviar email de notificación al administrador en el momento que un posible proveedor culmine su registro.
 Enviar email para recuperar contraseña.
-Implementar la subida de archivos (Persona natural y jurídica).
+√ Implementar la subida de archivos (Persona natural y jurídica).
 Guardado Parcial
 Mensajes de Requerido para todos los campos
 Revisar maxlengh de los campos
@@ -24,9 +24,9 @@ Mascara para pagina web
 Mascara numeros telefonicos
 Filtro para Estado Municipio Parroquia
 Los campos numero de identidad solo deben aceptar numeros
-Resumen de los Productos seleccionados
+√ Resumen de los Productos seleccionados
 Si el Usuario no a guardado toda su informacion al hacer login enviarlo a registro
-Validar que las cuentas bancarias sean de 20 caracteres
+√ Validar que las cuentas bancarias sean de 20 caracteres
 Validar que la url sea valida
 √ Despues de Registrarse enviar a pantalla de agradecimiento
 √ Habilitar los años desde (1900 - Actual) en el registro.
@@ -36,5 +36,5 @@ Backend
 
 Filtrar solo por usuarios que finalizaron el registro.
 Enviar email de notificación al proveedor cuando su registro sea aprobado.
-Administrador de usuarios Bancarios
-Login con tabla backend
+√ Administrador de usuarios Bancarios
+√ Login con tabla backend

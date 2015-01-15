@@ -32,7 +32,11 @@ and open the template in the editor.
 .ui-inputtext{
     width: 190px !important;
 }
+.ui-wizard-step-title--min {
+    font-size: 14px !important;
 
+margin: 5px 3px 0 0 !important;
+}
 
 .column1{width: 150px;height:auto}
 .column2{width: 250px;height:auto}

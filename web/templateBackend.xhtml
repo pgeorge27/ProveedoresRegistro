@@ -44,7 +44,7 @@
                             <p:menuitem value="Lista de Proveedores" outcome="/bdvUser/List" />
                         </p:submenu>
                         <p:submenu label="Usuarios Internos">
-                            <p:menuitem value="Lista de Usuarios" disabled="true" />
+                            <p:menuitem value="Lista de Usuarios" outcome="/bdvUserBackend/List" />
                         </p:submenu>
                         <p:submenu label="Administración">
                             <p:menuitem outcome="/bdvBancosNac/List" value="Lista de Bancos Nacionales"/>
@@ -60,7 +60,7 @@
                             <p:menuitem value="Mi Perfil" disabled="true" />
                             <p:menuitem value="Cambiar Mi Clave"  />
                             <p:separator />
-                            <p:menuitem value="Salir" actionListener="#{bdvUserController.logOut()}"  />
+                            <p:menuitem value="Salir" actionListener="#{bdvUserBackendController.logOut()}"  />
                         </p:submenu>
                         
                         

@@ -1,6 +1,10 @@
 package org.bdv.vista;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import org.bdv.modelo.BdvUser;
 import org.bdv.vista.util.JsfUtil;
 import org.bdv.vista.util.JsfUtil.PersistAction;
@@ -23,6 +27,7 @@ import javax.faces.convert.FacesConverter;
 import javax.persistence.NoResultException;
 import javax.servlet.http.HttpServletRequest;
 import org.bdv.helper.SendMail;
+import org.primefaces.event.FileUploadEvent;
 
 @ManagedBean(name = "bdvUserController")
 @SessionScoped
@@ -227,32 +232,12 @@ public class BdvUserController implements Serializable {
         }
         return null;
     }
-
-    public String entrarHomeBackend(String email, String contrasenia) {
-        try {
-            BdvUser a = getFacade().obtenerUsuario(email, contrasenia);
-            if (a.getEmailValido()) { //Si el usuario esta activo
-                try {
-                    ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
-                    context.redirect(context.getRequestContextPath() + "/faces/homeBackend.xhtml");
-                } catch (IOException ex) {
-                    Logger.getLogger(BdvUserController.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            } else { //Si el usuario esta inactivo
-                JsfUtil.addSuccessMessage("Usuario Inactivo");
-                return null;
-            }
-
-        } catch (EJBException | NoResultException | NullPointerException ex) {
-            JsfUtil.addErrorMessage(ex, ResourceBundle.getBundle("/Bundle").getString("EmailOrPasswordErrorOccured"));
-        }
-        return null;
-    }
-
+    
     public void completarRegistro() {
         try {
             selected.getIdEmpresa().setFinalizoRegistro(true);
             update();
+            new SendMail(ResourceBundle.getBundle("/BundleEmail").getString("EmailAdmin"),"admin");
             ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
             context.redirect(context.getRequestContextPath() + "/faces/registroFinalizado.xhtml");
         } catch (IOException ex) {
@@ -274,6 +259,119 @@ public class BdvUserController implements Serializable {
 
     private HttpServletRequest getRequest() {
         return (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
+    }
+    
+    private final String destination = "/Users/georgeperez/Desktop/test/";
+//            ResourceBundle.getBundle("/BundleUpload").getString("Destino");
+
+    public void uploadCertificadoSnc(FileUploadEvent event) {
+        try {
+            selected.getIdEmpresa().getIdRecaudos().setCertificadoSnc(destination + "certificadoSnc.pdf");
+//            copyFile(event.getFile().getFileName(), event.getFile().getInputstream());
+            copyFile("certificadoSnc.pdf", event.getFile().getInputstream());
+        } catch (IOException e) {
+        }
+    }
+    
+    public void uploadPlanillaRnc(FileUploadEvent event) {      
+        try {
+//            selected.setPlanillaRnc(destination + "PlanillaRnc.pdf");
+            copyFile("planillaRnc.pdf", event.getFile().getInputstream());
+        } catch (IOException e) {
+        }
+    }
+    
+    public void uploadComunicacionRepresentante(FileUploadEvent event) {      
+        try {
+//            selected.setComunicacionRepresentante(destination + "ComunicacionRepresentante.pdf");
+            copyFile("comunicacionRepresentante.pdf", event.getFile().getInputstream());
+        } catch (IOException e) {
+        }
+    }
+    
+    public void uploadSolvenciaSso(FileUploadEvent event) {      
+        try {
+//            selected.setSolvenciaSso(destination + "SolvenciaSso.pdf");
+            copyFile("solvenciaSso.pdf", event.getFile().getInputstream());
+        } catch (IOException e) {
+        }
+    }
+    
+    public void uploadSolvenciaLaboral(FileUploadEvent event) {      
+        try {
+//            selected.setCertificadoSnc(destination + "SolvenciaLaboral.pdf");
+            copyFile("solvenciaLaboral.pdf", event.getFile().getInputstream());
+        } catch (IOException e) {
+        }
+    }
+    
+    public void uploadSolvenciaInce(FileUploadEvent event) {      
+        try {
+//            selected.setCertificadoSnc(destination + "SolvenciaInce.pdf");
+            copyFile("solvenciaInce.pdf", event.getFile().getInputstream());
+        } catch (IOException e) {
+        }
+    }
+    
+    public void uploadOrganigrama(FileUploadEvent event) {      
+        try {
+//            selected.setOrganigrama(destination + "Organigrama.pdf");
+            copyFile("organigrama.pdf", event.getFile().getInputstream());
+        } catch (IOException e) {
+        }
+    }
+    
+    public void uploadListaProductos(FileUploadEvent event) {      
+        try {
+//            selected.setListaProductos(destination + "ListaProductos.pdf");
+            copyFile("listaProductos.pdf", event.getFile().getInputstream());
+        } catch (IOException e) {
+        }
+    }
+    
+    public void uploadReferenciaBancaria(FileUploadEvent event) {      
+        try {
+//            selected.setReferenciaBancaria(destination + "ReferenciaBancaria.pdf");
+            copyFile("referenciaBancaria.pdf", event.getFile().getInputstream());
+        } catch (IOException e) {
+        }
+    }
+    
+    public void uploadReferenciaComercial(FileUploadEvent event) {      
+        try {
+//            selected.setReferenciaComercial(destination + "ReferenciaComercial.pdf");
+            copyFile("referenciaComercial.pdf", event.getFile().getInputstream());
+        } catch (IOException e) {
+        }
+    }
+    
+    public void copyFile(String fileName, InputStream in) {
+        try {
+            // write the inputStream to a FileOutputStream
+            OutputStream out = new FileOutputStream(new File(destination + fileName));
+            int read = 0;
+            byte[] bytes = new byte[1024];
+            while ((read = in.read(bytes)) != -1) {
+                out.write(bytes, 0, read);
+            }
+            in.close();
+            out.flush();
+            out.close();
+            System.out.println("New file created!");
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+    
+    public void createFile(String file){
+        File files = new File(file);
+            if (files.exists()) {
+                    if (files.mkdirs()) {
+                            System.out.println("Multiple directories are created!");
+                    } else {
+                            System.out.println("Failed to create multiple directories!");
+                    }
+            }
     }
     
     @FacesConverter(forClass = BdvUser.class)

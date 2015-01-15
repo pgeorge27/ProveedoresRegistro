@@ -12,12 +12,12 @@
     </ui:define>
 
     <ui:define name="body">
-        <h:form >
-            <!--enctype="multipart/form-data"-->
+        <h:form enctype="multipart/form-data">
             <p:wizard id="wizard" showNavBar="false" widgetVar="wizardWV" showStepStatus="true" >
 
                 <p:tab id="paso3" title="Paso 3">
                     <ui:include src="Paso3.xhtml"/>
+                    <p:commandButton value="Volver" icon="ui-icon-arrow-1-w" disabled="true" />
                     <p:commandButton icon="ui-icon-arrowthick-1-e" process="@this" value="Siguiente" onclick="PF('wizardWV').next();" />
                 </p:tab>
 
@@ -39,11 +39,11 @@
                     <p:commandButton icon="ui-icon-arrowthick-1-e" process="@this" value="Siguiente"  onclick="PF('wizardWV').next();" />
                 </p:tab>
 
-<!--            <p:tab id="paso7" title="Paso 7">
+                <p:tab id="paso7" title="Paso 7">
                     <ui:include src="Paso7.xhtml"/>
-                    <p:commandButton value="Volver" onclick="PF('wizardWV').back();" />
-                    <p:commandButton process="@this" value="Siguiente"  onclick="PF('wizardWV').next();" />
-                </p:tab>-->
+                    <!--<p:commandButton value="Volver" icon="ui-icon-arrow-1-w" onclick="PF('wizardWV').back();" />-->
+                    <!--<p:commandButton icon="ui-icon-arrowthick-1-e" process="@this" value="Siguiente"  onclick="PF('wizardWV').next();" />-->
+                </p:tab>
 
                 <p:tab id="paso8" title="Paso 8">
                     <ui:include src="Paso8.xhtml"/>

@@ -106,7 +106,7 @@ public class BdvBancosNac implements Serializable {
 
     @Override
     public String toString() {
-        return bancoDescripcion;
+        return bancoDescripcion.toUpperCase();
     }
     
 }

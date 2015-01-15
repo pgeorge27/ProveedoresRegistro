@@ -1,5 +1,6 @@
 package org.bdv.vista;
 
+import java.io.IOException;
 import org.bdv.modelo.BdvUserBackend;
 import org.bdv.vista.util.JsfUtil;
 import org.bdv.vista.util.JsfUtil.PersistAction;
@@ -15,19 +16,23 @@ import javax.ejb.EJBException;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.component.UIComponent;
+import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
+import javax.persistence.NoResultException;
+import javax.servlet.http.HttpServletRequest;
+import org.bdv.modelo.BdvUser;
 
-
-@ManagedBean(name="bdvUserBackendController")
+@ManagedBean(name = "bdvUserBackendController")
 @SessionScoped
 public class BdvUserBackendController implements Serializable {
 
-
-    @EJB private org.bdv.controlador.BdvUserBackendFacade ejbFacade;
+    @EJB
+    private org.bdv.controlador.BdvUserBackendFacade ejbFacade;
     private List<BdvUserBackend> items = null;
     private BdvUserBackend selected;
+    private BdvUserBackend selected2;
 
     public BdvUserBackendController() {
     }
@@ -38,6 +43,14 @@ public class BdvUserBackendController implements Serializable {
 
     public void setSelected(BdvUserBackend selected) {
         this.selected = selected;
+    }
+
+    public BdvUserBackend getSelected2() {
+        return selected2;
+    }
+
+    public void setSelected2(BdvUserBackend selected2) {
+        this.selected2 = selected2;
     }
 
     protected void setEmbeddableKeys() {
@@ -54,6 +67,11 @@ public class BdvUserBackendController implements Serializable {
         selected = new BdvUserBackend();
         initializeEmbeddableKey();
         return selected;
+    }
+
+    public BdvUserBackend prepareCreate2() {
+        selected2 = new BdvUserBackend();
+        return selected2;
     }
 
     public void create() {
@@ -110,7 +128,6 @@ public class BdvUserBackendController implements Serializable {
         }
     }
 
-
     public List<BdvUserBackend> getItemsAvailableSelectMany() {
         return getFacade().findAll();
     }
@@ -119,7 +136,42 @@ public class BdvUserBackendController implements Serializable {
         return getFacade().findAll();
     }
 
-    @FacesConverter(forClass=BdvUserBackend.class)
+    public String entrarHomeBackend(String userBackend, String contrasenia) {
+        try {
+            BdvUserBackend user = getFacade().obtenerUsuario(userBackend, contrasenia);
+            if (user.getActivo()) { //Si el usuario esta activo
+                try {
+                    ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
+                    context.redirect(context.getRequestContextPath() + "/faces/homeBackend.xhtml");
+                } catch (IOException ex) {
+                    Logger.getLogger(BdvUserController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            } else { //Si el usuario esta inactivo
+                JsfUtil.addErrorMessage(ResourceBundle.getBundle("/Bundle").getString("UsuarioInactivo"));
+                return null;
+            }
+        } catch (EJBException | NoResultException | NullPointerException ex) {
+            JsfUtil.addErrorMessage(ex, ResourceBundle.getBundle("/Bundle").getString("EmailOrPasswordErrorOccured"));
+        }
+        return null;
+    }
+    
+    public void logOut() {
+        getRequest().getSession().invalidate();
+        this.selected = null;
+        try {
+            ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
+            context.redirect(context.getRequestContextPath() + "/faces/loginBackend.xhtml");
+        } catch (IOException ex) {
+            Logger.getLogger(BdvUserController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    private HttpServletRequest getRequest() {
+        return (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
+    }
+
+    @FacesConverter(forClass = BdvUserBackend.class)
     public static class BdvUserBackendControllerConverter implements Converter {
 
         @Override
@@ -127,7 +179,7 @@ public class BdvUserBackendController implements Serializable {
             if (value == null || value.length() == 0) {
                 return null;
             }
-            BdvUserBackendController controller = (BdvUserBackendController)facesContext.getApplication().getELResolver().
+            BdvUserBackendController controller = (BdvUserBackendController) facesContext.getApplication().getELResolver().
                     getValue(facesContext.getELContext(), null, "bdvUserBackendController");
             return controller.getFacade().find(getKey(value));
         }

@@ -107,7 +107,7 @@ public class BdvSectorGremio implements Serializable {
 
     @Override
     public String toString() {
-        return descripcion;
+        return descripcion.toUpperCase();
     }
     
 }

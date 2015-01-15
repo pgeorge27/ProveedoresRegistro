@@ -18,6 +18,7 @@ import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
+import org.primefaces.event.FileUploadEvent;
 
 
 @ManagedBean(name="bdvRecaudosController")
@@ -110,7 +111,6 @@ public class BdvRecaudosController implements Serializable {
         }
     }
 
-
     public List<BdvRecaudos> getItemsAvailableSelectMany() {
         return getFacade().findAll();
     }
@@ -118,7 +118,7 @@ public class BdvRecaudosController implements Serializable {
     public List<BdvRecaudos> getItemsAvailableSelectOne() {
         return getFacade().findAll();
     }
-
+    
     @FacesConverter(forClass=BdvRecaudos.class)
     public static class BdvRecaudosControllerConverter implements Converter {
 

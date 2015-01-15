@@ -31,7 +31,7 @@ public class BdvUserFacade extends AbstractFacade<BdvUser> {
         super(BdvUser.class);
     }
     
-     public BdvUser obtenerUsuario(String email, String contrasenia){
+    public BdvUser obtenerUsuario(String email, String contrasenia){
         try {
             em = getEntityManager();
             Query q = em.createNamedQuery("BdvUser.findByEmailAndContrasenia");

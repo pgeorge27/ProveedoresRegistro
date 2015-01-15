@@ -21,27 +21,22 @@
         <br />
         <br />
 
-        <h:form id="BdvUserCreateForm" title="#{bdvUserController.prepareCreate2()}">
+        <h:form id="BdvUserCreateForm" title="#{bdvUserBackendController.prepareCreate2()}">
             <p:messages id="growl"/>
             <h:panelGroup id="display"  >
                 <h:panelGrid columns="2" >
 
                     <h:outputLabel for="email" value="#{bundle.User}" />
-                    <p:inputText id="email" value="#{bdvUserController.selected2.email}" title="#{bundle.CreateBdvUserTitle_email}" required="true" requiredMessage="#{bundle.CreateBdvUserRequiredMessage_email}"/>
+                    <p:inputText id="email" value="#{bdvUserBackendController.selected2.userBackend}" title="#{bundle.CreateBdvUserTitle_email}" required="true" requiredMessage="#{bundle.CreateBdvUserRequiredMessage_email}"/>
                     <h:outputLabel for="contrasenia" value="#{bundle.Password}" />
-                    <p:password id="contrasenia" value="#{bdvUserController.selected2.contrasenia}" maxlength="15"
-                            title="#{bundle.CreateBdvUserTitle_contrasenia}" required="true"
-                            requiredMessage="##{bundle.CreateBdvUserRequiredMessage_contrasenia}" />
-                            
+                    <p:password id="contrasenia" value="#{bdvUserBackendController.selected2.contrasenia}"
+                                title="#{bundle.CreateBdvUserTitle_contrasenia}" required="true"
+                                requiredMessage="##{bundle.CreateBdvUserRequiredMessage_contrasenia}" />         
                     <p:outputPanel/>
-                    <p:commandButton update="display,growl" action="#{bdvUserController.entrarHomeBackend(bdvUserController.selected2.email,bdvUserController.selected2.contrasenia)}" value="#{bundle.Enter}"  />
-                    
+                    <p:commandButton update="display,growl" action="#{bdvUserBackendController.entrarHomeBackend(bdvUserBackendController.selected2.userBackend,bdvUserBackendController.selected2.contrasenia)}" value="#{bundle.Enter}"  />
                     <p:outputPanel/>
                     <p:link outcome="olvidoContrasenia" value="#{bundle.Forgotpassword}" />
-
                     <p:outputPanel/>
-                    <p:link outcome="#{bundle.LinkRegistro}" value="#{bundle.Register}" />
-
                 </h:panelGrid>
             </h:panelGroup>
         </h:form>

@@ -228,7 +228,7 @@ public class BdvEmpresa implements Serializable {
         //idContacto2 = new BdvContacto();
         //idContacto3 = new BdvContacto();
         bdvCategoriaProductoList = new ArrayList<>();
-//        idRecaudos = new BdvRecaudos();
+        idRecaudos = new BdvRecaudos();
         
         //Seteamos valores por defecto
         this.finalizoRegistro = false;

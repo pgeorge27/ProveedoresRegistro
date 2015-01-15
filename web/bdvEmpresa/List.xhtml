@@ -6,300 +6,295 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui">
 
-    <ui:composition template="/template.xhtml">
-
-
-        <ui:define name="title">
-            <h:outputText value="#{bundle.ListBdvEmpresaTitle}"></h:outputText>
-        </ui:define>
+    <ui:composition template="../templateBackend.xhtml">
 
         <ui:define name="body">
-                <h:form id="BdvEmpresaListForm">
-                    <p:panel header="#{bundle.ListBdvEmpresaTitle}">
-                        <p:dataTable id="datalist" value="#{bdvEmpresaController.items}" var="item"
-                            selectionMode="single" selection="#{bdvEmpresaController.selected}"
-                            paginator="true"
-                            rowKey="#{item.idEmpresa}"
-                            rows="10"
-                            rowsPerPageTemplate="10,20,30,40,50"
-                            >
+            <h:form id="BdvEmpresaListForm">
+                <p:panel header="#{bundle.ListBdvEmpresaTitle}">
+                    <p:dataTable id="datalist" value="#{bdvEmpresaController.items}" var="item"
+                                 selectionMode="single" selection="#{bdvEmpresaController.selected}"
+                                 paginator="true"
+                                 rowKey="#{item.idEmpresa}"
+                                 rows="10"
+                                 rowsPerPageTemplate="10,20,30,40,50"
+                                 >
 
-                            <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
-                            <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+                        <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
+                        <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
 
-                            <p:column>
-                                <f:facet name="header">
-                                    <h:outputText value="#{bundle.ListBdvEmpresaTitle_idEmpresa}"/>
-                                </f:facet>
-                                <h:outputText value="#{item.idEmpresa}"/>
-                            </p:column>
-                            <p:column>
-                                <f:facet name="header">
-                                    <h:outputText value="#{bundle.ListBdvEmpresaTitle_tipoPersona}"/>
-                                </f:facet>
-                                <h:outputText value="#{item.tipoPersona}"/>
-                            </p:column>
-                            <p:column>
-                                <f:facet name="header">
-                                    <h:outputText value="#{bundle.ListBdvEmpresaTitle_origen}"/>
-                                </f:facet>
-                                <h:outputText value="#{item.origen}"/>
-                            </p:column>
-                            <p:column>
-                                <f:facet name="header">
-                                    <h:outputText value="#{bundle.ListBdvEmpresaTitle_ente}"/>
-                                </f:facet>
-                                <h:outputText value="#{item.ente}"/>
-                            </p:column>
-                            <p:column>
-                                <f:facet name="header">
-                                    <h:outputText value="#{bundle.ListBdvEmpresaTitle_tipoRif}"/>
-                                </f:facet>
-                                <h:outputText value="#{item.tipoRif}"/>
-                            </p:column>
-                            <p:column>
-                                <f:facet name="header">
-                                    <h:outputText value="#{bundle.ListBdvEmpresaTitle_rif}"/>
-                                </f:facet>
-                                <h:outputText value="#{item.rif}"/>
-                            </p:column>
-                            <p:column>
-                                <f:facet name="header">
-                                    <h:outputText value="#{bundle.ListBdvEmpresaTitle_razonSocial}"/>
-                                </f:facet>
-                                <h:outputText value="#{item.razonSocial}"/>
-                            </p:column>
-                            <p:column>
-                                <f:facet name="header">
-                                    <h:outputText value="#{bundle.ListBdvEmpresaTitle_nombreComercial}"/>
-                                </f:facet>
-                                <h:outputText value="#{item.nombreComercial}"/>
-                            </p:column>
-                            <p:column>
-                                <f:facet name="header">
-                                    <h:outputText value="#{bundle.ListBdvEmpresaTitle_paginaWeb}"/>
-                                </f:facet>
-                                <h:outputText value="#{item.paginaWeb}"/>
-                            </p:column>
-                            <p:column>
-                                <f:facet name="header">
-                                    <h:outputText value="#{bundle.ListBdvEmpresaTitle_anioInicioActividades}"/>
-                                </f:facet>
-                                <h:outputText value="#{item.anioInicioActividades}"/>
-                            </p:column>
-                            <p:column>
-                                <f:facet name="header">
-                                    <h:outputText value="#{bundle.ListBdvEmpresaTitle_domicilioTributario}"/>
-                                </f:facet>
-                                <h:outputText value="#{item.domicilioTributario}"/>
-                            </p:column>
-                            <p:column>
-                                <f:facet name="header">
-                                    <h:outputText value="#{bundle.ListBdvEmpresaTitle_interseccionReferencia}"/>
-                                </f:facet>
-                                <h:outputText value="#{item.interseccionReferencia}"/>
-                            </p:column>
-                            <p:column>
-                                <f:facet name="header">
-                                    <h:outputText value="#{bundle.ListBdvEmpresaTitle_numero}"/>
-                                </f:facet>
-                                <h:outputText value="#{item.numero}"/>
-                            </p:column>
-                            <p:column>
-                                <f:facet name="header">
-                                    <h:outputText value="#{bundle.ListBdvEmpresaTitle_edificioReferencia}"/>
-                                </f:facet>
-                                <h:outputText value="#{item.edificioReferencia}"/>
-                            </p:column>
-                            <p:column>
-                                <f:facet name="header">
-                                    <h:outputText value="#{bundle.ListBdvEmpresaTitle_departamentoOficina}"/>
-                                </f:facet>
-                                <h:outputText value="#{item.departamentoOficina}"/>
-                            </p:column>
-                            <p:column>
-                                <f:facet name="header">
-                                    <h:outputText value="#{bundle.ListBdvEmpresaTitle_pais}"/>
-                                </f:facet>
-                                <h:outputText value="#{item.pais}"/>
-                            </p:column>
-                            <p:column>
-                                <f:facet name="header">
-                                    <h:outputText value="#{bundle.ListBdvEmpresaTitle_tlfOficina}"/>
-                                </f:facet>
-                                <h:outputText value="#{item.tlfOficina}"/>
-                            </p:column>
-                            <p:column>
-                                <f:facet name="header">
-                                    <h:outputText value="#{bundle.ListBdvEmpresaTitle_tlfCelular}"/>
-                                </f:facet>
-                                <h:outputText value="#{item.tlfCelular}"/>
-                            </p:column>
-                            <p:column>
-                                <f:facet name="header">
-                                    <h:outputText value="#{bundle.ListBdvEmpresaTitle_tlfOpcional}"/>
-                                </f:facet>
-                                <h:outputText value="#{item.tlfOpcional}"/>
-                            </p:column>
-                            <p:column>
-                                <f:facet name="header">
-                                    <h:outputText value="#{bundle.ListBdvEmpresaTitle_otroProducto}"/>
-                                </f:facet>
-                                <h:outputText value="#{item.otroProducto}"/>
-                            </p:column>
-                            <p:column>
-                                <f:facet name="header">
-                                    <h:outputText value="#{bundle.ListBdvEmpresaTitle_finalizoRegistro}"/>
-                                </f:facet>
-                                <p:selectBooleanCheckbox value="#{item.finalizoRegistro}" disabled="true"/>
-                            </p:column>
-                            <p:column>
-                                <f:facet name="header">
-                                    <h:outputText value="#{bundle.ListBdvEmpresaTitle_activadoDesactivadoPor}"/>
-                                </f:facet>
-                                <h:outputText value="#{item.activadoDesactivadoPor}"/>
-                            </p:column>
-                            <p:column>
-                                <f:facet name="header">
-                                    <h:outputText value="#{bundle.ListBdvEmpresaTitle_fechaRegistro}"/>
-                                </f:facet>
-                                <h:outputText value="#{item.fechaRegistro}">
-                                    <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
-                                </h:outputText>
-                            </p:column>
-                            <p:column>
-                                <f:facet name="header">
-                                    <h:outputText value="#{bundle.ListBdvEmpresaTitle_fechaActualizado}"/>
-                                </f:facet>
-                                <h:outputText value="#{item.fechaActualizado}">
-                                    <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
-                                </h:outputText>
-                            </p:column>
-                            <p:column>
-                                <f:facet name="header">
-                                    <h:outputText value="#{bundle.ListBdvEmpresaTitle_fechaActivadoDesactivado}"/>
-                                </f:facet>
-                                <h:outputText value="#{item.fechaActivadoDesactivado}">
-                                    <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
-                                </h:outputText>
-                            </p:column>
-                            <p:column>
-                                <f:facet name="header">
-                                    <h:outputText value="#{bundle.ListBdvEmpresaTitle_idBancoCuenta1}"/>
-                                </f:facet>
-                                <h:outputText value="#{item.idBancoCuenta1}"/>
-                            </p:column>
-                            <p:column>
-                                <f:facet name="header">
-                                    <h:outputText value="#{bundle.ListBdvEmpresaTitle_idNacionalidad}"/>
-                                </f:facet>
-                                <h:outputText value="#{item.idNacionalidad}"/>
-                            </p:column>
-                            <p:column>
-                                <f:facet name="header">
-                                    <h:outputText value="#{bundle.ListBdvEmpresaTitle_idContacto1}"/>
-                                </f:facet>
-                                <h:outputText value="#{item.idContacto1}"/>
-                            </p:column>
-                            <p:column>
-                                <f:facet name="header">
-                                    <h:outputText value="#{bundle.ListBdvEmpresaTitle_idRepresentateLegal1}"/>
-                                </f:facet>
-                                <h:outputText value="#{item.idRepresentateLegal1}"/>
-                            </p:column>
-                            <p:column>
-                                <f:facet name="header">
-                                    <h:outputText value="#{bundle.ListBdvEmpresaTitle_idRepresentateLegal2}"/>
-                                </f:facet>
-                                <h:outputText value="#{item.idRepresentateLegal2}"/>
-                            </p:column>
-                            <p:column>
-                                <f:facet name="header">
-                                    <h:outputText value="#{bundle.ListBdvEmpresaTitle_idRepresentateLegal3}"/>
-                                </f:facet>
-                                <h:outputText value="#{item.idRepresentateLegal3}"/>
-                            </p:column>
-                            <p:column>
-                                <f:facet name="header">
-                                    <h:outputText value="#{bundle.ListBdvEmpresaTitle_idBancoCuenta2}"/>
-                                </f:facet>
-                                <h:outputText value="#{item.idBancoCuenta2}"/>
-                            </p:column>
-                            <p:column>
-                                <f:facet name="header">
-                                    <h:outputText value="#{bundle.ListBdvEmpresaTitle_municipio}"/>
-                                </f:facet>
-                                <h:outputText value="#{item.municipio}"/>
-                            </p:column>
-                            <p:column>
-                                <f:facet name="header">
-                                    <h:outputText value="#{bundle.ListBdvEmpresaTitle_estado}"/>
-                                </f:facet>
-                                <h:outputText value="#{item.estado}"/>
-                            </p:column>
-                            <p:column>
-                                <f:facet name="header">
-                                    <h:outputText value="#{bundle.ListBdvEmpresaTitle_parroquia}"/>
-                                </f:facet>
-                                <h:outputText value="#{item.parroquia}"/>
-                            </p:column>
-                            <p:column>
-                                <f:facet name="header">
-                                    <h:outputText value="#{bundle.ListBdvEmpresaTitle_idContacto2}"/>
-                                </f:facet>
-                                <h:outputText value="#{item.idContacto2}"/>
-                            </p:column>
-                            <p:column>
-                                <f:facet name="header">
-                                    <h:outputText value="#{bundle.ListBdvEmpresaTitle_idBancoCuenta3}"/>
-                                </f:facet>
-                                <h:outputText value="#{item.idBancoCuenta3}"/>
-                            </p:column>
-                            <p:column>
-                                <f:facet name="header">
-                                    <h:outputText value="#{bundle.ListBdvEmpresaTitle_idBancoCuentaVnz1}"/>
-                                </f:facet>
-                                <h:outputText value="#{item.idBancoCuentaVnz1}"/>
-                            </p:column>
-                            <p:column>
-                                <f:facet name="header">
-                                    <h:outputText value="#{bundle.ListBdvEmpresaTitle_idBancoCuentaVnz2}"/>
-                                </f:facet>
-                                <h:outputText value="#{item.idBancoCuentaVnz2}"/>
-                            </p:column>
-                            <p:column>
-                                <f:facet name="header">
-                                    <h:outputText value="#{bundle.ListBdvEmpresaTitle_idContacto3}"/>
-                                </f:facet>
-                                <h:outputText value="#{item.idContacto3}"/>
-                            </p:column>
-                            <p:column>
-                                <f:facet name="header">
-                                    <h:outputText value="#{bundle.ListBdvEmpresaTitle_idRecaudos}"/>
-                                </f:facet>
-                                <h:outputText value="#{item.idRecaudos}"/>
-                            </p:column>
-                            <p:column>
-                                <f:facet name="header">
-                                    <h:outputText value="#{bundle.ListBdvEmpresaTitle_idNaturalezaCliente}"/>
-                                </f:facet>
-                                <h:outputText value="#{item.idNaturalezaCliente}"/>
-                            </p:column>
-                            <p:column>
-                                <f:facet name="header">
-                                    <h:outputText value="#{bundle.ListBdvEmpresaTitle_idSector}"/>
-                                </f:facet>
-                                <h:outputText value="#{item.idSector}"/>
-                            </p:column>
-                            <f:facet name="footer">
-                                <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{bdvEmpresaController.prepareCreate}" update=":BdvEmpresaCreateForm" oncomplete="PF('BdvEmpresaCreateDialog').show()"/>
-                                <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":BdvEmpresaViewForm" oncomplete="PF('BdvEmpresaViewDialog').show()" disabled="#{empty bdvEmpresaController.selected}"/>
-                                <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":BdvEmpresaEditForm" oncomplete="PF('BdvEmpresaEditDialog').show()" disabled="#{empty bdvEmpresaController.selected}"/>
-                                <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{bdvEmpresaController.destroy}" update=":growl,datalist" disabled="#{empty bdvEmpresaController.selected}"/>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListBdvEmpresaTitle_idEmpresa}"/>
                             </f:facet>
-                        </p:dataTable>
-                    </p:panel>
-                </h:form>
+                            <h:outputText value="#{item.idEmpresa}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListBdvEmpresaTitle_tipoPersona}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.tipoPersona}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListBdvEmpresaTitle_origen}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.origen}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListBdvEmpresaTitle_ente}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.ente}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListBdvEmpresaTitle_tipoRif}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.tipoRif}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListBdvEmpresaTitle_rif}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.rif}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListBdvEmpresaTitle_razonSocial}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.razonSocial}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListBdvEmpresaTitle_nombreComercial}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nombreComercial}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListBdvEmpresaTitle_paginaWeb}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.paginaWeb}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListBdvEmpresaTitle_anioInicioActividades}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.anioInicioActividades}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListBdvEmpresaTitle_domicilioTributario}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.domicilioTributario}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListBdvEmpresaTitle_interseccionReferencia}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.interseccionReferencia}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListBdvEmpresaTitle_numero}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.numero}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListBdvEmpresaTitle_edificioReferencia}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.edificioReferencia}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListBdvEmpresaTitle_departamentoOficina}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.departamentoOficina}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListBdvEmpresaTitle_pais}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.pais}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListBdvEmpresaTitle_tlfOficina}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.tlfOficina}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListBdvEmpresaTitle_tlfCelular}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.tlfCelular}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListBdvEmpresaTitle_tlfOpcional}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.tlfOpcional}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListBdvEmpresaTitle_otroProducto}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.otroProducto}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListBdvEmpresaTitle_finalizoRegistro}"/>
+                            </f:facet>
+                            <p:selectBooleanCheckbox value="#{item.finalizoRegistro}" disabled="true"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListBdvEmpresaTitle_activadoDesactivadoPor}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.activadoDesactivadoPor}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListBdvEmpresaTitle_fechaRegistro}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fechaRegistro}">
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListBdvEmpresaTitle_fechaActualizado}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fechaActualizado}">
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListBdvEmpresaTitle_fechaActivadoDesactivado}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fechaActivadoDesactivado}">
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListBdvEmpresaTitle_idBancoCuenta1}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idBancoCuenta1}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListBdvEmpresaTitle_idNacionalidad}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idNacionalidad}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListBdvEmpresaTitle_idContacto1}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idContacto1}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListBdvEmpresaTitle_idRepresentateLegal1}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idRepresentateLegal1}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListBdvEmpresaTitle_idRepresentateLegal2}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idRepresentateLegal2}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListBdvEmpresaTitle_idRepresentateLegal3}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idRepresentateLegal3}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListBdvEmpresaTitle_idBancoCuenta2}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idBancoCuenta2}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListBdvEmpresaTitle_municipio}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.municipio}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListBdvEmpresaTitle_estado}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.estado}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListBdvEmpresaTitle_parroquia}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.parroquia}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListBdvEmpresaTitle_idContacto2}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idContacto2}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListBdvEmpresaTitle_idBancoCuenta3}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idBancoCuenta3}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListBdvEmpresaTitle_idBancoCuentaVnz1}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idBancoCuentaVnz1}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListBdvEmpresaTitle_idBancoCuentaVnz2}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idBancoCuentaVnz2}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListBdvEmpresaTitle_idContacto3}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idContacto3}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListBdvEmpresaTitle_idRecaudos}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idRecaudos}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListBdvEmpresaTitle_idNaturalezaCliente}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idNaturalezaCliente}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListBdvEmpresaTitle_idSector}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idSector}"/>
+                        </p:column>
+                        <f:facet name="footer">
+                            <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{bdvEmpresaController.prepareCreate}" update=":BdvEmpresaCreateForm" oncomplete="PF('BdvEmpresaCreateDialog').show()"/>
+                            <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":BdvEmpresaViewForm" oncomplete="PF('BdvEmpresaViewDialog').show()" disabled="#{empty bdvEmpresaController.selected}"/>
+                            <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":BdvEmpresaEditForm" oncomplete="PF('BdvEmpresaEditDialog').show()" disabled="#{empty bdvEmpresaController.selected}"/>
+                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{bdvEmpresaController.destroy}" update=":growl,datalist" disabled="#{empty bdvEmpresaController.selected}"/>
+                        </f:facet>
+                    </p:dataTable>
+                </p:panel>
+            </h:form>
 
             <ui:include src="Create.xhtml"/>
             <ui:include src="Edit.xhtml"/>

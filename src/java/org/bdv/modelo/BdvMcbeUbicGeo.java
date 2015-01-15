@@ -155,7 +155,7 @@ public class BdvMcbeUbicGeo implements Serializable {
 
     @Override
     public String toString() {
-        return descripcion;
+        return descripcion.toUpperCase();
     }
     
 }

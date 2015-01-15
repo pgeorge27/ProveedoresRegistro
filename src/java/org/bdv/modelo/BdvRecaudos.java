@@ -98,6 +98,8 @@ public class BdvRecaudos implements Serializable {
     private List<BdvEmpresa> bdvEmpresaList;
 
     public BdvRecaudos() {
+        this.dateRegister = new Date();
+        this.dateUpdate = new Date();
     }
 
     public BdvRecaudos(Integer idRecaudos) {

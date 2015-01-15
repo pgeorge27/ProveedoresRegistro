@@ -112,7 +112,7 @@ public class BdvRole implements Serializable {
 
     @Override
     public String toString() {
-        return roleNombre;
+        return roleNombre.toUpperCase();
     }
     
 }
