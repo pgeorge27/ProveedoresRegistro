@@ -5,6 +5,7 @@ Cumplir con el estándar para las contraseñas
 verificar que la contraseña sea como minimo de 8 caracteres
 Cifrar contraseñas
 Integraciión con LdapXXXX
+Crear un usuario conectado para el back y otro para el front
 √ Crear tabla de usuarios administrativos.
 √ Campos de códigos de cuentas deben soportar 20 caracteres.
 √ Campo para saber si culmino su registro
@@ -17,12 +18,11 @@ Enviar email para recuperar contraseña.
 Guardado Parcial
 Mensajes de Requerido para todos los campos
 Revisar maxlengh de los campos
-Mascara para pagina web 
+Mascara para pagina web - Validar que la url sea valida
+Si el Usuario no a guardado toda su informacion al hacer login enviarlo al registro
 √ Mascara numeros telefonicos
-Filtro para Estado Municipio Parroquia
-Los campos numero de identidad solo deben aceptar numeros
-Si el Usuario no a guardado toda su informacion al hacer login enviarlo a registro
-Validar que la url sea valida
+√ Filtro para Estado Municipio Parroquia
+√ Los campos numero de identidad solo deben aceptar numeros
 √ Botón para agregar u ocultar los contactos 2 y 3.
 √ Botón para agregar u ocultar la segunda cuentas bancaria en el banco de Venezuela.
 √ Botón para agregar u ocultar las cuentas bancarias 2 y 3 en otras instituciones.
