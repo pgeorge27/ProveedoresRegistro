@@ -2,7 +2,6 @@ TODO
 
 Categoria de productos (Preguntar si es obligatorio)
 Cumplir con el estándar para las contraseñas
-verificar que la contraseña sea como minimo de 8 caracteres
 Cifrar contraseñas
 Integraciión con LdapXXXX
 Crear un usuario conectado para el back y otro para el front
@@ -20,6 +19,7 @@ Mensajes de Requerido para todos los campos
 Revisar maxlengh de los campos
 Mascara para pagina web - Validar que la url sea valida
 Si el Usuario no a guardado toda su informacion al hacer login enviarlo al registro
+Verificar los campos Agregar (inicializar clase)
 √ Mascara numeros telefonicos
 √ Filtro para Estado Municipio Parroquia
 √ Los campos numero de identidad solo deben aceptar numeros
@@ -40,3 +40,37 @@ Filtrar solo por usuarios que finalizaron el registro.
 Enviar email de notificación al proveedor cuando su registro sea aprobado.
 √ Administrador de usuarios Bancarios
 √ Login con tabla backend
+
+
+LISTA DE ACTIVIDADES PENDIENTES
+
+Generales
+
+•	Implementar css acorde a la institución.
+•	Cumplir con el estándar para las contraseñas.
+•	Cifrar contraseñas.
+•	Integrar con LDAP.
+•	Crear un usuario conectado para el backend y otro para el frontend.
+•	Iniciar el proyecto en ambiente de calidad.
+
+Frontend
+
+•	Enviar email de notificación al administrador en el momento que un posible proveedor culmine su registro.
+•	Enviar email para recuperar contraseña.
+•	Guardado Parcial.
+•	Mensajes para todos los campos que son obligatorios.
+•	Revisar el ancho máximo de los campos.
+•	Validar que la url en el campo de pagina web sea valida.
+•	Si el Usuario no a guardado toda su información al ingresar , enviarlo al modulo de registro, en caso contrario enviarlo al modulo principal.
+•	Verificar los eventos agregar y eliminar. (Inicializar las clases).
+•	Validar la categoría de productos. Deben ser dinámico su obligatoriedad.
+•	Si es persona natural, solo mostrar los documentos obligatorios que debe cargar al sistema.
+•       Mostrar en formato html el contrato
+
+
+Backend
+
+•	Mostrar solo usuarios que completaron el registro.
+•	Modulo para mostrar detalles del proveedor y gestionar su estatus (activarlo o desactivarlo).
+•	Enviar email de notificación al proveedor cuando su registro sea aprobado o negado.
+
