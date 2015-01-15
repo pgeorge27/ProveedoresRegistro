@@ -1,74 +1,76 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-  xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-  xmlns:h="http://xmlns.jcp.org/jsf/html"
-  xmlns:f="http://xmlns.jcp.org/jsf/core"
-  xmlns:p="http://primefaces.org/ui">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
 
-  <ui:composition>
+    <ui:composition>
 
-    <p:panel header="#{bundle.DatosProveedor}">
-      <p:messages />
-        <h:panelGroup>
-          <h:panelGrid columns="3" columnClasses="label, value">
-            <p:outputLabel value="#{bundle.CreateBdvEmpresaLabel_domicilioTributario}" for="domicilioTributario" />
-            <p:inputText id="domicilioTributario" value="#{bdvUserController.selected.idEmpresa.domicilioTributario}" title="#{bundle.CreateBdvEmpresaTitle_domicilioTributario}" required="true" requiredMessage="#{bundle.CreateBdvEmpresaRequiredMessage_domicilioTributario}"/>
-            <p:outputLabel value="#{bundle.DomicilioTributarioMsj}"  />
-            <p:outputLabel value="#{bundle.CreateBdvEmpresaLabel_interseccionReferencia}" for="interseccionReferencia" />
-            <p:inputText id="interseccionReferencia" value="#{bdvUserController.selected.idEmpresa.interseccionReferencia}" title="#{bundle.CreateBdvEmpresaTitle_interseccionReferencia}" />
-            <p:outputLabel value="#{bundle.InterseccionMsj}"  />
-            <p:outputLabel value="#{bundle.CreateBdvEmpresaLabel_numero}" for="numero" />
-            <p:inputText id="numero" value="#{bdvUserController.selected.idEmpresa.numero}" title="#{bundle.CreateBdvEmpresaTitle_numero}" />
-            <p:outputLabel value="#{bundle.NumeroMsj}"  />
-            <p:outputLabel value="#{bundle.CreateBdvEmpresaLabel_edificioReferencia}" for="edificioReferencia" />
-            <p:inputText id="edificioReferencia" value="#{bdvUserController.selected.idEmpresa.edificioReferencia}" title="#{bundle.CreateBdvEmpresaTitle_edificioReferencia}" />
-            <p:outputLabel value="#{bundle.EdificioMsj}"  />
-            <p:outputLabel value="#{bundle.CreateBdvEmpresaLabel_departamentoOficina}" for="departamentoOficina" />
-            <p:inputText id="departamentoOficina" value="#{bdvUserController.selected.idEmpresa.departamentoOficina}" title="#{bundle.CreateBdvEmpresaTitle_departamentoOficina}" />
-            <p:outputLabel value="#{bundle.DepartamentoMsj}"  />
-            <p:outputLabel value="#{bundle.CreateBdvEmpresaLabel_pais}" for="pais" />
-            <p:selectOneMenu id="pais" value="#{bdvUserController.selected.idEmpresa.pais}" required="true" requiredMessage="#{bundle.CreateBdvEmpresaRequiredMessage_pais}">
-              <f:selectItem itemLabel="SELECCIONE" itemValue="" noSelectionOption="true" />
-              <f:selectItem itemLabel="VENEZUELA" itemValue="VENEZUELA" />
-             </p:selectOneMenu>
-            <p:outputLabel value="#{bundle.PaisMsj}"  />
-            <p:outputLabel value="#{bundle.CreateBdvEmpresaLabel_estado}" for="estado" />
-            <p:selectOneMenu id="estado" value="#{bdvUserController.selected.idEmpresa.estado}" required="true" requiredMessage="#{bundle.EditBdvEmpresaRequiredMessage_estado}">
-              <f:selectItem itemLabel="SELECCIONE" itemValue="" noSelectionOption="true" />
-              <f:selectItems value="#{bdvMcbeUbicGeoController.itemsAvailableSelectOne}"
-               var="estadoItem"
-               itemValue="#{estadoItem}"/>
-             </p:selectOneMenu>
-             <p:outputLabel value="#{bundle.EstadoMsj}"  />
-             <p:outputLabel value="#{bundle.CreateBdvEmpresaLabel_municipio}" for="municipio" />
-             <p:selectOneMenu id="municipio" value="#{bdvUserController.selected.idEmpresa.municipio}" required="true" requiredMessage="#{bundle.EditBdvEmpresaRequiredMessage_municipio}">
-              <f:selectItem itemLabel="SELECCIONE" itemValue="" noSelectionOption="true" />
-              <f:selectItems value="#{bdvMcbeUbicGeoController.itemsAvailableSelectOne}"
-               var="municipioItem"
-               itemValue="#{municipioItem}"/>
-             </p:selectOneMenu>
-             <p:outputLabel value="#{bundle.MunicipioMsj}"  />
-             <p:outputLabel value="#{bundle.CreateBdvEmpresaLabel_parroquia}" for="parroquia" />
-             <p:selectOneMenu id="parroquia" value="#{bdvUserController.selected.idEmpresa.parroquia}" required="true" requiredMessage="#{bundle.EditBdvEmpresaRequiredMessage_parroquia}">
-              <f:selectItem itemLabel="SELECCIONE" itemValue="" noSelectionOption="true" />
-              <f:selectItems value="#{bdvMcbeUbicGeoController.itemsAvailableSelectOne}"
-               var="parroquiaItem"
-               itemValue="#{parroquiaItem}"/>
-             </p:selectOneMenu>
-             <p:outputLabel value="#{bundle.ParroquiaMsj}"  />
-             <p:outputLabel value="#{bundle.CreateBdvEmpresaLabel_tlfOficina}" for="tlfOficina" />
-             <p:inputText id="tlfOficina" value="#{bdvUserController.selected.idEmpresa.tlfOficina}" title="#{bundle.CreateBdvEmpresaTitle_tlfOficina}" />
-             <p:outputLabel value="#{bundle.OficinaTlfMsj}"  />
-             <p:outputLabel value="#{bundle.CreateBdvEmpresaLabel_tlfCelular}" for="tlfCelular" />
-             <p:inputText id="tlfCelular" value="#{bdvUserController.selected.idEmpresa.tlfCelular}" title="#{bundle.CreateBdvEmpresaTitle_tlfCelular}" />
-             <p:outputLabel value="#{bundle.CelularTlfMsj}"  />
-             <p:outputLabel value="#{bundle.CreateBdvEmpresaLabel_tlfOpcional}" for="tlfOpcional" />
-             <p:inputText id="tlfOpcional" value="#{bdvUserController.selected.idEmpresa.tlfOpcional}" title="#{bundle.CreateBdvEmpresaTitle_tlfOpcional}" />
-             <p:outputLabel value="#{bundle.OpcionalTlfMsj}"  />
-           </h:panelGrid>
-         </h:panelGroup>
-     </p:panel>
+        <p:panel header="#{bundle.DatosProveedor}">
+            <p:messages />
+            <h:panelGroup>
+                <h:panelGrid columns="3" columnClasses="label, value">
+                    <p:outputLabel value="#{bundle.CreateBdvEmpresaLabel_domicilioTributario}" for="domicilioTributario" />
+                    <p:inputText id="domicilioTributario" value="#{bdvUserController.selected.idEmpresa.domicilioTributario}" title="#{bundle.CreateBdvEmpresaTitle_domicilioTributario}" required="true" requiredMessage="#{bundle.CreateBdvEmpresaRequiredMessage_domicilioTributario}"/>
+                    <p:outputLabel value="#{bundle.DomicilioTributarioMsj}"  />
+                    <p:outputLabel value="#{bundle.CreateBdvEmpresaLabel_interseccionReferencia}" for="interseccionReferencia" />
+                    <p:inputText id="interseccionReferencia" value="#{bdvUserController.selected.idEmpresa.interseccionReferencia}" title="#{bundle.CreateBdvEmpresaTitle_interseccionReferencia}" />
+                    <p:outputLabel value="#{bundle.InterseccionMsj}"  />
+                    <p:outputLabel value="#{bundle.CreateBdvEmpresaLabel_numero}" for="numero" />
+                    <p:inputText id="numero" value="#{bdvUserController.selected.idEmpresa.numero}" title="#{bundle.CreateBdvEmpresaTitle_numero}" />
+                    <p:outputLabel value="#{bundle.NumeroMsj}"  />
+                    <p:outputLabel value="#{bundle.CreateBdvEmpresaLabel_edificioReferencia}" for="edificioReferencia" />
+                    <p:inputText id="edificioReferencia" value="#{bdvUserController.selected.idEmpresa.edificioReferencia}" title="#{bundle.CreateBdvEmpresaTitle_edificioReferencia}" />
+                    <p:outputLabel value="#{bundle.EdificioMsj}"  />
+                    <p:outputLabel value="#{bundle.CreateBdvEmpresaLabel_departamentoOficina}" for="departamentoOficina" />
+                    <p:inputText id="departamentoOficina" value="#{bdvUserController.selected.idEmpresa.departamentoOficina}" title="#{bundle.CreateBdvEmpresaTitle_departamentoOficina}" />
+                    <p:outputLabel value="#{bundle.DepartamentoMsj}"  />
+                    <p:outputLabel value="#{bundle.CreateBdvEmpresaLabel_pais}" for="pais" />
+                    <p:selectOneMenu id="pais" value="#{bdvUserController.selected.idEmpresa.pais}" required="true" requiredMessage="#{bundle.CreateBdvEmpresaRequiredMessage_pais}">
+                        <f:selectItem itemLabel="#{bundle.SelectOneMessage}" itemValue="" noSelectionOption="true" />
+                        <f:selectItem itemLabel="VENEZUELA" itemValue="VENEZUELA" />
+                    </p:selectOneMenu>
+                    <p:outputLabel value="#{bundle.PaisMsj}"  />
+                    <p:outputLabel value="#{bundle.CreateBdvEmpresaLabel_estado}" for="estado" />
+                    <p:selectOneMenu id="estado" value="#{bdvUserController.selected.idEmpresa.estado}" required="true" requiredMessage="#{bundle.EditBdvEmpresaRequiredMessage_estado}">
+                        <p:ajax listener="#{bdvMcbeUbicGeoController.setIdEstado(bdvUserController.selected.idEmpresa.estado.idUbicGeo)}" update="municipio parroquia" />
+                        <f:selectItem itemLabel="#{bundle.SelectOneMessage}" itemValue="" noSelectionOption="true" />
+                        <f:selectItems value="#{bdvMcbeUbicGeoController.obtenerEstados()}"
+                                       var="estadoItem"
+                                       itemValue="#{estadoItem}"/>
+                    </p:selectOneMenu>
+                    <p:outputLabel value="#{bundle.EstadoMsj}"  />
+                    <p:outputLabel value="#{bundle.CreateBdvEmpresaLabel_municipio}" for="municipio" />
+                    <p:selectOneMenu id="municipio" value="#{bdvUserController.selected.idEmpresa.municipio}" required="true" requiredMessage="#{bundle.EditBdvEmpresaRequiredMessage_municipio}">
+                        <p:ajax listener="#{bdvMcbeUbicGeoController.setIdMunicipio(bdvUserController.selected.idEmpresa.municipio.idUbicGeo)}" update="parroquia" />
+                        <f:selectItem itemLabel="#{bundle.SelectOneMessage}" itemValue="" noSelectionOption="true" />
+                        <f:selectItems value="#{bdvMcbeUbicGeoController.obtenerMunicipios()}"
+                                       var="municipioItem"
+                                       itemValue="#{municipioItem}"/>
+                    </p:selectOneMenu>
+                    <p:outputLabel value="#{bundle.MunicipioMsj}"  />
+                    <p:outputLabel value="#{bundle.CreateBdvEmpresaLabel_parroquia}" for="parroquia" />
+                    <p:selectOneMenu id="parroquia" value="#{bdvUserController.selected.idEmpresa.parroquia}" required="true" requiredMessage="#{bundle.EditBdvEmpresaRequiredMessage_parroquia}">
+                        <f:selectItem itemLabel="#{bundle.SelectOneMessage}" itemValue="" noSelectionOption="true" />
+                        <f:selectItems value="#{bdvMcbeUbicGeoController.obtenerParroquias()}"
+                                       var="parroquiaItem"
+                                       itemValue="#{parroquiaItem}"/>
+                    </p:selectOneMenu> 
+                    <p:outputLabel value="#{bundle.ParroquiaMsj}"  />
+                    <p:outputLabel value="#{bundle.CreateBdvEmpresaLabel_tlfOficina}" for="tlfOficina" />
+                    <p:inputMask mask="(9999)999-9999" id="tlfOficina" value="#{bdvUserController.selected.idEmpresa.tlfOficina}" title="#{bundle.CreateBdvEmpresaTitle_tlfOficina}" />
+                    <p:outputLabel value="#{bundle.OficinaTlfMsj}"  />
+                    <p:outputLabel value="#{bundle.CreateBdvEmpresaLabel_tlfCelular}" for="tlfCelular" />
+                    <p:inputMask mask="(9999)999-9999" id="tlfCelular" value="#{bdvUserController.selected.idEmpresa.tlfCelular}" title="#{bundle.CreateBdvEmpresaTitle_tlfCelular}" />
+                    <p:outputLabel value="#{bundle.CelularTlfMsj}"  />
+                    <p:outputLabel value="#{bundle.CreateBdvEmpresaLabel_tlfOpcional}" for="tlfOpcional" />
+                    <p:inputMask mask="(9999)999-9999" id="tlfOpcional" value="#{bdvUserController.selected.idEmpresa.tlfOpcional}" title="#{bundle.CreateBdvEmpresaTitle_tlfOpcional}" />
+                    <p:outputLabel value="#{bundle.OpcionalTlfMsj}"  />
+                </h:panelGrid>
+            </h:panelGroup>
+        </p:panel>
 
-   </ui:composition>
- </html>
+    </ui:composition>
+</html>

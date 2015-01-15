@@ -28,7 +28,9 @@ public class BdvMcbeUbicGeoController implements Serializable {
     @EJB private org.bdv.controlador.BdvMcbeUbicGeoFacade ejbFacade;
     private List<BdvMcbeUbicGeo> items = null;
     private BdvMcbeUbicGeo selected;
-
+    private int idEstado = -1;
+    private int idMunicipio = -1;
+    
     public BdvMcbeUbicGeoController() {
     }
 
@@ -38,6 +40,22 @@ public class BdvMcbeUbicGeoController implements Serializable {
 
     public void setSelected(BdvMcbeUbicGeo selected) {
         this.selected = selected;
+    }
+
+    public int getIdEstado() {
+        return idEstado;
+    }
+
+    public void setIdEstado(int idEstado) {
+        this.idEstado = idEstado;
+    }
+
+    public int getIdMunicipio() {
+        return idMunicipio;
+    }
+
+    public void setIdMunicipio(int idMunicipio) {
+        this.idMunicipio = idMunicipio;
     }
 
     protected void setEmbeddableKeys() {
@@ -110,13 +128,25 @@ public class BdvMcbeUbicGeoController implements Serializable {
         }
     }
 
-
     public List<BdvMcbeUbicGeo> getItemsAvailableSelectMany() {
         return getFacade().findAll();
     }
 
     public List<BdvMcbeUbicGeo> getItemsAvailableSelectOne() {
         return getFacade().findAll();
+    }
+    public List<BdvMcbeUbicGeo> obtenerEstados() {
+        System.out.println("ID PADRE == " + getIdEstado());
+        return getFacade().obtenerMunicipio(0);
+    }
+    
+    public List<BdvMcbeUbicGeo> obtenerMunicipios() {
+        System.out.println("ID PADRE == " + getIdEstado());
+        return getFacade().obtenerMunicipio(getIdEstado());
+    }
+    
+    public List<BdvMcbeUbicGeo> obtenerParroquias() {
+        return getFacade().obtenerParroquia(getIdMunicipio());
     }
 
     @FacesConverter(forClass=BdvMcbeUbicGeo.class)

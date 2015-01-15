@@ -20,6 +20,11 @@ and open the template in the editor.
 .ui-inputmask{
     width: 190px !important;
 }
+
+.ui-inputmask--max{
+    width: 190px !important;
+}
+
 .ui-selectonemenu--min{
     width: 50px !important; 
 }

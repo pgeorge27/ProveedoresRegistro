@@ -29,14 +29,12 @@
                     <h:outputLabel for="email" value="#{bundle.User}" />
                     <p:inputText id="email" value="#{bdvUserBackendController.selected2.userBackend}" title="#{bundle.CreateBdvUserTitle_email}" required="true" requiredMessage="#{bundle.CreateBdvUserRequiredMessage_email}"/>
                     <h:outputLabel for="contrasenia" value="#{bundle.Password}" />
-                    <p:password id="contrasenia" value="#{bdvUserBackendController.selected2.contrasenia}"
+                    <p:password class="ui-inputmask--max" id="contrasenia" value="#{bdvUserBackendController.selected2.contrasenia}"
                                 title="#{bundle.CreateBdvUserTitle_contrasenia}" required="true"
                                 requiredMessage="##{bundle.CreateBdvUserRequiredMessage_contrasenia}" />         
                     <p:outputPanel/>
                     <p:commandButton update="display,growl" action="#{bdvUserBackendController.entrarHomeBackend(bdvUserBackendController.selected2.userBackend,bdvUserBackendController.selected2.contrasenia)}" value="#{bundle.Enter}"  />
-                    <p:outputPanel/>
-                    <p:link outcome="olvidoContrasenia" value="#{bundle.Forgotpassword}" />
-                    <p:outputPanel/>
+           
                 </h:panelGrid>
             </h:panelGroup>
         </h:form>

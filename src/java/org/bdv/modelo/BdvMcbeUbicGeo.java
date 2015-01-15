@@ -32,6 +32,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "BdvMcbeUbicGeo.findByIdUbicGeo", query = "SELECT b FROM BdvMcbeUbicGeo b WHERE b.idUbicGeo = :idUbicGeo"),
     @NamedQuery(name = "BdvMcbeUbicGeo.findByDescripcion", query = "SELECT b FROM BdvMcbeUbicGeo b WHERE b.descripcion = :descripcion"),
     @NamedQuery(name = "BdvMcbeUbicGeo.findByNivel", query = "SELECT b FROM BdvMcbeUbicGeo b WHERE b.nivel = :nivel"),
+    @NamedQuery(name = "BdvMcbeUbicGeo.findMunicipios", query = "SELECT b FROM BdvMcbeUbicGeo b WHERE b.idPadre = :idPadre"),
     @NamedQuery(name = "BdvMcbeUbicGeo.findByIdPadre", query = "SELECT b FROM BdvMcbeUbicGeo b WHERE b.idPadre = :idPadre")})
 public class BdvMcbeUbicGeo implements Serializable {
     private static final long serialVersionUID = 1L;

@@ -5,9 +5,11 @@
  */
 package org.bdv.controlador;
 
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import org.bdv.modelo.BdvMcbeUbicGeo;
 
 /**
@@ -26,6 +28,25 @@ public class BdvMcbeUbicGeoFacade extends AbstractFacade<BdvMcbeUbicGeo> {
 
     public BdvMcbeUbicGeoFacade() {
         super(BdvMcbeUbicGeo.class);
+    }
+    
+    public List<BdvMcbeUbicGeo> obtenerEstado(int idPadre){
+        EntityManager em = getEntityManager();
+        Query q = em.createNamedQuery("BdvMcbeUbicGeo.findMunicipios");
+        q.setParameter("idPadre", idPadre);
+        return q.getResultList();
+    }
+    public List<BdvMcbeUbicGeo> obtenerMunicipio(int idPadre){
+        EntityManager em = getEntityManager();
+        Query q = em.createNamedQuery("BdvMcbeUbicGeo.findMunicipios");
+        q.setParameter("idPadre", idPadre);
+        return q.getResultList();
+    }
+    public List<BdvMcbeUbicGeo> obtenerParroquia(int idPadre){
+        EntityManager em = getEntityManager();
+        Query q = em.createNamedQuery("BdvMcbeUbicGeo.findMunicipios");
+        q.setParameter("idPadre", idPadre);
+        return q.getResultList();
     }
     
 }

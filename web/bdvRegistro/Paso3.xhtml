@@ -42,7 +42,7 @@
                             <f:selectItem itemLabel="E" itemValue="E" />
                             <f:selectItem itemLabel="J" itemValue="J" />
                         </p:selectOneMenu>
-                        <p:inputMask id="rif" class="ui-inputmask--min" value="#{bdvUserController.selected.idEmpresa.rif}" title="#{bundle.CreateBdvEmpresaTitle_rif}" required="true" requiredMessage="#{bundle.CreateBdvEmpresaRequiredMessage_rif}" mask="999999999"/>
+                        <p:inputMask mask="999999999" id="rif" class="ui-inputmask--min" value="#{bdvUserController.selected.idEmpresa.rif}" title="#{bundle.CreateBdvEmpresaTitle_rif}" required="true" requiredMessage="#{bundle.CreateBdvEmpresaRequiredMessage_rif}"/>
                     </p:outputPanel>
                     <p:outputLabel value="#{bundle.RifMsj}"  />
                     <p:outputLabel value="#{bundle.CreateBdvEmpresaLabel_idNacionalidad}" for="nacionalidad" />
@@ -110,9 +110,7 @@
                     </p:selectOneMenu>
                     <p:outputLabel value="#{bundle.DocumentoIdentificacionMsj}"  />
                     <p:outputLabel value="#{bundle.CreateBdvRepresentateLegalLabel_numeroIdentidad}" for="numeroIdentidadRepre1" />
-                    <p:inputText id="numeroIdentidadRepre1" value="#{bdvUserController.selected.idEmpresa.idRepresentateLegal1.numeroIdentidad}" title="#{bundle.CreateBdvRepresentateLegalTitle_numeroIdentidad}" required="true" requiredMessage="#{bundle.CreateBdvRepresentateLegalRequiredMessage_numeroIdentidad}"/>
-                    
-                    
+                    <p:inputMask mask="99999999" id="numeroIdentidadRepre1" value="#{bdvUserController.selected.idEmpresa.idRepresentateLegal1.numeroIdentidad}" title="#{bundle.CreateBdvRepresentateLegalTitle_numeroIdentidad}" required="true" requiredMessage="#{bundle.CreateBdvRepresentateLegalRequiredMessage_numeroIdentidad}" />
                     <p:outputLabel value="#{bundle.NumeroIdentificacionMsj}"  />
                     <p:outputLabel value="#{bundle.CreateBdvRepresentateLegalLabel_cargo}" for="cargoRepre1" />
                     <p:inputText id="cargoRepre1" value="#{bdvUserController.selected.idEmpresa.idRepresentateLegal1.cargo}" title="#{bundle.CreateBdvRepresentateLegalTitle_cargo}" required="true" requiredMessage="#{bundle.CreateBdvRepresentateLegalRequiredMessage_cargo}"/>
@@ -154,7 +152,7 @@
                     </p:selectOneMenu>
                     <p:outputLabel value="#{bundle.DocumentoIdentificacionMsj}"  />
                     <p:outputLabel value="#{bundle.CreateBdvRepresentateLegalLabel_numeroIdentidad}" for="numeroIdentidadRepre2" />
-                    <p:inputText id="numeroIdentidadRepre2" value="#{bdvUserController.selected.idEmpresa.idRepresentateLegal2.numeroIdentidad}" title="#{bundle.CreateBdvRepresentateLegalTitle_numeroIdentidad}" required="true" requiredMessage="#{bundle.CreateBdvRepresentateLegalRequiredMessage_numeroIdentidad}"/>
+                    <p:inputMask mask="99999999" id="numeroIdentidadRepre2" value="#{bdvUserController.selected.idEmpresa.idRepresentateLegal2.numeroIdentidad}" title="#{bundle.CreateBdvRepresentateLegalTitle_numeroIdentidad}" required="true" requiredMessage="#{bundle.CreateBdvRepresentateLegalRequiredMessage_numeroIdentidad}"/>
                     <p:outputLabel value="#{bundle.NumeroIdentificacionMsj}"  />
                     <p:outputLabel value="#{bundle.CreateBdvRepresentateLegalLabel_cargo}" for="cargoRepre2" />
                     <p:inputText id="cargoRepre2" value="#{bdvUserController.selected.idEmpresa.idRepresentateLegal2.cargo}" title="#{bundle.CreateBdvRepresentateLegalTitle_cargo}" required="true" requiredMessage="#{bundle.CreateBdvRepresentateLegalRequiredMessage_cargo}"/>
@@ -197,7 +195,7 @@
                     </p:selectOneMenu>
                     <p:outputLabel value="#{bundle.DocumentoIdentificacionMsj}"  />
                     <p:outputLabel value="#{bundle.CreateBdvRepresentateLegalLabel_numeroIdentidad}" for="numeroIdentidadRepre3" />
-                    <p:inputText id="numeroIdentidadRepre3" value="#{bdvUserController.selected.idEmpresa.idRepresentateLegal3.numeroIdentidad}" title="#{bundle.CreateBdvRepresentateLegalTitle_numeroIdentidad}" required="true" requiredMessage="#{bundle.CreateBdvRepresentateLegalRequiredMessage_numeroIdentidad}"/>
+                    <p:inputMask mask="99999999" id="numeroIdentidadRepre3" value="#{bdvUserController.selected.idEmpresa.idRepresentateLegal3.numeroIdentidad}" title="#{bundle.CreateBdvRepresentateLegalTitle_numeroIdentidad}" required="true" requiredMessage="#{bundle.CreateBdvRepresentateLegalRequiredMessage_numeroIdentidad}"/>
                     <p:outputLabel value="#{bundle.NumeroIdentificacionMsj}"  />
                     <p:outputLabel value="#{bundle.CreateBdvRepresentateLegalLabel_cargo}" for="cargoRepre3" />
                     <p:inputText id="cargoRepre3" value="#{bdvUserController.selected.idEmpresa.idRepresentateLegal3.cargo}" title="#{bundle.CreateBdvRepresentateLegalTitle_cargo}" required="true" requiredMessage="#{bundle.CreateBdvRepresentateLegalRequiredMessage_cargo}"/>
@@ -214,7 +212,7 @@
             <h:panelGroup>
                 <h:panelGrid columns="3" columnClasses="column1,column2,column3">
                     <p:outputLabel value="#{bundle.CreateBdvBancoCuentaVnzLabel_codigoCuenta}" for="codigoCuentaReferenciaVnz1" />
-                    <p:inputText id="codigoCuentaReferenciaVnz1" value="#{bdvUserController.selected.idEmpresa.idBancoCuentaVnz1.codigoCuenta}" title="#{bundle.CreateBdvBancoCuentaVnzTitle_codigoCuenta}" required="true" requiredMessage="#{bundle.CreateBdvBancoCuentaVnzRequiredMessage_codigoCuenta}" maxlength="20"/>
+                    <p:inputMask mask="99999999999999999999" id="codigoCuentaReferenciaVnz1" value="#{bdvUserController.selected.idEmpresa.idBancoCuentaVnz1.codigoCuenta}" title="#{bundle.CreateBdvBancoCuentaVnzTitle_codigoCuenta}" required="true" requiredMessage="#{bundle.CreateBdvBancoCuentaVnzRequiredMessage_codigoCuenta}" maxlength="20"/>
                     <p:outputLabel value="#{bundle.CodigoCuentaClienteMsj}"  />
                     <p:outputLabel value="#{bundle.CreateBdvBancoCuentaVnzLabel_idTipoCuenta}" for="idTipoCuentaReferenciaVnz1" />
                     <p:selectOneMenu id="idTipoCuentaReferenciaVnz1" value="#{bdvUserController.selected.idEmpresa.idBancoCuentaVnz1.idTipoCuenta}" required="true" requiredMessage="#{bundle.EditBdvBancoCuentaVnzRequiredMessage_idTipoCuenta}">
@@ -233,7 +231,7 @@
             <h:panelGroup>
                 <h:panelGrid columns="3" columnClasses="column1,column2,column3">
                     <p:outputLabel value="#{bundle.CreateBdvBancoCuentaVnzLabel_codigoCuenta}" for="codigoCuentaReferenciaVnz2" />
-                    <p:inputText id="codigoCuentaReferenciaVnz2" value="#{bdvUserController.selected.idEmpresa.idBancoCuentaVnz2.codigoCuenta}" title="#{bundle.CreateBdvBancoCuentaVnzTitle_codigoCuenta}" required="true" requiredMessage="#{bundle.CreateBdvBancoCuentaVnzRequiredMessage_codigoCuenta}" maxlength="20"/>
+                    <p:inputMask mask="99999999999999999999" id="codigoCuentaReferenciaVnz2" value="#{bdvUserController.selected.idEmpresa.idBancoCuentaVnz2.codigoCuenta}" title="#{bundle.CreateBdvBancoCuentaVnzTitle_codigoCuenta}" required="true" requiredMessage="#{bundle.CreateBdvBancoCuentaVnzRequiredMessage_codigoCuenta}" maxlength="20"/>
                     <p:outputLabel value="#{bundle.CodigoCuentaClienteMsj}"  />
                     <p:outputLabel value="#{bundle.CreateBdvBancoCuentaVnzLabel_idTipoCuenta}" for="idTipoCuentaReferenciaVnz2" />
                     <p:selectOneMenu id="idTipoCuentaReferenciaVnz2" value="#{bdvUserController.selected.idEmpresa.idBancoCuentaVnz2.idTipoCuenta}" required="true" requiredMessage="#{bundle.EditBdvBancoCuentaVnzRequiredMessage_idTipoCuenta}">
@@ -252,7 +250,7 @@
             <h:panelGroup>
                 <h:panelGrid columns="3" columnClasses="column1,column2,column3">
                     <p:outputLabel value="#{bundle.CreateBdvBancoCuentaLabel_codigoCuenta}" for="codigoCuentaReferencia1" />
-                    <p:inputText id="codigoCuentaReferencia1" value="#{bdvUserController.selected.idEmpresa.idBancoCuenta1.codigoCuenta}" title="#{bundle.CreateBdvBancoCuentaTitle_codigoCuenta}" required="true" requiredMessage="#{bundle.CreateBdvBancoCuentaRequiredMessage_codigoCuenta}" maxlength="20"/>
+                    <p:inputMask mask="99999999999999999999" id="codigoCuentaReferencia1" value="#{bdvUserController.selected.idEmpresa.idBancoCuenta1.codigoCuenta}" title="#{bundle.CreateBdvBancoCuentaTitle_codigoCuenta}" required="true" requiredMessage="#{bundle.CreateBdvBancoCuentaRequiredMessage_codigoCuenta}" maxlength="20"/>
                     <p:outputLabel value="#{bundle.CodigoCuentaClienteMsj}"  />
                     <p:outputLabel value="#{bundle.CreateBdvBancoCuentaLabel_idTipoCuenta}" for="idTipoCuentaReferencia1" />
                     <p:selectOneMenu id="idTipoCuentaReferencia1" value="#{bdvUserController.selected.idEmpresa.idBancoCuenta1.idTipoCuenta}" required="true" requiredMessage="#{bundle.EditBdvBancoCuentaRequiredMessage_idTipoCuenta}">
@@ -271,7 +269,7 @@
                     </p:selectOneMenu>
                     <p:outputLabel value="#{bundle.BancoMsj}"  />
                     <p:outputLabel value="#{bundle.CreateBdvBancoCuentaLabel_telefono}" for="telefonoReferencia1" />
-                    <p:inputText id="telefonoReferencia1" value="#{bdvUserController.selected.idEmpresa.idBancoCuenta1.telefono}" title="#{bundle.CreateBdvBancoCuentaTitle_telefono}" required="true" requiredMessage="#{bundle.CreateBdvBancoCuentaRequiredMessage_telefono}"/>
+                    <p:inputMask mask="(9999)999-9999" id="telefonoReferencia1" value="#{bdvUserController.selected.idEmpresa.idBancoCuenta1.telefono}" title="#{bundle.CreateBdvBancoCuentaTitle_telefono}" required="true" requiredMessage="#{bundle.CreateBdvBancoCuentaRequiredMessage_telefono}"/>
                     <p:outputLabel value="#{bundle.BancoTlfMsj}"  />
                 </h:panelGrid>
                 <p:commandButton process="@this" value="Agregar" icon="ui-icon-plusthick" actionListener="#{wizardManagedBean.agregarCuentaBanco2}" update="wizard" />
@@ -282,7 +280,7 @@
             <h:panelGroup>
                 <h:panelGrid columns="3" columnClasses="column1,column2,column3">
                     <p:outputLabel value="#{bundle.CreateBdvBancoCuentaLabel_codigoCuenta}" for="codigoCuentaReferencia2" />
-                    <p:inputText id="codigoCuentaReferencia2" value="#{bdvUserController.selected.idEmpresa.idBancoCuenta2.codigoCuenta}" title="#{bundle.CreateBdvBancoCuentaTitle_codigoCuenta}" required="true" requiredMessage="#{bundle.CreateBdvBancoCuentaRequiredMessage_codigoCuenta}" maxlength="20"/>
+                    <p:inputMask mask="99999999999999999999" id="codigoCuentaReferencia2" value="#{bdvUserController.selected.idEmpresa.idBancoCuenta2.codigoCuenta}" title="#{bundle.CreateBdvBancoCuentaTitle_codigoCuenta}" required="true" requiredMessage="#{bundle.CreateBdvBancoCuentaRequiredMessage_codigoCuenta}" maxlength="20"/>
                     <p:outputLabel value="#{bundle.CodigoCuentaClienteMsj}"  />
                     <p:outputLabel value="#{bundle.CreateBdvBancoCuentaLabel_idTipoCuenta}" for="idTipoCuentaReferencia2" />
                     <p:selectOneMenu id="idTipoCuentaReferencia2" value="#{bdvUserController.selected.idEmpresa.idBancoCuenta2.idTipoCuenta}" required="true" requiredMessage="#{bundle.EditBdvBancoCuentaRequiredMessage_idTipoCuenta}">
@@ -301,7 +299,7 @@
                     </p:selectOneMenu>
                     <p:outputLabel value="#{bundle.BancoMsj}"  />
                     <p:outputLabel value="#{bundle.CreateBdvBancoCuentaLabel_telefono}" for="telefonoReferencia2" />
-                    <p:inputText id="telefonoReferencia2" value="#{bdvUserController.selected.idEmpresa.idBancoCuenta2.telefono}" title="#{bundle.CreateBdvBancoCuentaTitle_telefono}" required="true" requiredMessage="#{bundle.CreateBdvBancoCuentaRequiredMessage_telefono}"/>
+                    <p:inputMask mask="(9999)999-9999" id="telefonoReferencia2" value="#{bdvUserController.selected.idEmpresa.idBancoCuenta2.telefono}" title="#{bundle.CreateBdvBancoCuentaTitle_telefono}" required="true" requiredMessage="#{bundle.CreateBdvBancoCuentaRequiredMessage_telefono}"/>
                     <p:outputLabel value="#{bundle.BancoTlfMsj}"  />
                 </h:panelGrid>
                 <p:commandButton process="@this" value="Eliminar" icon="ui-icon-minusthick" actionListener="#{wizardManagedBean.eliminarCuentaBanco2}" update="wizard" />
@@ -313,7 +311,7 @@
             <h:panelGroup>
                 <h:panelGrid columns="3" columnClasses="column1,column2,column3">
                     <p:outputLabel value="#{bundle.CreateBdvBancoCuentaLabel_codigoCuenta}" for="codigoCuentaReferencia3" />
-                    <p:inputText id="codigoCuentaReferencia3" value="#{bdvUserController.selected.idEmpresa.idBancoCuenta3.codigoCuenta}" title="#{bundle.CreateBdvBancoCuentaTitle_codigoCuenta}" required="true" requiredMessage="#{bundle.CreateBdvBancoCuentaRequiredMessage_codigoCuenta}" maxlength="20"/>
+                    <p:inputMask mask="99999999999999999999" id="codigoCuentaReferencia3" value="#{bdvUserController.selected.idEmpresa.idBancoCuenta3.codigoCuenta}" title="#{bundle.CreateBdvBancoCuentaTitle_codigoCuenta}" required="true" requiredMessage="#{bundle.CreateBdvBancoCuentaRequiredMessage_codigoCuenta}" maxlength="20"/>
                     <p:outputLabel value="#{bundle.CodigoCuentaClienteMsj}"  />
                     <p:outputLabel value="#{bundle.CreateBdvBancoCuentaLabel_idTipoCuenta}" for="idTipoCuentaReferencia3" />
                     <p:selectOneMenu id="idTipoCuentaReferencia3" value="#{bdvUserController.selected.idEmpresa.idBancoCuenta3.idTipoCuenta}" required="true" requiredMessage="#{bundle.EditBdvBancoCuentaRequiredMessage_idTipoCuenta}">
@@ -332,7 +330,7 @@
                     </p:selectOneMenu>
                     <p:outputLabel value="#{bundle.BancoMsj}"  />
                     <p:outputLabel value="#{bundle.CreateBdvBancoCuentaLabel_telefono}" for="telefonoReferencia3" />
-                    <p:inputText id="telefonoReferencia3" value="#{bdvUserController.selected.idEmpresa.idBancoCuenta3.telefono}" title="#{bundle.CreateBdvBancoCuentaTitle_telefono}" required="true" requiredMessage="#{bundle.CreateBdvBancoCuentaRequiredMessage_telefono}"/>
+                    <p:inputMask mask="(9999)999-9999" id="telefonoReferencia3" value="#{bdvUserController.selected.idEmpresa.idBancoCuenta3.telefono}" title="#{bundle.CreateBdvBancoCuentaTitle_telefono}" required="true" requiredMessage="#{bundle.CreateBdvBancoCuentaRequiredMessage_telefono}"/>
                     <p:outputLabel value="#{bundle.BancoTlfMsj}"  />
                 </h:panelGrid>
                 <p:commandButton process="@this" value="Eliminar" icon="ui-icon-minusthick" actionListener="#{wizardManagedBean.eliminarCuentaBanco3}" update="wizard" />

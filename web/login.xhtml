@@ -29,7 +29,7 @@
                     <h:outputLabel for="email" value="#{bundle.User}" />
                     <p:inputText id="email" value="#{bdvUserController.selected2.email}" title="#{bundle.CreateBdvUserTitle_email}" required="true" requiredMessage="#{bundle.CreateBdvUserRequiredMessage_email}"/>
                     <h:outputLabel for="contrasenia" value="#{bundle.Password}" />
-                    <p:password id="contrasenia" value="#{bdvUserController.selected2.contrasenia}" maxlength="15"
+                    <p:password class="ui-inputmask--max" id="contrasenia" value="#{bdvUserController.selected2.contrasenia}" 
                             title="#{bundle.CreateBdvUserTitle_contrasenia}" required="true"
                             requiredMessage="##{bundle.CreateBdvUserRequiredMessage_contrasenia}" />
                             
