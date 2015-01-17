@@ -26,6 +26,8 @@ import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 import javax.persistence.NoResultException;
 import javax.servlet.http.HttpServletRequest;
+import org.bdv.helper.PasswordEncrypt;
+import org.bdv.helper.PasswordValidator;
 import org.bdv.helper.SendMail;
 import org.primefaces.event.FileUploadEvent;
 
@@ -74,7 +76,7 @@ public class BdvUserController implements Serializable {
         initializeEmbeddableKey();
         return selected;
     }
-    
+
     public BdvUser prepareCreateUserRegistred() {
         selected = new BdvUser(true);
         return selected;
@@ -96,7 +98,7 @@ public class BdvUserController implements Serializable {
     public void update() {
         persist(PersistAction.UPDATE, ResourceBundle.getBundle("/Bundle").getString("BdvUserUpdated"));
     }
-    
+
     public void updateActive() {
         persist(PersistAction.UPDATE, ResourceBundle.getBundle("/Bundle").getString("UserAndPasswordCorrect"));
     }
@@ -152,23 +154,30 @@ public class BdvUserController implements Serializable {
         return getFacade().findAll();
     }
 
-    public void registrarProveedor(String email) {
+    public void registrarProveedor(String email, String contrasenia) {
         if (usuarioRegistrado(email)) { //!=Null = email ya registrado
             JsfUtil.addErrorMessage(ResourceBundle.getBundle("/Bundle").getString("EmailNoDisponible"));
         } else { //Email Disponible
-            try {
-                create();
-                new SendMail(selected.getEmail());
-                ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
-                context.redirect(context.getRequestContextPath() + "/faces/registroExitoso.xhtml");
-            } catch (IOException ex) {
-                Logger.getLogger(BdvUserController.class.getName()).log(Level.SEVERE, null, ex);
+            if (new PasswordValidator().validate(contrasenia)) {
+                try {
+                    String contraseniaEncriptada = new PasswordEncrypt().Encriptar(contrasenia);
+                    selected.setContrasenia(contraseniaEncriptada);
+                    selected.setActivo(true);
+                    selected.setEmailValido(false);
+                    create();
+                    //new SendMail(selected.getEmail());
+                    ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
+                    context.redirect(context.getRequestContextPath() + "/faces/registroExitoso.xhtml");
+                } catch (IOException ex) {
+                    Logger.getLogger(BdvUserController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            } else {
+                JsfUtil.addErrorMessage(ResourceBundle.getBundle("/Bundle").getString("PasswordNoAcept"));
             }
         }
     }
 
     //Nos devuelve si el email esta registrado en BD
-
     private Boolean usuarioRegistrado(String email) {
         return getFacade().obtenerUsuario(email) != null;
     }
@@ -208,36 +217,50 @@ public class BdvUserController implements Serializable {
 
     public String entrarHomeUser(String email, String contrasenia) {
         try {
-            //Obtenemos los datos del usuario
-            BdvUser a = getFacade().obtenerUsuario(email, contrasenia);
-//            selected = new BdvUser();
-            if (a.getEmailValido()) { //Si el usuario esta activo
-                prepareCreateUserRegistred();
-                setSelected(a);
-                //JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("UserAndPasswordCorrect"));                
-                //return "homeUser";
-                try {
-                    ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
-                    context.redirect(context.getRequestContextPath() + "/faces/homeUser.xhtml");
-                } catch (IOException ex) {
-                    Logger.getLogger(BdvUserController.class.getName()).log(Level.SEVERE, null, ex);
+            String contraseniaEncriptada = new PasswordEncrypt().Encriptar(contrasenia);//Encriptamos la contraseña
+            BdvUser a = getFacade().obtenerUsuario(email, contraseniaEncriptada);//Obtenemos los datos del usuario
+            if (a.getActivo()) {//Verificamos que el usuario se encuentre activo
+                System.out.println("En activo");
+                if (a.getEmailValido()) { //valido el email?
+                    System.out.println("En valido");
+                    prepareCreateUserRegistred();//Inicializamos al usuario 
+                    setSelected(a);//Le asignamos sus valores
+                    if (a.getIdEmpresa() != null && a.getIdEmpresa().getFinalizoRegistro()) {//Si registro su empresa y finalizo el registro
+                        try { // Al home User
+                            System.out.println("al home");
+                            ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
+                            context.redirect(context.getRequestContextPath() + "/faces/homeUser.xhtml");
+                        } catch (IOException ex) {
+                            Logger.getLogger(BdvUserController.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                    } else { // A culminar su registro
+                        try {
+                            System.out.println("Al registro");
+                            ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
+                            context.redirect(context.getRequestContextPath() + "/faces/bdvRegistro/registro_continuar.xhtml");
+                        } catch (IOException ex) {
+                            Logger.getLogger(BdvUserController.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                    }
+                } else { //Si el usuario no valido su email
+                    JsfUtil.addErrorMessage(ResourceBundle.getBundle("/Bundle").getString("EmailNoValidated"));
+                    return null;
                 }
             } else { //Si el usuario esta inactivo
-                JsfUtil.addSuccessMessage("Usuario Inactivo");
+                JsfUtil.addErrorMessage(ResourceBundle.getBundle("/Bundle").getString("UsuarioInactivo"));
                 return null;
             }
-
-        } catch (EJBException | NoResultException | NullPointerException ex) {
+        } catch (EJBException | NoResultException | NullPointerException ex) { // Error en el usuario o contraseña
             JsfUtil.addErrorMessage(ex, ResourceBundle.getBundle("/Bundle").getString("EmailOrPasswordErrorOccured"));
         }
         return null;
     }
-    
+
     public void completarRegistro() {
         try {
             selected.getIdEmpresa().setFinalizoRegistro(true);
             update();
-            new SendMail(ResourceBundle.getBundle("/BundleEmail").getString("EmailAdmin"),"admin");
+            new SendMail(ResourceBundle.getBundle("/BundleEmail").getString("EmailAdmin"), "admin");
             ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
             context.redirect(context.getRequestContextPath() + "/faces/registroFinalizado.xhtml");
         } catch (IOException ex) {
@@ -260,7 +283,7 @@ public class BdvUserController implements Serializable {
     private HttpServletRequest getRequest() {
         return (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
     }
-    
+
     private final String destination = "/Users/georgeperez/Desktop/test/";
 //            ResourceBundle.getBundle("/BundleUpload").getString("Destino");
 
@@ -272,79 +295,79 @@ public class BdvUserController implements Serializable {
         } catch (IOException e) {
         }
     }
-    
-    public void uploadPlanillaRnc(FileUploadEvent event) {      
+
+    public void uploadPlanillaRnc(FileUploadEvent event) {
         try {
 //            selected.setPlanillaRnc(destination + "PlanillaRnc.pdf");
             copyFile("planillaRnc.pdf", event.getFile().getInputstream());
         } catch (IOException e) {
         }
     }
-    
-    public void uploadComunicacionRepresentante(FileUploadEvent event) {      
+
+    public void uploadComunicacionRepresentante(FileUploadEvent event) {
         try {
 //            selected.setComunicacionRepresentante(destination + "ComunicacionRepresentante.pdf");
             copyFile("comunicacionRepresentante.pdf", event.getFile().getInputstream());
         } catch (IOException e) {
         }
     }
-    
-    public void uploadSolvenciaSso(FileUploadEvent event) {      
+
+    public void uploadSolvenciaSso(FileUploadEvent event) {
         try {
 //            selected.setSolvenciaSso(destination + "SolvenciaSso.pdf");
             copyFile("solvenciaSso.pdf", event.getFile().getInputstream());
         } catch (IOException e) {
         }
     }
-    
-    public void uploadSolvenciaLaboral(FileUploadEvent event) {      
+
+    public void uploadSolvenciaLaboral(FileUploadEvent event) {
         try {
 //            selected.setCertificadoSnc(destination + "SolvenciaLaboral.pdf");
             copyFile("solvenciaLaboral.pdf", event.getFile().getInputstream());
         } catch (IOException e) {
         }
     }
-    
-    public void uploadSolvenciaInce(FileUploadEvent event) {      
+
+    public void uploadSolvenciaInce(FileUploadEvent event) {
         try {
 //            selected.setCertificadoSnc(destination + "SolvenciaInce.pdf");
             copyFile("solvenciaInce.pdf", event.getFile().getInputstream());
         } catch (IOException e) {
         }
     }
-    
-    public void uploadOrganigrama(FileUploadEvent event) {      
+
+    public void uploadOrganigrama(FileUploadEvent event) {
         try {
 //            selected.setOrganigrama(destination + "Organigrama.pdf");
             copyFile("organigrama.pdf", event.getFile().getInputstream());
         } catch (IOException e) {
         }
     }
-    
-    public void uploadListaProductos(FileUploadEvent event) {      
+
+    public void uploadListaProductos(FileUploadEvent event) {
         try {
 //            selected.setListaProductos(destination + "ListaProductos.pdf");
             copyFile("listaProductos.pdf", event.getFile().getInputstream());
         } catch (IOException e) {
         }
     }
-    
-    public void uploadReferenciaBancaria(FileUploadEvent event) {      
+
+    public void uploadReferenciaBancaria(FileUploadEvent event) {
         try {
 //            selected.setReferenciaBancaria(destination + "ReferenciaBancaria.pdf");
             copyFile("referenciaBancaria.pdf", event.getFile().getInputstream());
         } catch (IOException e) {
         }
     }
-    
-    public void uploadReferenciaComercial(FileUploadEvent event) {      
+
+    public void uploadReferenciaComercial(FileUploadEvent event) {
         try {
 //            selected.setReferenciaComercial(destination + "ReferenciaComercial.pdf");
             copyFile("referenciaComercial.pdf", event.getFile().getInputstream());
         } catch (IOException e) {
         }
     }
-    
+
     public void copyFile(String fileName, InputStream in) {
         try {
             // write the inputStream to a FileOutputStream
@@ -362,18 +385,18 @@ public class BdvUserController implements Serializable {
             System.out.println(e.getMessage());
         }
     }
-    
-    public void createFile(String file){
+
+    public void createFile(String file) {
         File files = new File(file);
-            if (files.exists()) {
-                    if (files.mkdirs()) {
-                            System.out.println("Multiple directories are created!");
-                    } else {
-                            System.out.println("Failed to create multiple directories!");
-                    }
+        if (files.exists()) {
+            if (files.mkdirs()) {
+                System.out.println("Multiple directories are created!");
+            } else {
+                System.out.println("Failed to create multiple directories!");
             }
+        }
     }
-    
+
     @FacesConverter(forClass = BdvUser.class)
     public static class BdvUserControllerConverter implements Converter {
 

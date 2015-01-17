@@ -47,30 +47,26 @@ LISTA DE ACTIVIDADES PENDIENTES
 Generales
 
 •	Implementar css acorde a la institución.
-•	Cumplir con el estándar para las contraseñas.
-•	Cifrar contraseñas.
+•	Cumplir con el estándar para las contraseñas. (Solo falta validar las 5 ultimas)
 •	Integrar con LDAP.
 •	Crear un usuario conectado para el backend y otro para el frontend.
-•	Iniciar el proyecto en ambiente de calidad.
 
 Frontend
 
-•	Enviar email de notificación al administrador en el momento que un posible proveedor culmine su registro.
 •	Enviar email para recuperar contraseña.
 •	Guardado Parcial.
 •	Mensajes para todos los campos que son obligatorios.
 •	Revisar el ancho máximo de los campos.
 •	Validar que la url en el campo de pagina web sea valida.
-•	Si el Usuario no a guardado toda su información al ingresar , enviarlo al modulo de registro, en caso contrario enviarlo al modulo principal.
 •	Verificar los eventos agregar y eliminar. (Inicializar las clases).
 •	Validar la categoría de productos. Deben ser dinámico su obligatoriedad.
 •	Si es persona natural, solo mostrar los documentos obligatorios que debe cargar al sistema.
-•       Mostrar en formato html el contrato
+Mejorar la carga de documentos, (si no carga no avanza)
 
 
 Backend
 
 •	Mostrar solo usuarios que completaron el registro.
 •	Modulo para mostrar detalles del proveedor y gestionar su estatus (activarlo o desactivarlo).
-•	Enviar email de notificación al proveedor cuando su registro sea aprobado o negado.
+
 

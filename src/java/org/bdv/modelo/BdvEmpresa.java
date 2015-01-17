@@ -216,17 +216,17 @@ public class BdvEmpresa implements Serializable {
         idNacionalidad = new BdvNacionalidad();
         idNaturalezaCliente = new BdvNaturalezaCliente();
         idRepresentateLegal1 = new BdvRepresentateLegal();
-        //idRepresentateLegal2 = new BdvRepresentateLegal();
-        //idRepresentateLegal3 = new BdvRepresentateLegal();
+        idRepresentateLegal2 = new BdvRepresentateLegal();
+        idRepresentateLegal3 = new BdvRepresentateLegal();
         idSector = new BdvSectorGremio();
         idBancoCuenta1 = new BdvBancoCuenta();
-        //idBancoCuenta2 = new BdvBancoCuenta();
-        //idBancoCuenta3 = new BdvBancoCuenta();
+        idBancoCuenta2 = new BdvBancoCuenta();
+        idBancoCuenta3 = new BdvBancoCuenta();
         idBancoCuentaVnz1 = new BdvBancoCuentaVnz();
-        //idBancoCuentaVnz2 = new BdvBancoCuentaVnz();
+        idBancoCuentaVnz2 = new BdvBancoCuentaVnz();
         idContacto1 = new BdvContacto();
-        //idContacto2 = new BdvContacto();
-        //idContacto3 = new BdvContacto();
+        idContacto2 = new BdvContacto();
+        idContacto3 = new BdvContacto();
         bdvCategoriaProductoList = new ArrayList<>();
         idRecaudos = new BdvRecaudos();
         

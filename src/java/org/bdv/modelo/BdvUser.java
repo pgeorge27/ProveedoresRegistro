@@ -6,6 +6,7 @@
 package org.bdv.modelo;
 
 import java.io.Serializable;
+import java.util.ResourceBundle;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -50,9 +51,10 @@ public class BdvUser implements Serializable {
     @Size(min = 1, max = 100)
     @Column(name = "email")
     private String email;
+    //@Pattern(regexp="((?=.*[a-z])(?=.*\\\\d)(?=.*[A-Z])(?=.*[@#$%!]).{8,40})", message="Contraseña no permitida")
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 15)
+    @Size(min = 8, max = 255)
     @Column(name = "contrasenia")
     private String contrasenia;
     @Basic(optional = false)
@@ -69,7 +71,6 @@ public class BdvUser implements Serializable {
 
     public BdvUser() {
         System.out.println("En Constructor de Usuario");
-        this.emailValido = false;
 //        idEmpresa = new BdvEmpresa();
     }
     

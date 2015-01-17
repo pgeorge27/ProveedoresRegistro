@@ -40,33 +40,78 @@ public class SendMail {
     }
     
     public SendMail(String email, String quien) {
+        prepareEmail();
         if(quien.equalsIgnoreCase("admin")){
-            prepareEmail();
             enviarEmailAdmin();
         }else if(quien.equalsIgnoreCase("recuperar")){
-            prepareEmail();
-            enviarEmailRecuperar();
+            enviarEmailRecuperar(email);
         }else if(quien.equalsIgnoreCase("aprobado")){
-            prepareEmail();
-            enviarEmailAprobado();
+            enviarEmailAprobado(email);
         }else if(quien.equalsIgnoreCase("notificacion")){
-            prepareEmail();
-            enviarEmailNotificacion();
+            enviarEmailNotificacion(email);
         }
     }
     
-    
+    //Email al administrador para informar que un posible proveedor se registro.
     private void enviarEmailAdmin(){
-        
+        try {
+            Message message = new MimeMessage(session);
+            message.setFrom(new InternetAddress(ResourceBundle.getBundle("/Bundle").getString("EmailFrom")));
+            message.setRecipients(Message.RecipientType.TO,
+                    InternetAddress.parse(ResourceBundle.getBundle("/Bundle").getString("EmailAdmin")));
+            message.setSubject(ResourceBundle.getBundle("/Bundle").getString("EmailSubjectAlertaAdmin"));
+             // Send the actual HTML message, as big as you like
+            message.setContent(ResourceBundle.getBundle("/Bundle").getString("EmailMsjAlertaAdmin"),
+                            "text/html" );
+            Transport.send(message);
+        } catch (MessagingException e) {
+            throw new RuntimeException(e);
+        }
     }
-    private void enviarEmailRecuperar(){
-        
+    private void enviarEmailRecuperar(String email){
+        try {
+            Message message = new MimeMessage(session);
+            message.setFrom(new InternetAddress(ResourceBundle.getBundle("/Bundle").getString("EmailFrom")));
+            message.setRecipients(Message.RecipientType.TO,
+                    InternetAddress.parse(email));
+            message.setSubject(ResourceBundle.getBundle("/Bundle").getString("EmailSubjectRecuperar"));
+             // Send the actual HTML message, as big as you like
+            message.setContent(ResourceBundle.getBundle("/Bundle").getString("EmailMsjRecuperar"),
+                            "text/html" );
+            Transport.send(message);
+        } catch (MessagingException e) {
+            throw new RuntimeException(e);
+        }
     }
-    private void enviarEmailAprobado(){
-        
+    private void enviarEmailAprobado(String email){
+        try {
+            Message message = new MimeMessage(session);
+            message.setFrom(new InternetAddress(ResourceBundle.getBundle("/Bundle").getString("EmailFrom")));
+            message.setRecipients(Message.RecipientType.TO,
+                    InternetAddress.parse(email));
+            message.setSubject(ResourceBundle.getBundle("/Bundle").getString("EmailSubjectAprobacion"));
+             // Send the actual HTML message, as big as you like
+            message.setContent(ResourceBundle.getBundle("/Bundle").getString("EmailMsjAprobacion"),
+                            "text/html" );
+            Transport.send(message);
+        } catch (MessagingException e) {
+            throw new RuntimeException(e);
+        }
     }
-    private void enviarEmailNotificacion(){
-        
+    private void enviarEmailNotificacion(String email){
+        try {
+            Message message = new MimeMessage(session);
+            message.setFrom(new InternetAddress(ResourceBundle.getBundle("/Bundle").getString("EmailFrom")));
+            message.setRecipients(Message.RecipientType.TO,
+                    InternetAddress.parse(email));
+            message.setSubject(ResourceBundle.getBundle("/Bundle").getString("EmailSubjectNotificacionProveedor"));
+             // Send the actual HTML message, as big as you like
+            message.setContent(ResourceBundle.getBundle("/Bundle").getString("EmailMsjNotificacionProveedor"),
+                            "text/html" );
+            Transport.send(message);
+        } catch (MessagingException e) {
+            throw new RuntimeException(e);
+        }
     }
     private void enviarEmail(String email){        
         try {
