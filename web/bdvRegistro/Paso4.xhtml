@@ -60,7 +60,7 @@
                     </p:selectOneMenu> 
                     <p:outputLabel value="#{bundle.ParroquiaMsj}"  />
                     <p:outputLabel value="#{bundle.CreateBdvEmpresaLabel_tlfOficina}" for="tlfOficina" />
-                    <p:inputMask mask="(9999)999-9999" id="tlfOficina" value="#{bdvUserController.selected.idEmpresa.tlfOficina}" title="#{bundle.CreateBdvEmpresaTitle_tlfOficina}" />
+                    <p:inputMask mask="(9999)999-9999" id="tlfOficina" value="#{bdvUserController.selected.idEmpresa.tlfOficina}" title="#{bundle.CreateBdvEmpresaTitle_tlfOficina}" required="true" requiredMessage="#{bundle.EditBdvEmpresaRequiredMessage_tlfOficina}" />
                     <p:outputLabel value="#{bundle.OficinaTlfMsj}"  />
                     <p:outputLabel value="#{bundle.CreateBdvEmpresaLabel_tlfCelular}" for="tlfCelular" />
                     <p:inputMask mask="(9999)999-9999" id="tlfCelular" value="#{bdvUserController.selected.idEmpresa.tlfCelular}" title="#{bundle.CreateBdvEmpresaTitle_tlfCelular}" />

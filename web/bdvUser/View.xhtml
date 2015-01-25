@@ -23,7 +23,7 @@
                         <h:outputText value="#{bundle.ViewBdvUserLabel_emailValido}"/>
                         <p:selectBooleanCheckbox value="#{bdvUserController.selected.emailValido}" disabled="true"/>
                         <h:outputText value="#{bundle.ViewBdvUserLabel_idEmpresa}"/>
-                        <h:outputText value="#{bdvUserController.selected.idEmpresa}" title="#{bundle.ViewBdvUserTitle_idEmpresa}"/>
+                        <h:outputText value="#{bdvUserController.selected.idEmpresa.nombreComercial}" title="#{bundle.ViewBdvUserTitle_idEmpresa}"/>
                     </p:panelGrid>
                     <p:commandButton value="#{bundle.Close}" onclick="BdvUserViewDialog.hide()"/>
                 </h:panelGroup>

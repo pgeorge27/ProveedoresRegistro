@@ -90,6 +90,16 @@ public class BdvUser implements Serializable {
         this.emailValido = emailValido;
     }
 
+    public BdvUser(String email, String contrasenia, boolean activo, boolean emailValido, BdvEmpresa idEmpresa) {
+        this.email = email;
+        this.contrasenia = contrasenia;
+        this.activo = activo;
+        this.emailValido = emailValido;
+        this.idEmpresa = idEmpresa;
+    }
+    
+    
+
     public Integer getIdUser() {
         return idUser;
     }

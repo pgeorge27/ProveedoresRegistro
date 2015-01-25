@@ -36,7 +36,11 @@
                 <p:tab id="paso6" title="Paso 6">
                     <ui:include src="Paso6.xhtml"/>
                     <p:commandButton value="Volver" icon="ui-icon-arrow-1-w" onclick="PF('wizardWV').back();" />
-                    <p:commandButton icon="ui-icon-arrowthick-1-e" process="@this" value="Siguiente"  onclick="PF('wizardWV').next();" />
+                    <!--<p:commandButton icon="ui-icon-arrowthick-1-e" process="@this" value="Siguiente"  onclick="PF('wizardWV').next();" />-->
+                    <p:commandButton icon="ui-icon-arrowthick-1-e" id="siguiente" process="@this" value="Siguiente" oncomplete="PF('wizardWV').next();">
+                        <f:actionListener binding="#{bdvUserController.createFolder()}"/> 
+                        <!--En el metodo anterior enviarmos el nombre comercial y Elimina espacios, tabuladores, retornos-->
+                    </p:commandButton>
                 </p:tab>
 
                 <p:tab id="paso7" title="Paso 7">

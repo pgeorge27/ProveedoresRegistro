@@ -9,7 +9,7 @@
 
     <ui:define name="body">
         <center>
-            <h:form id="BdvUserChangePassForm">
+            <h:form id="BdvUserChangePassForm" title="#{bdvUserController.prepareCreate2()}">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="3" >
 
@@ -18,7 +18,7 @@
 
                     </p:panelGrid>
                     <p:button outcome="./login.xhtml" value="#{bundle.Cancel}" icon="ui-icon-closethick"/>
-                    <p:commandButton value="#{bundle.Acept}" update="display,:growl" />
+                    <p:commandButton value="#{bundle.Acept}" actionListener="#{bdvUserController.recuperarContrasenia(bdvUserController.selected2.email)}" update="display,:growl" />
                 </h:panelGroup>
             </h:form>
         </center>

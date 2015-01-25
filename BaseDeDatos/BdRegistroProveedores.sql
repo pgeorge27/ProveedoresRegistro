@@ -17,10 +17,10 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Base de datos: `BdRegistroProveedores`
+-- Base de datos: `bdregistroproveedores`
 --
-CREATE DATABASE IF NOT EXISTS `BdRegistroProveedores` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-USE `BdRegistroProveedores`;
+CREATE DATABASE IF NOT EXISTS `bdregistroproveedores` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `bdregistroproveedores`;
 
 -- --------------------------------------------------------
 

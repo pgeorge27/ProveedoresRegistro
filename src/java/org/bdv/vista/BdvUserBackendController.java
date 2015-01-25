@@ -171,7 +171,7 @@ public class BdvUserBackendController implements Serializable {
         return (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
     }
 
-    @FacesConverter(forClass = BdvUserBackend.class)
+    @FacesConverter(value = "BdvUserBackendControllerConverter", forClass = BdvUserBackend.class)
     public static class BdvUserBackendControllerConverter implements Converter {
 
         @Override

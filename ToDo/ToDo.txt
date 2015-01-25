@@ -18,7 +18,7 @@ Guardado Parcial
 Mensajes de Requerido para todos los campos
 Revisar maxlengh de los campos
 Mascara para pagina web - Validar que la url sea valida
-Si el Usuario no a guardado toda su informacion al hacer login enviarlo al registro
+√ Si el Usuario no a guardado toda su informacion al hacer login enviarlo al registro
 Verificar los campos Agregar (inicializar clase)
 √ Mascara numeros telefonicos
 √ Filtro para Estado Municipio Parroquia
@@ -50,23 +50,23 @@ Generales
 •	Cumplir con el estándar para las contraseñas. (Solo falta validar las 5 ultimas)
 •	Integrar con LDAP.
 •	Crear un usuario conectado para el backend y otro para el frontend.
+Obtener el patch para subir los archivos
 
 Frontend
 
-•	Enviar email para recuperar contraseña.
+Modulo para cambiar contraseña
 •	Guardado Parcial.
-•	Mensajes para todos los campos que son obligatorios.
 •	Revisar el ancho máximo de los campos.
 •	Validar que la url en el campo de pagina web sea valida.
 •	Verificar los eventos agregar y eliminar. (Inicializar las clases).
 •	Validar la categoría de productos. Deben ser dinámico su obligatoriedad.
 •	Si es persona natural, solo mostrar los documentos obligatorios que debe cargar al sistema.
-Mejorar la carga de documentos, (si no carga no avanza)
+•       Mejorar la carga de documentos, (si no carga no avanza)
+        Mostrar PDF
 
 
 Backend
 
 •	Mostrar solo usuarios que completaron el registro.
-•	Modulo para mostrar detalles del proveedor y gestionar su estatus (activarlo o desactivarlo).
-
-
+        Roles
+√	Modulo para mostrar detalles del proveedor y gestionar su estatus (activarlo o desactivarlo).

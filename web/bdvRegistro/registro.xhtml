@@ -28,8 +28,6 @@
                     <p:commandButton value="Volver" icon="ui-icon-arrow-1-w" onclick="PF('wizardWV').back();" />
                     <p:commandButton value="#{bundle.Acept}" icon="ui-icon-check" update="wizard,:growl">
                         <f:actionListener binding="#{bdvUserController.registrarProveedor(bdvUserController.selected.email,bdvUserController.selected.contrasenia)}"/> 
-<!--                        <f:actionListener binding="{bdvUserController.create()}"/> -->
-                        <!--<f:actionListener binding="{sendMail.enviarEmail(bdvUserController.selected.email)}"/>--> 
                     </p:commandButton>
                 </p:tab>
             </p:wizard>

@@ -12,14 +12,20 @@
             <h:form id="BdvUserBackendEditForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{bdvUserBackendController.selected != null}">
-                        <p:outputLabel value="#{bundle.EditBdvUserBackendLabel_idUser}" for="idUser" />
-                        <p:inputText id="idUser" value="#{bdvUserBackendController.selected.idUser}" title="#{bundle.EditBdvUserBackendTitle_idUser}" required="true" requiredMessage="#{bundle.EditBdvUserBackendRequiredMessage_idUser}"/>
                         <p:outputLabel value="#{bundle.EditBdvUserBackendLabel_userBackend}" for="userBackend" />
                         <p:inputText id="userBackend" value="#{bdvUserBackendController.selected.userBackend}" title="#{bundle.EditBdvUserBackendTitle_userBackend}" required="true" requiredMessage="#{bundle.EditBdvUserBackendRequiredMessage_userBackend}"/>
                         <p:outputLabel value="#{bundle.EditBdvUserBackendLabel_contrasenia}" for="contrasenia" />
                         <p:inputText id="contrasenia" value="#{bdvUserBackendController.selected.contrasenia}" title="#{bundle.EditBdvUserBackendTitle_contrasenia}" required="true" requiredMessage="#{bundle.EditBdvUserBackendRequiredMessage_contrasenia}"/>
                         <p:outputLabel value="#{bundle.EditBdvUserBackendLabel_activo}" for="activo" />
                         <p:selectBooleanCheckbox id="activo" value="#{bdvUserBackendController.selected.activo}" required="true" requiredMessage="#{bundle.EditBdvUserBackendRequiredMessage_activo}"/>
+                        <p:outputLabel value="#{bundle.CreateBdvRoleLabel_idRole}" for="role" />
+                        <p:selectCheckboxMenu id="role" label="Roles" value="#{bdvUserBackendController.selected.bdvRoleList}"
+                                              filter="true" filterMatchMode="startsWith" panelStyle="width:250px" required="true" requiredMessage="#{bundle.CreateBdvRoleRequiredMessage_idRole}">
+                            <f:selectItems value="#{bdvRoleController.itemsAvailableSelectMany}"
+                                           var="role"
+                                           itemValue="#{role}"/>
+                            <f:converter converterId="BdvUserBackendControllerConverter" />
+                        </p:selectCheckboxMenu>
                     </p:panelGrid>
                     <p:commandButton actionListener="#{bdvUserBackendController.update}" value="#{bundle.Save}" update="display,:BdvUserBackendListForm:datalist,:growl" oncomplete="handleSubmit(args, 'BdvUserBackendEditDialog');"/>
                     <p:commandButton value="#{bundle.Cancel}" onclick="BdvUserBackendEditDialog.hide()"/>

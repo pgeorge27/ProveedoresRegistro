@@ -103,6 +103,24 @@ public class BdvUserController implements Serializable {
         persist(PersistAction.UPDATE, ResourceBundle.getBundle("/Bundle").getString("UserAndPasswordCorrect"));
     }
 
+    public void updateEmpresa() {//Para activar la empresa o realizar algun cambio desde el backend
+        System.out.println("Usuario Id " + selected.getIdUser());
+        System.out.println("Empresa Activa? " + selected.getIdEmpresa().isEmpresaAprobada());
+        System.out.println("Email " + selected.getEmail());
+        try {
+            if (selected.getIdEmpresa().isEmpresaAprobada()) {//Si es aprobado se le envia un email
+                selected.getIdEmpresa().setEmpresaAprobada(true);
+                update();
+                //new SendMail(selected.getEmail(), "aprobado");
+            }
+            ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
+            context.redirect(context.getRequestContextPath() + "/faces//bdvUser/List.xhtml");
+        } catch (IOException ex) {
+            Logger.getLogger(BdvUserController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+
     public void destroy() {
         persist(PersistAction.DELETE, ResourceBundle.getBundle("/Bundle").getString("BdvUserDeleted"));
         if (!JsfUtil.isValidationFailed()) {
@@ -183,10 +201,11 @@ public class BdvUserController implements Serializable {
     }
 
     public String obtenerUsuario(String email, String contrasenia) {
-        try {
+        try {//encriptamos la contrasenia
+            String contraseniaEncriptada = new PasswordEncrypt().Encriptar(contrasenia);//Encriptamos la contraseña
             //Obtenemos los datos del usuario
-            BdvUser a = getFacade().obtenerUsuario(email, contrasenia);
-//            if (!a.getEmailValido()) { //Si el usuario no esta activo lo activamos
+            BdvUser a = getFacade().obtenerUsuario(email, contraseniaEncriptada);
+//            if (!a.getEmailValido()) { //Si el usuario valido el email
             prepareCreateUserRegistred();
             setSelected(a);
             selected.setEmailValido(true);
@@ -196,7 +215,7 @@ public class BdvUserController implements Serializable {
             selected.setEmail(a.getEmail());
             selected.setContrasenia(a.getContrasenia());
             selected.setEmailValido(true);
-            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("UserAndPasswordCorrect"));
+            selected.setActivo(true);
             try {
                 ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
                 context.redirect(context.getRequestContextPath() + "/faces/bdvRegistro/registro_continuar.xhtml");
@@ -260,12 +279,27 @@ public class BdvUserController implements Serializable {
         try {
             selected.getIdEmpresa().setFinalizoRegistro(true);
             update();
-            new SendMail(ResourceBundle.getBundle("/BundleEmail").getString("EmailAdmin"), "admin");
+            //new SendMail(ResourceBundle.getBundle("/BundleEmail").getString("EmailAdmin"), "admin");
             ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
             context.redirect(context.getRequestContextPath() + "/faces/registroFinalizado.xhtml");
         } catch (IOException ex) {
             Logger.getLogger(BdvUserController.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    public void recuperarContrasenia(String email) {
+        try {
+            if (usuarioRegistrado(email)) {
+                //new SendMail(selected.getEmail(),"recuperar");
+                System.out.println("Enviamos email a " + email);
+                ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
+                context.redirect(context.getRequestContextPath() + "/faces/revisarEmail.xhtml");
+            } else {
+                JsfUtil.addErrorMessage(ResourceBundle.getBundle("/Bundle").getString("EmailNoExiste"));
+            }
+        } catch (Exception e) {
+        }
+
     }
 
     public void logOut() {
@@ -284,14 +318,16 @@ public class BdvUserController implements Serializable {
         return (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
     }
 
-    private final String destination = "/Users/georgeperez/Desktop/test/";
+    private final String destination = ResourceBundle.getBundle("/BundleUpload").getString("Destino")+selected.getIdEmpresa().getNombreComercial().replaceAll("\\s","");
 //            ResourceBundle.getBundle("/BundleUpload").getString("Destino");
 
     public void uploadCertificadoSnc(FileUploadEvent event) {
         try {
             selected.getIdEmpresa().getIdRecaudos().setCertificadoSnc(destination + "certificadoSnc.pdf");
+            System.out.println("Certificado Snc = " + selected.getIdEmpresa().getIdRecaudos().getCertificadoSnc());
 //            copyFile(event.getFile().getFileName(), event.getFile().getInputstream());
             copyFile("certificadoSnc.pdf", event.getFile().getInputstream());
+            JsfUtil.addSuccessMessage("Carga exitosa del archivo");
         } catch (IOException e) {
         }
     }
@@ -300,70 +336,79 @@ public class BdvUserController implements Serializable {
         try {
 //            selected.setPlanillaRnc(destination + "PlanillaRnc.pdf");
             copyFile("planillaRnc.pdf", event.getFile().getInputstream());
+            JsfUtil.addSuccessMessage("Carga exitosa del archivo");
         } catch (IOException e) {
         }
     }
 
     public void uploadComunicacionRepresentante(FileUploadEvent event) {
         try {
-//            selected.setComunicacionRepresentante(destination + "ComunicacionRepresentante.pdf");
+            selected.getIdEmpresa().getIdRecaudos().setComunicacionRepresentante(destination + "ComunicacionRepresentante.pdf");
             copyFile("comunicacionRepresentante.pdf", event.getFile().getInputstream());
+            JsfUtil.addSuccessMessage("Carga exitosa del archivo");
         } catch (IOException e) {
         }
     }
 
     public void uploadSolvenciaSso(FileUploadEvent event) {
         try {
-//            selected.setSolvenciaSso(destination + "SolvenciaSso.pdf");
+            selected.getIdEmpresa().getIdRecaudos().setSolvenciaSso(destination + "SolvenciaSso.pdf");
             copyFile("solvenciaSso.pdf", event.getFile().getInputstream());
+            JsfUtil.addSuccessMessage("Carga exitosa del archivo");
         } catch (IOException e) {
         }
     }
 
     public void uploadSolvenciaLaboral(FileUploadEvent event) {
         try {
-//            selected.setCertificadoSnc(destination + "SolvenciaLaboral.pdf");
+            selected.getIdEmpresa().getIdRecaudos().setCertificadoSnc(destination + "SolvenciaLaboral.pdf");
             copyFile("solvenciaLaboral.pdf", event.getFile().getInputstream());
+            JsfUtil.addSuccessMessage("Carga exitosa del archivo");
         } catch (IOException e) {
         }
     }
 
     public void uploadSolvenciaInce(FileUploadEvent event) {
         try {
-//            selected.setCertificadoSnc(destination + "SolvenciaInce.pdf");
+            selected.getIdEmpresa().getIdRecaudos().setCertificadoSnc(destination + "SolvenciaInce.pdf");
             copyFile("solvenciaInce.pdf", event.getFile().getInputstream());
+            JsfUtil.addSuccessMessage("Carga exitosa del archivo");
         } catch (IOException e) {
         }
     }
 
     public void uploadOrganigrama(FileUploadEvent event) {
         try {
-//            selected.setOrganigrama(destination + "Organigrama.pdf");
+            selected.getIdEmpresa().getIdRecaudos().setOrganigrama(destination + "Organigrama.pdf");
             copyFile("organigrama.pdf", event.getFile().getInputstream());
+            JsfUtil.addSuccessMessage("Carga exitosa del archivo");
         } catch (IOException e) {
         }
     }
 
     public void uploadListaProductos(FileUploadEvent event) {
         try {
-//            selected.setListaProductos(destination + "ListaProductos.pdf");
+            selected.getIdEmpresa().getIdRecaudos().setListaProductos(destination + "ListaProductos.pdf");
             copyFile("listaProductos.pdf", event.getFile().getInputstream());
+            JsfUtil.addSuccessMessage("Carga exitosa del archivo");
         } catch (IOException e) {
         }
     }
 
     public void uploadReferenciaBancaria(FileUploadEvent event) {
         try {
-//            selected.setReferenciaBancaria(destination + "ReferenciaBancaria.pdf");
+            selected.getIdEmpresa().getIdRecaudos().setReferenciaBancaria(destination + "ReferenciaBancaria.pdf");
             copyFile("referenciaBancaria.pdf", event.getFile().getInputstream());
+            JsfUtil.addSuccessMessage("Carga exitosa del archivo");
         } catch (IOException e) {
         }
     }
 
     public void uploadReferenciaComercial(FileUploadEvent event) {
         try {
-//            selected.setReferenciaComercial(destination + "ReferenciaComercial.pdf");
+            selected.getIdEmpresa().getIdRecaudos().setReferenciaComercial(destination + "ReferenciaComercial.pdf");
             copyFile("referenciaComercial.pdf", event.getFile().getInputstream());
+            JsfUtil.addSuccessMessage("Carga exitosa del archivo");
         } catch (IOException e) {
         }
     }
@@ -386,14 +431,19 @@ public class BdvUserController implements Serializable {
         }
     }
 
-    public void createFile(String file) {
-        File files = new File(file);
+    public void createFolder() {
+        File files = new File(ResourceBundle.getBundle("/BundleUpload").getString("Destino")+selected.getIdEmpresa().getNombreComercial().replaceAll("\\s",""));
+        System.out.println("Nombre de la carpeta " + selected.getIdEmpresa().getNombreComercial().replaceAll("\\s",""));
         if (files.exists()) {
+            System.out.println("La carpeta ya existe");
             if (files.mkdirs()) {
                 System.out.println("Multiple directories are created!");
             } else {
                 System.out.println("Failed to create multiple directories!");
             }
+        }else{
+            files.mkdir();
+            System.out.println("Archivo creado!");
         }
     }
 

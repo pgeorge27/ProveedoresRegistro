@@ -20,6 +20,9 @@
                         <h:outputText value="#{bdvUserBackendController.selected.contrasenia}" title="#{bundle.ViewBdvUserBackendTitle_contrasenia}"/>
                         <h:outputText value="#{bundle.ViewBdvUserBackendLabel_activo}"/>
                         <p:selectBooleanCheckbox value="#{bdvUserBackendController.selected.activo}" disabled="true"/>
+                        <h:outputText value="#{bundle.CreateBdvRoleLabel_idRole}" />
+                        <h:outputText id="role" value="#{bdvUserBackendController.selected.bdvRoleList}"/>
+                                         
                     </p:panelGrid>
                     <p:commandButton value="#{bundle.Close}" onclick="BdvUserBackendViewDialog.hide()"/>
                 </h:panelGroup>

@@ -38,7 +38,7 @@ import javax.xml.bind.annotation.XmlTransient;
 @Table(name = "bdv_empresa")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "BdvEmpresa.findAll", query = "SELECT b FROM BdvEmpresa b"),
+    @NamedQuery(name = "BdvEmpresa.findAll", query = "SELECT b FROM BdvEmpresa b WHERE b.finalizoRegistro = 1"),
     @NamedQuery(name = "BdvEmpresa.findByIdEmpresa", query = "SELECT b FROM BdvEmpresa b WHERE b.idEmpresa = :idEmpresa"),
     @NamedQuery(name = "BdvEmpresa.findByTipoPersona", query = "SELECT b FROM BdvEmpresa b WHERE b.tipoPersona = :tipoPersona"),
     @NamedQuery(name = "BdvEmpresa.findByOrigen", query = "SELECT b FROM BdvEmpresa b WHERE b.origen = :origen"),
@@ -131,6 +131,10 @@ public class BdvEmpresa implements Serializable {
     @NotNull
     @Column(name = "finalizo_registro")
     private boolean finalizoRegistro;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "empresa_aprobada")
+    private boolean empresaAprobada;
     @Size(max = 50)
     @Column(name = "activado_desactivado_por")
     private String activadoDesactivadoPor;
@@ -216,17 +220,17 @@ public class BdvEmpresa implements Serializable {
         idNacionalidad = new BdvNacionalidad();
         idNaturalezaCliente = new BdvNaturalezaCliente();
         idRepresentateLegal1 = new BdvRepresentateLegal();
-        idRepresentateLegal2 = new BdvRepresentateLegal();
-        idRepresentateLegal3 = new BdvRepresentateLegal();
+//        idRepresentateLegal2 = new BdvRepresentateLegal();
+//        idRepresentateLegal3 = new BdvRepresentateLegal();
         idSector = new BdvSectorGremio();
         idBancoCuenta1 = new BdvBancoCuenta();
-        idBancoCuenta2 = new BdvBancoCuenta();
-        idBancoCuenta3 = new BdvBancoCuenta();
+//        idBancoCuenta2 = new BdvBancoCuenta();
+//        idBancoCuenta3 = new BdvBancoCuenta();
         idBancoCuentaVnz1 = new BdvBancoCuentaVnz();
-        idBancoCuentaVnz2 = new BdvBancoCuentaVnz();
+//        idBancoCuentaVnz2 = new BdvBancoCuentaVnz();
         idContacto1 = new BdvContacto();
-        idContacto2 = new BdvContacto();
-        idContacto3 = new BdvContacto();
+//        idContacto2 = new BdvContacto();
+//        idContacto3 = new BdvContacto();
         bdvCategoriaProductoList = new ArrayList<>();
         idRecaudos = new BdvRecaudos();
         
@@ -242,13 +246,16 @@ public class BdvEmpresa implements Serializable {
         this.idEmpresa = idEmpresa;
     }
 
-    public BdvEmpresa(Integer idEmpresa, boolean finalizoRegistro, Date fechaRegistro, Date fechaActualizado, Date fechaActivadoDesactivado) {
+    public BdvEmpresa(Integer idEmpresa, boolean empresaAprobada, boolean finalizoRegistro, Date fechaRegistro, Date fechaActualizado, Date fechaActivadoDesactivado) {
         this.idEmpresa = idEmpresa;
+        this.empresaAprobada = empresaAprobada;
         this.finalizoRegistro = finalizoRegistro;
         this.fechaRegistro = fechaRegistro;
         this.fechaActualizado = fechaActualizado;
         this.fechaActivadoDesactivado = fechaActivadoDesactivado;
     }
+    
+    
 
     public Integer getIdEmpresa() {
         return idEmpresa;
@@ -418,6 +425,14 @@ public class BdvEmpresa implements Serializable {
         this.finalizoRegistro = finalizoRegistro;
     }
 
+    public boolean isEmpresaAprobada() {
+        return empresaAprobada;
+    }
+
+    public void setEmpresaAprobada(boolean empresaAprobada) {
+        this.empresaAprobada = empresaAprobada;
+    }
+    
     public String getActivadoDesactivadoPor() {
         return activadoDesactivadoPor;
     }
@@ -634,7 +649,7 @@ public class BdvEmpresa implements Serializable {
 
     @Override
     public String toString() {
-        return "org.bdv.modelo.BdvEmpresa[ idEmpresa=" + idEmpresa + " ]";
+        return nombreComercial;
     }
     
 }

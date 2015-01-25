@@ -38,7 +38,7 @@
                     </p:selectOneMenu>
                     <p:outputLabel value="#{bundle.DocumentoIdentificacionContactoMsj}"  />
                     <p:outputLabel value="#{bundle.CreateBdvContactoLabel_numeroIdentidad}" for="numeroIdentidadContacto1" />
-                    <p:inputMask mask="999999999" id="numeroIdentidadContacto1" value="#{bdvUserController.selected.idEmpresa.idContacto1.numeroIdentidad}" title="#{bundle.CreateBdvContactoTitle_numeroIdentidad}" required="true" requiredMessage="#{bundle.CreateBdvContactoRequiredMessage_numeroIdentidad}"/>
+                    <p:inputMask mask="99999999" id="numeroIdentidadContacto1" value="#{bdvUserController.selected.idEmpresa.idContacto1.numeroIdentidad}" title="#{bundle.CreateBdvContactoTitle_numeroIdentidad}" required="true" requiredMessage="#{bundle.CreateBdvContactoRequiredMessage_numeroIdentidad}"/>
                     <p:outputLabel value="#{bundle.NumeroIdentificacionContactoMsj}"  />
                     <p:outputLabel value="#{bundle.CreateBdvContactoLabel_cargo}" for="cargoContacto1" />
                     <p:inputText id="cargoContacto1" value="#{bdvUserController.selected.idEmpresa.idContacto1.cargo}" title="#{bundle.CreateBdvContactoTitle_cargo}" required="true" requiredMessage="#{bundle.CreateBdvContactoRequiredMessage_cargo}"/>

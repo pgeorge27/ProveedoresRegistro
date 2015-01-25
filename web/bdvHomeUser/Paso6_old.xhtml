@@ -13,25 +13,27 @@
 
     <ui:define name="body">
         <h:form>
-            <p:panel header="#{bundle.Productos}">
+            <p:panel header="Productos">
                 <p:messages />
                 <h:panelGroup>
                     <h:panelGrid columns="3" columnClasses="label, value">
                         <p:outputLabel value="#{bundle.CreateBdvCategoriaProductoLabel_idCategoriaProducto}" for="productos" />
                         <p:selectCheckboxMenu id="productos" label="Productos" value="#{bdvUserController.selected.idEmpresa.bdvCategoriaProductoList}"
-                                              filter="true" filterMatchMode="startsWith" panelStyle="width:250px" required="true" requiredMessage="#{bundle.EditBdvEmpresaRequiredMessage_producto}">
+                                              filter="true" filterMatchMode="startsWith" panelStyle="width:250px">
                             <f:selectItems value="#{bdvCategoriaProductoController.itemsAvailableSelectMany}"
                                            var="producto"
                                            itemValue="#{producto}"/>
                             <f:converter converterId="BdvCategoriaProductoControllerConverter" />
                         </p:selectCheckboxMenu>
-                        <p:outputLabel value="#{bundle.ProductosMsj}"  />
+                        <p:outputLabel value="#{bundle.MsgTest}"  />
                         <p:outputLabel value="#{bundle.CreateBdvEmpresaLabel_otroProducto}" for="otroProducto" />
-                        <p:inputText id="otroProducto" value="#{bdvUserController.selected.idEmpresa.otroProducto}" title="#{bundle.CreateBdvEmpresaTitle_otroProducto}" required="true" requiredMessage="#{bundle.EditBdvEmpresaRequiredMessage_otroProducto}" />
-                        <p:outputLabel value="#{bundle.OtrosProductosMsj}"  />                                                                                                                                          
+                        <p:inputText id="otroProducto" value="#{bdvUserController.selected.idEmpresa.otroProducto}" title="#{bundle.CreateBdvEmpresaTitle_otroProducto}" />
+                        <p:outputLabel value="#{bundle.MsgTest}"  />
                     </h:panelGrid>
                 </h:panelGroup>
+
             </p:panel>
         </h:form>
     </ui:define>
+
 </ui:composition>
