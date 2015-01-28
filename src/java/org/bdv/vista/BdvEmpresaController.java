@@ -109,8 +109,7 @@ public class BdvEmpresaController implements Serializable {
             }
         }
     }
-
-
+    
     public List<BdvEmpresa> getItemsAvailableSelectMany() {
         return getFacade().findAll();
     }

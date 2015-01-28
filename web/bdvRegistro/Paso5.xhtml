@@ -11,7 +11,7 @@
         <p:panel header="#{bundle.DatosContacto} 1">
             <p:messages />
             <h:panelGroup>
-                <h:panelGrid columns="3" columnClasses="label, value">
+                <h:panelGrid columns="3" columnClasses="column1,column2,column3">
                     <p:outputLabel value="#{bundle.CreateBdvContactoLabel_primerApellido}" for="primerApellidoContacto1" />
                     <p:inputText id="primerApellidoContacto1" value="#{bdvUserController.selected.idEmpresa.idContacto1.primerApellido}" title="#{bundle.CreateBdvContactoTitle_primerApellido}" required="true" requiredMessage="#{bundle.CreateBdvContactoRequiredMessage_primerApellido}"/>
                     <p:outputLabel value="#{bundle.PrimerApellidoContactoMsj}"  />
@@ -47,13 +47,16 @@
                     <p:inputText id="areaOcupacionalContacto1" value="#{bdvUserController.selected.idEmpresa.idContacto1.areaOcupacional}" title="#{bundle.CreateBdvContactoTitle_areaOcupacional}" required="true" requiredMessage="#{bundle.CreateBdvContactoRequiredMessage_areaOcupacional}"/>
                     <p:outputLabel value="#{bundle.AreaOcupacionalContactoMsj}"  />
                 </h:panelGrid>
-                <p:commandButton process="@this" value="Agregar" icon="ui-icon-plusthick" actionListener="#{wizardManagedBean.agregarContacto2()}" update="wizard" />
+                <p:commandButton process="@this" value="Agregar" icon="ui-icon-plusthick" update="wizard" >
+                    <f:actionListener binding="#{wizardManagedBean.agregarContacto2()}"/> 
+                    <f:actionListener binding="#{bdvUserController.agregarContacto2()}"/> 
+                </p:commandButton>
             </h:panelGroup>
         </p:panel>
 
         <p:panel header="#{bundle.DatosContacto} 2" rendered="#{wizardManagedBean.contacto2}">
             <h:panelGroup>
-                <h:panelGrid columns="3" columnClasses="label, value">
+                <h:panelGrid columns="3" columnClasses="column1,column2,column3">
                     <p:outputLabel value="#{bundle.CreateBdvContactoLabel_primerApellido}" for="primerApellidoContacto2" />
                     <p:inputText id="primerApellidoContacto2" value="#{bdvUserController.selected.idEmpresa.idContacto2.primerApellido}" title="#{bundle.CreateBdvContactoTitle_primerApellido}" required="true" requiredMessage="#{bundle.CreateBdvContactoRequiredMessage_primerApellido}"/>
                     <p:outputLabel value="#{bundle.PrimerApellidoContactoMsj}"  />
@@ -89,13 +92,19 @@
                     <p:inputText id="areaOcupacionalContacto2" value="#{bdvUserController.selected.idEmpresa.idContacto2.areaOcupacional}" title="#{bundle.CreateBdvContactoTitle_areaOcupacional}" required="true" requiredMessage="#{bundle.CreateBdvContactoRequiredMessage_areaOcupacional}"/>
                     <p:outputLabel value="#{bundle.AreaOcupacionalContactoMsj}"  />
                 </h:panelGrid>
-                <p:commandButton process="@this" value="Eliminar" icon="ui-icon-minusthick" actionListener="#{wizardManagedBean.eliminarContacto2()}" update="wizard" />
-                <p:commandButton process="@this" value="Agregar" icon="ui-icon-plusthick" actionListener="#{wizardManagedBean.agregarContacto3()}" update="wizard" />
+                <p:commandButton process="@this" value="Eliminar" icon="ui-icon-minusthick" update="wizard" >
+                    <f:actionListener binding="#{wizardManagedBean.eliminarContacto2()}"/> 
+                    <f:actionListener binding="#{bdvUserController.eliminarContacto2()}"/> 
+                </p:commandButton>
+                <p:commandButton process="@this" value="Agregar" icon="ui-icon-plusthick" update="wizard" >
+                    <f:actionListener binding="#{wizardManagedBean.agregarContacto3()}"/> 
+                    <f:actionListener binding="#{bdvUserController.agregarContacto3()}"/> 
+                </p:commandButton>
             </h:panelGroup>
         </p:panel>
         <p:panel header="#{bundle.DatosContacto} 3" rendered="#{wizardManagedBean.contacto3}">
             <h:panelGroup>
-                <h:panelGrid columns="3" columnClasses="label, value">
+                <h:panelGrid columns="3" columnClasses="column1,column2,column3">
                     <p:outputLabel value="#{bundle.CreateBdvContactoLabel_primerApellido}" for="primerApellidoContacto3" />
                     <p:inputText id="primerApellidoContacto3" value="#{bdvUserController.selected.idEmpresa.idContacto1.primerApellido}" title="#{bundle.CreateBdvContactoTitle_primerApellido}" required="true" requiredMessage="#{bundle.CreateBdvContactoRequiredMessage_primerApellido}"/>
                     <p:outputLabel value="#{bundle.PrimerApellidoContactoMsj}"  />
@@ -131,7 +140,10 @@
                     <p:inputText id="areaOcupacionalContacto3" value="#{bdvUserController.selected.idEmpresa.idContacto1.areaOcupacional}" title="#{bundle.CreateBdvContactoTitle_areaOcupacional}" required="true" requiredMessage="#{bundle.CreateBdvContactoRequiredMessage_areaOcupacional}"/>
                     <p:outputLabel value="#{bundle.AreaOcupacionalContactoMsj}"  />
                 </h:panelGrid>
-                <p:commandButton process="@this" value="Eliminar" icon="ui-icon-minusthick" actionListener="#{wizardManagedBean.eliminarContacto3()}" update="wizard" />
+                <p:commandButton process="@this" value="Eliminar" icon="ui-icon-minusthick" update="wizard" >
+                    <f:actionListener binding="#{wizardManagedBean.eliminarContacto3()}"/> 
+                    <f:actionListener binding="#{bdvUserController.eliminarContacto3()}"/> 
+                </p:commandButton>
             </h:panelGroup>
         </p:panel>
     </ui:composition>

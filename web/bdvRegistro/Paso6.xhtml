@@ -11,7 +11,7 @@
         <p:panel header="#{bundle.Productos}">
             <p:messages />
             <h:panelGroup>
-                <h:panelGrid columns="3" columnClasses="label, value">
+                <h:panelGrid columns="3" columnClasses="column1,column2,column3">
                     <p:outputLabel value="#{bundle.CreateBdvCategoriaProductoLabel_idCategoriaProducto}" for="productos" />
                     <p:selectCheckboxMenu id="productos" label="Productos" value="#{bdvUserController.selected.idEmpresa.bdvCategoriaProductoList}"
                                           filter="true" filterMatchMode="startsWith" panelStyle="width:250px" required="true" requiredMessage="#{bundle.EditBdvEmpresaRequiredMessage_producto}">

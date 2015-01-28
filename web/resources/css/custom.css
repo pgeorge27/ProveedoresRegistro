@@ -9,11 +9,16 @@ and open the template in the editor.
 */
 
 //Colocando el asterisco en rojo
-.required2{
-    color: red !important;
-    margin-right: .5em;
-    font-weight: bold;
+.ui-outputlabel, span{
+    background-color: green !important;
 }
+
+.required > span{
+    color: red !important;
+    margin-right: .5em !important;
+    font-weight: bold !important;
+}
+
 .ui-selectonemenu{
      width: 190px !important; 
 }
@@ -39,10 +44,10 @@ and open the template in the editor.
 }
 .ui-wizard-step-title--min {
     font-size: 14px !important;
-
-margin: 5px 3px 0 0 !important;
+    margin: 5px 3px 0 0 !important;
 }
 
 .column1{width: 150px;height:auto}
+.column1--max{width: 160px;height:auto}
 .column2{width: 250px;height:auto}
 /*.column3{width: 341px;height:auto}*/

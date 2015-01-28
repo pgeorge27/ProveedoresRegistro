@@ -205,27 +205,32 @@ public class BdvUserController implements Serializable {
             String contraseniaEncriptada = new PasswordEncrypt().Encriptar(contrasenia);//Encriptamos la contraseña
             //Obtenemos los datos del usuario
             BdvUser a = getFacade().obtenerUsuario(email, contraseniaEncriptada);
-//            if (!a.getEmailValido()) { //Si el usuario valido el email
+            if (!a.getEmailValido()) { //Si el usuario valido el email
             prepareCreateUserRegistred();
-            setSelected(a);
-            selected.setEmailValido(true);
-            updateActive();
-            prepareCreateUserRegistred();
+            //setSelected(a);
             selected.setIdUser(a.getIdUser());
             selected.setEmail(a.getEmail());
             selected.setContrasenia(a.getContrasenia());
             selected.setEmailValido(true);
-            selected.setActivo(true);
+//            selected.setActivo(true);
+            updateActive();
+//            prepareCreateUserRegistred();
+//            setSelected(a);
+//            selected.setIdUser(a.getIdUser());
+//            selected.setEmail(a.getEmail());
+//            selected.setContrasenia(a.getContrasenia());
+//            selected.setEmailValido(true);
+            
             try {
                 ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
                 context.redirect(context.getRequestContextPath() + "/faces/bdvRegistro/registro_continuar.xhtml");
             } catch (IOException ex) {
                 Logger.getLogger(BdvUserController.class.getName()).log(Level.SEVERE, null, ex);
             }
-//            } else { //Si el usuario ya esta activado
-//                JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("UserActiveOld"));
-//                return null;
-//            }
+            } else { //Si el usuario ya esta activado
+                JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("UserActiveOld"));
+                return null;
+            }
         } catch (EJBException | NoResultException | NullPointerException ex) {
             System.out.println("Id Usuario Null ");
             JsfUtil.addErrorMessage(ex, ResourceBundle.getBundle("/Bundle").getString("EmailOrPasswordErrorOccured"));
@@ -299,9 +304,64 @@ public class BdvUserController implements Serializable {
             }
         } catch (Exception e) {
         }
-
     }
-
+    
+    public void agregarRepre2(){
+        selected.getIdEmpresa().agregarRepresentante2();
+    }
+    
+    public void eliminarRepre2(){
+        selected.getIdEmpresa().eliminarRepresentante2();
+    }
+    
+    public void agregarRepre3(){
+        selected.getIdEmpresa().agregarRepresentante3();
+    }
+    
+    public void eliminarRepre3(){
+        selected.getIdEmpresa().eliminarRepresentante3();
+    }
+    
+    public void agregarCuentaBancoV2(){
+        selected.getIdEmpresa().agregarCuentaBancoV2();
+    }
+    
+    public void eliminarCuentaBancoV2(){
+        selected.getIdEmpresa().eliminarCuentaBancoV2();
+    }
+    
+    public void agregarCuentaBanco2(){
+        selected.getIdEmpresa().agregarCuentaBanco2();
+    }
+    
+    public void eliminarCuentaBanco2(){
+        selected.getIdEmpresa().eliminarCuentaBanco2();
+    }
+    
+    public void agregarCuentaBanco3(){
+        selected.getIdEmpresa().agregarCuentaBanco3();
+    }
+    
+    public void eliminarCuentaBanco3(){
+        selected.getIdEmpresa().eliminarCuentaBanco3();
+    }
+    
+    public void agregarContacto2(){
+        selected.getIdEmpresa().agregarContacto2();
+    }
+    
+    public void eliminarContacto2(){
+        selected.getIdEmpresa().eliminarContacto2();
+    }
+    
+    public void agregarContacto3(){
+        selected.getIdEmpresa().agregarContacto3();
+    }
+    
+    public void eliminarContacto3(){
+        selected.getIdEmpresa().eliminarContacto3();
+    }
+    
     public void logOut() {
         getRequest().getSession().invalidate();
         this.selected = null;
@@ -318,10 +378,12 @@ public class BdvUserController implements Serializable {
         return (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
     }
 
-    private final String destination = ResourceBundle.getBundle("/BundleUpload").getString("Destino")+selected.getIdEmpresa().getNombreComercial().replaceAll("\\s","");
+    private String destination = ResourceBundle.getBundle("/BundleUpload").getString("Destino");
+//+selected.getIdEmpresa().getNombreComercial().replaceAll("\\s","");
 //            ResourceBundle.getBundle("/BundleUpload").getString("Destino");
 
     public void uploadCertificadoSnc(FileUploadEvent event) {
+        destination += selected.getIdEmpresa().getNombreComercial().replaceAll("\\s",""); 
         try {
             selected.getIdEmpresa().getIdRecaudos().setCertificadoSnc(destination + "certificadoSnc.pdf");
             System.out.println("Certificado Snc = " + selected.getIdEmpresa().getIdRecaudos().getCertificadoSnc());

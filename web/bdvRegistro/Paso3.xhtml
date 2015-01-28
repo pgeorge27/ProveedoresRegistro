@@ -12,7 +12,10 @@
             <p:messages />
             <h:panelGroup>
                 <h:panelGrid columns="3" columnClasses="column1,column2,column3">
-                    <p:outputLabel value="#{bundle.CreateBdvEmpresaLabel_tipoPersona}" for="tipoPersona" />
+                    <p:outputPanel>
+                        <p:outputLabel styleClass="required" for="tipoPersona" /> 
+                        <p:outputLabel value="#{bundle.CreateBdvEmpresaLabel_tipoPersona}" />
+                    </p:outputPanel>
                     <p:selectOneRadio id="tipoPersona" value="#{bdvUserController.selected.idEmpresa.tipoPersona}" required="true" requiredMessage="#{bundle.CreateBdvEmpresaRequiredMessage_tipoPersona}">
                         <f:selectItem itemLabel="NATURAL" itemValue="NATURAL" />
                         <f:selectItem itemLabel="JURIDICA" itemValue="JURIDICA" />
@@ -32,8 +35,8 @@
                     </p:selectOneMenu>
                     <p:outputLabel value="#{bundle.EnteMsj}"  />
                     <p:outputPanel>
-                    <p:outputLabel class="required" value="*" style="color: red; margin-right: .5em;font-weight: bold;" /> 
-                    <p:outputLabel value="#{bundle.CreateBdvEmpresaLabel_rif}" />
+                        <p:outputLabel styleClass="required" for="tipoRif" /> 
+                        <p:outputLabel value="#{bundle.CreateBdvEmpresaLabel_rif}" />
                     </p:outputPanel>
                     <p:outputPanel>
                         <p:selectOneMenu id="tipoRif" class="ui-selectonemenu--min" value="#{bdvUserController.selected.idEmpresa.tipoRif}" required="true" requiredMessage="#{bundle.CreateBdvEmpresaRequiredMessage_tipoRif}" >
@@ -45,7 +48,10 @@
                         <p:inputMask mask="999999999" id="rif" class="ui-inputmask--min" value="#{bdvUserController.selected.idEmpresa.rif}" title="#{bundle.CreateBdvEmpresaTitle_rif}" required="true" requiredMessage="#{bundle.CreateBdvEmpresaRequiredMessage_rif}"/>
                     </p:outputPanel>
                     <p:outputLabel value="#{bundle.RifMsj}"  />
-                    <p:outputLabel value="#{bundle.CreateBdvEmpresaLabel_idNacionalidad}" for="nacionalidad" />
+                    <p:outputPanel>
+                        <p:outputLabel styleClass="required" for="nacionalidad" /> 
+                        <p:outputLabel value="#{bundle.CreateBdvEmpresaLabel_idNacionalidad}" />
+                    </p:outputPanel>
                     <p:selectOneMenu id="nacionalidad" value="#{bdvUserController.selected.idEmpresa.idNacionalidad}" required="true" requiredMessage="#{bundle.CreateBdvEmpresaRequiredMessage_idNacionalidad}" >
                         <f:selectItem itemLabel="#{bundle.SelectOneMessage}" itemValue="" noSelectionOption="true" />
                         <f:selectItems value="#{bdvNacionalidadController.itemsAvailableSelectOne}"
@@ -119,11 +125,15 @@
                     <p:inputText id="areaOcupacionalRepre1" value="#{bdvUserController.selected.idEmpresa.idRepresentateLegal1.areaOcupacional}" title="#{bundle.CreateBdvRepresentateLegalTitle_areaOcupacional}" required="true" requiredMessage="#{bundle.CreateBdvRepresentateLegalRequiredMessage_areaOcupacional}"/>
                     <p:outputLabel value="#{bundle.AreaOcupacionalMsj}"  />
                 </h:panelGrid>
-                <p:commandButton process="@this" value="Agregar" icon="ui-icon-plusthick" actionListener="#{wizardManagedBean.agregarRepre2}" update="wizard" />
+                <p:commandButton value="Agregar" icon="ui-icon-plusthick" update="wizard" >
+                        <f:actionListener binding="#{wizardManagedBean.agregarRepre2()}"/> 
+                        <f:actionListener binding="#{bdvUserController.agregarRepre2()}"/> 
+                </p:commandButton>
+                <!--<p:commandButton process="@this" value="Agregar" icon="ui-icon-plusthick" actionListener="{wizardManagedBean.agregarRepre2}" update="repre2" />-->
             </h:panelGroup>
         </p:panel>
 
-        <p:panel id="repre2" header="#{bundle.DatosRepresentanteLegal} 2" rendered="#{wizardManagedBean.repre2}">
+        <p:panel id="repre2" widgetVar="repre2" header="#{bundle.DatosRepresentanteLegal} 2" rendered="#{wizardManagedBean.repre2}">
             <h:panelGroup>
                 <h:panelGrid columns="3" columnClasses="column1,column2,column3">
                     <p:outputLabel value="#{bundle.CreateBdvRepresentateLegalLabel_primerNombre}" for="primerNombreRepre2" />
@@ -161,12 +171,18 @@
                     <p:inputText id="areaOcupacionalRepre2" value="#{bdvUserController.selected.idEmpresa.idRepresentateLegal2.areaOcupacional}" title="#{bundle.CreateBdvRepresentateLegalTitle_areaOcupacional}" required="true" requiredMessage="#{bundle.CreateBdvRepresentateLegalRequiredMessage_areaOcupacional}"/>
                     <p:outputLabel value="#{bundle.AreaOcupacionalMsj}"  />
                 </h:panelGrid>
-                <p:commandButton process="@this" value="Eliminar" icon="ui-icon-minusthick" actionListener="#{wizardManagedBean.eliminarRepre2}" update="wizard" />
-                <p:commandButton process="@this" value="Agregar" icon="ui-icon-plusthick" actionListener="#{wizardManagedBean.agregarRepre3}" update="wizard" />
+                <p:commandButton process="@this" value="Eliminar" icon="ui-icon-minusthick" update="wizard" >
+                        <f:actionListener binding="#{wizardManagedBean.eliminarRepre2()}"/> 
+                        <f:actionListener binding="#{bdvUserController.eliminarRepre2()}"/> 
+                </p:commandButton>
+                <p:commandButton process="@this" value="Agregar" icon="ui-icon-plusthick" update="wizard" >
+                        <f:actionListener binding="#{wizardManagedBean.agregarRepre3()}"/> 
+                        <f:actionListener binding="#{bdvUserController.agregarRepre3()}"/> 
+                </p:commandButton>
             </h:panelGroup>
         </p:panel>
 
-        <p:panel id="repre3" header="#{bundle.DatosRepresentanteLegal} 3" rendered="#{wizardManagedBean.repre3}">
+        <p:panel id="repre3" widgetVar="repre3" header="#{bundle.DatosRepresentanteLegal} 3" rendered="#{wizardManagedBean.repre3}">
             <h:panelGroup>
                 <h:panelGrid columns="3" columnClasses="column1,column2,column3">
                     <p:outputLabel value="#{bundle.CreateBdvRepresentateLegalLabel_primerNombre}" for="primerNombreRepre3" />
@@ -204,7 +220,10 @@
                     <p:inputText id="areaOcupacionalRepre3" value="#{bdvUserController.selected.idEmpresa.idRepresentateLegal3.areaOcupacional}" title="#{bundle.CreateBdvRepresentateLegalTitle_areaOcupacional}" required="true" requiredMessage="#{bundle.CreateBdvRepresentateLegalRequiredMessage_areaOcupacional}"/>
                     <p:outputLabel value="#{bundle.AreaOcupacionalMsj}"  />
                 </h:panelGrid>
-                <p:commandButton process="@this" value="Eliminar" icon="ui-icon-minusthick" actionListener="#{wizardManagedBean.eliminarRepre3}" update="wizard" />
+                <p:commandButton process="@this" value="Eliminar" icon="ui-icon-minusthick" update="wizard" >
+                        <f:actionListener binding="#{wizardManagedBean.eliminarRepre3()}"/> 
+                        <f:actionListener binding="#{bdvUserController.eliminarRepre3()}"/> 
+                </p:commandButton>
             </h:panelGroup>
         </p:panel>
 
@@ -223,7 +242,10 @@
                     </p:selectOneMenu>
                     <p:outputLabel value="#{bundle.TipoCuentaMsj}"  />
                 </h:panelGrid>
-                <p:commandButton process="@this" value="Agregar" icon="ui-icon-plusthick" actionListener="#{wizardManagedBean.agregarCuentaBancoV2}" update="wizard" />
+                 <p:commandButton process="@this" value="Agregar" icon="ui-icon-plusthick" update="wizard" >
+                        <f:actionListener binding="#{wizardManagedBean.agregarCuentaBancoV2()}"/> 
+                        <f:actionListener binding="#{bdvUserController.agregarCuentaBancoV2()}"/> 
+                </p:commandButton>
             </h:panelGroup>
         </p:panel> 
 
@@ -242,7 +264,10 @@
                     </p:selectOneMenu>
                     <p:outputLabel value="#{bundle.TipoCuentaMsj}"  />
                 </h:panelGrid>
-                <p:commandButton process="@this" value="Eliminar" icon="ui-icon-minusthick" actionListener="#{wizardManagedBean.eliminarCuentaBancoV2}" update="wizard" />                
+                <p:commandButton process="@this" value="Eliminar" icon="ui-icon-minusthick" update="wizard" >
+                        <f:actionListener binding="#{wizardManagedBean.eliminarCuentaBancoV2()}"/> 
+                        <f:actionListener binding="#{bdvUserController.eliminarCuentaBancoV2()}"/> 
+                </p:commandButton>
             </h:panelGroup>
         </p:panel>     
 
@@ -272,7 +297,10 @@
                     <p:inputMask mask="(9999)999-9999" id="telefonoReferencia1" value="#{bdvUserController.selected.idEmpresa.idBancoCuenta1.telefono}" title="#{bundle.CreateBdvBancoCuentaTitle_telefono}" required="true" requiredMessage="#{bundle.CreateBdvBancoCuentaRequiredMessage_telefono}"/>
                     <p:outputLabel value="#{bundle.BancoTlfMsj}"  />
                 </h:panelGrid>
-                <p:commandButton process="@this" value="Agregar" icon="ui-icon-plusthick" actionListener="#{wizardManagedBean.agregarCuentaBanco2}" update="wizard" />
+                <p:commandButton process="@this" value="Agregar" icon="ui-icon-plusthick" update="wizard" >
+                    <f:actionListener binding="#{wizardManagedBean.agregarCuentaBanco2()}"/> 
+                    <f:actionListener binding="#{bdvUserController.agregarCuentaBanco2()}"/> 
+                </p:commandButton>
             </h:panelGroup>
         </p:panel>   
 
@@ -302,8 +330,14 @@
                     <p:inputMask mask="(9999)999-9999" id="telefonoReferencia2" value="#{bdvUserController.selected.idEmpresa.idBancoCuenta2.telefono}" title="#{bundle.CreateBdvBancoCuentaTitle_telefono}" required="true" requiredMessage="#{bundle.CreateBdvBancoCuentaRequiredMessage_telefono}"/>
                     <p:outputLabel value="#{bundle.BancoTlfMsj}"  />
                 </h:panelGrid>
-                <p:commandButton process="@this" value="Eliminar" icon="ui-icon-minusthick" actionListener="#{wizardManagedBean.eliminarCuentaBanco2}" update="wizard" />
-                <p:commandButton process="@this" value="Agregar" icon="ui-icon-plusthick" actionListener="#{wizardManagedBean.agregarCuentaBanco3}" update="wizard" />
+                <p:commandButton process="@this" value="Eliminar" icon="ui-icon-minusthick" update="wizard" >
+                    <f:actionListener binding="#{wizardManagedBean.eliminarCuentaBanco2()}"/> 
+                    <f:actionListener binding="#{bdvUserController.eliminarCuentaBanco2()}"/> 
+                </p:commandButton>
+                <p:commandButton process="@this" value="Agregar" icon="ui-icon-plusthick" update="wizard" >
+                    <f:actionListener binding="#{wizardManagedBean.agregarCuentaBanco3()}"/> 
+                    <f:actionListener binding="#{bdvUserController.agregarCuentaBanco3()}"/> 
+                </p:commandButton>
             </h:panelGroup>
         </p:panel> 
 
@@ -333,7 +367,10 @@
                     <p:inputMask mask="(9999)999-9999" id="telefonoReferencia3" value="#{bdvUserController.selected.idEmpresa.idBancoCuenta3.telefono}" title="#{bundle.CreateBdvBancoCuentaTitle_telefono}" required="true" requiredMessage="#{bundle.CreateBdvBancoCuentaRequiredMessage_telefono}"/>
                     <p:outputLabel value="#{bundle.BancoTlfMsj}"  />
                 </h:panelGrid>
-                <p:commandButton process="@this" value="Eliminar" icon="ui-icon-minusthick" actionListener="#{wizardManagedBean.eliminarCuentaBanco3}" update="wizard" />
+                <p:commandButton process="@this" value="Eliminar" icon="ui-icon-minusthick" update="wizard" >
+                    <f:actionListener binding="#{wizardManagedBean.eliminarCuentaBanco3()}"/> 
+                    <f:actionListener binding="#{bdvUserController.eliminarCuentaBanco3()}"/> 
+                </p:commandButton>
             </h:panelGroup>
         </p:panel> 
 

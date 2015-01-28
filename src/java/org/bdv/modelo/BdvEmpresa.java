@@ -255,8 +255,67 @@ public class BdvEmpresa implements Serializable {
         this.fechaActivadoDesactivado = fechaActivadoDesactivado;
     }
     
+    public void agregarRepresentante2(){
+        idRepresentateLegal2 = new BdvRepresentateLegal();
+    }
     
+    public void eliminarRepresentante2(){
+        idRepresentateLegal2 = null;
+        idRepresentateLegal3 = null;
+    }
+    
+    public void agregarRepresentante3(){
+        idRepresentateLegal3 = new BdvRepresentateLegal();
+    }
+    
+    public void eliminarRepresentante3(){
+        idRepresentateLegal3 = null;
+    }
+    
+    public void agregarCuentaBancoV2(){
+        idBancoCuentaVnz2 = new BdvBancoCuentaVnz();
+    }
+    
+    public void eliminarCuentaBancoV2(){
+        idBancoCuentaVnz2 = null;
+    }
+    
+    public void agregarCuentaBanco2(){
+        idBancoCuenta2 = new BdvBancoCuenta();
+    }
 
+    public void eliminarCuentaBanco2(){
+        idBancoCuenta2 = null;
+        idBancoCuenta3 = null;
+    }
+    
+    public void agregarCuentaBanco3(){
+        idBancoCuenta3 = new BdvBancoCuenta();
+    }
+
+    public void eliminarCuentaBanco3(){
+        idBancoCuenta3 = null;
+    }
+    
+    public void agregarContacto2(){
+        idContacto2 = new BdvContacto();
+    }
+    
+    public void eliminarContacto2(){
+        idContacto2 = null;
+        idContacto3 = null;
+    }
+    
+    public void agregarContacto3(){
+        idContacto3 = new BdvContacto();
+    }
+    
+    public void eliminarContacto3(){
+        idContacto3 = null;
+    }
+    
+    
+    
     public Integer getIdEmpresa() {
         return idEmpresa;
     }

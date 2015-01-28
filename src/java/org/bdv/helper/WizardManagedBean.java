@@ -8,6 +8,7 @@ package org.bdv.helper;
 import java.io.Serializable;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import org.bdv.modelo.BdvUser;
 
 /**
  *
@@ -39,7 +40,7 @@ public class WizardManagedBean implements Serializable{
         cuentaBancoVnz2 = false;
     }
     
-    public void agregarRepre2(){   
+    public void agregarRepre2(){
         setRepre2(true);
     }
     
@@ -69,7 +70,7 @@ public class WizardManagedBean implements Serializable{
     }
 
     public void eliminarCuentaBanco2(){
-        setCuentaBanco2(true);
+        setCuentaBanco2(false);
         setCuentaBanco3(false);
     }
     
@@ -78,7 +79,7 @@ public class WizardManagedBean implements Serializable{
     }
 
     public void eliminarCuentaBanco3(){
-        setCuentaBanco3(true);
+        setCuentaBanco3(false);
     }
     
     public void agregarContacto2(){

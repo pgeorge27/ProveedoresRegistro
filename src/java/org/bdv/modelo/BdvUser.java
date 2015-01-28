@@ -6,7 +6,6 @@
 package org.bdv.modelo;
 
 import java.io.Serializable;
-import java.util.ResourceBundle;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;

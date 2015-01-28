@@ -11,15 +11,16 @@
                 <p:wizard id="wizard2" showNavBar="false" widgetVar="wizardWV2" showStepStatus="true" >
 
                     <p:tab titleStyleClass="ui-wizard-step-title--min" title="#{bundle.CreateBdvRecaudosLabel_certificadoSnc}">
-                        <h:panelGrid columns="3" columnClasses="">
+                        <h:panelGrid columns="3" columnClasses="column1--max,column2,column3">
                             <p:outputLabel value="#{bundle.CreateBdvRecaudosLabel_certificadoSnc}" for="certificadoSnc" />
                             <p:fileUpload id="certificadoSnc" value="#{bdvUserController.selected.idEmpresa.idRecaudos.certificadoSnc}" 
                                           required="true" sizeLimit="200000"  fileUploadListener="#{bdvUserController.uploadCertificadoSnc}"
                                           allowTypes="/(\.|\/)(pdf)$/" mode="advanced" auto="true" update=":growl" label="#{bundle.Seleccione}"
                                           requiredMessage="#{bundle.CreateBdvRecaudosRequiredMessage_certificadoSnc}" />
-                            <object type="application/pdf" data="/ProveedoresRegistro/faces/javax.faces.resource/prueba.pdf?pfdrid_c=true" height="100px" width="100%">
-                                Su navegador no soporta archivos pdf, <a href="/ProveedoresRegistro/faces/javax.faces.resource/prueba.pdf">click</a> para descargar.
-                            </object>
+                            <p:outputPanel/>
+                            <p:outputPanel/>
+                            <p:messages autoUpdate="true" closable="true" />
+                            <p:outputPanel/>
                             <p:outputPanel>
                                 <p:commandButton value="Volver" icon="ui-icon-arrow-1-w" onclick="PF('wizardWV').back();" />
                                 <p:commandButton icon="ui-icon-arrowthick-1-e" process="@this" value="Siguiente" onclick="PF('wizardWV2').next();" />
@@ -27,13 +28,17 @@
                         </h:panelGrid>
                     </p:tab>
 
-                    <p:tab titleStyleClass="ui-wizard-step-title--min" title="#{bundle.CreateBdvRecaudosLabel_planillaRnc}">
+                    <p:tab rendered="#{'JURIDICA' eq bdvUserController.selected.idEmpresa.tipoPersona}" titleStyleClass="ui-wizard-step-title--min" title="#{bundle.CreateBdvRecaudosLabel_planillaRnc}">
                         <h:panelGrid columns="2" columnClasses="">
                             <p:outputLabel value="#{bundle.CreateBdvRecaudosLabel_planillaRnc}" for="planillaRnc" />
                             <p:fileUpload id="planillaRnc" value="#{bdvUserController.selected.idEmpresa.idRecaudos.planillaRnc}" 
                                           required="true" sizeLimit="200000" fileUploadListener="#{bdvUserController.uploadPlanillaRnc}"
                                           allowTypes="/(\.|\/)(pdf)$/" mode="advanced" auto="true" update=":growl" label="#{bundle.Seleccione}"
                                           requiredMessage="#{bundle.CreateBdvRecaudosRequiredMessage_planillaRnc}" />
+                            <p:outputPanel/>
+                            <p:outputPanel/>
+                            <p:messages  autoUpdate="true" closable="true" />
+                            <p:outputPanel/>
                             <p:outputPanel>
                                 <p:commandButton value="Volver" icon="ui-icon-arrow-1-w" onclick="PF('wizardWV2').back();" />
                                 <p:commandButton icon="ui-icon-arrowthick-1-e" process="@this" value="Siguiente"  onclick="PF('wizardWV2').next();" />
@@ -41,13 +46,17 @@
                         </h:panelGrid>
                     </p:tab>
 
-                    <p:tab titleStyleClass="ui-wizard-step-title--min" title="#{bundle.CreateBdvRecaudosLabel_comunicacionRepresentante}">
+                    <p:tab rendered="#{'JURIDICA' eq bdvUserController.selected.idEmpresa.tipoPersona}" titleStyleClass="ui-wizard-step-title--min" title="#{bundle.CreateBdvRecaudosLabel_comunicacionRepresentante}">
                         <h:panelGrid columns="2" columnClasses="">
                             <p:outputLabel value="#{bundle.CreateBdvRecaudosLabel_comunicacionRepresentante}" for="comunicacionRepresentante" />
                             <p:fileUpload id="comunicacionRepresentante" value="#{bdvUserController.selected.idEmpresa.idRecaudos.comunicacionRepresentante}" 
                                           required="true" sizeLimit="200000" fileUploadListener="#{bdvUserController.uploadComunicacionRepresentante}"
                                           allowTypes="/(\.|\/)(pdf)$/" mode="advanced" auto="true" update=":growl" label="#{bundle.Seleccione}"
                                           requiredMessage="#{bundle.CreateBdvRecaudosRequiredMessage_comunicacionRepresentante}" />
+                            <p:outputPanel/>
+                            <p:outputPanel/>
+                            <p:messages  autoUpdate="true" closable="true" />
+                            <p:outputPanel/>
                             <p:outputPanel>
                                 <p:commandButton value="Volver" icon="ui-icon-arrow-1-w" onclick="PF('wizardWV2').back();" />
                                 <p:commandButton icon="ui-icon-arrowthick-1-e" process="@this" value="Siguiente"  onclick="PF('wizardWV2').next();" />
@@ -55,13 +64,17 @@
                         </h:panelGrid>
                     </p:tab>
 
-                    <p:tab titleStyleClass="ui-wizard-step-title--min" title="#{bundle.CreateBdvRecaudosLabel_solvenciaSso}">
+                    <p:tab rendered="#{'JURIDICA' eq bdvUserController.selected.idEmpresa.tipoPersona}" titleStyleClass="ui-wizard-step-title--min" title="#{bundle.CreateBdvRecaudosLabel_solvenciaSso}">
                         <h:panelGrid columns="2" columnClasses="">
                             <p:outputLabel value="#{bundle.CreateBdvRecaudosLabel_solvenciaSso}" for="solvenciaSso" />
                             <p:fileUpload id="solvenciaSso" value="#{bdvUserController.selected.idEmpresa.idRecaudos.solvenciaSso}" 
                                           required="true" sizeLimit="200000" fileUploadListener="#{bdvUserController.uploadSolvenciaSso}"
                                           allowTypes="/(\.|\/)(pdf)$/" mode="advanced" auto="true" update=":growl" label="#{bundle.Seleccione}"
                                           requiredMessage="#{bundle.CreateBdvRecaudosRequiredMessage_solvenciaSso}" />
+                            <p:outputPanel/>
+                            <p:outputPanel/>
+                            <p:messages  autoUpdate="true" closable="true" />
+                            <p:outputPanel/>
                             <p:outputPanel>
                                 <p:commandButton value="Volver" icon="ui-icon-arrow-1-w" onclick="PF('wizardWV2').back();" />
                                 <p:commandButton icon="ui-icon-arrowthick-1-e" process="@this" value="Siguiente"  onclick="PF('wizardWV2').next();" />
@@ -69,13 +82,17 @@
                         </h:panelGrid>
                     </p:tab>
 
-                    <p:tab titleStyleClass="ui-wizard-step-title--min" title="#{bundle.CreateBdvRecaudosLabel_solvenciaLaboral}">
+                    <p:tab rendered="#{'JURIDICA' eq bdvUserController.selected.idEmpresa.tipoPersona}" titleStyleClass="ui-wizard-step-title--min" title="#{bundle.CreateBdvRecaudosLabel_solvenciaLaboral}">
                         <h:panelGrid columns="2" columnClasses="">
                             <p:outputLabel value="#{bundle.CreateBdvRecaudosLabel_solvenciaLaboral}" for="solvenciaLaboral" />
                             <p:fileUpload id="solvenciaLaboral" value="#{bdvUserController.selected.idEmpresa.idRecaudos.solvenciaLaboral}" 
                                           required="true" sizeLimit="200000" fileUploadListener="#{bdvUserController.uploadSolvenciaLaboral}"
                                           allowTypes="/(\.|\/)(pdf)$/" mode="advanced" auto="true" update=":growl" label="#{bundle.Seleccione}"
                                           requiredMessage="#{bundle.CreateBdvRecaudosRequiredMessage_solvenciaLaboral}" />
+                            <p:outputPanel/>
+                            <p:outputPanel/>
+                            <p:messages  autoUpdate="true" closable="true" />
+                            <p:outputPanel/>
                             <p:outputPanel>
                                 <p:commandButton value="Volver" icon="ui-icon-arrow-1-w" onclick="PF('wizardWV2').back();" />
                                 <p:commandButton icon="ui-icon-arrowthick-1-e" process="@this" value="Siguiente"  onclick="PF('wizardWV2').next();" />
@@ -83,13 +100,17 @@
                         </h:panelGrid>
                     </p:tab>
 
-                    <p:tab titleStyleClass="ui-wizard-step-title--min" title="#{bundle.CreateBdvRecaudosLabel_solvenciaInce}">
+                    <p:tab rendered="#{'JURIDICA' eq bdvUserController.selected.idEmpresa.tipoPersona}" titleStyleClass="ui-wizard-step-title--min" title="#{bundle.CreateBdvRecaudosLabel_solvenciaInce}">
                         <h:panelGrid columns="2" columnClasses="">
                             <p:outputLabel value="#{bundle.CreateBdvRecaudosLabel_solvenciaInce}" for="solvenciaInce" />
                             <p:fileUpload id="solvenciaInce" value="#{bdvUserController.selected.idEmpresa.idRecaudos.solvenciaInce}" 
                                           required="true" sizeLimit="200000" fileUploadListener="#{bdvUserController.uploadSolvenciaInce}"
                                           allowTypes="/(\.|\/)(pdf)$/" mode="advanced" auto="true" update=":growl" label="#{bundle.Seleccione}"
                                           requiredMessage="#{bundle.CreateBdvRecaudosRequiredMessage_solvenciaInce}" />
+                            <p:outputPanel/>
+                            <p:outputPanel/>
+                            <p:messages  autoUpdate="true" closable="true" />
+                            <p:outputPanel/>
                             <p:outputPanel>
                                 <p:commandButton value="Volver" icon="ui-icon-arrow-1-w" onclick="PF('wizardWV2').back();" />
                                 <p:commandButton icon="ui-icon-arrowthick-1-e" process="@this" value="Siguiente"  onclick="PF('wizardWV2').next();" />
@@ -97,13 +118,17 @@
                         </h:panelGrid>
                     </p:tab>
 
-                    <p:tab titleStyleClass="ui-wizard-step-title--min" title="#{bundle.CreateBdvRecaudosLabel_organigrama}">
+                    <p:tab rendered="#{'JURIDICA' eq bdvUserController.selected.idEmpresa.tipoPersona}" titleStyleClass="ui-wizard-step-title--min" title="#{bundle.CreateBdvRecaudosLabel_organigrama}">
                         <h:panelGrid columns="2" columnClasses="">
                             <p:outputLabel value="#{bundle.CreateBdvRecaudosLabel_organigrama}" for="organigrama" />
                             <p:fileUpload id="organigrama" value="#{bdvUserController.selected.idEmpresa.idRecaudos.organigrama}" 
                                           required="true" sizeLimit="200000" fileUploadListener="#{bdvUserController.uploadOrganigrama}"
                                           allowTypes="/(\.|\/)(pdf)$/" mode="advanced" auto="true" update=":growl" label="#{bundle.Seleccione}"
                                           requiredMessage="#{bundle.CreateBdvRecaudosRequiredMessage_organigrama}" />
+                            <p:outputPanel/>
+                            <p:outputPanel/>
+                            <p:messages  autoUpdate="true" closable="true" />
+                            <p:outputPanel/>
                             <p:outputPanel>
                                 <p:commandButton value="Volver" icon="ui-icon-arrow-1-w" onclick="PF('wizardWV2').back();" />
                                 <p:commandButton icon="ui-icon-arrowthick-1-e" process="@this" value="Siguiente"  onclick="PF('wizardWV2').next();" />
@@ -118,20 +143,29 @@
                                           required="true" sizeLimit="200000" fileUploadListener="#{bdvUserController.uploadListaProductos}"
                                           allowTypes="/(\.|\/)(pdf)$/" mode="advanced" auto="true" update=":growl" label="#{bundle.Seleccione}"
                                           requiredMessage="#{bundle.CreateBdvRecaudosRequiredMessage_listaProductos}" />
+                            <p:outputPanel/>
+                            <p:outputPanel/>
+                            <p:messages  autoUpdate="true" closable="true" />
+                            <p:outputPanel/>
                             <p:outputPanel>
                                 <p:commandButton value="Volver" icon="ui-icon-arrow-1-w" onclick="PF('wizardWV2').back();" />
-                                <p:commandButton icon="ui-icon-arrowthick-1-e" process="@this" value="Siguiente"  onclick="PF('wizardWV2').next();" />
+                                <p:commandButton rendered="#{'NATURAL' eq bdvUserController.selected.idEmpresa.tipoPersona}" icon="ui-icon-arrowthick-1-e" process="@this" value="Siguiente"  onclick="PF('wizardWV').next();" />
+                                <p:commandButton rendered="#{'JURIDICA' eq bdvUserController.selected.idEmpresa.tipoPersona}" icon="ui-icon-arrowthick-1-e" process="@this" value="Siguiente"  onclick="PF('wizardWV2').next();" />
                             </p:outputPanel>
                         </h:panelGrid>
                     </p:tab>
 
-                    <p:tab titleStyleClass="ui-wizard-step-title--min" title="#{bundle.CreateBdvRecaudosLabel_referenciaBancaria}">
+                    <p:tab rendered="#{'JURIDICA' eq bdvUserController.selected.idEmpresa.tipoPersona}" titleStyleClass="ui-wizard-step-title--min" title="#{bundle.CreateBdvRecaudosLabel_referenciaBancaria}">
                         <h:panelGrid columns="2" columnClasses="">
                             <p:outputLabel value="#{bundle.CreateBdvRecaudosLabel_referenciaBancaria}" for="referenciaBancaria" />
                             <p:fileUpload id="referenciaBancaria" value="#{bdvUserController.selected.idEmpresa.idRecaudos.referenciaBancaria}" 
                                           required="true" sizeLimit="200000" fileUploadListener="#{bdvUserController.uploadReferenciaBancaria}"
                                           allowTypes="/(\.|\/)(pdf)$/" mode="advanced" auto="true" update=":growl" label="#{bundle.Seleccione}"
                                           requiredMessage="#{bundle.CreateBdvRecaudosRequiredMessage_referenciaBancaria}" />
+                            <p:outputPanel/>
+                            <p:outputPanel/>
+                            <p:messages  autoUpdate="true" closable="true" />
+                            <p:outputPanel/>
                             <p:outputPanel>
                                 <p:commandButton value="Volver" icon="ui-icon-arrow-1-w" onclick="PF('wizardWV2').back();" />
                                 <p:commandButton icon="ui-icon-arrowthick-1-e" process="@this" value="Siguiente"  onclick="PF('wizardWV2').next();" />
@@ -139,13 +173,17 @@
                         </h:panelGrid>
                     </p:tab>
 
-                    <p:tab titleStyleClass="ui-wizard-step-title--min" title="#{bundle.CreateBdvRecaudosLabel_referenciaComercial}">
+                    <p:tab rendered="#{'JURIDICA' eq bdvUserController.selected.idEmpresa.tipoPersona}" titleStyleClass="ui-wizard-step-title--min" title="#{bundle.CreateBdvRecaudosLabel_referenciaComercial}">
                         <h:panelGrid columns="2" columnClasses="">
                             <p:outputLabel value="#{bundle.CreateBdvRecaudosLabel_referenciaComercial}" for="referenciaComercial" />
                             <p:fileUpload id="referenciaComercial" value="#{bdvUserController.selected.idEmpresa.idRecaudos.referenciaComercial}" 
                                           required="true" sizeLimit="200000" fileUploadListener="#{bdvUserController.uploadReferenciaComercial}"
                                           allowTypes="/(\.|\/)(pdf)$/" mode="advanced" auto="true" update=":growl" label="#{bundle.Seleccione}"
                                           requiredMessage="#{bundle.CreateBdvRecaudosRequiredMessage_referenciaComercial}" />
+                            <p:outputPanel/>
+                            <p:outputPanel/>
+                            <p:messages  autoUpdate="true" closable="true" />
+                            <p:outputPanel/>
                             <p:outputPanel>
                                 <p:commandButton value="Volver" icon="ui-icon-arrow-1-w" onclick="PF('wizardWV2').back();" />
                                 <p:commandButton icon="ui-icon-arrowthick-1-e" process="@this" value="Siguiente"  onclick="PF('wizardWV').next();" />

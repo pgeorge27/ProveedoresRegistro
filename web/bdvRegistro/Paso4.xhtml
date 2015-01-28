@@ -11,7 +11,7 @@
         <p:panel header="#{bundle.DatosProveedor}">
             <p:messages />
             <h:panelGroup>
-                <h:panelGrid columns="3" columnClasses="label, value">
+                <h:panelGrid columns="3" columnClasses="column1,column2,column3">
                     <p:outputLabel value="#{bundle.CreateBdvEmpresaLabel_domicilioTributario}" for="domicilioTributario" />
                     <p:inputText id="domicilioTributario" value="#{bdvUserController.selected.idEmpresa.domicilioTributario}" title="#{bundle.CreateBdvEmpresaTitle_domicilioTributario}" required="true" requiredMessage="#{bundle.CreateBdvEmpresaRequiredMessage_domicilioTributario}"/>
                     <p:outputLabel value="#{bundle.DomicilioTributarioMsj}"  />
