@@ -251,6 +251,7 @@ public class BdvUserController implements Serializable {
                     setSelected(a);//Le asignamos sus valores
                     if (a.getIdEmpresa() != null && a.getIdEmpresa().getFinalizoRegistro()) {//Si registro su empresa y finalizo el registro
                         try { // Al home User
+                            setSelected2(selected);
                             System.out.println("al home");
                             ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
                             context.redirect(context.getRequestContextPath() + "/faces/homeUser.xhtml");

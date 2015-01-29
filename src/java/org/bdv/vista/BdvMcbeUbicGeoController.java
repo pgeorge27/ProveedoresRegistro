@@ -135,6 +135,7 @@ public class BdvMcbeUbicGeoController implements Serializable {
     public List<BdvMcbeUbicGeo> getItemsAvailableSelectOne() {
         return getFacade().findAll();
     }
+    
     public List<BdvMcbeUbicGeo> obtenerEstados() {
         System.out.println("ID PADRE == " + getIdEstado());
         return getFacade().obtenerMunicipio(0);

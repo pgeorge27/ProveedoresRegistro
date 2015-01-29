@@ -12,38 +12,74 @@
             <p:messages />
             <h:panelGroup>
                 <h:panelGrid columns="3" columnClasses="column1,column2,column3">
-                    <p:outputLabel value="#{bundle.CreateBdvContactoLabel_primerApellido}" for="primerApellidoContacto1" />
+                    
+                    <p:outputPanel>
+                        <p:outputLabel styleClass="required" for="primerApellidoContacto1" /> 
+                        <p:outputLabel value="#{bundle.CreateBdvContactoLabel_primerApellido}" />
+                    </p:outputPanel>
                     <p:inputText id="primerApellidoContacto1" value="#{bdvUserController.selected.idEmpresa.idContacto1.primerApellido}" title="#{bundle.CreateBdvContactoTitle_primerApellido}" required="true" requiredMessage="#{bundle.CreateBdvContactoRequiredMessage_primerApellido}"/>
                     <p:outputLabel value="#{bundle.PrimerApellidoContactoMsj}"  />
-                    <p:outputLabel value="#{bundle.CreateBdvContactoLabel_segundoApellido}" for="segundoApellidoContacto1" />
+                    
+                    <p:outputPanel>
+                        <p:outputLabel styleClass="required" for="segundoApellidoContacto1" /> 
+                        <p:outputLabel value="#{bundle.CreateBdvContactoLabel_segundoApellido}" />
+                    </p:outputPanel>
                     <p:inputText id="segundoApellidoContacto1" value="#{bdvUserController.selected.idEmpresa.idContacto1.segundoApellido}" title="#{bundle.CreateBdvContactoTitle_segundoApellido}" required="true" requiredMessage="#{bundle.CreateBdvContactoRequiredMessage_segundoApellido}"/>
                     <p:outputLabel value="#{bundle.SegundoApellidoContactoMsj}"  />
-                    <p:outputLabel value="#{bundle.CreateBdvContactoLabel_primerNombre}" for="primerNombreContacto1" />
+                    
+                    <p:outputPanel>
+                        <p:outputLabel styleClass="required" for="primerNombreContacto1" /> 
+                        <p:outputLabel value="#{bundle.CreateBdvContactoLabel_primerNombre}" />
+                    </p:outputPanel>
                     <p:inputText id="primerNombreContacto1" value="#{bdvUserController.selected.idEmpresa.idContacto1.primerNombre}" title="#{bundle.CreateBdvContactoTitle_primerNombre}" required="true" requiredMessage="#{bundle.CreateBdvContactoRequiredMessage_primerNombre}"/>
                     <p:outputLabel value="#{bundle.PrimerNombreContactoMsj}"  />
-                    <p:outputLabel value="#{bundle.CreateBdvContactoLabel_segundoNombre}" for="segundoNombreContacto1" />
+                    
+                    <p:outputPanel>
+                        <p:outputLabel styleClass="required" for="segundoNombreContacto1" /> 
+                        <p:outputLabel value="#{bundle.CreateBdvContactoLabel_segundoNombre}" />
+                    </p:outputPanel>
                     <p:inputText id="segundoNombreContacto1" value="#{bdvUserController.selected.idEmpresa.idContacto1.segundoNombre}" title="#{bundle.CreateBdvContactoTitle_segundoNombre}" required="true" requiredMessage="#{bundle.CreateBdvContactoRequiredMessage_segundoNombre}"/>
                     <p:outputLabel value="#{bundle.SegundoNombreContactoMsj}"  />
-                    <p:outputLabel value="#{bundle.CreateBdvContactoLabel_sexo}" for="sexoContacto1" />
+                    
+                    <p:outputPanel>
+                        <p:outputLabel styleClass="required" for="sexoContacto1" /> 
+                        <p:outputLabel value="#{bundle.CreateBdvContactoLabel_sexo}" />
+                    </p:outputPanel>
                     <p:selectOneRadio id="sexoContacto1" value="#{bdvUserController.selected.idEmpresa.idContacto1.sexo}" required="true" requiredMessage="#{bundle.CreateBdvContactoRequiredMessage_sexo}">
                         <f:selectItem itemLabel="MASCULINO" itemValue="MASCULINO" />
                         <f:selectItem itemLabel="FEMENINO" itemValue="FEMENINO" />
                     </p:selectOneRadio>
                     <p:outputLabel value="#{bundle.GeneroContactoMsj}"  />
-                    <p:outputLabel value="#{bundle.CreateBdvContactoLabel_documentoIdentidad}" for="documentoIdentidadContacto1" />
+                    
+                    <p:outputPanel>
+                        <p:outputLabel styleClass="required" for="documentoIdentidadContacto1" /> 
+                        <p:outputLabel value="#{bundle.CreateBdvContactoLabel_documentoIdentidad}" />
+                    </p:outputPanel>
                     <p:selectOneMenu id="documentoIdentidadContacto1" value="#{bdvUserController.selected.idEmpresa.idContacto1.documentoIdentidad}" required="true" requiredMessage="#{bundle.CreateBdvContactoRequiredMessage_documentoIdentidad}">
                         <f:selectItem itemLabel="SELECCIONE" itemValue="" noSelectionOption="true" />
                         <f:selectItem itemLabel="CEDULA DE CIUDADANIA" itemValue="CEDULA DE CIUDADANIA" />
                         <f:selectItem itemLabel="PASAPORTE" itemValue="PASAPORTE" />
                     </p:selectOneMenu>
                     <p:outputLabel value="#{bundle.DocumentoIdentificacionContactoMsj}"  />
-                    <p:outputLabel value="#{bundle.CreateBdvContactoLabel_numeroIdentidad}" for="numeroIdentidadContacto1" />
+                    
+                    <p:outputPanel>
+                        <p:outputLabel styleClass="required" for="numeroIdentidadContacto1" /> 
+                        <p:outputLabel value="#{bundle.CreateBdvContactoLabel_numeroIdentidad}" />
+                    </p:outputPanel>
                     <p:inputMask mask="99999999" id="numeroIdentidadContacto1" value="#{bdvUserController.selected.idEmpresa.idContacto1.numeroIdentidad}" title="#{bundle.CreateBdvContactoTitle_numeroIdentidad}" required="true" requiredMessage="#{bundle.CreateBdvContactoRequiredMessage_numeroIdentidad}"/>
                     <p:outputLabel value="#{bundle.NumeroIdentificacionContactoMsj}"  />
-                    <p:outputLabel value="#{bundle.CreateBdvContactoLabel_cargo}" for="cargoContacto1" />
+                    
+                    <p:outputPanel>
+                        <p:outputLabel styleClass="required" for="cargoContacto1" /> 
+                        <p:outputLabel value="#{bundle.CreateBdvContactoLabel_cargo}" />
+                    </p:outputPanel>
                     <p:inputText id="cargoContacto1" value="#{bdvUserController.selected.idEmpresa.idContacto1.cargo}" title="#{bundle.CreateBdvContactoTitle_cargo}" required="true" requiredMessage="#{bundle.CreateBdvContactoRequiredMessage_cargo}"/>
                     <p:outputLabel value="#{bundle.CargoContactoMsj}"  />
-                    <p:outputLabel value="#{bundle.CreateBdvContactoLabel_areaOcupacional}" for="areaOcupacionalContacto1" />
+                    
+                    <p:outputPanel>
+                        <p:outputLabel styleClass="required" for="areaOcupacionalContacto1" /> 
+                        <p:outputLabel value="#{bundle.CreateBdvContactoLabel_areaOcupacional}" />
+                    </p:outputPanel>
                     <p:inputText id="areaOcupacionalContacto1" value="#{bdvUserController.selected.idEmpresa.idContacto1.areaOcupacional}" title="#{bundle.CreateBdvContactoTitle_areaOcupacional}" required="true" requiredMessage="#{bundle.CreateBdvContactoRequiredMessage_areaOcupacional}"/>
                     <p:outputLabel value="#{bundle.AreaOcupacionalContactoMsj}"  />
                 </h:panelGrid>
@@ -57,38 +93,73 @@
         <p:panel header="#{bundle.DatosContacto} 2" rendered="#{wizardManagedBean.contacto2}">
             <h:panelGroup>
                 <h:panelGrid columns="3" columnClasses="column1,column2,column3">
-                    <p:outputLabel value="#{bundle.CreateBdvContactoLabel_primerApellido}" for="primerApellidoContacto2" />
+                    <p:outputPanel>
+                        <p:outputLabel styleClass="required" for="primerApellidoContacto2" /> 
+                        <p:outputLabel value="#{bundle.CreateBdvContactoLabel_primerApellido}" />
+                    </p:outputPanel>
                     <p:inputText id="primerApellidoContacto2" value="#{bdvUserController.selected.idEmpresa.idContacto2.primerApellido}" title="#{bundle.CreateBdvContactoTitle_primerApellido}" required="true" requiredMessage="#{bundle.CreateBdvContactoRequiredMessage_primerApellido}"/>
                     <p:outputLabel value="#{bundle.PrimerApellidoContactoMsj}"  />
-                    <p:outputLabel value="#{bundle.CreateBdvContactoLabel_segundoApellido}" for="segundoApellidoContacto2" />
+                    
+                    <p:outputPanel>
+                        <p:outputLabel styleClass="required" for="segundoApellidoContacto2" /> 
+                        <p:outputLabel value="#{bundle.CreateBdvContactoLabel_segundoApellido}" />
+                    </p:outputPanel>
                     <p:inputText id="segundoApellidoContacto2" value="#{bdvUserController.selected.idEmpresa.idContacto2.segundoApellido}" title="#{bundle.CreateBdvContactoTitle_segundoApellido}" required="true" requiredMessage="#{bundle.CreateBdvContactoRequiredMessage_segundoApellido}"/>
                     <p:outputLabel value="#{bundle.SegundoApellidoContactoMsj}"  />
-                    <p:outputLabel value="#{bundle.CreateBdvContactoLabel_primerNombre}" for="primerNombreContacto2" />
+                    
+                    <p:outputPanel>
+                        <p:outputLabel styleClass="required" for="primerNombreContacto2" /> 
+                        <p:outputLabel value="#{bundle.CreateBdvContactoLabel_primerNombre}" />
+                    </p:outputPanel>
                     <p:inputText id="primerNombreContacto2" value="#{bdvUserController.selected.idEmpresa.idContacto2.primerNombre}" title="#{bundle.CreateBdvContactoTitle_primerNombre}" required="true" requiredMessage="#{bundle.CreateBdvContactoRequiredMessage_primerNombre}"/>
                     <p:outputLabel value="#{bundle.PrimerNombreContactoMsj}"  />
-                    <p:outputLabel value="#{bundle.CreateBdvContactoLabel_segundoNombre}" for="segundoNombreContacto2" />
+                    
+                    <p:outputPanel>
+                        <p:outputLabel styleClass="required" for="segundoNombreContacto2" /> 
+                        <p:outputLabel value="#{bundle.CreateBdvContactoLabel_segundoNombre}" />
+                    </p:outputPanel>
                     <p:inputText id="segundoNombreContacto2" value="#{bdvUserController.selected.idEmpresa.idContacto2.segundoNombre}" title="#{bundle.CreateBdvContactoTitle_segundoNombre}" required="true" requiredMessage="#{bundle.CreateBdvContactoRequiredMessage_segundoNombre}"/>
                     <p:outputLabel value="#{bundle.SegundoNombreContactoMsj}"  />
-                    <p:outputLabel value="#{bundle.CreateBdvContactoLabel_sexo}" for="sexoContacto2" />
+                    
+                    <p:outputPanel>
+                        <p:outputLabel styleClass="required" for="sexoContacto2" /> 
+                        <p:outputLabel value="#{bundle.CreateBdvContactoLabel_sexo}" />
+                    </p:outputPanel>
                     <p:selectOneRadio id="sexoContacto2" value="#{bdvUserController.selected.idEmpresa.idContacto2.sexo}" required="true" requiredMessage="#{bundle.CreateBdvContactoRequiredMessage_sexo}">
                         <f:selectItem itemLabel="MASCULINO" itemValue="MASCULINO" />
                         <f:selectItem itemLabel="FEMENINO" itemValue="FEMENINO" />
                     </p:selectOneRadio>
                     <p:outputLabel value="#{bundle.GeneroContactoMsj}"  />
-                    <p:outputLabel value="#{bundle.CreateBdvContactoLabel_documentoIdentidad}" for="documentoIdentidadContacto2" />
+                    
+                    <p:outputPanel>
+                        <p:outputLabel styleClass="required" for="documentoIdentidadContacto2" /> 
+                        <p:outputLabel value="#{bundle.CreateBdvContactoLabel_documentoIdentidad}" />
+                    </p:outputPanel>                
                     <p:selectOneMenu id="documentoIdentidadContacto2" value="#{bdvUserController.selected.idEmpresa.idContacto2.documentoIdentidad}" required="true" requiredMessage="#{bundle.CreateBdvContactoRequiredMessage_documentoIdentidad}">
                         <f:selectItem itemLabel="SELECCIONE" itemValue="" noSelectionOption="true" />
                         <f:selectItem itemLabel="CEDULA DE CIUDADANIA" itemValue="CEDULA DE CIUDADANIA" />
                         <f:selectItem itemLabel="PASAPORTE" itemValue="PASAPORTE" />
                     </p:selectOneMenu>
                     <p:outputLabel value="#{bundle.DocumentoIdentificacionContactoMsj}"  />
-                    <p:outputLabel value="#{bundle.CreateBdvContactoLabel_numeroIdentidad}" for="numeroIdentidadContacto2" />
+                    
+                    <p:outputPanel>
+                        <p:outputLabel styleClass="required" for="numeroIdentidadContacto2" /> 
+                        <p:outputLabel value="#{bundle.CreateBdvContactoLabel_numeroIdentidad}" />
+                    </p:outputPanel> 
                     <p:inputMask mask="999999999" id="numeroIdentidadContacto2" value="#{bdvUserController.selected.idEmpresa.idContacto2.numeroIdentidad}" title="#{bundle.CreateBdvContactoTitle_numeroIdentidad}" required="true" requiredMessage="#{bundle.CreateBdvContactoRequiredMessage_numeroIdentidad}"/>
                     <p:outputLabel value="#{bundle.NumeroIdentificacionContactoMsj}"  />
-                    <p:outputLabel value="#{bundle.CreateBdvContactoLabel_cargo}" for="cargoContacto2" />
+                    
+                    <p:outputPanel>
+                        <p:outputLabel styleClass="required" for="cargoContacto2" /> 
+                        <p:outputLabel value="#{bundle.CreateBdvContactoLabel_cargo}" />
+                    </p:outputPanel> 
                     <p:inputText id="cargoContacto2" value="#{bdvUserController.selected.idEmpresa.idContacto2.cargo}" title="#{bundle.CreateBdvContactoTitle_cargo}" required="true" requiredMessage="#{bundle.CreateBdvContactoRequiredMessage_cargo}"/>
                     <p:outputLabel value="#{bundle.CargoContactoMsj}"  />
-                    <p:outputLabel value="#{bundle.CreateBdvContactoLabel_areaOcupacional}" for="areaOcupacionalContacto2" />
+                    
+                    <p:outputPanel>
+                        <p:outputLabel styleClass="required" for="areaOcupacionalContacto2" /> 
+                        <p:outputLabel value="#{bundle.CreateBdvContactoLabel_areaOcupacional}" />
+                    </p:outputPanel> 
                     <p:inputText id="areaOcupacionalContacto2" value="#{bdvUserController.selected.idEmpresa.idContacto2.areaOcupacional}" title="#{bundle.CreateBdvContactoTitle_areaOcupacional}" required="true" requiredMessage="#{bundle.CreateBdvContactoRequiredMessage_areaOcupacional}"/>
                     <p:outputLabel value="#{bundle.AreaOcupacionalContactoMsj}"  />
                 </h:panelGrid>
@@ -105,38 +176,73 @@
         <p:panel header="#{bundle.DatosContacto} 3" rendered="#{wizardManagedBean.contacto3}">
             <h:panelGroup>
                 <h:panelGrid columns="3" columnClasses="column1,column2,column3">
-                    <p:outputLabel value="#{bundle.CreateBdvContactoLabel_primerApellido}" for="primerApellidoContacto3" />
+                    <p:outputPanel>
+                        <p:outputLabel styleClass="required" for="primerApellidoContacto3" /> 
+                        <p:outputLabel value="#{bundle.CreateBdvContactoLabel_primerApellido}" />
+                    </p:outputPanel> 
                     <p:inputText id="primerApellidoContacto3" value="#{bdvUserController.selected.idEmpresa.idContacto1.primerApellido}" title="#{bundle.CreateBdvContactoTitle_primerApellido}" required="true" requiredMessage="#{bundle.CreateBdvContactoRequiredMessage_primerApellido}"/>
                     <p:outputLabel value="#{bundle.PrimerApellidoContactoMsj}"  />
-                    <p:outputLabel value="#{bundle.CreateBdvContactoLabel_segundoApellido}" for="segundoApellidoContacto3" />
+                    
+                    <p:outputPanel>
+                        <p:outputLabel styleClass="required" for="segundoApellidoContacto3" /> 
+                        <p:outputLabel value="#{bundle.CreateBdvContactoLabel_segundoApellido}" />
+                    </p:outputPanel> 
                     <p:inputText id="segundoApellidoContacto3" value="#{bdvUserController.selected.idEmpresa.idContacto1.segundoApellido}" title="#{bundle.CreateBdvContactoTitle_segundoApellido}" required="true" requiredMessage="#{bundle.CreateBdvContactoRequiredMessage_segundoApellido}"/>
                     <p:outputLabel value="#{bundle.SegundoApellidoContactoMsj}"  />
-                    <p:outputLabel value="#{bundle.CreateBdvContactoLabel_primerNombre}" for="primerNombreContacto3" />
+                    
+                    <p:outputPanel>
+                        <p:outputLabel styleClass="required" for="primerNombreContacto3" /> 
+                        <p:outputLabel value="#{bundle.CreateBdvContactoLabel_primerNombre}" />
+                    </p:outputPanel> 
                     <p:inputText id="primerNombreContacto3" value="#{bdvUserController.selected.idEmpresa.idContacto1.primerNombre}" title="#{bundle.CreateBdvContactoTitle_primerNombre}" required="true" requiredMessage="#{bundle.CreateBdvContactoRequiredMessage_primerNombre}"/>
                     <p:outputLabel value="#{bundle.PrimerNombreContactoMsj}"  />
-                    <p:outputLabel value="#{bundle.CreateBdvContactoLabel_segundoNombre}" for="segundoNombreContacto3" />
+                    
+                    <p:outputPanel>
+                        <p:outputLabel styleClass="required" for="segundoNombreContacto3" /> 
+                        <p:outputLabel value="#{bundle.CreateBdvContactoLabel_segundoNombre}" />
+                    </p:outputPanel> 
                     <p:inputText id="segundoNombreContacto3" value="#{bdvUserController.selected.idEmpresa.idContacto1.segundoNombre}" title="#{bundle.CreateBdvContactoTitle_segundoNombre}" required="true" requiredMessage="#{bundle.CreateBdvContactoRequiredMessage_segundoNombre}"/>
                     <p:outputLabel value="#{bundle.SegundoNombreContactoMsj}"  />
-                    <p:outputLabel value="#{bundle.CreateBdvContactoLabel_sexo}" for="sexoContacto3" />
+                    
+                    <p:outputPanel>
+                        <p:outputLabel styleClass="required" for="sexoContacto3" /> 
+                        <p:outputLabel value="#{bundle.CreateBdvContactoLabel_sexo}" />
+                    </p:outputPanel> 
                     <p:selectOneRadio id="sexoContacto3" value="#{bdvUserController.selected.idEmpresa.idContacto1.sexo}" required="true" requiredMessage="#{bundle.CreateBdvContactoRequiredMessage_sexo}">
                         <f:selectItem itemLabel="MASCULINO" itemValue="MASCULINO" />
                         <f:selectItem itemLabel="FEMENINO" itemValue="FEMENINO" />
                     </p:selectOneRadio>
                     <p:outputLabel value="#{bundle.DocumentoIdentificacionContactoMsj}"  />
-                    <p:outputLabel value="#{bundle.CreateBdvContactoLabel_documentoIdentidad}" for="documentoIdentidadContacto3" />
+                    
+                    <p:outputPanel>
+                        <p:outputLabel styleClass="required" for="documentoIdentidadContacto3" /> 
+                        <p:outputLabel value="#{bundle.CreateBdvContactoLabel_documentoIdentidad}" />
+                    </p:outputPanel> 
                     <p:selectOneMenu id="documentoIdentidadContacto3" value="#{bdvUserController.selected.idEmpresa.idContacto1.documentoIdentidad}" required="true" requiredMessage="#{bundle.CreateBdvContactoRequiredMessage_documentoIdentidad}">
                         <f:selectItem itemLabel="SELECCIONE" itemValue="" noSelectionOption="true" />
                         <f:selectItem itemLabel="CEDULA DE CIUDADANIA" itemValue="CEDULA DE CIUDADANIA" />
                         <f:selectItem itemLabel="PASAPORTE" itemValue="PASAPORTE" />
                     </p:selectOneMenu>
                     <p:outputLabel value="#{bundle.NumeroIdentificacionContactoMsj}"  />
-                    <p:outputLabel value="#{bundle.CreateBdvContactoLabel_numeroIdentidad}" for="numeroIdentidadContacto3" />
+                    
+                    <p:outputPanel>
+                        <p:outputLabel styleClass="required" for="numeroIdentidadContacto3" /> 
+                        <p:outputLabel value="#{bundle.CreateBdvContactoLabel_numeroIdentidad}" />
+                    </p:outputPanel> 
                     <p:inputMask mask="999999999" id="numeroIdentidadContacto3" value="#{bdvUserController.selected.idEmpresa.idContacto1.numeroIdentidad}" title="#{bundle.CreateBdvContactoTitle_numeroIdentidad}" required="true" requiredMessage="#{bundle.CreateBdvContactoRequiredMessage_numeroIdentidad}"/>
                     <p:outputLabel value="#{bundle.MsgTest}"  />
-                    <p:outputLabel value="#{bundle.CreateBdvContactoLabel_cargo}" for="cargoContacto3" />
+                    
+                    <p:outputPanel>
+                        <p:outputLabel styleClass="required" for="cargoContacto3" /> 
+                        <p:outputLabel value="#{bundle.CreateBdvContactoLabel_cargo}" />
+                    </p:outputPanel> 
                     <p:inputText id="cargoContacto3" value="#{bdvUserController.selected.idEmpresa.idContacto1.cargo}" title="#{bundle.CreateBdvContactoTitle_cargo}" required="true" requiredMessage="#{bundle.CreateBdvContactoRequiredMessage_cargo}"/>
                     <p:outputLabel value="#{bundle.CargoContactoMsj}"  />
-                    <p:outputLabel value="#{bundle.CreateBdvContactoLabel_areaOcupacional}" for="areaOcupacionalContacto3" />
+                    
+                    <p:outputPanel>
+                        <p:outputLabel styleClass="required" for="areaOcupacionalContacto3" /> 
+                        <p:outputLabel value="#{bundle.CreateBdvContactoLabel_areaOcupacional}" />
+                    </p:outputPanel>
                     <p:inputText id="areaOcupacionalContacto3" value="#{bdvUserController.selected.idEmpresa.idContacto1.areaOcupacional}" title="#{bundle.CreateBdvContactoTitle_areaOcupacional}" required="true" requiredMessage="#{bundle.CreateBdvContactoRequiredMessage_areaOcupacional}"/>
                     <p:outputLabel value="#{bundle.AreaOcupacionalContactoMsj}"  />
                 </h:panelGrid>

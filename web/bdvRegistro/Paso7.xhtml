@@ -12,7 +12,10 @@
 
                     <p:tab titleStyleClass="ui-wizard-step-title--min" title="#{bundle.CreateBdvRecaudosLabel_certificadoSnc}">
                         <h:panelGrid columns="3" columnClasses="column1--max,column2,column3">
-                            <p:outputLabel value="#{bundle.CreateBdvRecaudosLabel_certificadoSnc}" for="certificadoSnc" />
+                            <p:outputPanel>
+                                <p:outputLabel styleClass="required" for="certificadoSnc" /> 
+                                <p:outputLabel value="#{bundle.CreateBdvRecaudosLabel_certificadoSnc}" />
+                            </p:outputPanel> 
                             <p:fileUpload id="certificadoSnc" value="#{bdvUserController.selected.idEmpresa.idRecaudos.certificadoSnc}" 
                                           required="true" sizeLimit="200000"  fileUploadListener="#{bdvUserController.uploadCertificadoSnc}"
                                           allowTypes="/(\.|\/)(pdf)$/" mode="advanced" auto="true" update=":growl" label="#{bundle.Seleccione}"
@@ -30,7 +33,10 @@
 
                     <p:tab rendered="#{'JURIDICA' eq bdvUserController.selected.idEmpresa.tipoPersona}" titleStyleClass="ui-wizard-step-title--min" title="#{bundle.CreateBdvRecaudosLabel_planillaRnc}">
                         <h:panelGrid columns="2" columnClasses="">
-                            <p:outputLabel value="#{bundle.CreateBdvRecaudosLabel_planillaRnc}" for="planillaRnc" />
+                            <p:outputPanel>
+                                <p:outputLabel styleClass="required" for="planillaRnc" /> 
+                                <p:outputLabel value="#{bundle.CreateBdvRecaudosLabel_planillaRnc}" />
+                            </p:outputPanel> 
                             <p:fileUpload id="planillaRnc" value="#{bdvUserController.selected.idEmpresa.idRecaudos.planillaRnc}" 
                                           required="true" sizeLimit="200000" fileUploadListener="#{bdvUserController.uploadPlanillaRnc}"
                                           allowTypes="/(\.|\/)(pdf)$/" mode="advanced" auto="true" update=":growl" label="#{bundle.Seleccione}"
@@ -48,7 +54,10 @@
 
                     <p:tab rendered="#{'JURIDICA' eq bdvUserController.selected.idEmpresa.tipoPersona}" titleStyleClass="ui-wizard-step-title--min" title="#{bundle.CreateBdvRecaudosLabel_comunicacionRepresentante}">
                         <h:panelGrid columns="2" columnClasses="">
-                            <p:outputLabel value="#{bundle.CreateBdvRecaudosLabel_comunicacionRepresentante}" for="comunicacionRepresentante" />
+                            <p:outputPanel>
+                                <p:outputLabel styleClass="required" for="comunicacionRepresentante" /> 
+                                <p:outputLabel value="#{bundle.CreateBdvRecaudosLabel_comunicacionRepresentante}" />
+                            </p:outputPanel> 
                             <p:fileUpload id="comunicacionRepresentante" value="#{bdvUserController.selected.idEmpresa.idRecaudos.comunicacionRepresentante}" 
                                           required="true" sizeLimit="200000" fileUploadListener="#{bdvUserController.uploadComunicacionRepresentante}"
                                           allowTypes="/(\.|\/)(pdf)$/" mode="advanced" auto="true" update=":growl" label="#{bundle.Seleccione}"
@@ -66,7 +75,10 @@
 
                     <p:tab rendered="#{'JURIDICA' eq bdvUserController.selected.idEmpresa.tipoPersona}" titleStyleClass="ui-wizard-step-title--min" title="#{bundle.CreateBdvRecaudosLabel_solvenciaSso}">
                         <h:panelGrid columns="2" columnClasses="">
-                            <p:outputLabel value="#{bundle.CreateBdvRecaudosLabel_solvenciaSso}" for="solvenciaSso" />
+                            <p:outputPanel>
+                                <p:outputLabel styleClass="required" for="solvenciaSso" /> 
+                                <p:outputLabel value="#{bundle.CreateBdvRecaudosLabel_solvenciaSso}" />
+                            </p:outputPanel> 
                             <p:fileUpload id="solvenciaSso" value="#{bdvUserController.selected.idEmpresa.idRecaudos.solvenciaSso}" 
                                           required="true" sizeLimit="200000" fileUploadListener="#{bdvUserController.uploadSolvenciaSso}"
                                           allowTypes="/(\.|\/)(pdf)$/" mode="advanced" auto="true" update=":growl" label="#{bundle.Seleccione}"
@@ -84,7 +96,10 @@
 
                     <p:tab rendered="#{'JURIDICA' eq bdvUserController.selected.idEmpresa.tipoPersona}" titleStyleClass="ui-wizard-step-title--min" title="#{bundle.CreateBdvRecaudosLabel_solvenciaLaboral}">
                         <h:panelGrid columns="2" columnClasses="">
-                            <p:outputLabel value="#{bundle.CreateBdvRecaudosLabel_solvenciaLaboral}" for="solvenciaLaboral" />
+                            <p:outputPanel>
+                                <p:outputLabel styleClass="required" for="solvenciaLaboral" /> 
+                                <p:outputLabel value="#{bundle.CreateBdvRecaudosLabel_solvenciaLaboral}" />
+                            </p:outputPanel> 
                             <p:fileUpload id="solvenciaLaboral" value="#{bdvUserController.selected.idEmpresa.idRecaudos.solvenciaLaboral}" 
                                           required="true" sizeLimit="200000" fileUploadListener="#{bdvUserController.uploadSolvenciaLaboral}"
                                           allowTypes="/(\.|\/)(pdf)$/" mode="advanced" auto="true" update=":growl" label="#{bundle.Seleccione}"
@@ -102,7 +117,10 @@
 
                     <p:tab rendered="#{'JURIDICA' eq bdvUserController.selected.idEmpresa.tipoPersona}" titleStyleClass="ui-wizard-step-title--min" title="#{bundle.CreateBdvRecaudosLabel_solvenciaInce}">
                         <h:panelGrid columns="2" columnClasses="">
-                            <p:outputLabel value="#{bundle.CreateBdvRecaudosLabel_solvenciaInce}" for="solvenciaInce" />
+                            <p:outputPanel>
+                                <p:outputLabel styleClass="required" for="solvenciaInce" /> 
+                                <p:outputLabel value="#{bundle.CreateBdvRecaudosLabel_solvenciaInce}" />
+                            </p:outputPanel> 
                             <p:fileUpload id="solvenciaInce" value="#{bdvUserController.selected.idEmpresa.idRecaudos.solvenciaInce}" 
                                           required="true" sizeLimit="200000" fileUploadListener="#{bdvUserController.uploadSolvenciaInce}"
                                           allowTypes="/(\.|\/)(pdf)$/" mode="advanced" auto="true" update=":growl" label="#{bundle.Seleccione}"
@@ -120,7 +138,10 @@
 
                     <p:tab rendered="#{'JURIDICA' eq bdvUserController.selected.idEmpresa.tipoPersona}" titleStyleClass="ui-wizard-step-title--min" title="#{bundle.CreateBdvRecaudosLabel_organigrama}">
                         <h:panelGrid columns="2" columnClasses="">
-                            <p:outputLabel value="#{bundle.CreateBdvRecaudosLabel_organigrama}" for="organigrama" />
+                            <p:outputPanel>
+                                <p:outputLabel styleClass="required" for="organigrama" /> 
+                                <p:outputLabel value="#{bundle.CreateBdvRecaudosLabel_organigrama}" />
+                            </p:outputPanel> 
                             <p:fileUpload id="organigrama" value="#{bdvUserController.selected.idEmpresa.idRecaudos.organigrama}" 
                                           required="true" sizeLimit="200000" fileUploadListener="#{bdvUserController.uploadOrganigrama}"
                                           allowTypes="/(\.|\/)(pdf)$/" mode="advanced" auto="true" update=":growl" label="#{bundle.Seleccione}"
@@ -138,7 +159,10 @@
 
                     <p:tab titleStyleClass="ui-wizard-step-title--min" title="#{bundle.CreateBdvRecaudosLabel_listaProductos}">
                         <h:panelGrid columns="2" columnClasses="">
-                            <p:outputLabel value="#{bundle.CreateBdvRecaudosLabel_listaProductos}" for="listaProductos" />
+                            <p:outputPanel>
+                                <p:outputLabel styleClass="required" for="listaProductos" /> 
+                                <p:outputLabel value="#{bundle.CreateBdvRecaudosLabel_listaProductos}" />
+                            </p:outputPanel> 
                             <p:fileUpload id="listaProductos" value="#{bdvUserController.selected.idEmpresa.idRecaudos.listaProductos}" 
                                           required="true" sizeLimit="200000" fileUploadListener="#{bdvUserController.uploadListaProductos}"
                                           allowTypes="/(\.|\/)(pdf)$/" mode="advanced" auto="true" update=":growl" label="#{bundle.Seleccione}"
@@ -157,7 +181,10 @@
 
                     <p:tab rendered="#{'JURIDICA' eq bdvUserController.selected.idEmpresa.tipoPersona}" titleStyleClass="ui-wizard-step-title--min" title="#{bundle.CreateBdvRecaudosLabel_referenciaBancaria}">
                         <h:panelGrid columns="2" columnClasses="">
-                            <p:outputLabel value="#{bundle.CreateBdvRecaudosLabel_referenciaBancaria}" for="referenciaBancaria" />
+                            <p:outputPanel>
+                                <p:outputLabel styleClass="required" for="referenciaBancaria" /> 
+                                <p:outputLabel value="#{bundle.CreateBdvRecaudosLabel_referenciaBancaria}" />
+                            </p:outputPanel>
                             <p:fileUpload id="referenciaBancaria" value="#{bdvUserController.selected.idEmpresa.idRecaudos.referenciaBancaria}" 
                                           required="true" sizeLimit="200000" fileUploadListener="#{bdvUserController.uploadReferenciaBancaria}"
                                           allowTypes="/(\.|\/)(pdf)$/" mode="advanced" auto="true" update=":growl" label="#{bundle.Seleccione}"
@@ -175,7 +202,10 @@
 
                     <p:tab rendered="#{'JURIDICA' eq bdvUserController.selected.idEmpresa.tipoPersona}" titleStyleClass="ui-wizard-step-title--min" title="#{bundle.CreateBdvRecaudosLabel_referenciaComercial}">
                         <h:panelGrid columns="2" columnClasses="">
-                            <p:outputLabel value="#{bundle.CreateBdvRecaudosLabel_referenciaComercial}" for="referenciaComercial" />
+                            <p:outputPanel>
+                                <p:outputLabel styleClass="required" for="referenciaComercial" /> 
+                                <p:outputLabel value="#{bundle.CreateBdvRecaudosLabel_referenciaComercial}" />
+                            </p:outputPanel>
                             <p:fileUpload id="referenciaComercial" value="#{bdvUserController.selected.idEmpresa.idRecaudos.referenciaComercial}" 
                                           required="true" sizeLimit="200000" fileUploadListener="#{bdvUserController.uploadReferenciaComercial}"
                                           allowTypes="/(\.|\/)(pdf)$/" mode="advanced" auto="true" update=":growl" label="#{bundle.Seleccione}"
