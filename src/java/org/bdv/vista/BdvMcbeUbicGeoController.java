@@ -137,19 +137,19 @@ public class BdvMcbeUbicGeoController implements Serializable {
     }
     
     public List<BdvMcbeUbicGeo> obtenerEstados() {
-        System.out.println("ID PADRE == " + getIdEstado());
+        System.out.println("ID PADRE Estado == " + getIdEstado());
         return getFacade().obtenerMunicipio(0);
     }
     
     public List<BdvMcbeUbicGeo> obtenerMunicipios() {
-        System.out.println("ID PADRE == " + getIdEstado());
+        System.out.println("ID PADRE Municipio == " + getIdEstado());
         return getFacade().obtenerMunicipio(getIdEstado());
     }
     
     public List<BdvMcbeUbicGeo> obtenerParroquias() {
         return getFacade().obtenerParroquia(getIdMunicipio());
     }
-
+   
     @FacesConverter(forClass=BdvMcbeUbicGeo.class)
     public static class BdvMcbeUbicGeoControllerConverter implements Converter {
 

@@ -53,7 +53,7 @@ public class BdvUser implements Serializable {
     //@Pattern(regexp="((?=.*[a-z])(?=.*\\\\d)(?=.*[A-Z])(?=.*[@#$%!]).{8,40})", message="Contraseña no permitida")
     @Basic(optional = false)
     @NotNull
-    @Size(min = 8, max = 255)
+    @Size(min = 8, max = 400)
     @Column(name = "contrasenia")
     private String contrasenia;
     @Basic(optional = false)
@@ -64,6 +64,10 @@ public class BdvUser implements Serializable {
     @NotNull
     @Column(name = "email_valido")
     private boolean emailValido;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "cambia_contrasenia")
+    private boolean cambiaContrasenia;
     @JoinColumn(name = "id_empresa", referencedColumnName = "id_empresa")
     @ManyToOne
     private BdvEmpresa idEmpresa;
@@ -81,24 +85,36 @@ public class BdvUser implements Serializable {
         this.idUser = idUser;
     }
 
-    public BdvUser(Integer idUser, String email, String contrasenia, boolean activo, boolean emailValido) {
+    public BdvUser(Integer idUser, String email, String contrasenia, boolean activo, boolean emailValido, boolean cambiaContrasenia) {
         this.idUser = idUser;
         this.email = email;
         this.contrasenia = contrasenia;
         this.activo = activo;
         this.emailValido = emailValido;
+        this.cambiaContrasenia = cambiaContrasenia;
     }
 
-    public BdvUser(String email, String contrasenia, boolean activo, boolean emailValido, BdvEmpresa idEmpresa) {
+    public BdvUser(String email, String contrasenia, boolean activo, boolean emailValido, boolean cambiaContrasenia, BdvEmpresa idEmpresa) {
         this.email = email;
         this.contrasenia = contrasenia;
         this.activo = activo;
         this.emailValido = emailValido;
+        this.cambiaContrasenia = cambiaContrasenia;
+        this.idEmpresa = idEmpresa;
+    }
+
+    public BdvUser(Integer idUser, String email, String contrasenia, boolean activo, boolean emailValido, boolean cambiaContrasenia, BdvEmpresa idEmpresa) {
+        this.idUser = idUser;
+        this.email = email;
+        this.contrasenia = contrasenia;
+        this.activo = activo;
+        this.emailValido = emailValido;
+        this.cambiaContrasenia = cambiaContrasenia;
         this.idEmpresa = idEmpresa;
     }
     
     
-
+    
     public Integer getIdUser() {
         return idUser;
     }
@@ -139,6 +155,14 @@ public class BdvUser implements Serializable {
         this.emailValido = emailValido;
     }
 
+    public boolean isCambiaContrasenia() {
+        return cambiaContrasenia;
+    }
+
+    public void setCambiaContrasenia(boolean cambiaContrasenia) {
+        this.cambiaContrasenia = cambiaContrasenia;
+    }
+    
     public BdvEmpresa getIdEmpresa() {
         return idEmpresa;
     }

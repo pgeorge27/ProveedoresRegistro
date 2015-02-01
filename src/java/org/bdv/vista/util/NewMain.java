@@ -8,10 +8,15 @@ package org.bdv.vista.util;
 import java.io.File;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
 import java.util.Locale;
+import java.util.Random;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.apache.commons.codec.binary.Hex;
 import org.apache.commons.codec.digest.DigestUtils;
+import org.bdv.helper.RandomManagedBean;
 
 /**
  *
@@ -56,24 +61,31 @@ public class NewMain {
 //            //Error
 //        }
         
-        Locale currentLocale;
-  
-
-  currentLocale = new Locale("es");
-
-
+//        Locale currentLocale;
+//  
+//
+//  currentLocale = new Locale("es");
+//
+//
+//        
+//        File files = new File(ResourceBundle.getBundle("/BundleUpload").getString("Destino")+"prueba");
+//        if (files.exists()) {
+//            System.out.println("La carpeta ya existe");
+//            if (files.mkdirs()) {
+//                System.out.println("Multiple directories are created!");
+//            } else {
+//                System.out.println("Failed to create multiple directories!");
+//            }
+//        }else{
+//            files.mkdir();
+//            System.out.println("Archivo creado!");
+//        }
         
-        File files = new File(ResourceBundle.getBundle("/BundleUpload").getString("Destino")+"prueba");
-        if (files.exists()) {
-            System.out.println("La carpeta ya existe");
-            if (files.mkdirs()) {
-                System.out.println("Multiple directories are created!");
-            } else {
-                System.out.println("Failed to create multiple directories!");
-            }
-        }else{
-            files.mkdir();
-            System.out.println("Archivo creado!");
+        RandomManagedBean a = new RandomManagedBean();
+        try {
+            System.out.println("Clave = " + a.generateRandomString());
+        } catch (Exception ex) {
+            Logger.getLogger(NewMain.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     

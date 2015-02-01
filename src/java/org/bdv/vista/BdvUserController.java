@@ -24,11 +24,14 @@ import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
+import javax.faces.event.ValueChangeEvent;
 import javax.persistence.NoResultException;
 import javax.servlet.http.HttpServletRequest;
 import org.bdv.helper.PasswordEncrypt;
 import org.bdv.helper.PasswordValidator;
+import org.bdv.helper.RandomManagedBean;
 import org.bdv.helper.SendMail;
+import org.bdv.modelo.BdvUserBackend;
 import org.primefaces.event.FileUploadEvent;
 
 @ManagedBean(name = "bdvUserController")
@@ -101,6 +104,10 @@ public class BdvUserController implements Serializable {
 
     public void updateActive() {
         persist(PersistAction.UPDATE, ResourceBundle.getBundle("/Bundle").getString("UserAndPasswordCorrect"));
+    }
+
+    public void updateChangePassword() {//Es solo para mostrar mensaje al cambiar password
+        persist(PersistAction.UPDATE, ResourceBundle.getBundle("/Bundle").getString("PasswordChanged"));
     }
 
     public void updateEmpresa() {//Para activar la empresa o realizar algun cambio desde el backend
@@ -182,6 +189,7 @@ public class BdvUserController implements Serializable {
                     selected.setContrasenia(contraseniaEncriptada);
                     selected.setActivo(true);
                     selected.setEmailValido(false);
+                    selected.setCambiaContrasenia(false);
                     create();
                     //new SendMail(selected.getEmail());
                     ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
@@ -204,29 +212,34 @@ public class BdvUserController implements Serializable {
         try {//encriptamos la contrasenia
             String contraseniaEncriptada = new PasswordEncrypt().Encriptar(contrasenia);//Encriptamos la contraseña
             //Obtenemos los datos del usuario
-            BdvUser a = getFacade().obtenerUsuario(email, contraseniaEncriptada);
-            if (!a.getEmailValido()) { //Si el usuario valido el email
-            prepareCreateUserRegistred();
-            //setSelected(a);
-            selected.setIdUser(a.getIdUser());
-            selected.setEmail(a.getEmail());
-            selected.setContrasenia(a.getContrasenia());
-            selected.setEmailValido(true);
-//            selected.setActivo(true);
-            updateActive();
+            BdvUser user = getFacade().obtenerUsuario(email, contraseniaEncriptada);
+            if (!user.getEmailValido()) { //Si el usuario valido el email
 //            prepareCreateUserRegistred();
-//            setSelected(a);
+                prepareCreate();
+                setSelected(user);
 //            selected.setIdUser(a.getIdUser());
 //            selected.setEmail(a.getEmail());
 //            selected.setContrasenia(a.getContrasenia());
-//            selected.setEmailValido(true);
-            
-            try {
-                ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
-                context.redirect(context.getRequestContextPath() + "/faces/bdvRegistro/registro_continuar.xhtml");
-            } catch (IOException ex) {
-                Logger.getLogger(BdvUserController.class.getName()).log(Level.SEVERE, null, ex);
-            }
+                selected.setEmailValido(true);
+//            selected.setActivo(true);
+                updateActive();
+                prepareCreateUserRegistred();
+
+                user = getFacade().obtenerUsuario(email, contraseniaEncriptada);
+//            setSelected(user);
+                selected.setIdUser(user.getIdUser());
+                selected.setEmail(user.getEmail());
+                selected.setContrasenia(user.getContrasenia());
+                selected.setActivo(user.getActivo());
+                selected.setEmailValido(user.getEmailValido());
+                selected.setCambiaContrasenia(user.isCambiaContrasenia());
+
+                try {
+                    ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
+                    context.redirect(context.getRequestContextPath() + "/faces/bdvRegistro/registro_continuar.xhtml");
+                } catch (IOException ex) {
+                    Logger.getLogger(BdvUserController.class.getName()).log(Level.SEVERE, null, ex);
+                }
             } else { //Si el usuario ya esta activado
                 JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("UserActiveOld"));
                 return null;
@@ -250,14 +263,26 @@ public class BdvUserController implements Serializable {
                     prepareCreateUserRegistred();//Inicializamos al usuario 
                     setSelected(a);//Le asignamos sus valores
                     if (a.getIdEmpresa() != null && a.getIdEmpresa().getFinalizoRegistro()) {//Si registro su empresa y finalizo el registro
-                        try { // Al home User
-                            setSelected2(selected);
-                            System.out.println("al home");
-                            ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
-                            context.redirect(context.getRequestContextPath() + "/faces/homeUser.xhtml");
-                        } catch (IOException ex) {
-                            Logger.getLogger(BdvUserController.class.getName()).log(Level.SEVERE, null, ex);
+                        if (a.isCambiaContrasenia()) {
+                            try { // Debe cambiar Contrasenia
+                                //setSelected2(selected);
+                                System.out.println("Cambiar Contrasenia");
+                                ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
+                                context.redirect(context.getRequestContextPath() + "/faces/cambiarContraseniaOlvidada.xhtml");
+                            } catch (IOException ex) {
+                                Logger.getLogger(BdvUserController.class.getName()).log(Level.SEVERE, null, ex);
+                            }
+                        } else {
+                            try { // Al home User
+                                //setSelected2(selected);
+                                System.out.println("al home");
+                                ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
+                                context.redirect(context.getRequestContextPath() + "/faces/homeUser.xhtml");
+                            } catch (IOException ex) {
+                                Logger.getLogger(BdvUserController.class.getName()).log(Level.SEVERE, null, ex);
+                            }
                         }
+
                     } else { // A culminar su registro
                         try {
                             System.out.println("Al registro");
@@ -296,8 +321,24 @@ public class BdvUserController implements Serializable {
     public void recuperarContrasenia(String email) {
         try {
             if (usuarioRegistrado(email)) {
-                //new SendMail(selected.getEmail(),"recuperar");
+                //Obtenemos el usuario
+                BdvUser user = getFacade().obtenerUsuario(email);
+                //Generamos una nueva contrasenia
+                String contrasenia = new RandomManagedBean().generateRandomString();
+                //Encriptamos la contraseña
+                String contraseniaEncriptada = new PasswordEncrypt().Encriptar(contrasenia);
+                setSelected(user);
+                //Seteamos la contrasenia nueva
+                selected.setContrasenia(contraseniaEncriptada);
+                //Establecemos que debera cambiar password al hacer login
+                selected.setCambiaContrasenia(true);
+                //Cambiamos la Contrasenia del usuario
+                updateChangePassword();
+                //Enviamos email con contraseña nueva al usuario
+                //new SendMail(selected.getEmail(),"recuperar",contrasenia);
                 System.out.println("Enviamos email a " + email);
+                System.out.println("Contrasenia Nueva " + contrasenia);
+                System.out.println("Debe cambiar Pass? " + selected.isCambiaContrasenia());
                 ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
                 context.redirect(context.getRequestContextPath() + "/faces/revisarEmail.xhtml");
             } else {
@@ -306,63 +347,97 @@ public class BdvUserController implements Serializable {
         } catch (Exception e) {
         }
     }
+
+
+    public void cambiarContrasenia(String contrasenia, String contraseniaNueva) {
+        try {
+            String contraseniaEncriptada = new PasswordEncrypt().Encriptar(contrasenia);//Encriptamos la contraseña
+            BdvUser user = getFacade().obtenerUsuario(selected.getEmail(), contraseniaEncriptada);
+            System.out.println("Contrasena actual " + contrasenia + "nueva " + contraseniaNueva);
+            System.out.println("Contrasena del usuario en bd " + user.getContrasenia());
+            if (user.getContrasenia().equals(contraseniaEncriptada)) {
+                System.out.println("Las contrasenas son iguales " + user.getContrasenia() + " y " + contrasenia);
+                contraseniaEncriptada = new PasswordEncrypt().Encriptar(contraseniaNueva);//Encriptamos la contraseña nueva
+                selected.setContrasenia(contraseniaEncriptada);
+                System.out.println("Cambiar a " + selected.getContrasenia());
+                updateChangePassword();
+
+            } else {
+                System.out.println("Las contrasenias no son iguales");
+            }
+        } catch (Exception e) {
+        }
+    }
     
-    public void agregarRepre2(){
+    public void actualizarContrasenia(String contrasenia){
+        try {
+            String contraseniaEncriptada = new PasswordEncrypt().Encriptar(contrasenia);//Encriptamos la contraseña
+            selected.setContrasenia(contraseniaEncriptada);
+            selected.setCambiaContrasenia(false);
+            updateChangePassword();
+            ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
+            context.redirect(context.getRequestContextPath() + "/faces/contraseniaCambiada.xhtml");
+        } catch (IOException ex) {
+            Logger.getLogger(BdvUserController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public void agregarRepre2() {
         selected.getIdEmpresa().agregarRepresentante2();
     }
-    
-    public void eliminarRepre2(){
+
+    public void eliminarRepre2() {
         selected.getIdEmpresa().eliminarRepresentante2();
     }
-    
-    public void agregarRepre3(){
+
+    public void agregarRepre3() {
         selected.getIdEmpresa().agregarRepresentante3();
     }
-    
-    public void eliminarRepre3(){
+
+    public void eliminarRepre3() {
         selected.getIdEmpresa().eliminarRepresentante3();
     }
-    
-    public void agregarCuentaBancoV2(){
+
+    public void agregarCuentaBancoV2() {
         selected.getIdEmpresa().agregarCuentaBancoV2();
     }
-    
-    public void eliminarCuentaBancoV2(){
+
+    public void eliminarCuentaBancoV2() {
         selected.getIdEmpresa().eliminarCuentaBancoV2();
     }
-    
-    public void agregarCuentaBanco2(){
+
+    public void agregarCuentaBanco2() {
         selected.getIdEmpresa().agregarCuentaBanco2();
     }
-    
-    public void eliminarCuentaBanco2(){
+
+    public void eliminarCuentaBanco2() {
         selected.getIdEmpresa().eliminarCuentaBanco2();
     }
-    
-    public void agregarCuentaBanco3(){
+
+    public void agregarCuentaBanco3() {
         selected.getIdEmpresa().agregarCuentaBanco3();
     }
-    
-    public void eliminarCuentaBanco3(){
+
+    public void eliminarCuentaBanco3() {
         selected.getIdEmpresa().eliminarCuentaBanco3();
     }
-    
-    public void agregarContacto2(){
+
+    public void agregarContacto2() {
         selected.getIdEmpresa().agregarContacto2();
     }
-    
-    public void eliminarContacto2(){
+
+    public void eliminarContacto2() {
         selected.getIdEmpresa().eliminarContacto2();
     }
-    
-    public void agregarContacto3(){
+
+    public void agregarContacto3() {
         selected.getIdEmpresa().agregarContacto3();
     }
-    
-    public void eliminarContacto3(){
+
+    public void eliminarContacto3() {
         selected.getIdEmpresa().eliminarContacto3();
     }
-    
+
     public void logOut() {
         getRequest().getSession().invalidate();
         this.selected = null;
@@ -384,7 +459,7 @@ public class BdvUserController implements Serializable {
 //            ResourceBundle.getBundle("/BundleUpload").getString("Destino");
 
     public void uploadCertificadoSnc(FileUploadEvent event) {
-        destination += selected.getIdEmpresa().getNombreComercial().replaceAll("\\s",""); 
+        destination += selected.getIdEmpresa().getNombreComercial().replaceAll("\\s", "");
         try {
             selected.getIdEmpresa().getIdRecaudos().setCertificadoSnc(destination + "certificadoSnc.pdf");
             System.out.println("Certificado Snc = " + selected.getIdEmpresa().getIdRecaudos().getCertificadoSnc());
@@ -495,8 +570,8 @@ public class BdvUserController implements Serializable {
     }
 
     public void createFolder() {
-        File files = new File(ResourceBundle.getBundle("/BundleUpload").getString("Destino")+selected.getIdEmpresa().getNombreComercial().replaceAll("\\s",""));
-        System.out.println("Nombre de la carpeta " + selected.getIdEmpresa().getNombreComercial().replaceAll("\\s",""));
+        File files = new File(ResourceBundle.getBundle("/BundleUpload").getString("Destino") + selected.getIdEmpresa().getNombreComercial().replaceAll("\\s", ""));
+        System.out.println("Nombre de la carpeta " + selected.getIdEmpresa().getNombreComercial().replaceAll("\\s", ""));
         if (files.exists()) {
             System.out.println("La carpeta ya existe");
             if (files.mkdirs()) {
@@ -504,7 +579,7 @@ public class BdvUserController implements Serializable {
             } else {
                 System.out.println("Failed to create multiple directories!");
             }
-        }else{
+        } else {
             files.mkdir();
             System.out.println("Archivo creado!");
         }

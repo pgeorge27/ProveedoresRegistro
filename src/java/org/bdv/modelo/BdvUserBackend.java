@@ -52,7 +52,7 @@ public class BdvUserBackend implements Serializable {
     private String userBackend;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 50)
+    @Size(min = 8, max = 400)
     @Column(name = "contrasenia")
     private String contrasenia;
     @Basic(optional = false)

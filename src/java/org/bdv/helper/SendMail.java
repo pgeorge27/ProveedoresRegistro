@@ -39,12 +39,12 @@ public class SendMail {
         enviarEmail(email);
     }
     
-    public SendMail(String email, String quien) {
+    public SendMail(String email, String quien, String contrasenia) {
         prepareEmail();
         if(quien.equalsIgnoreCase("admin")){
             enviarEmailAdmin();
         }else if(quien.equalsIgnoreCase("recuperar")){
-            enviarEmailRecuperar(email);
+            enviarEmailRecuperar(email, contrasenia);
         }else if(quien.equalsIgnoreCase("aprobado")){
             enviarEmailAprobado(email);
         }else if(quien.equalsIgnoreCase("notificacion")){
@@ -68,7 +68,7 @@ public class SendMail {
             throw new RuntimeException(e);
         }
     }
-    private void enviarEmailRecuperar(String email){
+    private void enviarEmailRecuperar(String email, String contrasenia){
         try {
             Message message = new MimeMessage(session);
             message.setFrom(new InternetAddress(ResourceBundle.getBundle("/Bundle").getString("EmailFrom")));

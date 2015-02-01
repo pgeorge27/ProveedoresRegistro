@@ -51,3 +51,7 @@ and open the template in the editor.
 .column1--max{width: 200px;height:auto}
 .column2{width: 250px;height:auto}
 /*.column3{width: 341px;height:auto}*/
+
+/*.ui-widget-content {
+    border: none !important;
+}*/

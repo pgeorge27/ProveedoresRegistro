@@ -22,6 +22,7 @@ import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 import javax.persistence.NoResultException;
 import javax.servlet.http.HttpServletRequest;
+import org.bdv.helper.PasswordEncrypt;
 import org.bdv.modelo.BdvUser;
 
 @ManagedBean(name = "bdvUserBackendController")
@@ -33,6 +34,7 @@ public class BdvUserBackendController implements Serializable {
     private List<BdvUserBackend> items = null;
     private BdvUserBackend selected;
     private BdvUserBackend selected2;
+    private BdvUserBackend activo;
 
     public BdvUserBackendController() {
     }
@@ -51,6 +53,14 @@ public class BdvUserBackendController implements Serializable {
 
     public void setSelected2(BdvUserBackend selected2) {
         this.selected2 = selected2;
+    }
+
+    public BdvUserBackend getActivo() {
+        return activo;
+    }
+
+    public void setActivo(BdvUserBackend activo) {
+        this.activo = activo;
     }
 
     protected void setEmbeddableKeys() {
@@ -84,7 +94,11 @@ public class BdvUserBackendController implements Serializable {
     public void update() {
         persist(PersistAction.UPDATE, ResourceBundle.getBundle("/Bundle").getString("BdvUserBackendUpdated"));
     }
-
+    
+    public void updateChangePassword() {//Es solo para mostrar mensaje al cambiar password
+        persist(PersistAction.UPDATE, ResourceBundle.getBundle("/Bundle").getString("PasswordChanged"));
+    }
+    
     public void destroy() {
         persist(PersistAction.DELETE, ResourceBundle.getBundle("/Bundle").getString("BdvUserBackendDeleted"));
         if (!JsfUtil.isValidationFailed()) {
@@ -138,9 +152,12 @@ public class BdvUserBackendController implements Serializable {
 
     public String entrarHomeBackend(String userBackend, String contrasenia) {
         try {
-            BdvUserBackend user = getFacade().obtenerUsuario(userBackend, contrasenia);
+            String contraseniaEncriptada = new PasswordEncrypt().Encriptar(contrasenia);//Encriptamos la contraseña
+            BdvUserBackend user = getFacade().obtenerUsuario(userBackend, contraseniaEncriptada);
             if (user.getActivo()) { //Si el usuario esta activo
                 try {
+                    prepareCreate();
+                    setSelected(user);
                     ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
                     context.redirect(context.getRequestContextPath() + "/faces/homeBackend.xhtml");
                 } catch (IOException ex) {
@@ -154,6 +171,26 @@ public class BdvUserBackendController implements Serializable {
             JsfUtil.addErrorMessage(ex, ResourceBundle.getBundle("/Bundle").getString("EmailOrPasswordErrorOccured"));
         }
         return null;
+    }
+    
+    public void cambiarContrasenia(String contrasenia, String contraseniaNueva){
+        try {
+            String contraseniaEncriptada = new PasswordEncrypt().Encriptar(contrasenia);//Encriptamos la contraseña
+            BdvUserBackend user = getFacade().obtenerUsuario(selected.getUserBackend(), contraseniaEncriptada);
+            System.out.println("Contrasena actual " + contrasenia + "nueva " + contraseniaNueva);
+            System.out.println("Contrasena del usuario en bd " + user.getContrasenia());
+            if(user.getContrasenia().equals(contraseniaEncriptada)){
+                System.out.println("Las contrasenas son iguales " + user.getContrasenia() + " y " + contrasenia);
+                contraseniaEncriptada = new PasswordEncrypt().Encriptar(contraseniaNueva);//Encriptamos la contraseña nueva
+                selected.setContrasenia(contraseniaEncriptada);
+                System.out.println("Cambiar a " + selected.getContrasenia());
+                updateChangePassword();
+                
+            }else{
+                System.out.println("Las contrasenias no son iguales");
+            }
+        } catch (Exception e) {
+        }
     }
     
     public void logOut() {
