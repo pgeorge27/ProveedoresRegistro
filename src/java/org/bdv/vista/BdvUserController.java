@@ -369,17 +369,21 @@ public class BdvUserController implements Serializable {
         }
     }
     
-    public void actualizarContrasenia(String contrasenia){
-        try {
-            String contraseniaEncriptada = new PasswordEncrypt().Encriptar(contrasenia);//Encriptamos la contraseña
-            selected.setContrasenia(contraseniaEncriptada);
-            selected.setCambiaContrasenia(false);
-            updateChangePassword();
-            ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
-            context.redirect(context.getRequestContextPath() + "/faces/contraseniaCambiada.xhtml");
-        } catch (IOException ex) {
-            Logger.getLogger(BdvUserController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+    public void actualizarContrasenia(String contrasenia){        
+        if (new PasswordValidator().validate(contrasenia)) {
+                try {
+                    String contraseniaEncriptada = new PasswordEncrypt().Encriptar(contrasenia);//Encriptamos la contraseña
+                    selected.setContrasenia(contraseniaEncriptada);
+                    selected.setCambiaContrasenia(false);
+                    updateChangePassword();
+                    ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
+                    context.redirect(context.getRequestContextPath() + "/faces/contraseniaCambiada.xhtml");
+                } catch (IOException ex) {
+                    Logger.getLogger(BdvUserController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            } else {
+                JsfUtil.addErrorMessage(ResourceBundle.getBundle("/Bundle").getString("PasswordNoAcept"));
+            }
     }
 
     public void agregarRepre2() {
