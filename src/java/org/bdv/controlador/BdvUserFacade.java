@@ -5,6 +5,7 @@
  */
 package org.bdv.controlador;
 
+import java.util.List;
 import javax.ejb.EJBException;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -49,6 +50,17 @@ public class BdvUserFacade extends AbstractFacade<BdvUser> {
             Query q = em.createNamedQuery("BdvUser.findByEmail");
             q.setParameter("email", email);
             return (BdvUser) q.getSingleResult();
+        } catch (EJBException | NoResultException | NullPointerException e) {
+            return null;
+        }
+    }
+    
+    public List obtenerUsuariosFinalizados(){
+        try {
+            em = getEntityManager();
+            Query q = em.createNamedQuery("BdvUser.findByFinalizoRegistro");
+            q.setParameter("finalizoRegistro", true);
+            return q.getResultList();
         } catch (EJBException | NoResultException | NullPointerException e) {
             return null;
         }

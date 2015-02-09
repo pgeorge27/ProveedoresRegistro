@@ -5,10 +5,12 @@
  */
 package org.bdv.helper;
 
+import static com.sun.xml.ws.security.addressing.impl.policy.Constants.logger;
 import java.io.Serializable;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import org.bdv.modelo.BdvUser;
+import org.primefaces.event.FlowEvent;
 
 /**
  *
@@ -162,5 +164,6 @@ public class WizardManagedBean implements Serializable{
     public void setCuentaBancoVnz2(boolean cuentaBancoVnz2) {
         this.cuentaBancoVnz2 = cuentaBancoVnz2;
     }
+    
 
 }

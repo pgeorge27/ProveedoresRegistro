@@ -38,7 +38,7 @@ import javax.xml.bind.annotation.XmlTransient;
 @Table(name = "bdv_empresa")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "BdvEmpresa.findAll", query = "SELECT b FROM BdvEmpresa b WHERE b.finalizoRegistro = 1"),
+    @NamedQuery(name = "BdvEmpresa.findAll", query = "SELECT b FROM BdvEmpresa b"),
     @NamedQuery(name = "BdvEmpresa.findByIdEmpresa", query = "SELECT b FROM BdvEmpresa b WHERE b.idEmpresa = :idEmpresa"),
     @NamedQuery(name = "BdvEmpresa.findByTipoPersona", query = "SELECT b FROM BdvEmpresa b WHERE b.tipoPersona = :tipoPersona"),
     @NamedQuery(name = "BdvEmpresa.findByOrigen", query = "SELECT b FROM BdvEmpresa b WHERE b.origen = :origen"),
@@ -59,7 +59,6 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "BdvEmpresa.findByTlfCelular", query = "SELECT b FROM BdvEmpresa b WHERE b.tlfCelular = :tlfCelular"),
     @NamedQuery(name = "BdvEmpresa.findByTlfOpcional", query = "SELECT b FROM BdvEmpresa b WHERE b.tlfOpcional = :tlfOpcional"),
     @NamedQuery(name = "BdvEmpresa.findByOtroProducto", query = "SELECT b FROM BdvEmpresa b WHERE b.otroProducto = :otroProducto"),
-    @NamedQuery(name = "BdvEmpresa.findByFinalizoRegistro", query = "SELECT b FROM BdvEmpresa b WHERE b.finalizoRegistro = :finalizoRegistro"),
     @NamedQuery(name = "BdvEmpresa.findByActivadoDesactivadoPor", query = "SELECT b FROM BdvEmpresa b WHERE b.activadoDesactivadoPor = :activadoDesactivadoPor"),
     @NamedQuery(name = "BdvEmpresa.findByFechaRegistro", query = "SELECT b FROM BdvEmpresa b WHERE b.fechaRegistro = :fechaRegistro"),
     @NamedQuery(name = "BdvEmpresa.findByFechaActualizado", query = "SELECT b FROM BdvEmpresa b WHERE b.fechaActualizado = :fechaActualizado"),
@@ -127,10 +126,6 @@ public class BdvEmpresa implements Serializable {
     @Size(max = 100)
     @Column(name = "otro_producto")
     private String otroProducto;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "finalizo_registro")
-    private boolean finalizoRegistro;
     @Basic(optional = false)
     @NotNull
     @Column(name = "empresa_aprobada")
@@ -235,7 +230,7 @@ public class BdvEmpresa implements Serializable {
         idRecaudos = new BdvRecaudos();
         
         //Seteamos valores por defecto
-        this.finalizoRegistro = false;
+        //this.finalizoRegistro = false;
         //this.activadoDesactivadoPor = "1001";
         fechaActivadoDesactivado = new Date();
         fechaActualizado = new Date();
@@ -246,10 +241,9 @@ public class BdvEmpresa implements Serializable {
         this.idEmpresa = idEmpresa;
     }
 
-    public BdvEmpresa(Integer idEmpresa, boolean empresaAprobada, boolean finalizoRegistro, Date fechaRegistro, Date fechaActualizado, Date fechaActivadoDesactivado) {
+    public BdvEmpresa(Integer idEmpresa, boolean empresaAprobada, Date fechaRegistro, Date fechaActualizado, Date fechaActivadoDesactivado) {
         this.idEmpresa = idEmpresa;
         this.empresaAprobada = empresaAprobada;
-        this.finalizoRegistro = finalizoRegistro;
         this.fechaRegistro = fechaRegistro;
         this.fechaActualizado = fechaActualizado;
         this.fechaActivadoDesactivado = fechaActivadoDesactivado;
@@ -314,7 +308,10 @@ public class BdvEmpresa implements Serializable {
         idContacto3 = null;
     }
     
-    
+    public void agregarRecaudos(){ //En caso de que el registro no tenga recaudos
+        System.out.println("Agregamos Recaudos");
+        idRecaudos = new BdvRecaudos();
+    }
     
     public Integer getIdEmpresa() {
         return idEmpresa;
@@ -475,15 +472,7 @@ public class BdvEmpresa implements Serializable {
     public void setOtroProducto(String otroProducto) {
         this.otroProducto = otroProducto;
     }
-
-    public boolean getFinalizoRegistro() {
-        return finalizoRegistro;
-    }
-
-    public void setFinalizoRegistro(boolean finalizoRegistro) {
-        this.finalizoRegistro = finalizoRegistro;
-    }
-
+    
     public boolean isEmpresaAprobada() {
         return empresaAprobada;
     }

@@ -17,7 +17,7 @@
 
                 <p:tab id="paso3" title="Paso 3">
                     <ui:include src="Paso3.xhtml"/>
-                    <p:commandButton value="Volver" icon="ui-icon-arrow-1-w" disabled="true" />
+                    <p:commandButton value="Volver" icon="ui-icon-arrowthick-1-w" disabled="true" />
                     <p:commandButton process="@this" value="Siguiente" icon="ui-icon-arrowthick-1-e" oncomplete="PF('wizardWV').next();">
                         <!--<f:actionListener binding="{bdvUserController.updateActive()}"/>--> 
                     </p:commandButton>
@@ -26,19 +26,19 @@
 
                 <p:tab id="paso4" title="Paso 4">
                     <ui:include src="Paso4.xhtml"/>
-                    <p:commandButton value="Volver" icon="ui-icon-arrow-1-w" onclick="PF('wizardWV').back();" />
+                    <p:commandButton value="Volver" icon="ui-icon-arrowthick-1-w" onclick="PF('wizardWV').back();" />
                     <p:commandButton icon="ui-icon-arrowthick-1-e" process="@this" value="Siguiente"  onclick="PF('wizardWV').next();" />
                 </p:tab>
 
                 <p:tab id="paso5" title="Paso 5">
                     <ui:include src="Paso5.xhtml"/>
-                    <p:commandButton value="Volver" icon="ui-icon-arrow-1-w" onclick="PF('wizardWV').back();" />
+                    <p:commandButton value="Volver" icon="ui-icon-arrowthick-1-w" onclick="PF('wizardWV').back();" />
                     <p:commandButton icon="ui-icon-arrowthick-1-e" process="@this" value="Siguiente"  onclick="PF('wizardWV').next();" />
                 </p:tab>
 
                 <p:tab id="paso6" title="Paso 6">
                     <ui:include src="Paso6.xhtml"/>
-                    <p:commandButton value="Volver" icon="ui-icon-arrow-1-w" onclick="PF('wizardWV').back();" />
+                    <p:commandButton value="Volver" icon="ui-icon-arrowthick-1-w" onclick="PF('wizardWV').back();" />
                     <!--<p:commandButton icon="ui-icon-arrowthick-1-e" process="@this" value="Siguiente"  onclick="PF('wizardWV').next();" />-->
                     <p:commandButton icon="ui-icon-arrowthick-1-e" id="siguiente" process="@this" value="Siguiente" oncomplete="PF('wizardWV').next();">
                         <f:actionListener binding="#{bdvUserController.createFolder()}"/> 
@@ -48,13 +48,13 @@
 
                 <p:tab id="paso7" title="Paso 7">
                     <ui:include src="Paso7.xhtml"/>
-                    <!--<p:commandButton value="Volver" icon="ui-icon-arrow-1-w" onclick="PF('wizardWV').back();" />-->
+                    <!--<p:commandButton value="Volver" icon="ui-icon-arrowthick-1-w" onclick="PF('wizardWV').back();" />-->
                     <!--<p:commandButton icon="ui-icon-arrowthick-1-e" process="@this" value="Siguiente"  onclick="PF('wizardWV').next();" />-->
                 </p:tab>
 
                 <p:tab id="paso8" title="Paso 8">
                     <ui:include src="Paso8.xhtml"/>
-                    <p:commandButton value="Volver" icon="ui-icon-arrow-1-w" onclick="PF('wizardWV').back();" />
+                    <p:commandButton value="Volver" icon="ui-icon-arrowthick-1-w" onclick="PF('wizardWV').back();" />
                     <p:commandButton value="Aceptar" icon="ui-icon-check" actionListener="#{bdvUserController.completarRegistro()}" />
                 </p:tab>
 

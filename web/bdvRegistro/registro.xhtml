@@ -25,7 +25,7 @@
 
                 <p:tab id="paso2" title="Paso 2">
                     <ui:include src="/bdvRegistro/Paso2.xhtml"/>
-                    <p:commandButton value="Volver" icon="ui-icon-arrow-1-w" onclick="PF('wizardWV').back();" />
+                    <p:commandButton value="Volver" icon="ui-icon-arrowthick-1-w" onclick="PF('wizardWV').back();" />
                     <p:commandButton value="#{bundle.Acept}" icon="ui-icon-check" update="wizard,:growl">
                         <f:actionListener binding="#{bdvUserController.registrarProveedor(bdvUserController.selected.email,bdvUserController.selected.contrasenia)}"/> 
                     </p:commandButton>

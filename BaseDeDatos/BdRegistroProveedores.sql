@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 31-01-2015 a las 19:55:53
+-- Tiempo de generación: 05-02-2015 a las 00:30:17
 -- Versión del servidor: 5.6.21
 -- Versión de PHP: 5.5.14
 
@@ -2010,18 +2010,19 @@ CREATE TABLE IF NOT EXISTS `bdv_user` (
   `email` varchar(100) NOT NULL,
   `contrasenia` varchar(400) NOT NULL,
   `activo` tinyint(1) NOT NULL DEFAULT '0',
-  `email_valido` tinyint(1) NOT NULL DEFAULT '0'
+  `email_valido` tinyint(1) NOT NULL DEFAULT '0',
+  `cambia_contrasenia` tinyint(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `bdv_user`
 --
 
-INSERT INTO `bdv_user` (`id_user`, `id_empresa`, `email`, `contrasenia`, `activo`, `email_valido`) VALUES
-(1, 1, 'pgeorge27@gmail.com', 'cb60ece79bddf395b76123b5618a5102c06e6b3a74d7f40d9e5b706f1f548aaa', 1, 1),
-(2, 5, 'ppp@ppp.com', 'cb60ece79bddf395b76123b5618a5102c06e6b3a74d7f40d9e5b706f1f548aaa', 0, 1),
-(3, 6, 'pepito@2.com', 'cb60ece79bddf395b76123b5618a5102c06e6b3a74d7f40d9e5b706f1f548aaa', 0, 1),
-(4, NULL, 'perez@perez.com', 'cb60ece79bddf395b76123b5618a5102c06e6b3a74d7f40d9e5b706f1f548aaa', 1, 1);
+INSERT INTO `bdv_user` (`id_user`, `id_empresa`, `email`, `contrasenia`, `activo`, `email_valido`, `cambia_contrasenia`) VALUES
+(1, 1, 'pgeorge27@gmail.com', 'cb60ece79bddf395b76123b5618a5102c06e6b3a74d7f40d9e5b706f1f548aaa', 1, 1, 0),
+(2, 5, 'ppp@ppp.com', 'cb60ece79bddf395b76123b5618a5102c06e6b3a74d7f40d9e5b706f1f548aaa', 0, 1, 0),
+(3, 6, 'pepito@2.com', 'cb60ece79bddf395b76123b5618a5102c06e6b3a74d7f40d9e5b706f1f548aaa', 0, 1, 0),
+(4, NULL, 'perez@perez.com', 'cb60ece79bddf395b76123b5618a5102c06e6b3a74d7f40d9e5b706f1f548aaa', 1, 1, 0);
 
 -- --------------------------------------------------------
 

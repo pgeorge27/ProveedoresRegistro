@@ -84,6 +84,12 @@ public class BdvRecaudos implements Serializable {
     @Size(max = 255)
     @Column(name = "referencia_comercial")
     private String referenciaComercial;
+    @Size(max = 255)
+    @Column(name = "rif")
+    private String rif;
+    @Size(max = 255)
+    @Column(name = "cedula")
+    private String cedula;
     @Basic(optional = false)
     @NotNull
     @Column(name = "date_register")
@@ -198,6 +204,22 @@ public class BdvRecaudos implements Serializable {
 
     public void setReferenciaComercial(String referenciaComercial) {
         this.referenciaComercial = referenciaComercial;
+    }
+
+    public String getRif() {
+        return rif;
+    }
+
+    public void setRif(String rif) {
+        this.rif = rif;
+    }
+
+    public String getCedula() {
+        return cedula;
+    }
+
+    public void setCedula(String cedula) {
+        this.cedula = cedula;
     }
 
     public Date getDateRegister() {

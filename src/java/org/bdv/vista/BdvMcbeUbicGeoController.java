@@ -32,6 +32,7 @@ public class BdvMcbeUbicGeoController implements Serializable {
     private int idMunicipio = -1;
     
     public BdvMcbeUbicGeoController() {
+         
     }
 
     public BdvMcbeUbicGeo getSelected() {
@@ -48,6 +49,8 @@ public class BdvMcbeUbicGeoController implements Serializable {
 
     public void setIdEstado(int idEstado) {
         this.idEstado = idEstado;
+        System.out.println("En setIdEstado");
+        System.out.println("Valor " + idEstado);
     }
 
     public int getIdMunicipio() {
@@ -56,6 +59,8 @@ public class BdvMcbeUbicGeoController implements Serializable {
 
     public void setIdMunicipio(int idMunicipio) {
         this.idMunicipio = idMunicipio;
+        System.out.println("En SetIdMuni");
+        System.out.println("Valor " + idMunicipio);
     }
 
     protected void setEmbeddableKeys() {
@@ -143,11 +148,13 @@ public class BdvMcbeUbicGeoController implements Serializable {
     
     public List<BdvMcbeUbicGeo> obtenerMunicipios() {
         System.out.println("ID PADRE Municipio == " + getIdEstado());
-        return getFacade().obtenerMunicipio(getIdEstado());
+//        return getFacade().obtenerMunicipio(getIdEstado());
+        return getFacade().obtenerMunicipio(BdvUserController.selected.getIdEmpresa().getEstado().getIdUbicGeo());
     }
     
     public List<BdvMcbeUbicGeo> obtenerParroquias() {
-        return getFacade().obtenerParroquia(getIdMunicipio());
+//        return getFacade().obtenerParroquia(getIdMunicipio());
+        return getFacade().obtenerMunicipio(BdvUserController.selected.getIdEmpresa().getMunicipio().getIdUbicGeo());
     }
    
     @FacesConverter(forClass=BdvMcbeUbicGeo.class)

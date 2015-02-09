@@ -64,7 +64,7 @@
                         <p:outputLabel value="#{bundle.CreateBdvEmpresaLabel_idNacionalidad}" />
                     </p:outputPanel>
                     <p:selectOneMenu id="nacionalidad" value="#{bdvUserController.selected.idEmpresa.idNacionalidad}" required="true" requiredMessage="#{bundle.CreateBdvEmpresaRequiredMessage_idNacionalidad}" >
-                        <f:selectItem itemLabel="#{bundle.SelectOneMessage}" itemValue="" noSelectionOption="true" />
+                        <f:selectItem itemLabel="#{bundle.SelectOneMessage}" itemValue="null" noSelectionOption="true" />
                         <f:selectItems value="#{bdvNacionalidadController.itemsAvailableSelectOne}"
                                        var="idNacionalidadItem"
                                        itemValue="#{idNacionalidadItem}"/>

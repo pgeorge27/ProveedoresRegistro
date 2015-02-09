@@ -402,23 +402,27 @@
                 <h:panelGrid columns="2" >                               
                     <p:outputLabel value="#{bundle.CreateBdvRecaudosLabel_certificadoSnc}"/>
                     <p:outputLabel styleClass="ui-icon ui-icon-check"/> 
-                    <p:outputLabel value="#{bundle.CreateBdvRecaudosLabel_planillaRnc}"/>
-                    <p:outputLabel styleClass="ui-icon ui-icon-check"/> 
-                    <p:outputLabel value="#{bundle.CreateBdvRecaudosLabel_comunicacionRepresentante}"/>
-                    <p:outputLabel styleClass="ui-icon ui-icon-check"/> 
-                    <p:outputLabel value="#{bundle.CreateBdvRecaudosLabel_solvenciaSso}"/>
-                    <p:outputLabel styleClass="ui-icon ui-icon-check"/> 
-                    <p:outputLabel value="#{bundle.CreateBdvRecaudosLabel_solvenciaLaboral}"/>
-                    <p:outputLabel styleClass="ui-icon ui-icon-check"/> 
-                    <p:outputLabel value="#{bundle.CreateBdvRecaudosLabel_solvenciaInce}"/>
-                    <p:outputLabel styleClass="ui-icon ui-icon-check"/> 
-                    <p:outputLabel value="#{bundle.CreateBdvRecaudosLabel_organigrama}"/>
-                    <p:outputLabel styleClass="ui-icon ui-icon-check"/> 
+                    <p:outputLabel rendered="#{'JURIDICA' eq bdvUserController.selected.idEmpresa.tipoPersona}" value="#{bundle.CreateBdvRecaudosLabel_planillaRnc}"/>
+                    <p:outputLabel rendered="#{'JURIDICA' eq bdvUserController.selected.idEmpresa.tipoPersona}" styleClass="ui-icon ui-icon-check"/> 
+                    <p:outputLabel rendered="#{'JURIDICA' eq bdvUserController.selected.idEmpresa.tipoPersona}" value="#{bundle.CreateBdvRecaudosLabel_comunicacionRepresentante}"/>
+                    <p:outputLabel rendered="#{'JURIDICA' eq bdvUserController.selected.idEmpresa.tipoPersona}" styleClass="ui-icon ui-icon-check"/> 
+                    <p:outputLabel rendered="#{'JURIDICA' eq bdvUserController.selected.idEmpresa.tipoPersona}" value="#{bundle.CreateBdvRecaudosLabel_solvenciaSso}"/>
+                    <p:outputLabel rendered="#{'JURIDICA' eq bdvUserController.selected.idEmpresa.tipoPersona}" styleClass="ui-icon ui-icon-check"/> 
+                    <p:outputLabel rendered="#{'JURIDICA' eq bdvUserController.selected.idEmpresa.tipoPersona}" value="#{bundle.CreateBdvRecaudosLabel_solvenciaLaboral}"/>
+                    <p:outputLabel rendered="#{'JURIDICA' eq bdvUserController.selected.idEmpresa.tipoPersona}" styleClass="ui-icon ui-icon-check"/> 
+                    <p:outputLabel rendered="#{'JURIDICA' eq bdvUserController.selected.idEmpresa.tipoPersona}" value="#{bundle.CreateBdvRecaudosLabel_solvenciaInce}"/>
+                    <p:outputLabel rendered="#{'JURIDICA' eq bdvUserController.selected.idEmpresa.tipoPersona}" styleClass="ui-icon ui-icon-check"/> 
+                    <p:outputLabel rendered="#{'JURIDICA' eq bdvUserController.selected.idEmpresa.tipoPersona}" value="#{bundle.CreateBdvRecaudosLabel_organigrama}"/>
+                    <p:outputLabel rendered="#{'JURIDICA' eq bdvUserController.selected.idEmpresa.tipoPersona}" styleClass="ui-icon ui-icon-check"/> 
+                    <p:outputLabel rendered="#{'JURIDICA' eq bdvUserController.selected.idEmpresa.tipoPersona}" value="#{bundle.CreateBdvRecaudosLabel_referenciaBancaria}"/>
+                    <p:outputLabel rendered="#{'JURIDICA' eq bdvUserController.selected.idEmpresa.tipoPersona}" styleClass="ui-icon ui-icon-check"/> 
+                    <p:outputLabel rendered="#{'JURIDICA' eq bdvUserController.selected.idEmpresa.tipoPersona}" value="#{bundle.CreateBdvRecaudosLabel_referenciaComercial}"/>
+                    <p:outputLabel rendered="#{'JURIDICA' eq bdvUserController.selected.idEmpresa.tipoPersona}" styleClass="ui-icon ui-icon-check"/> 
+                    <p:outputLabel rendered="#{'NATURAL' eq bdvUserController.selected.idEmpresa.tipoPersona}" value="#{bundle.CreateBdvRecaudosLabel_rif}"/>
+                    <p:outputLabel rendered="#{'NATURAL' eq bdvUserController.selected.idEmpresa.tipoPersona}" styleClass="ui-icon ui-icon-check"/> 
+                    <p:outputLabel rendered="#{'NATURAL' eq bdvUserController.selected.idEmpresa.tipoPersona}" value="#{bundle.CreateBdvRecaudosLabel_cedula}"/>
+                    <p:outputLabel rendered="#{'NATURAL' eq bdvUserController.selected.idEmpresa.tipoPersona}" styleClass="ui-icon ui-icon-check"/> 
                     <p:outputLabel value="#{bundle.CreateBdvRecaudosLabel_listaProductos}"/>
-                    <p:outputLabel styleClass="ui-icon ui-icon-check"/> 
-                    <p:outputLabel value="#{bundle.CreateBdvRecaudosLabel_referenciaBancaria}"/>
-                    <p:outputLabel styleClass="ui-icon ui-icon-check"/> 
-                    <p:outputLabel value="#{bundle.CreateBdvRecaudosLabel_referenciaComercial}"/>
                     <p:outputLabel styleClass="ui-icon ui-icon-check"/> 
                 </h:panelGrid> 
             </h:panelGroup>

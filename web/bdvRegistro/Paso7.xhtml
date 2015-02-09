@@ -8,9 +8,10 @@
     <ui:composition>
         <h:form enctype="multipart/form-data">
             <p:panel header="#{bundle.CargaDocumentos}">
-                <p:wizard id="wizard2" showNavBar="false" widgetVar="wizardWV2" showStepStatus="true" >
+                <p:wizard flowListener="#{bdvUserController.onFlowProcess}" nextLabel="Siguiente" backLabel="Volver">
+                <!--<p:wizard id="wizard2" showNavBar="false" widgetVar="wizardWV2" showStepStatus="true" >-->
 
-                    <p:tab titleStyleClass="ui-wizard-step-title--min" title="#{bundle.CreateBdvRecaudosLabel_certificadoSnc}">
+                <p:tab id="certificadoSncTab" titleStyleClass="ui-wizard-step-title--min" title="#{bundle.CreateBdvRecaudosLabel_certificadoSnc}">
                         <h:panelGrid columns="3" columnClasses="column1--max,column2,column3">
                             <p:outputPanel>
                                 <p:outputLabel styleClass="required" for="certificadoSnc" /> 
@@ -25,13 +26,13 @@
                             <p:messages autoUpdate="true" closable="true" />
                             <p:outputPanel/>
                             <p:outputPanel>
-                                <p:commandButton value="Volver" icon="ui-icon-arrow-1-w" onclick="PF('wizardWV').back();" />
+                                <p:commandButton value="Volver" icon="ui-icon-arrowthick-1-w" onclick="PF('wizardWV').back();" />
                                 <p:commandButton icon="ui-icon-arrowthick-1-e" process="@this" value="Siguiente" onclick="PF('wizardWV2').next();" />
                             </p:outputPanel>
                         </h:panelGrid>
                     </p:tab>
 
-                    <p:tab rendered="#{'JURIDICA' eq bdvUserController.selected.idEmpresa.tipoPersona}" titleStyleClass="ui-wizard-step-title--min" title="#{bundle.CreateBdvRecaudosLabel_planillaRnc}">
+                <p:tab id="planillaRncTab" rendered="#{'JURIDICA' eq bdvUserController.selected.idEmpresa.tipoPersona}" titleStyleClass="ui-wizard-step-title--min" title="#{bundle.CreateBdvRecaudosLabel_planillaRnc}">
                         <h:panelGrid columns="2" columnClasses="">
                             <p:outputPanel>
                                 <p:outputLabel styleClass="required" for="planillaRnc" /> 
@@ -46,13 +47,13 @@
                             <p:messages  autoUpdate="true" closable="true" />
                             <p:outputPanel/>
                             <p:outputPanel>
-                                <p:commandButton value="Volver" icon="ui-icon-arrow-1-w" onclick="PF('wizardWV2').back();" />
+                                <p:commandButton value="Volver" icon="ui-icon-arrowthick-1-w" onclick="PF('wizardWV2').back();" />
                                 <p:commandButton icon="ui-icon-arrowthick-1-e" process="@this" value="Siguiente"  onclick="PF('wizardWV2').next();" />
                             </p:outputPanel>
                         </h:panelGrid>
                     </p:tab>
 
-                    <p:tab rendered="#{'JURIDICA' eq bdvUserController.selected.idEmpresa.tipoPersona}" titleStyleClass="ui-wizard-step-title--min" title="#{bundle.CreateBdvRecaudosLabel_comunicacionRepresentante}">
+                <p:tab id="comunicacionRepresentanteTab" rendered="#{'JURIDICA' eq bdvUserController.selected.idEmpresa.tipoPersona}" titleStyleClass="ui-wizard-step-title--min" title="#{bundle.CreateBdvRecaudosLabel_comunicacionRepresentante}">
                         <h:panelGrid columns="2" columnClasses="">
                             <p:outputPanel>
                                 <p:outputLabel styleClass="required" for="comunicacionRepresentante" /> 
@@ -67,13 +68,13 @@
                             <p:messages  autoUpdate="true" closable="true" />
                             <p:outputPanel/>
                             <p:outputPanel>
-                                <p:commandButton value="Volver" icon="ui-icon-arrow-1-w" onclick="PF('wizardWV2').back();" />
+                                <p:commandButton value="Volver" icon="ui-icon-arrowthick-1-w" onclick="PF('wizardWV2').back();" />
                                 <p:commandButton icon="ui-icon-arrowthick-1-e" process="@this" value="Siguiente"  onclick="PF('wizardWV2').next();" />
                             </p:outputPanel>
                         </h:panelGrid>
                     </p:tab>
 
-                    <p:tab rendered="#{'JURIDICA' eq bdvUserController.selected.idEmpresa.tipoPersona}" titleStyleClass="ui-wizard-step-title--min" title="#{bundle.CreateBdvRecaudosLabel_solvenciaSso}">
+                    <p:tab id="solvenciaSsoTab" rendered="#{'JURIDICA' eq bdvUserController.selected.idEmpresa.tipoPersona}" titleStyleClass="ui-wizard-step-title--min" title="#{bundle.CreateBdvRecaudosLabel_solvenciaSso}">
                         <h:panelGrid columns="2" columnClasses="">
                             <p:outputPanel>
                                 <p:outputLabel styleClass="required" for="solvenciaSso" /> 
@@ -88,13 +89,13 @@
                             <p:messages  autoUpdate="true" closable="true" />
                             <p:outputPanel/>
                             <p:outputPanel>
-                                <p:commandButton value="Volver" icon="ui-icon-arrow-1-w" onclick="PF('wizardWV2').back();" />
+                                <p:commandButton value="Volver" icon="ui-icon-arrowthick-1-w" onclick="PF('wizardWV2').back();" />
                                 <p:commandButton icon="ui-icon-arrowthick-1-e" process="@this" value="Siguiente"  onclick="PF('wizardWV2').next();" />
                             </p:outputPanel>
                         </h:panelGrid>
                     </p:tab>
 
-                    <p:tab rendered="#{'JURIDICA' eq bdvUserController.selected.idEmpresa.tipoPersona}" titleStyleClass="ui-wizard-step-title--min" title="#{bundle.CreateBdvRecaudosLabel_solvenciaLaboral}">
+                    <p:tab id="solvenciaLaboralTab" rendered="#{'JURIDICA' eq bdvUserController.selected.idEmpresa.tipoPersona}" titleStyleClass="ui-wizard-step-title--min" title="#{bundle.CreateBdvRecaudosLabel_solvenciaLaboral}">
                         <h:panelGrid columns="2" columnClasses="">
                             <p:outputPanel>
                                 <p:outputLabel styleClass="required" for="solvenciaLaboral" /> 
@@ -109,13 +110,13 @@
                             <p:messages  autoUpdate="true" closable="true" />
                             <p:outputPanel/>
                             <p:outputPanel>
-                                <p:commandButton value="Volver" icon="ui-icon-arrow-1-w" onclick="PF('wizardWV2').back();" />
+                                <p:commandButton value="Volver" icon="ui-icon-arrowthick-1-w" onclick="PF('wizardWV2').back();" />
                                 <p:commandButton icon="ui-icon-arrowthick-1-e" process="@this" value="Siguiente"  onclick="PF('wizardWV2').next();" />
                             </p:outputPanel>
                         </h:panelGrid>
                     </p:tab>
 
-                    <p:tab rendered="#{'JURIDICA' eq bdvUserController.selected.idEmpresa.tipoPersona}" titleStyleClass="ui-wizard-step-title--min" title="#{bundle.CreateBdvRecaudosLabel_solvenciaInce}">
+                    <p:tab id="solvenciaInceTab" rendered="#{'JURIDICA' eq bdvUserController.selected.idEmpresa.tipoPersona}" titleStyleClass="ui-wizard-step-title--min" title="#{bundle.CreateBdvRecaudosLabel_solvenciaInce}">
                         <h:panelGrid columns="2" columnClasses="">
                             <p:outputPanel>
                                 <p:outputLabel styleClass="required" for="solvenciaInce" /> 
@@ -130,13 +131,13 @@
                             <p:messages  autoUpdate="true" closable="true" />
                             <p:outputPanel/>
                             <p:outputPanel>
-                                <p:commandButton value="Volver" icon="ui-icon-arrow-1-w" onclick="PF('wizardWV2').back();" />
+                                <p:commandButton value="Volver" icon="ui-icon-arrowthick-1-w" onclick="PF('wizardWV2').back();" />
                                 <p:commandButton icon="ui-icon-arrowthick-1-e" process="@this" value="Siguiente"  onclick="PF('wizardWV2').next();" />
                             </p:outputPanel>
                         </h:panelGrid>
                     </p:tab>
 
-                    <p:tab rendered="#{'JURIDICA' eq bdvUserController.selected.idEmpresa.tipoPersona}" titleStyleClass="ui-wizard-step-title--min" title="#{bundle.CreateBdvRecaudosLabel_organigrama}">
+                    <p:tab id="organigramaTab" rendered="#{'JURIDICA' eq bdvUserController.selected.idEmpresa.tipoPersona}" titleStyleClass="ui-wizard-step-title--min" title="#{bundle.CreateBdvRecaudosLabel_organigrama}">
                         <h:panelGrid columns="2" columnClasses="">
                             <p:outputPanel>
                                 <p:outputLabel styleClass="required" for="organigrama" /> 
@@ -151,35 +152,13 @@
                             <p:messages  autoUpdate="true" closable="true" />
                             <p:outputPanel/>
                             <p:outputPanel>
-                                <p:commandButton value="Volver" icon="ui-icon-arrow-1-w" onclick="PF('wizardWV2').back();" />
+                                <p:commandButton value="Volver" icon="ui-icon-arrowthick-1-w" onclick="PF('wizardWV2').back();" />
                                 <p:commandButton icon="ui-icon-arrowthick-1-e" process="@this" value="Siguiente"  onclick="PF('wizardWV2').next();" />
                             </p:outputPanel>
                         </h:panelGrid>
                     </p:tab>
 
-                    <p:tab titleStyleClass="ui-wizard-step-title--min" title="#{bundle.CreateBdvRecaudosLabel_listaProductos}">
-                        <h:panelGrid columns="2" columnClasses="">
-                            <p:outputPanel>
-                                <p:outputLabel styleClass="required" for="listaProductos" /> 
-                                <p:outputLabel value="#{bundle.CreateBdvRecaudosLabel_listaProductos}" />
-                            </p:outputPanel> 
-                            <p:fileUpload id="listaProductos" value="#{bdvUserController.selected.idEmpresa.idRecaudos.listaProductos}" 
-                                          required="true" sizeLimit="200000" fileUploadListener="#{bdvUserController.uploadListaProductos}"
-                                          allowTypes="/(\.|\/)(pdf)$/" mode="advanced" auto="true" update=":growl" label="#{bundle.Seleccione}"
-                                          requiredMessage="#{bundle.CreateBdvRecaudosRequiredMessage_listaProductos}" />
-                            <p:outputPanel/>
-                            <p:outputPanel/>
-                            <p:messages  autoUpdate="true" closable="true" />
-                            <p:outputPanel/>
-                            <p:outputPanel>
-                                <p:commandButton value="Volver" icon="ui-icon-arrow-1-w" onclick="PF('wizardWV2').back();" />
-                                <p:commandButton rendered="#{'NATURAL' eq bdvUserController.selected.idEmpresa.tipoPersona}" icon="ui-icon-arrowthick-1-e" process="@this" value="Siguiente"  onclick="PF('wizardWV').next();" />
-                                <p:commandButton rendered="#{'JURIDICA' eq bdvUserController.selected.idEmpresa.tipoPersona}" icon="ui-icon-arrowthick-1-e" process="@this" value="Siguiente"  onclick="PF('wizardWV2').next();" />
-                            </p:outputPanel>
-                        </h:panelGrid>
-                    </p:tab>
-
-                    <p:tab rendered="#{'JURIDICA' eq bdvUserController.selected.idEmpresa.tipoPersona}" titleStyleClass="ui-wizard-step-title--min" title="#{bundle.CreateBdvRecaudosLabel_referenciaBancaria}">
+                    <p:tab id="referenciaBancariaTab" rendered="#{'JURIDICA' eq bdvUserController.selected.idEmpresa.tipoPersona}" titleStyleClass="ui-wizard-step-title--min" title="#{bundle.CreateBdvRecaudosLabel_referenciaBancaria}">
                         <h:panelGrid columns="2" columnClasses="">
                             <p:outputPanel>
                                 <p:outputLabel styleClass="required" for="referenciaBancaria" /> 
@@ -194,13 +173,13 @@
                             <p:messages  autoUpdate="true" closable="true" />
                             <p:outputPanel/>
                             <p:outputPanel>
-                                <p:commandButton value="Volver" icon="ui-icon-arrow-1-w" onclick="PF('wizardWV2').back();" />
+                                <p:commandButton value="Volver" icon="ui-icon-arrowthick-1-w" onclick="PF('wizardWV2').back();" />
                                 <p:commandButton icon="ui-icon-arrowthick-1-e" process="@this" value="Siguiente"  onclick="PF('wizardWV2').next();" />
                             </p:outputPanel>
                         </h:panelGrid>
                     </p:tab>
 
-                    <p:tab rendered="#{'JURIDICA' eq bdvUserController.selected.idEmpresa.tipoPersona}" titleStyleClass="ui-wizard-step-title--min" title="#{bundle.CreateBdvRecaudosLabel_referenciaComercial}">
+                    <p:tab id="referenciaComercialTab" rendered="#{'JURIDICA' eq bdvUserController.selected.idEmpresa.tipoPersona}" titleStyleClass="ui-wizard-step-title--min" title="#{bundle.CreateBdvRecaudosLabel_referenciaComercial}">
                         <h:panelGrid columns="2" columnClasses="">
                             <p:outputPanel>
                                 <p:outputLabel styleClass="required" for="referenciaComercial" /> 
@@ -215,8 +194,72 @@
                             <p:messages  autoUpdate="true" closable="true" />
                             <p:outputPanel/>
                             <p:outputPanel>
-                                <p:commandButton value="Volver" icon="ui-icon-arrow-1-w" onclick="PF('wizardWV2').back();" />
+                                <p:commandButton value="Volver" icon="ui-icon-arrowthick-1-w" onclick="PF('wizardWV2').back();" />
+                                <p:commandButton icon="ui-icon-arrowthick-1-e" process="@this" value="Siguiente"  onclick="PF('wizardWV2').next();" />
+                            </p:outputPanel>
+                        </h:panelGrid>
+                    </p:tab>
+                    
+                    <p:tab id="cedulaUTab" rendered="#{'NATURAL' eq bdvUserController.selected.idEmpresa.tipoPersona}" titleStyleClass="ui-wizard-step-title--min" title="#{bundle.CreateBdvRecaudosLabel_cedula}">
+                        <h:panelGrid columns="2" columnClasses="">
+                            <p:outputPanel>
+                                <p:outputLabel styleClass="required" for="cedulaU" /> 
+                                <p:outputLabel value="#{bundle.CreateBdvRecaudosLabel_cedula}" />
+                            </p:outputPanel> 
+                            <p:fileUpload id="cedulaU" value="#{bdvUserController.selected.idEmpresa.idRecaudos.cedula}" 
+                                          required="true" sizeLimit="200000" fileUploadListener="#{bdvUserController.uploadCedula}"
+                                          allowTypes="/(\.|\/)(pdf)$/" mode="advanced" auto="true" update=":growl" label="#{bundle.Seleccione}"
+                                          requiredMessage="#{bundle.CreateBdvRecaudosRequiredMessage_cedula}" />
+                            <p:outputPanel/>
+                            <p:outputPanel/>
+                            <p:messages  autoUpdate="true" closable="true" />
+                            <p:outputPanel/>
+                            <p:outputPanel>
+                                <p:commandButton value="Volver" icon="ui-icon-arrowthick-1-w" onclick="PF('wizardWV2').back();" />
+                                <p:commandButton icon="ui-icon-arrowthick-1-e" process="@this" value="Siguiente"  onclick="PF('wizardWV2').next();" />
+                            </p:outputPanel>
+                        </h:panelGrid>
+                    </p:tab>
+                    
+                    <p:tab id="rifUTab" rendered="#{'NATURAL' eq bdvUserController.selected.idEmpresa.tipoPersona}" titleStyleClass="ui-wizard-step-title--min" title="#{bundle.CreateBdvRecaudosLabel_rif}">
+                        <h:panelGrid columns="2" columnClasses="">
+                            <p:outputPanel>
+                                <p:outputLabel styleClass="required" for="rifU" /> 
+                                <p:outputLabel value="#{bundle.CreateBdvRecaudosLabel_rif}" />
+                            </p:outputPanel> 
+                            <p:fileUpload id="rifU" value="#{bdvUserController.selected.idEmpresa.idRecaudos.rif}" 
+                                          required="true" sizeLimit="200000" fileUploadListener="#{bdvUserController.uploadRif}"
+                                          allowTypes="/(\.|\/)(pdf)$/" mode="advanced" auto="true" update=":growl" label="#{bundle.Seleccione}"
+                                          requiredMessage="#{bundle.CreateBdvRecaudosRequiredMessage_rif}" />
+                            <p:outputPanel/>
+                            <p:outputPanel/>
+                            <p:messages  autoUpdate="true" closable="true" />
+                            <p:outputPanel/>
+                            <p:outputPanel>
+                                <p:commandButton value="Volver" icon="ui-icon-arrowthick-1-w" onclick="PF('wizardWV2').back();" />
+                                <p:commandButton icon="ui-icon-arrowthick-1-e" process="@this" value="Siguiente"  onclick="PF('wizardWV2').next();" />
+                            </p:outputPanel>
+                        </h:panelGrid>
+                    </p:tab>
+                    
+                    <p:tab id="listaProductosTab" titleStyleClass="ui-wizard-step-title--min" title="#{bundle.CreateBdvRecaudosLabel_listaProductos}">
+                        <h:panelGrid columns="2" columnClasses="">
+                            <p:outputPanel>
+                                <p:outputLabel styleClass="required" for="listaProductos" /> 
+                                <p:outputLabel value="#{bundle.CreateBdvRecaudosLabel_listaProductos}" />
+                            </p:outputPanel> 
+                            <p:fileUpload id="listaProductos" value="#{bdvUserController.selected.idEmpresa.idRecaudos.listaProductos}" 
+                                          required="true" sizeLimit="200000" fileUploadListener="#{bdvUserController.uploadListaProductos}"
+                                          allowTypes="/(\.|\/)(pdf)$/" mode="advanced" auto="true" update=":growl" label="#{bundle.Seleccione}"
+                                          requiredMessage="#{bundle.CreateBdvRecaudosRequiredMessage_listaProductos}" />
+                            <p:outputPanel/>
+                            <p:outputPanel/>
+                            <p:messages  autoUpdate="true" closable="true" />
+                            <p:outputPanel/>
+                            <p:outputPanel>
+                                <p:commandButton value="Volver" icon="ui-icon-arrowthick-1-w" onclick="PF('wizardWV2').back();" />
                                 <p:commandButton icon="ui-icon-arrowthick-1-e" process="@this" value="Siguiente"  onclick="PF('wizardWV').next();" />
+<!--                                <p:commandButton rendered="{'JURIDICA' eq bdvUserController.selected.idEmpresa.tipoPersona}" icon="ui-icon-arrowthick-1-e" process="@this" value="Siguiente"  onclick="PF('wizardWV2').next();" />-->
                             </p:outputPanel>
                         </h:panelGrid>
                     </p:tab>

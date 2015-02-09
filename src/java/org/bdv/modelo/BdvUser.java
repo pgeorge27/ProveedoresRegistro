@@ -36,6 +36,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "BdvUser.findByContrasenia", query = "SELECT b FROM BdvUser b WHERE b.contrasenia = :contrasenia"),
     @NamedQuery(name = "BdvUser.findByEmailAndContrasenia", query = "SELECT b FROM BdvUser b WHERE b.email = :email AND b.contrasenia = :contrasenia"),
     @NamedQuery(name = "BdvUser.findByActivo", query = "SELECT b FROM BdvUser b WHERE b.activo = :activo"),
+    @NamedQuery(name = "BdvUser.findByFinalizoRegistro", query = "SELECT b FROM BdvUser b WHERE b.finalizoRegistro = :finalizoRegistro"),
     @NamedQuery(name = "BdvUser.findByEmailValido", query = "SELECT b FROM BdvUser b WHERE b.emailValido = :emailValido")})
 public class BdvUser implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -68,6 +69,10 @@ public class BdvUser implements Serializable {
     @NotNull
     @Column(name = "cambia_contrasenia")
     private boolean cambiaContrasenia;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "finalizo_registro")
+    private boolean finalizoRegistro;
     @JoinColumn(name = "id_empresa", referencedColumnName = "id_empresa")
     @ManyToOne
     private BdvEmpresa idEmpresa;
@@ -112,8 +117,17 @@ public class BdvUser implements Serializable {
         this.cambiaContrasenia = cambiaContrasenia;
         this.idEmpresa = idEmpresa;
     }
-    
-    
+
+    public BdvUser(Integer idUser, String email, String contrasenia, boolean activo, boolean emailValido, boolean cambiaContrasenia, boolean finalizoRegistro, BdvEmpresa idEmpresa) {
+        this.idUser = idUser;
+        this.email = email;
+        this.contrasenia = contrasenia;
+        this.activo = activo;
+        this.emailValido = emailValido;
+        this.cambiaContrasenia = cambiaContrasenia;
+        this.finalizoRegistro = finalizoRegistro;
+        this.idEmpresa = idEmpresa;
+    }
     
     public Integer getIdUser() {
         return idUser;
@@ -163,6 +177,14 @@ public class BdvUser implements Serializable {
         this.cambiaContrasenia = cambiaContrasenia;
     }
     
+    public boolean getFinalizoRegistro() {
+        return finalizoRegistro;
+    }
+
+    public void setFinalizoRegistro(boolean finalizoRegistro) {
+        this.finalizoRegistro = finalizoRegistro;
+    }
+
     public BdvEmpresa getIdEmpresa() {
         return idEmpresa;
     }

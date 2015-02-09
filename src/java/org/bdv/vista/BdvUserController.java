@@ -24,15 +24,14 @@ import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
-import javax.faces.event.ValueChangeEvent;
 import javax.persistence.NoResultException;
 import javax.servlet.http.HttpServletRequest;
 import org.bdv.helper.PasswordEncrypt;
 import org.bdv.helper.PasswordValidator;
 import org.bdv.helper.RandomManagedBean;
 import org.bdv.helper.SendMail;
-import org.bdv.modelo.BdvUserBackend;
 import org.primefaces.event.FileUploadEvent;
+import org.primefaces.event.FlowEvent;
 
 @ManagedBean(name = "bdvUserController")
 @SessionScoped
@@ -41,8 +40,9 @@ public class BdvUserController implements Serializable {
     @EJB
     private org.bdv.controlador.BdvUserFacade ejbFacade;
     private List<BdvUser> items = null;
-    private BdvUser selected;
-    private BdvUser selected2;
+    public static BdvUser selected;
+    private BdvUser selected2; //Para ayudarnos en formulario y comparar valores contra selected
+    private BdvUser userC; //Lo usuaremos para almacenar usuario Consultado de BD
 
     public BdvUserController() {
 
@@ -138,7 +138,9 @@ public class BdvUserController implements Serializable {
 
     public List<BdvUser> getItems() {
         if (items == null) {
-            items = getFacade().findAll();
+            //items = getFacade().findAll();
+            //Obtenemos solo los usuarios que han finalizado el registro
+            items = getFacade().obtenerUsuariosFinalizados();
         }
         return items;
     }
@@ -190,6 +192,7 @@ public class BdvUserController implements Serializable {
                     selected.setActivo(true);
                     selected.setEmailValido(false);
                     selected.setCambiaContrasenia(false);
+                    selected.setFinalizoRegistro(false);
                     create();
                     //new SendMail(selected.getEmail());
                     ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
@@ -255,17 +258,17 @@ public class BdvUserController implements Serializable {
     public String entrarHomeUser(String email, String contrasenia) {
         try {
             String contraseniaEncriptada = new PasswordEncrypt().Encriptar(contrasenia);//Encriptamos la contraseña
-            BdvUser a = getFacade().obtenerUsuario(email, contraseniaEncriptada);//Obtenemos los datos del usuario
-            if (a.getActivo()) {//Verificamos que el usuario se encuentre activo
+            userC = getFacade().obtenerUsuario(email, contraseniaEncriptada);//Obtenemos los datos del usuario
+            if (userC.getActivo()) {//Verificamos que el usuario se encuentre activo
                 System.out.println("En activo");
-                if (a.getEmailValido()) { //valido el email?
+                if (userC.getEmailValido()) { //valido el email?
                     System.out.println("En valido");
                     prepareCreateUserRegistred();//Inicializamos al usuario 
-                    setSelected(a);//Le asignamos sus valores
-                    if (a.getIdEmpresa() != null && a.getIdEmpresa().getFinalizoRegistro()) {//Si registro su empresa y finalizo el registro
-                        if (a.isCambiaContrasenia()) {
+                    //
+                    if (userC.getIdEmpresa() != null && userC.getFinalizoRegistro()) {//Si registro su empresa y finalizo el registro
+                        if (userC.isCambiaContrasenia()) {
                             try { // Debe cambiar Contrasenia
-                                //setSelected2(selected);
+                                setSelected(userC);//Le asignamos sus valores
                                 System.out.println("Cambiar Contrasenia");
                                 ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
                                 context.redirect(context.getRequestContextPath() + "/faces/cambiarContraseniaOlvidada.xhtml");
@@ -274,7 +277,7 @@ public class BdvUserController implements Serializable {
                             }
                         } else {
                             try { // Al home User
-                                //setSelected2(selected);
+                                setSelected(userC);//Le asignamos sus valores
                                 System.out.println("al home");
                                 ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
                                 context.redirect(context.getRequestContextPath() + "/faces/homeUser.xhtml");
@@ -285,6 +288,9 @@ public class BdvUserController implements Serializable {
 
                     } else { // A culminar su registro
                         try {
+                            //prepareCreateUserRegistred();//SE DEBE SOLUCIONAR OJO
+                            setSelected(userC);//Le asignamos sus valores //SE DEBE SOLUCIONAR OJO
+                            //evaluarSeteado();//Evaluamos que valores le setearemos al usuario
                             System.out.println("Al registro");
                             ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
                             context.redirect(context.getRequestContextPath() + "/faces/bdvRegistro/registro_continuar.xhtml");
@@ -308,7 +314,7 @@ public class BdvUserController implements Serializable {
 
     public void completarRegistro() {
         try {
-            selected.getIdEmpresa().setFinalizoRegistro(true);
+            selected.setFinalizoRegistro(true);
             update();
             //new SendMail(ResourceBundle.getBundle("/BundleEmail").getString("EmailAdmin"), "admin");
             ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
@@ -348,7 +354,6 @@ public class BdvUserController implements Serializable {
         }
     }
 
-
     public void cambiarContrasenia(String contrasenia, String contraseniaNueva) {
         try {
             String contraseniaEncriptada = new PasswordEncrypt().Encriptar(contrasenia);//Encriptamos la contraseña
@@ -368,22 +373,22 @@ public class BdvUserController implements Serializable {
         } catch (Exception e) {
         }
     }
-    
-    public void actualizarContrasenia(String contrasenia){        
+
+    public void actualizarContrasenia(String contrasenia) {
         if (new PasswordValidator().validate(contrasenia)) {
-                try {
-                    String contraseniaEncriptada = new PasswordEncrypt().Encriptar(contrasenia);//Encriptamos la contraseña
-                    selected.setContrasenia(contraseniaEncriptada);
-                    selected.setCambiaContrasenia(false);
-                    updateChangePassword();
-                    ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
-                    context.redirect(context.getRequestContextPath() + "/faces/contraseniaCambiada.xhtml");
-                } catch (IOException ex) {
-                    Logger.getLogger(BdvUserController.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            } else {
-                JsfUtil.addErrorMessage(ResourceBundle.getBundle("/Bundle").getString("PasswordNoAcept"));
+            try {
+                String contraseniaEncriptada = new PasswordEncrypt().Encriptar(contrasenia);//Encriptamos la contraseña
+                selected.setContrasenia(contraseniaEncriptada);
+                selected.setCambiaContrasenia(false);
+                updateChangePassword();
+                ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
+                context.redirect(context.getRequestContextPath() + "/faces/contraseniaCambiada.xhtml");
+            } catch (IOException ex) {
+                Logger.getLogger(BdvUserController.class.getName()).log(Level.SEVERE, null, ex);
             }
+        } else {
+            JsfUtil.addErrorMessage(ResourceBundle.getBundle("/Bundle").getString("PasswordNoAcept"));
+        }
     }
 
     public void agregarRepre2() {
@@ -463,10 +468,14 @@ public class BdvUserController implements Serializable {
 //            ResourceBundle.getBundle("/BundleUpload").getString("Destino");
 
     public void uploadCertificadoSnc(FileUploadEvent event) {
-        destination += selected.getIdEmpresa().getNombreComercial().replaceAll("\\s", "");
+//        destination = destination + selected.getIdEmpresa().getNombreComercial().replaceAll("\\s", "") + File.separator;
         try {
+            if (selected.getIdEmpresa().getIdRecaudos() == null) {
+                System.out.println("RECAUDOS NULL");
+                selected.getIdEmpresa().agregarRecaudos(); //Si el registro no tiene recaudos
+            }
             selected.getIdEmpresa().getIdRecaudos().setCertificadoSnc(destination + "certificadoSnc.pdf");
-            System.out.println("Certificado Snc = " + selected.getIdEmpresa().getIdRecaudos().getCertificadoSnc());
+//            System.out.println("Certificado Snc = " + selected.getIdEmpresa().getIdRecaudos().getCertificadoSnc());
 //            copyFile(event.getFile().getFileName(), event.getFile().getInputstream());
             copyFile("certificadoSnc.pdf", event.getFile().getInputstream());
             JsfUtil.addSuccessMessage("Carga exitosa del archivo");
@@ -475,8 +484,9 @@ public class BdvUserController implements Serializable {
     }
 
     public void uploadPlanillaRnc(FileUploadEvent event) {
+        //destination = selected.getIdEmpresa().getNombreComercial().replaceAll("\\s", "") + File.separator;
         try {
-//            selected.setPlanillaRnc(destination + "PlanillaRnc.pdf");
+            selected.getIdEmpresa().getIdRecaudos().setPlanillaRnc(destination + "planillaRnc.pdf");
             copyFile("planillaRnc.pdf", event.getFile().getInputstream());
             JsfUtil.addSuccessMessage("Carga exitosa del archivo");
         } catch (IOException e) {
@@ -484,8 +494,9 @@ public class BdvUserController implements Serializable {
     }
 
     public void uploadComunicacionRepresentante(FileUploadEvent event) {
+//        destination = destination + selected.getIdEmpresa().getNombreComercial().replaceAll("\\s", "") + File.separator;
         try {
-            selected.getIdEmpresa().getIdRecaudos().setComunicacionRepresentante(destination + "ComunicacionRepresentante.pdf");
+            selected.getIdEmpresa().getIdRecaudos().setComunicacionRepresentante(destination + "comunicacionRepresentante.pdf");
             copyFile("comunicacionRepresentante.pdf", event.getFile().getInputstream());
             JsfUtil.addSuccessMessage("Carga exitosa del archivo");
         } catch (IOException e) {
@@ -493,8 +504,9 @@ public class BdvUserController implements Serializable {
     }
 
     public void uploadSolvenciaSso(FileUploadEvent event) {
+//        destination = destination + selected.getIdEmpresa().getNombreComercial().replaceAll("\\s", "") + File.separator;
         try {
-            selected.getIdEmpresa().getIdRecaudos().setSolvenciaSso(destination + "SolvenciaSso.pdf");
+            selected.getIdEmpresa().getIdRecaudos().setSolvenciaSso(destination + "solvenciaSso.pdf");
             copyFile("solvenciaSso.pdf", event.getFile().getInputstream());
             JsfUtil.addSuccessMessage("Carga exitosa del archivo");
         } catch (IOException e) {
@@ -502,8 +514,9 @@ public class BdvUserController implements Serializable {
     }
 
     public void uploadSolvenciaLaboral(FileUploadEvent event) {
+//        destination = destination + selected.getIdEmpresa().getNombreComercial().replaceAll("\\s", "") + File.separator;
         try {
-            selected.getIdEmpresa().getIdRecaudos().setCertificadoSnc(destination + "SolvenciaLaboral.pdf");
+            selected.getIdEmpresa().getIdRecaudos().setCertificadoSnc(destination + "solvenciaLaboral.pdf");
             copyFile("solvenciaLaboral.pdf", event.getFile().getInputstream());
             JsfUtil.addSuccessMessage("Carga exitosa del archivo");
         } catch (IOException e) {
@@ -511,8 +524,9 @@ public class BdvUserController implements Serializable {
     }
 
     public void uploadSolvenciaInce(FileUploadEvent event) {
+//        destination = destination + selected.getIdEmpresa().getNombreComercial().replaceAll("\\s", "") + File.separator;
         try {
-            selected.getIdEmpresa().getIdRecaudos().setCertificadoSnc(destination + "SolvenciaInce.pdf");
+            selected.getIdEmpresa().getIdRecaudos().setCertificadoSnc(destination + "solvenciaInce.pdf");
             copyFile("solvenciaInce.pdf", event.getFile().getInputstream());
             JsfUtil.addSuccessMessage("Carga exitosa del archivo");
         } catch (IOException e) {
@@ -520,8 +534,9 @@ public class BdvUserController implements Serializable {
     }
 
     public void uploadOrganigrama(FileUploadEvent event) {
+//        destination = destination + selected.getIdEmpresa().getNombreComercial().replaceAll("\\s", "") + File.separator;
         try {
-            selected.getIdEmpresa().getIdRecaudos().setOrganigrama(destination + "Organigrama.pdf");
+            selected.getIdEmpresa().getIdRecaudos().setOrganigrama(destination + "organigrama.pdf");
             copyFile("organigrama.pdf", event.getFile().getInputstream());
             JsfUtil.addSuccessMessage("Carga exitosa del archivo");
         } catch (IOException e) {
@@ -529,8 +544,9 @@ public class BdvUserController implements Serializable {
     }
 
     public void uploadListaProductos(FileUploadEvent event) {
+//        destination = destination + selected.getIdEmpresa().getNombreComercial().replaceAll("\\s", "") + File.separator;
         try {
-            selected.getIdEmpresa().getIdRecaudos().setListaProductos(destination + "ListaProductos.pdf");
+            selected.getIdEmpresa().getIdRecaudos().setListaProductos(destination + "listaProductos.pdf");
             copyFile("listaProductos.pdf", event.getFile().getInputstream());
             JsfUtil.addSuccessMessage("Carga exitosa del archivo");
         } catch (IOException e) {
@@ -538,8 +554,9 @@ public class BdvUserController implements Serializable {
     }
 
     public void uploadReferenciaBancaria(FileUploadEvent event) {
+//        destination = destination + selected.getIdEmpresa().getNombreComercial().replaceAll("\\s", "") + File.separator;
         try {
-            selected.getIdEmpresa().getIdRecaudos().setReferenciaBancaria(destination + "ReferenciaBancaria.pdf");
+            selected.getIdEmpresa().getIdRecaudos().setReferenciaBancaria(destination + "referenciaBancaria.pdf");
             copyFile("referenciaBancaria.pdf", event.getFile().getInputstream());
             JsfUtil.addSuccessMessage("Carga exitosa del archivo");
         } catch (IOException e) {
@@ -547,9 +564,30 @@ public class BdvUserController implements Serializable {
     }
 
     public void uploadReferenciaComercial(FileUploadEvent event) {
+//        destination = destination + selected.getIdEmpresa().getNombreComercial().replaceAll("\\s", "") + File.separator;
         try {
-            selected.getIdEmpresa().getIdRecaudos().setReferenciaComercial(destination + "ReferenciaComercial.pdf");
+            selected.getIdEmpresa().getIdRecaudos().setReferenciaComercial(destination + "referenciaComercial.pdf");
             copyFile("referenciaComercial.pdf", event.getFile().getInputstream());
+            JsfUtil.addSuccessMessage("Carga exitosa del archivo");
+        } catch (IOException e) {
+        }
+    }
+
+    public void uploadCedula(FileUploadEvent event) {
+//        destination = destination + selected.getIdEmpresa().getNombreComercial().replaceAll("\\s", "") + File.separator;
+        try {
+            selected.getIdEmpresa().getIdRecaudos().setCedula(destination + "cedula.pdf");
+            copyFile("cedula.pdf", event.getFile().getInputstream());
+            JsfUtil.addSuccessMessage("Carga exitosa del archivo");
+        } catch (IOException e) {
+        }
+    }
+
+    public void uploadRif(FileUploadEvent event) {
+//        destination = destination + selected.getIdEmpresa().getNombreComercial().replaceAll("\\s", "") + File.separator;
+        try {
+            selected.getIdEmpresa().getIdRecaudos().setRif(destination + "rif.pdf");
+            copyFile("rif.pdf", event.getFile().getInputstream());
             JsfUtil.addSuccessMessage("Carga exitosa del archivo");
         } catch (IOException e) {
         }
@@ -576,17 +614,125 @@ public class BdvUserController implements Serializable {
     public void createFolder() {
         File files = new File(ResourceBundle.getBundle("/BundleUpload").getString("Destino") + selected.getIdEmpresa().getNombreComercial().replaceAll("\\s", ""));
         System.out.println("Nombre de la carpeta " + selected.getIdEmpresa().getNombreComercial().replaceAll("\\s", ""));
+        //Seteamos el destino de los archivos que seran subidos
+        destination = ResourceBundle.getBundle("/BundleUpload").getString("Destino") + selected.getIdEmpresa().getNombreComercial().replaceAll("\\s", "") + File.separator;
         if (files.exists()) {
             System.out.println("La carpeta ya existe");
             if (files.mkdirs()) {
-                System.out.println("Multiple directories are created!");
+                System.out.println("Carpeta Creada!");
             } else {
-                System.out.println("Failed to create multiple directories!");
+                System.out.println("No se pudo crear la carpeta!");
             }
         } else {
             files.mkdir();
-            System.out.println("Archivo creado!");
+            System.out.println("Carpeta creada!");
         }
+    }
+
+    private void evaluarSeteado() {
+        if (userC.getIdEmpresa() != null) {
+            if (!userC.getIdEmpresa().getTipoPersona().isEmpty()) {//Verificamos si tiene valor la empresa
+                selected.getIdEmpresa().setTipoPersona(userC.getIdEmpresa().getTipoPersona());
+            }
+        }
+    }
+
+    public String onFlowProcess(FlowEvent event) {
+//        System.out.println("Current wizard step: " + event.getOldStep());
+//        System.out.println("Next step: " + event.getNewStep());
+        
+        if (selected.getIdEmpresa().getIdRecaudos() == null) {
+            selected.getIdEmpresa().agregarRecaudos(); //Si el registro no tiene recaudos
+        }
+
+        if (event.getOldStep().equalsIgnoreCase("certificadoSncTab")) {
+            if (selected.getIdEmpresa().getIdRecaudos().getCertificadoSnc() == null) {
+                JsfUtil.addErrorMessage("Debe cargar el documento.");
+                return "certificadoSncTab";
+            } else {
+                return event.getNewStep();
+            }
+        }else if (event.getOldStep().equalsIgnoreCase("planillaRncTab")) {
+            if (selected.getIdEmpresa().getIdRecaudos().getPlanillaRnc()== null) {
+                JsfUtil.addErrorMessage("Debe cargar el documento.");
+                return "planillaRncTab";
+            } else {
+                return event.getNewStep();
+            }
+        }else if (event.getOldStep().equalsIgnoreCase("comunicacionRepresentanteTab")) {
+            if (selected.getIdEmpresa().getIdRecaudos().getComunicacionRepresentante()== null) {
+                JsfUtil.addErrorMessage("Debe cargar el documento.");
+                return "comunicacionRepresentanteTab";
+            } else {
+                return event.getNewStep();
+            }
+        }else if (event.getOldStep().equalsIgnoreCase("solvenciaSsoTab")) {
+            if (selected.getIdEmpresa().getIdRecaudos().getSolvenciaSso()== null) {
+                JsfUtil.addErrorMessage("Debe cargar el documento.");
+                return "solvenciaSsoTab";
+            } else {
+                return event.getNewStep();
+            }
+        }else if (event.getOldStep().equalsIgnoreCase("solvenciaLaboralTab")) {
+            if (selected.getIdEmpresa().getIdRecaudos().getSolvenciaLaboral()== null) {
+                JsfUtil.addErrorMessage("Debe cargar el documento.");
+                return "solvenciaLaboralTab";
+            } else {
+                return event.getNewStep();
+            }
+        }else if (event.getOldStep().equalsIgnoreCase("solvenciaInceTab")) {
+            if (selected.getIdEmpresa().getIdRecaudos().getSolvenciaInce()== null) {
+                JsfUtil.addErrorMessage("Debe cargar el documento.");
+                return "solvenciaLaboralTab";
+            } else {
+                return event.getNewStep();
+            }
+        }else if (event.getOldStep().equalsIgnoreCase("organigramaTab")) {
+            if (selected.getIdEmpresa().getIdRecaudos().getOrganigrama()== null) {
+                JsfUtil.addErrorMessage("Debe cargar el documento.");
+                return "organigramaTab";
+            } else {
+                return event.getNewStep();
+            }
+        }else if (event.getOldStep().equalsIgnoreCase("referenciaBancariaTab")) {
+            if (selected.getIdEmpresa().getIdRecaudos().getReferenciaBancaria()== null) {
+                JsfUtil.addErrorMessage("Debe cargar el documento.");
+                return "referenciaBancariaTab";
+            } else {
+                return event.getNewStep();
+            }
+        }else if (event.getOldStep().equalsIgnoreCase("referenciaComercialTab")) {
+            if (selected.getIdEmpresa().getIdRecaudos().getReferenciaComercial()== null) {
+                JsfUtil.addErrorMessage("Debe cargar el documento.");
+                return "referenciaComercialTab";
+            } else {
+                return event.getNewStep();
+            }
+        }else if (event.getOldStep().equalsIgnoreCase("cedulaUTab")) {
+            if (selected.getIdEmpresa().getIdRecaudos().getCedula()== null) {
+                JsfUtil.addErrorMessage("Debe cargar el documento.");
+                return "cedulaUTab";
+            } else {
+                return event.getNewStep();
+            }
+        }else if (event.getOldStep().equalsIgnoreCase("rifUTab")) {
+            if (selected.getIdEmpresa().getIdRecaudos().getRif()== null) {
+                JsfUtil.addErrorMessage("Debe cargar el documento.");
+                return "rifUTab";
+            } else {
+                return event.getNewStep();
+            }
+        }
+        else if (event.getOldStep().equalsIgnoreCase("listaProductosTab")) {
+            if (selected.getIdEmpresa().getIdRecaudos().getListaProductos()== null) {
+                JsfUtil.addErrorMessage("Debe cargar el documento.");
+                return "listaProductosTab";
+            } else {
+                return "PF('wizardWV').next()";
+            }
+        }
+        
+        return null;
     }
 
     @FacesConverter(forClass = BdvUser.class)
