@@ -42,9 +42,18 @@ and open the template in the editor.
 .ui-inputtext{
     width: 190px !important;
 }
+/*Usado para el tamano de los tab en todos los pasos*/
+.ui-wizard-step-title{
+    font-size: 16px !important;
+}
+/*Usado para el tamano de los tab en UploadFile*/
 .ui-wizard-step-title--min {
     font-size: 14px !important;
     margin: 5px 3px 0 0 !important;
+}
+/*Usado para el tamano de los titulos en tab en todos los pasos, "Letras Pequenas"*/
+.title--min{
+    font-size: 12px !important;
 }
 
 .column1{width: 150px;height:auto}

@@ -14,7 +14,12 @@
     <ui:define name="body">
         <h:form>
             <p:wizard id="wizard" showNavBar="false" widgetVar="wizardWV" showStepStatus="true" >
-                <p:tab id="paso1" title="Paso 1 ">
+                <p:tab id="paso1">
+                    <f:facet name="title">  
+                        <h:outputText value="#{bundle.Paso1}"/><br/>
+                        <h:outputText value="#{bundle.Paso1Msj1}" styleClass="title--min"/><br/>
+                        <h:outputText value="#{bundle.Paso1Msj2}" styleClass="title--min"/>
+                    </f:facet>
                     <ui:include src="/bdvRegistro/Paso1.xhtml"/>
                     <!--<p:commandButton id="siguiente" process="@this" disabled="#{!wizardManagedBean.checked}" value="Siguiente" actionListener="#{bdvUserController.prepareCreate()}" oncomplete="PF('wizardWV').next();"  />-->
                     <p:button outcome="/faces/login.xhtml" value="#{bundle.Cancel}" icon="ui-icon-closethick"/>
@@ -23,7 +28,12 @@
                     </p:commandButton>
                 </p:tab>
 
-                <p:tab id="paso2" title="Paso 2">
+                <p:tab id="paso2">
+                    <f:facet name="title">  
+                        <h:outputText value="#{bundle.Paso2}"/><br/>
+                        <h:outputText value="#{bundle.Paso2Msj1}" styleClass="title--min"/><br/>
+                        <h:outputText value="#{bundle.Paso2Msj2}" styleClass="title--min"/>
+                    </f:facet>
                     <ui:include src="/bdvRegistro/Paso2.xhtml"/>
                     <p:commandButton value="Volver" icon="ui-icon-arrowthick-1-w" onclick="PF('wizardWV').back();" />
                     <p:commandButton value="#{bundle.Acept}" icon="ui-icon-check" update="wizard,:growl">

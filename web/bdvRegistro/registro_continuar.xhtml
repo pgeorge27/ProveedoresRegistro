@@ -15,7 +15,12 @@
         <h:form enctype="multipart/form-data">
             <p:wizard id="wizard" showNavBar="false" widgetVar="wizardWV" showStepStatus="true" >
 
-                <p:tab id="paso3" title="Paso 3">
+                <p:tab id="paso3">
+                    <f:facet name="title">  
+                        <h:outputText value="#{bundle.Paso3}"/><br/>
+                        <h:outputText value="#{bundle.Paso3Msj1}" styleClass="title--min"/><br/>
+                        <h:outputText value="#{bundle.Paso3Msj2}" styleClass="title--min"/>
+                    </f:facet>
                     <ui:include src="Paso3.xhtml"/>
                     <p:commandButton value="Volver" icon="ui-icon-arrowthick-1-w" disabled="true" />
                     <p:commandButton process="@this" value="Siguiente" icon="ui-icon-arrowthick-1-e" oncomplete="PF('wizardWV').next();">
@@ -24,19 +29,34 @@
                     <!--<p:commandButton icon="ui-icon-arrowthick-1-e" process="@this" value="Siguiente" onclick="PF('wizardWV').next();" />-->
                 </p:tab>
 
-                <p:tab id="paso4" title="Paso 4">
+                <p:tab id="paso4">
+                    <f:facet name="title">  
+                        <h:outputText value="#{bundle.Paso4}"/><br/>
+                        <h:outputText value="#{bundle.Paso4Msj1}" styleClass="title--min"/><br/>
+                        <h:outputText value="#{bundle.Paso4Msj2}" styleClass="title--min"/>
+                    </f:facet>
                     <ui:include src="Paso4.xhtml"/>
                     <p:commandButton value="Volver" icon="ui-icon-arrowthick-1-w" onclick="PF('wizardWV').back();" />
                     <p:commandButton icon="ui-icon-arrowthick-1-e" process="@this" value="Siguiente"  onclick="PF('wizardWV').next();" />
                 </p:tab>
 
-                <p:tab id="paso5" title="Paso 5">
+                <p:tab id="paso5">
+                    <f:facet name="title">  
+                        <h:outputText value="#{bundle.Paso5}"/><br/>
+                        <h:outputText value="#{bundle.Paso5Msj1}" styleClass="title--min"/><br/>
+                        <h:outputText value="#{bundle.Paso5Msj2}" styleClass="title--min"/>
+                    </f:facet>
                     <ui:include src="Paso5.xhtml"/>
                     <p:commandButton value="Volver" icon="ui-icon-arrowthick-1-w" onclick="PF('wizardWV').back();" />
                     <p:commandButton icon="ui-icon-arrowthick-1-e" process="@this" value="Siguiente"  onclick="PF('wizardWV').next();" />
                 </p:tab>
 
-                <p:tab id="paso6" title="Paso 6">
+                <p:tab id="paso6">
+                    <f:facet name="title">  
+                        <h:outputText value="#{bundle.Paso6}"/><br/>
+                        <h:outputText value="#{bundle.Paso6Msj1}" styleClass="title--min"/><br/>
+                        <h:outputText value="#{bundle.Paso6Msj2}" styleClass="title--min"/>
+                    </f:facet>
                     <ui:include src="Paso6.xhtml"/>
                     <p:commandButton value="Volver" icon="ui-icon-arrowthick-1-w" onclick="PF('wizardWV').back();" />
                     <!--<p:commandButton icon="ui-icon-arrowthick-1-e" process="@this" value="Siguiente"  onclick="PF('wizardWV').next();" />-->
@@ -46,20 +66,30 @@
                     </p:commandButton>
                 </p:tab>
 
-                <p:tab id="paso7" title="Paso 7">
+                <p:tab id="paso7">
+                    <f:facet name="title">  
+                        <h:outputText value="#{bundle.Paso7}"/><br/>
+                        <h:outputText value="#{bundle.Paso7Msj1}" styleClass="title--min"/><br/>
+                        <h:outputText value="#{bundle.Paso7Msj2}" styleClass="title--min"/>
+                    </f:facet>
                     <ui:include src="Paso7.xhtml"/>
                     <!--<p:commandButton value="Volver" icon="ui-icon-arrowthick-1-w" onclick="PF('wizardWV').back();" />-->
                     <!--<p:commandButton icon="ui-icon-arrowthick-1-e" process="@this" value="Siguiente"  onclick="PF('wizardWV').next();" />-->
                 </p:tab>
 
-                <p:tab id="paso8" title="Paso 8">
+                <p:tab id="paso8">
+                    <f:facet name="title">  
+                        <h:outputText value="#{bundle.Paso8}"/><br/>
+                        <h:outputText value="#{bundle.Paso8Msj1}" styleClass="title--min"/><br/>
+                        <h:outputText value="#{bundle.Paso8Msj2}" styleClass="title--min"/>
+                    </f:facet>
                     <ui:include src="Paso8.xhtml"/>
                     <p:commandButton value="Volver" icon="ui-icon-arrowthick-1-w" onclick="PF('wizardWV').back();" />
                     <p:commandButton value="Aceptar" icon="ui-icon-check" actionListener="#{bdvUserController.completarRegistro()}" />
                 </p:tab>
 
             </p:wizard>
-            </h:form>
+        </h:form>
     </ui:define>
 
 </ui:composition>

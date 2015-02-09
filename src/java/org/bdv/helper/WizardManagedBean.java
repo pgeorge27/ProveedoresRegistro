@@ -10,6 +10,7 @@ import java.io.Serializable;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import org.bdv.modelo.BdvUser;
+import org.bdv.vista.BdvUserController;
 import org.primefaces.event.FlowEvent;
 
 /**
@@ -28,6 +29,8 @@ public class WizardManagedBean implements Serializable{
     private boolean cuentaBanco2;
     private boolean cuentaBanco3;
     private boolean cuentaBancoVnz2;
+    private boolean product;
+    private boolean otroProduct;
     /**
      * Creates a new instance of WizardManagedBean
      */
@@ -40,6 +43,24 @@ public class WizardManagedBean implements Serializable{
         cuentaBanco2 = false;
         cuentaBanco3 = false;
         cuentaBancoVnz2 = false;
+        product = true;
+        otroProduct = true;
+    }
+
+    public boolean isProduct() {
+        return product;
+    }
+
+    public void setProduct(boolean product) {
+        this.product = product;
+    }
+
+    public boolean isOtroProduct() {
+        return otroProduct;
+    }
+
+    public void setOtroProduct(boolean otroProduct) {
+        this.otroProduct = otroProduct;
     }
     
     public void agregarRepre2(){
@@ -165,5 +186,10 @@ public class WizardManagedBean implements Serializable{
         this.cuentaBancoVnz2 = cuentaBancoVnz2;
     }
     
-
+    //Evaluamos si es obligatorio el campo Producto y el campo Otro producto
+    public void productosRequired(){
+        product = BdvUserController.selected.getIdEmpresa().getOtroProducto().isEmpty();
+        otroProduct = BdvUserController.selected.getIdEmpresa().getBdvCategoriaProductoList().isEmpty();
+        System.out.println("Seleccionado " + BdvUserController.selected.getIdEmpresa().getBdvCategoriaProductoList());
+    }
 }

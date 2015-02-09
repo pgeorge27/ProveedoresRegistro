@@ -11,13 +11,14 @@
         <p:panel header="#{bundle.Productos}">
             <p:messages />
             <h:panelGroup>
-                <h:panelGrid columns="3" columnClasses="column1,column2,column3">
+                <h:panelGrid id="productosPanel" columns="3" columnClasses="column1,column2,column3">
                     <p:outputPanel>
                         <p:outputLabel styleClass="required" for="productos" /> 
                         <p:outputLabel value="#{bundle.CreateBdvCategoriaProductoLabel_idCategoriaProducto}" />
                     </p:outputPanel>
                     <p:selectCheckboxMenu id="productos" label="Productos" value="#{bdvUserController.selected.idEmpresa.bdvCategoriaProductoList}"
-                                          filter="true" filterMatchMode="startsWith" panelStyle="width:250px" required="true" requiredMessage="#{bundle.EditBdvEmpresaRequiredMessage_producto}">
+                                          filter="true" filterMatchMode="startsWith" panelStyle="width:250px" required="#{wizardManagedBean.product}" requiredMessage="#{bundle.EditBdvEmpresaRequiredMessage_producto}">
+                        <p:ajax update="productosPanel" listener="#{wizardManagedBean.productosRequired()}" />
                         <f:selectItems value="#{bdvCategoriaProductoController.itemsAvailableSelectMany}"
                                        var="producto"
                                        itemValue="#{producto}"/>
@@ -29,7 +30,9 @@
                         <p:outputLabel styleClass="required" for="otroProducto" /> 
                         <p:outputLabel value="#{bundle.CreateBdvEmpresaLabel_otroProducto}" />
                     </p:outputPanel>
-                    <p:inputText id="otroProducto" value="#{bdvUserController.selected.idEmpresa.otroProducto}" title="#{bundle.CreateBdvEmpresaTitle_otroProducto}" required="true" requiredMessage="#{bundle.EditBdvEmpresaRequiredMessage_otroProducto}" />
+                    <p:inputText id="otroProducto" value="#{bdvUserController.selected.idEmpresa.otroProducto}" title="#{bundle.CreateBdvEmpresaTitle_otroProducto}" required="#{wizardManagedBean.otroProduct}" requiredMessage="#{bundle.EditBdvEmpresaRequiredMessage_otroProducto}">
+                        <p:ajax event="blur" update="productosPanel" listener="#{wizardManagedBean.productosRequired()}" />
+                    </p:inputText>
                     <p:outputLabel value="#{bundle.OtrosProductosMsj}"  />                                                                                                                                          
                 </h:panelGrid>
             </h:panelGroup>
