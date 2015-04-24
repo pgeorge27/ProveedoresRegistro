@@ -1,78 +1,15 @@
 TODO
 
-Categoria de productos (Preguntar si es obligatorio)
-Cumplir con el estándar para las contraseñas
-Cifrar contraseñas
-Integraciión con LdapXXXX
-Crear un usuario conectado para el back y otro para el front
-√ Crear tabla de usuarios administrativos.
-√ Campos de códigos de cuentas deben soportar 20 caracteres.
-√ Campo para saber si culmino su registro
-√ CrearBundle para envios de email y cosas diferentes
-
-Frontend
-
-Enviar email de notificación al administrador en el momento que un posible proveedor culmine su registro.
-Enviar email para recuperar contraseña.
 Guardado Parcial
-Mensajes de Requerido para todos los campos
-Revisar maxlengh de los campos
-Mascara para pagina web - Validar que la url sea valida
-√ Si el Usuario no a guardado toda su informacion al hacer login enviarlo al registro
-Verificar los campos Agregar (inicializar clase)
-√ Mascara numeros telefonicos
-√ Filtro para Estado Municipio Parroquia
-√ Los campos numero de identidad solo deben aceptar numeros
-√ Botón para agregar u ocultar los contactos 2 y 3.
-√ Botón para agregar u ocultar la segunda cuentas bancaria en el banco de Venezuela.
-√ Botón para agregar u ocultar las cuentas bancarias 2 y 3 en otras instituciones.
-√ Implementar la subida de archivos (Persona natural y jurídica).
-√ Resumen de los Productos seleccionados
-√ Validar que las cuentas bancarias sean de 20 caracteres
-√ Despues de Registrarse enviar a pantalla de agradecimiento
-√ Habilitar los años desde (1900 - Actual) en el registro.
-√ En el resumen del usuarios mostrar la descripción, no los Id
+5 Ultimas Contraseñas
+Ancho Max de los campos
+Validar Campo url
+Css -> Tamaño de pantalla
+Al agregar Representante se elimina lo escrito
+Verificar numero de identidad y pasaporte
+Crear un usuario conectado para el back y otro para el front
+Implementar vista segun Roles
 
-
-Backend
-
-Filtrar solo por usuarios que finalizaron el registro.
-Enviar email de notificación al proveedor cuando su registro sea aprobado.
-√ Administrador de usuarios Bancarios
-√ Login con tabla backend
-
-
-LISTA DE ACTIVIDADES PENDIENTES
-
-Generales
-
-•	Implementar css acorde a la institución.
-•-	Cumplir con el estándar para las contraseñas. (Solo falta validar las 5 ultimas)
-•-	Integrar con LDAP.
-•-	Crear un usuario conectado para el backend y otro para el frontend.
- -      Obtener el patch para subir los archivos
-
-Frontend
-
- -      Modulo para cambiar contraseña
-•-	Guardado Parcial.
-•	Revisar el ancho máximo de los campos.
-•	Validar que la url en el campo de pagina web sea valida.
-•-	Verificar los eventos agregar y eliminar. (Inicializar las clases).
-•-	Validar la categoría de productos. Deben ser dinámico su obligatoriedad.
-•-	Si es persona natural, solo mostrar los documentos obligatorios que debe cargar al sistema.
-•-      Mejorar la carga de documentos, (si no carga no avanza)
- -      Mostrar PDF
-
-
-Backend
-
-•-	Mostrar solo usuarios que completaron el registro.
- -      Roles
-√-	Modulo para mostrar detalles del proveedor y gestionar su estatus (activarlo o desactivarlo).
-
-
-
-              <!--<object type="application/pdf" data="/ProveedoresRegistro/faces/javax.faces.resource/prueba.pdf?pfdrid_c=true" height="100px" width="100%">-->
+ <!--<object type="application/pdf" data="/ProveedoresRegistro/faces/javax.faces.resource/prueba.pdf?pfdrid_c=true" height="100px" width="100%">-->
                                 <!--Su navegador no soporta archivos pdf, <a href="/ProveedoresRegistro/faces/javax.faces.resource/prueba.pdf">click</a> para descargar.-->
                             <!--</object>-->

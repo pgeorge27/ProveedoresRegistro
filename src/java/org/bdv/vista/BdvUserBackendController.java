@@ -32,7 +32,7 @@ public class BdvUserBackendController implements Serializable {
     @EJB
     private org.bdv.controlador.BdvUserBackendFacade ejbFacade;
     private List<BdvUserBackend> items = null;
-    private BdvUserBackend selected;
+    public static BdvUserBackend selected;
     private BdvUserBackend selected2;
     private BdvUserBackend activo;
 

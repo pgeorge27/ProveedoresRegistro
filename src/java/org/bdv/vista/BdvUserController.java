@@ -30,6 +30,7 @@ import org.bdv.helper.PasswordEncrypt;
 import org.bdv.helper.PasswordValidator;
 import org.bdv.helper.RandomManagedBean;
 import org.bdv.helper.SendMail;
+import org.bdv.modelo.BdvUserBackend;
 import org.primefaces.event.FileUploadEvent;
 import org.primefaces.event.FlowEvent;
 
@@ -114,6 +115,7 @@ public class BdvUserController implements Serializable {
         System.out.println("Usuario Id " + selected.getIdUser());
         System.out.println("Empresa Activa? " + selected.getIdEmpresa().isEmpresaAprobada());
         System.out.println("Email " + selected.getEmail());
+        selected.getIdEmpresa().setActivadoDesactivadoPor(BdvUserBackendController.selected.getUserBackend());
         try {
             if (selected.getIdEmpresa().isEmpresaAprobada()) {//Si es aprobado se le envia un email
                 selected.getIdEmpresa().setEmpresaAprobada(true);
@@ -121,7 +123,7 @@ public class BdvUserController implements Serializable {
                 //new SendMail(selected.getEmail(), "aprobado");
             }
             ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
-            context.redirect(context.getRequestContextPath() + "/faces//bdvUser/List.xhtml");
+            context.redirect(context.getRequestContextPath() + "/faces/bdvUser/List.xhtml");
         } catch (IOException ex) {
             Logger.getLogger(BdvUserController.class.getName()).log(Level.SEVERE, null, ex);
         }

@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -154,25 +155,25 @@ public class BdvEmpresa implements Serializable {
     @ManyToMany
     private List<BdvCategoriaProducto> bdvCategoriaProductoList;
     @JoinColumn(name = "id_banco_cuenta1", referencedColumnName = "id_banco_cuenta")
-    @ManyToOne
+    @ManyToOne(cascade=CascadeType.ALL)
     private BdvBancoCuenta idBancoCuenta1;
     @JoinColumn(name = "id_nacionalidad", referencedColumnName = "id")
     @ManyToOne
     private BdvNacionalidad idNacionalidad;
     @JoinColumn(name = "id_contacto1", referencedColumnName = "id_contacto")
-    @ManyToOne
+    @ManyToOne(cascade=CascadeType.ALL)
     private BdvContacto idContacto1;
     @JoinColumn(name = "id_representate_legal1", referencedColumnName = "id_representate_legal")
-    @ManyToOne
+    @ManyToOne(cascade=CascadeType.ALL)
     private BdvRepresentateLegal idRepresentateLegal1;
     @JoinColumn(name = "id_representate_legal2", referencedColumnName = "id_representate_legal")
-    @ManyToOne
+    @ManyToOne(cascade=CascadeType.ALL)
     private BdvRepresentateLegal idRepresentateLegal2;
     @JoinColumn(name = "id_representate_legal3", referencedColumnName = "id_representate_legal")
-    @ManyToOne
+    @ManyToOne(cascade=CascadeType.ALL)
     private BdvRepresentateLegal idRepresentateLegal3;
     @JoinColumn(name = "id_banco_cuenta2", referencedColumnName = "id_banco_cuenta")
-    @ManyToOne
+    @ManyToOne(cascade=CascadeType.ALL)
     private BdvBancoCuenta idBancoCuenta2;
     @JoinColumn(name = "municipio", referencedColumnName = "id_ubic_geo")
     @ManyToOne
@@ -184,19 +185,19 @@ public class BdvEmpresa implements Serializable {
     @ManyToOne
     private BdvMcbeUbicGeo parroquia;
     @JoinColumn(name = "id_contacto2", referencedColumnName = "id_contacto")
-    @ManyToOne
+    @ManyToOne(cascade=CascadeType.ALL)
     private BdvContacto idContacto2;
     @JoinColumn(name = "id_banco_cuenta3", referencedColumnName = "id_banco_cuenta")
-    @ManyToOne
+    @ManyToOne(cascade=CascadeType.ALL)
     private BdvBancoCuenta idBancoCuenta3;
     @JoinColumn(name = "id_banco_cuenta_vnz1", referencedColumnName = "id_banco_cuenta_vnz")
-    @ManyToOne
+    @ManyToOne(cascade=CascadeType.ALL)
     private BdvBancoCuentaVnz idBancoCuentaVnz1;
     @JoinColumn(name = "id_banco_cuenta_vnz2", referencedColumnName = "id_banco_cuenta_vnz")
-    @ManyToOne
+    @ManyToOne(cascade=CascadeType.ALL)
     private BdvBancoCuentaVnz idBancoCuentaVnz2;
     @JoinColumn(name = "id_contacto3", referencedColumnName = "id_contacto")
-    @ManyToOne
+    @ManyToOne(cascade=CascadeType.ALL)
     private BdvContacto idContacto3;
     @JoinColumn(name = "id_recaudos", referencedColumnName = "id_recaudos")
     @ManyToOne

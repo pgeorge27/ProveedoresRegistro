@@ -7,6 +7,7 @@ package org.bdv.modelo;
 
 import java.io.Serializable;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -74,7 +75,7 @@ public class BdvUser implements Serializable {
     @Column(name = "finalizo_registro")
     private boolean finalizoRegistro;
     @JoinColumn(name = "id_empresa", referencedColumnName = "id_empresa")
-    @ManyToOne
+    @ManyToOne(cascade=CascadeType.ALL) 
     private BdvEmpresa idEmpresa;
 
     public BdvUser() {

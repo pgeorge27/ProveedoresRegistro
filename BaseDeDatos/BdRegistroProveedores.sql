@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.2.12
+-- version 4.4.2
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 05-02-2015 a las 00:30:17
--- Versión del servidor: 5.6.21
--- Versión de PHP: 5.5.14
+-- Tiempo de generación: 24-04-2015 a las 13:43:38
+-- Versión del servidor: 5.6.24
+-- Versión de PHP: 5.5.20
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -60,7 +60,7 @@ INSERT INTO `bdv_bancos_nac` (`banco_id`, `banco_descripcion`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `bdv_banco_cuenta` (
-`id_banco_cuenta` int(11) NOT NULL,
+  `id_banco_cuenta` int(11) NOT NULL,
   `id_banco` int(15) NOT NULL,
   `id_tipo_cuenta` int(11) NOT NULL,
   `codigo_cuenta` varchar(20) DEFAULT NULL,
@@ -86,7 +86,7 @@ INSERT INTO `bdv_banco_cuenta` (`id_banco_cuenta`, `id_banco`, `id_tipo_cuenta`,
 --
 
 CREATE TABLE IF NOT EXISTS `bdv_banco_cuenta_vnz` (
-`id_banco_cuenta_vnz` int(11) NOT NULL,
+  `id_banco_cuenta_vnz` int(11) NOT NULL,
   `codigo_cuenta` varchar(20) DEFAULT NULL,
   `id_tipo_cuenta` int(11) NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
@@ -110,7 +110,7 @@ INSERT INTO `bdv_banco_cuenta_vnz` (`id_banco_cuenta_vnz`, `codigo_cuenta`, `id_
 --
 
 CREATE TABLE IF NOT EXISTS `bdv_categoria_producto` (
-`id_categoria_producto` int(11) NOT NULL,
+  `id_categoria_producto` int(11) NOT NULL,
   `descr_categoria` varchar(100) NOT NULL,
   `f_creacion` date NOT NULL,
   `f_desde` date NOT NULL,
@@ -186,7 +186,7 @@ INSERT INTO `bdv_categoria_producto` (`id_categoria_producto`, `descr_categoria`
 --
 
 CREATE TABLE IF NOT EXISTS `bdv_contacto` (
-`id_contacto` int(11) NOT NULL,
+  `id_contacto` int(11) NOT NULL,
   `primer_apellido` varchar(100) DEFAULT NULL,
   `segundo_apellido` varchar(100) DEFAULT NULL,
   `primer_nombre` varchar(100) DEFAULT NULL,
@@ -217,7 +217,7 @@ INSERT INTO `bdv_contacto` (`id_contacto`, `primer_apellido`, `segundo_apellido`
 --
 
 CREATE TABLE IF NOT EXISTS `bdv_empresa` (
-`id_empresa` int(11) NOT NULL,
+  `id_empresa` int(11) NOT NULL,
   `tipo_persona` varchar(20) DEFAULT NULL,
   `origen` varchar(20) DEFAULT NULL,
   `ente` varchar(10) DEFAULT NULL,
@@ -254,7 +254,6 @@ CREATE TABLE IF NOT EXISTS `bdv_empresa` (
   `id_banco_cuenta2` int(11) DEFAULT NULL,
   `id_banco_cuenta3` int(11) DEFAULT NULL,
   `otro_producto` varchar(100) DEFAULT NULL,
-  `finalizo_registro` tinyint(1) NOT NULL DEFAULT '0',
   `id_recaudos` int(11) DEFAULT NULL,
   `empresa_aprobada` tinyint(1) NOT NULL DEFAULT '0',
   `activado_desactivado_por` varchar(50) DEFAULT NULL,
@@ -267,13 +266,13 @@ CREATE TABLE IF NOT EXISTS `bdv_empresa` (
 -- Volcado de datos para la tabla `bdv_empresa`
 --
 
-INSERT INTO `bdv_empresa` (`id_empresa`, `tipo_persona`, `origen`, `ente`, `tipo_rif`, `rif`, `id_nacionalidad`, `id_naturaleza_cliente`, `razon_social`, `nombre_comercial`, `pagina_web`, `anio_inicio_actividades`, `id_sector`, `domicilio_tributario`, `interseccion_referencia`, `numero`, `edificio_referencia`, `departamento_oficina`, `pais`, `estado`, `municipio`, `parroquia`, `tlf_oficina`, `tlf_celular`, `tlf_opcional`, `id_contacto1`, `id_contacto2`, `id_contacto3`, `id_representate_legal1`, `id_representate_legal2`, `id_representate_legal3`, `id_banco_cuenta_vnz1`, `id_banco_cuenta_vnz2`, `id_banco_cuenta1`, `id_banco_cuenta2`, `id_banco_cuenta3`, `otro_producto`, `finalizo_registro`, `id_recaudos`, `empresa_aprobada`, `activado_desactivado_por`, `fecha_registro`, `fecha_actualizado`, `fecha_activado_desactivado`) VALUES
-(1, 'NATURAL', 'NACIONAL', 'PUBLICO', 'V', '181410341', 1, 1, 'Inversiones Gs Technology CA', 'Inversiones Gs Technology CA', 'www.icomp.co.ve', 2012, 9, 'CARABALLEDA', '', '', '', '', 'VENEZUELA', 24, 359, 1479, '(0212) 613-0240', '(0426) 408-3981', '', 1, NULL, NULL, 1, NULL, NULL, 1, NULL, 1, NULL, NULL, 'ninguno', 1, NULL, 0, NULL, '2015-01-22 03:29:25', '2015-01-31 19:48:38', '2015-01-31 19:48:38'),
-(2, 'NATURAL', 'NACIONAL', 'PUBLICO', 'V', '213131231', 1, 1, '1', 'Inversiones Pepito', '', 1900, 1, '2', '', '', '', '', 'VENEZUELA', 1, 128, 692, '(2312) 313-1231', '', '', 2, NULL, NULL, 2, NULL, NULL, 2, NULL, 2, NULL, NULL, 'ninguno', 0, 1, 0, NULL, '2015-01-28 01:07:05', '2015-01-31 19:48:43', '2015-01-31 19:48:43'),
-(3, 'NATURAL', 'NACIONAL', 'PUBLICO', 'V', '213131231', 1, 1, '1', 'Inversiones Pepito', '', 1900, 1, '2', '', '', '', '', 'VENEZUELA', 1, 128, 692, '(2312) 313-1231', '', '', 3, NULL, NULL, 3, NULL, NULL, 3, NULL, 3, NULL, NULL, 'ninguno', 0, 2, 0, NULL, '2015-01-28 01:07:05', '2015-01-31 19:48:49', '2015-01-31 19:48:49'),
-(4, 'NATURAL', 'NACIONAL', 'PUBLICO', 'V', '213131231', 1, 1, '1', 'Inversiones Pepito', '', 1900, 1, '2', '', '', '', '', 'VENEZUELA', 1, 128, 692, '(2312) 313-1231', '', '', 4, NULL, NULL, 4, NULL, NULL, 4, NULL, 4, NULL, NULL, 'ninguno', 0, 3, 0, NULL, '2015-01-28 01:07:05', '2015-01-31 19:48:54', '2015-01-31 19:48:54'),
-(5, 'NATURAL', 'NACIONAL', 'PUBLICO', 'V', '152435143', 1, 1, '1', 'Inversiones Pepito', '', 1900, 1, 'g', '', '', '', '', 'VENEZUELA', 1, 128, 692, '(1534) 153-4514', '', '', 5, NULL, NULL, 5, NULL, NULL, 5, NULL, 5, NULL, NULL, 'ninguno', 1, 4, 0, NULL, '2015-01-28 01:19:41', '2015-01-31 19:48:57', '2015-01-31 19:48:57'),
-(6, 'NATURAL', 'NACIONAL', 'PUBLICO', 'V', '999999999', 1, 1, '1', 'Pepito Pimentel', '', 1900, 1, 'Caracas', '', '', '', '', 'VENEZUELA', 1, 128, 692, '(1231) 231-2312', '', '', 6, NULL, NULL, 6, NULL, NULL, 6, NULL, 6, NULL, NULL, 'no', 1, 5, 0, NULL, '2015-01-28 01:26:34', '2015-01-31 19:49:01', '2015-01-31 19:49:01');
+INSERT INTO `bdv_empresa` (`id_empresa`, `tipo_persona`, `origen`, `ente`, `tipo_rif`, `rif`, `id_nacionalidad`, `id_naturaleza_cliente`, `razon_social`, `nombre_comercial`, `pagina_web`, `anio_inicio_actividades`, `id_sector`, `domicilio_tributario`, `interseccion_referencia`, `numero`, `edificio_referencia`, `departamento_oficina`, `pais`, `estado`, `municipio`, `parroquia`, `tlf_oficina`, `tlf_celular`, `tlf_opcional`, `id_contacto1`, `id_contacto2`, `id_contacto3`, `id_representate_legal1`, `id_representate_legal2`, `id_representate_legal3`, `id_banco_cuenta_vnz1`, `id_banco_cuenta_vnz2`, `id_banco_cuenta1`, `id_banco_cuenta2`, `id_banco_cuenta3`, `otro_producto`, `id_recaudos`, `empresa_aprobada`, `activado_desactivado_por`, `fecha_registro`, `fecha_actualizado`, `fecha_activado_desactivado`) VALUES
+(1, 'NATURAL', 'NACIONAL', 'PUBLICO', 'V', '181410341', 1, 1, 'Inversiones Gs Technology CA', 'Inversiones Gs Technology CA', 'www.icomp.co.ve', 2012, 9, 'CARABALLEDA', '', '', '', '', 'VENEZUELA', 24, 359, 1479, '(0212) 613-0240', '(0426) 408-3981', '', 1, NULL, NULL, 1, NULL, NULL, 1, NULL, 1, NULL, NULL, 'ninguno', NULL, 0, NULL, '2015-01-22 03:29:25', '2015-01-31 19:48:38', '2015-01-31 19:48:38'),
+(2, 'NATURAL', 'NACIONAL', 'PUBLICO', 'V', '213131231', 1, 1, '1', 'Inversiones Pepito', '', 1900, 1, '2', '', '', '', '', 'VENEZUELA', 1, 128, 692, '(2312) 313-1231', '', '', 2, NULL, NULL, 2, NULL, NULL, 2, NULL, 2, NULL, NULL, 'ninguno', 1, 0, NULL, '2015-01-28 01:07:05', '2015-01-31 19:48:43', '2015-01-31 19:48:43'),
+(3, 'NATURAL', 'NACIONAL', 'PUBLICO', 'V', '213131231', 1, 1, '1', 'Inversiones Pepito', '', 1900, 1, '2', '', '', '', '', 'VENEZUELA', 1, 128, 692, '(2312) 313-1231', '', '', 3, NULL, NULL, 3, NULL, NULL, 3, NULL, 3, NULL, NULL, 'ninguno', 2, 0, NULL, '2015-01-28 01:07:05', '2015-01-31 19:48:49', '2015-01-31 19:48:49'),
+(4, 'NATURAL', 'NACIONAL', 'PUBLICO', 'V', '213131231', 1, 1, '1', 'Inversiones Pepito', '', 1900, 1, '2', '', '', '', '', 'VENEZUELA', 1, 128, 692, '(2312) 313-1231', '', '', 4, NULL, NULL, 4, NULL, NULL, 4, NULL, 4, NULL, NULL, 'ninguno', 3, 0, NULL, '2015-01-28 01:07:05', '2015-01-31 19:48:54', '2015-01-31 19:48:54'),
+(5, 'NATURAL', 'NACIONAL', 'PUBLICO', 'V', '152435143', 1, 1, '1', 'Inversiones Pepito', '', 1900, 1, 'g', '', '', '', '', 'VENEZUELA', 1, 128, 692, '(1534) 153-4514', '', '', 5, NULL, NULL, 5, NULL, NULL, 5, NULL, 5, NULL, NULL, 'ninguno', 4, 0, NULL, '2015-01-28 01:19:41', '2015-01-31 19:48:57', '2015-01-31 19:48:57'),
+(6, 'NATURAL', 'NACIONAL', 'PUBLICO', 'V', '999999999', 1, 1, '1', 'Pepito Pimentel', '', 1900, 1, 'Caracas', '', '', '', '', 'VENEZUELA', 1, 128, 692, '(1231) 231-2312', '', '', 6, NULL, NULL, 6, NULL, NULL, 6, NULL, 6, NULL, NULL, 'no', 5, 0, NULL, '2015-01-28 01:26:34', '2015-01-31 19:49:01', '2015-01-31 19:49:01');
 
 -- --------------------------------------------------------
 
@@ -1824,7 +1823,7 @@ INSERT INTO `bdv_mcbe_ubic_geo` (`id_ubic_geo`, `descripcion`, `nivel`, `id_padr
 --
 
 CREATE TABLE IF NOT EXISTS `bdv_nacionalidad` (
-`id` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
   `descripcion` varchar(100) NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
@@ -1842,7 +1841,7 @@ INSERT INTO `bdv_nacionalidad` (`id`, `descripcion`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `bdv_naturaleza_cliente` (
-`id_naturaleza_cliente` int(11) NOT NULL,
+  `id_naturaleza_cliente` int(11) NOT NULL,
   `descripcion` varchar(100) NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 
@@ -1869,7 +1868,7 @@ INSERT INTO `bdv_naturaleza_cliente` (`id_naturaleza_cliente`, `descripcion`) VA
 --
 
 CREATE TABLE IF NOT EXISTS `bdv_recaudos` (
-`id_recaudos` int(11) NOT NULL,
+  `id_recaudos` int(11) NOT NULL,
   `certificado_snc` varchar(255) DEFAULT NULL,
   `planilla_rnc` varchar(255) DEFAULT NULL,
   `comunicacion_representante` varchar(255) DEFAULT NULL,
@@ -1880,6 +1879,8 @@ CREATE TABLE IF NOT EXISTS `bdv_recaudos` (
   `lista_productos` varchar(255) DEFAULT NULL,
   `referencia_bancaria` varchar(255) DEFAULT NULL,
   `referencia_comercial` varchar(255) DEFAULT NULL,
+  `cedula` varchar(255) DEFAULT NULL,
+  `rif` varchar(255) NOT NULL,
   `date_register` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `date_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
@@ -1888,12 +1889,12 @@ CREATE TABLE IF NOT EXISTS `bdv_recaudos` (
 -- Volcado de datos para la tabla `bdv_recaudos`
 --
 
-INSERT INTO `bdv_recaudos` (`id_recaudos`, `certificado_snc`, `planilla_rnc`, `comunicacion_representante`, `solvencia_sso`, `solvencia_laboral`, `solvencia_ince`, `organigrama`, `lista_productos`, `referencia_bancaria`, `referencia_comercial`, `date_register`, `date_update`) VALUES
-(1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2015-01-28 01:07:05', '2015-01-28 01:07:05'),
-(2, '/Users/georgeperez/NetBeansProjects/ProveedoresRegistro/web/resources/pdf/InversionesPepitocertificadoSnc.pdf', NULL, NULL, NULL, NULL, NULL, NULL, '/Users/georgeperez/NetBeansProjects/ProveedoresRegistro/web/resources/pdf/InversionesPepitoListaProductos.pdf', NULL, NULL, '2015-01-28 01:07:05', '2015-01-28 01:07:05'),
-(3, '/Users/georgeperez/NetBeansProjects/ProveedoresRegistro/web/resources/pdf/InversionesPepitocertificadoSnc.pdf', NULL, NULL, NULL, NULL, NULL, NULL, '/Users/georgeperez/NetBeansProjects/ProveedoresRegistro/web/resources/pdf/InversionesPepitoListaProductos.pdf', NULL, NULL, '2015-01-28 01:07:05', '2015-01-28 01:07:05'),
-(4, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2015-01-28 01:19:41', '2015-01-28 01:19:41'),
-(5, '/Users/georgeperez/NetBeansProjects/ProveedoresRegistro/web/resources/pdf/PepitoPimentelcertificadoSnc.pdf', NULL, NULL, NULL, NULL, NULL, NULL, '/Users/georgeperez/NetBeansProjects/ProveedoresRegistro/web/resources/pdf/PepitoPimentelListaProductos.pdf', NULL, NULL, '2015-01-28 01:26:34', '2015-01-28 01:26:34');
+INSERT INTO `bdv_recaudos` (`id_recaudos`, `certificado_snc`, `planilla_rnc`, `comunicacion_representante`, `solvencia_sso`, `solvencia_laboral`, `solvencia_ince`, `organigrama`, `lista_productos`, `referencia_bancaria`, `referencia_comercial`, `cedula`, `rif`, `date_register`, `date_update`) VALUES
+(1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', '2015-01-28 01:07:05', '2015-01-28 01:07:05'),
+(2, '/Users/georgeperez/NetBeansProjects/ProveedoresRegistro/web/resources/pdf/InversionesPepitocertificadoSnc.pdf', NULL, NULL, NULL, NULL, NULL, NULL, '/Users/georgeperez/NetBeansProjects/ProveedoresRegistro/web/resources/pdf/InversionesPepitoListaProductos.pdf', NULL, NULL, '', '', '2015-01-28 01:07:05', '2015-01-28 01:07:05'),
+(3, '/Users/georgeperez/NetBeansProjects/ProveedoresRegistro/web/resources/pdf/InversionesPepitocertificadoSnc.pdf', NULL, NULL, NULL, NULL, NULL, NULL, '/Users/georgeperez/NetBeansProjects/ProveedoresRegistro/web/resources/pdf/InversionesPepitoListaProductos.pdf', NULL, NULL, '', '', '2015-01-28 01:07:05', '2015-01-28 01:07:05'),
+(4, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', '2015-01-28 01:19:41', '2015-01-28 01:19:41'),
+(5, '/Users/georgeperez/NetBeansProjects/ProveedoresRegistro/web/resources/pdf/PepitoPimentelcertificadoSnc.pdf', NULL, NULL, NULL, NULL, NULL, NULL, '/Users/georgeperez/NetBeansProjects/ProveedoresRegistro/web/resources/pdf/PepitoPimentelListaProductos.pdf', NULL, NULL, '', '', '2015-01-28 01:26:34', '2015-01-28 01:26:34');
 
 -- --------------------------------------------------------
 
@@ -1902,7 +1903,7 @@ INSERT INTO `bdv_recaudos` (`id_recaudos`, `certificado_snc`, `planilla_rnc`, `c
 --
 
 CREATE TABLE IF NOT EXISTS `bdv_representate_legal` (
-`id_representate_legal` int(11) NOT NULL,
+  `id_representate_legal` int(11) NOT NULL,
   `primer_nombre` varchar(100) DEFAULT NULL,
   `segundo_nombre` varchar(100) DEFAULT NULL,
   `primer_apellido` varchar(100) DEFAULT NULL,
@@ -1933,7 +1934,7 @@ INSERT INTO `bdv_representate_legal` (`id_representate_legal`, `primer_nombre`, 
 --
 
 CREATE TABLE IF NOT EXISTS `bdv_role` (
-`id_role` int(11) NOT NULL,
+  `id_role` int(11) NOT NULL,
   `role_nombre` varchar(100) NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
@@ -1954,7 +1955,7 @@ INSERT INTO `bdv_role` (`id_role`, `role_nombre`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `bdv_sector_gremio` (
-`id_seector` int(11) NOT NULL,
+  `id_seector` int(11) NOT NULL,
   `descripcion` varchar(100) NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
 
@@ -1986,7 +1987,7 @@ INSERT INTO `bdv_sector_gremio` (`id_seector`, `descripcion`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `bdv_tipo_cuenta` (
-`id_tipo_cuenta` int(11) NOT NULL,
+  `id_tipo_cuenta` int(11) NOT NULL,
   `descripcion` varchar(50) NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
@@ -2005,12 +2006,13 @@ INSERT INTO `bdv_tipo_cuenta` (`id_tipo_cuenta`, `descripcion`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `bdv_user` (
-`id_user` int(11) NOT NULL,
+  `id_user` int(11) NOT NULL,
   `id_empresa` int(11) DEFAULT NULL,
   `email` varchar(100) NOT NULL,
   `contrasenia` varchar(400) NOT NULL,
   `activo` tinyint(1) NOT NULL DEFAULT '0',
   `email_valido` tinyint(1) NOT NULL DEFAULT '0',
+  `finalizo_registro` tinyint(4) NOT NULL DEFAULT '0',
   `cambia_contrasenia` tinyint(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
@@ -2018,11 +2020,11 @@ CREATE TABLE IF NOT EXISTS `bdv_user` (
 -- Volcado de datos para la tabla `bdv_user`
 --
 
-INSERT INTO `bdv_user` (`id_user`, `id_empresa`, `email`, `contrasenia`, `activo`, `email_valido`, `cambia_contrasenia`) VALUES
-(1, 1, 'pgeorge27@gmail.com', 'cb60ece79bddf395b76123b5618a5102c06e6b3a74d7f40d9e5b706f1f548aaa', 1, 1, 0),
-(2, 5, 'ppp@ppp.com', 'cb60ece79bddf395b76123b5618a5102c06e6b3a74d7f40d9e5b706f1f548aaa', 0, 1, 0),
-(3, 6, 'pepito@2.com', 'cb60ece79bddf395b76123b5618a5102c06e6b3a74d7f40d9e5b706f1f548aaa', 0, 1, 0),
-(4, NULL, 'perez@perez.com', 'cb60ece79bddf395b76123b5618a5102c06e6b3a74d7f40d9e5b706f1f548aaa', 1, 1, 0);
+INSERT INTO `bdv_user` (`id_user`, `id_empresa`, `email`, `contrasenia`, `activo`, `email_valido`, `finalizo_registro`, `cambia_contrasenia`) VALUES
+(1, 1, 'pgeorge27@gmail.com', 'cb60ece79bddf395b76123b5618a5102c06e6b3a74d7f40d9e5b706f1f548aaa', 1, 1, 1, 0),
+(2, 5, 'ppp@ppp.com', 'cb60ece79bddf395b76123b5618a5102c06e6b3a74d7f40d9e5b706f1f548aaa', 0, 1, 0, 0),
+(3, 6, 'pepito@2.com', 'cb60ece79bddf395b76123b5618a5102c06e6b3a74d7f40d9e5b706f1f548aaa', 0, 1, 0, 0),
+(4, NULL, 'perez@perez.com', 'cb60ece79bddf395b76123b5618a5102c06e6b3a74d7f40d9e5b706f1f548aaa', 1, 1, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -2031,7 +2033,7 @@ INSERT INTO `bdv_user` (`id_user`, `id_empresa`, `email`, `contrasenia`, `activo
 --
 
 CREATE TABLE IF NOT EXISTS `bdv_user_backend` (
-`id_user` int(11) NOT NULL,
+  `id_user` int(11) NOT NULL,
   `userBackend` varchar(50) NOT NULL,
   `contrasenia` varchar(400) NOT NULL,
   `activo` tinyint(1) NOT NULL DEFAULT '1'
@@ -2065,109 +2067,152 @@ CREATE TABLE IF NOT EXISTS `bdv_user_roles` (
 -- Indices de la tabla `bdv_bancos_nac`
 --
 ALTER TABLE `bdv_bancos_nac`
- ADD PRIMARY KEY (`banco_id`), ADD UNIQUE KEY `banco_id` (`banco_id`);
+  ADD PRIMARY KEY (`banco_id`),
+  ADD UNIQUE KEY `banco_id` (`banco_id`);
 
 --
 -- Indices de la tabla `bdv_banco_cuenta`
 --
 ALTER TABLE `bdv_banco_cuenta`
- ADD PRIMARY KEY (`id_banco_cuenta`), ADD KEY `id_banco` (`id_banco`), ADD KEY `id_tipo_cuenta` (`id_tipo_cuenta`);
+  ADD PRIMARY KEY (`id_banco_cuenta`),
+  ADD KEY `id_banco` (`id_banco`),
+  ADD KEY `id_tipo_cuenta` (`id_tipo_cuenta`);
 
 --
 -- Indices de la tabla `bdv_banco_cuenta_vnz`
 --
 ALTER TABLE `bdv_banco_cuenta_vnz`
- ADD PRIMARY KEY (`id_banco_cuenta_vnz`), ADD KEY `id_tipo_cuenta` (`id_tipo_cuenta`);
+  ADD PRIMARY KEY (`id_banco_cuenta_vnz`),
+  ADD KEY `id_tipo_cuenta` (`id_tipo_cuenta`);
 
 --
 -- Indices de la tabla `bdv_categoria_producto`
 --
 ALTER TABLE `bdv_categoria_producto`
- ADD PRIMARY KEY (`id_categoria_producto`), ADD UNIQUE KEY `id_categoria_producto` (`id_categoria_producto`);
+  ADD PRIMARY KEY (`id_categoria_producto`),
+  ADD UNIQUE KEY `id_categoria_producto` (`id_categoria_producto`);
 
 --
 -- Indices de la tabla `bdv_contacto`
 --
 ALTER TABLE `bdv_contacto`
- ADD PRIMARY KEY (`id_contacto`);
+  ADD PRIMARY KEY (`id_contacto`);
 
 --
 -- Indices de la tabla `bdv_empresa`
 --
 ALTER TABLE `bdv_empresa`
- ADD PRIMARY KEY (`id_empresa`), ADD KEY `nacionalidad` (`id_nacionalidad`), ADD KEY `nacionalidad_2` (`id_nacionalidad`), ADD KEY `pais` (`pais`), ADD KEY `estado` (`estado`), ADD KEY `estado_2` (`estado`), ADD KEY `parroquia` (`parroquia`), ADD KEY `municipio` (`municipio`), ADD KEY `id_recaudos` (`id_recaudos`), ADD KEY `id_naturaleza_cliente` (`id_naturaleza_cliente`), ADD KEY `id_contacto1` (`id_contacto1`,`id_contacto2`,`id_contacto3`), ADD KEY `id_contacto2` (`id_contacto2`), ADD KEY `id_contacto3` (`id_contacto3`), ADD KEY `id_representate_legal1` (`id_representate_legal1`,`id_representate_legal2`,`id_representate_legal3`), ADD KEY `id_representate_legal2` (`id_representate_legal2`), ADD KEY `id_representate_legal3` (`id_representate_legal3`), ADD KEY `id_banco_cuenta` (`id_banco_cuenta1`), ADD KEY `sector` (`id_sector`), ADD KEY `nacionalidad_3` (`id_nacionalidad`), ADD KEY `id_banco_cuenta2` (`id_banco_cuenta2`,`id_banco_cuenta3`), ADD KEY `id_banco_cuenta_vnz1` (`id_banco_cuenta_vnz1`,`id_banco_cuenta_vnz2`), ADD KEY `id_banco_cuenta_vnz2` (`id_banco_cuenta_vnz2`), ADD KEY `id_banco_cuenta3` (`id_banco_cuenta3`), ADD KEY `id_naturaleza_cliente_2` (`id_naturaleza_cliente`);
+  ADD PRIMARY KEY (`id_empresa`),
+  ADD KEY `nacionalidad` (`id_nacionalidad`),
+  ADD KEY `nacionalidad_2` (`id_nacionalidad`),
+  ADD KEY `pais` (`pais`),
+  ADD KEY `estado` (`estado`),
+  ADD KEY `estado_2` (`estado`),
+  ADD KEY `parroquia` (`parroquia`),
+  ADD KEY `municipio` (`municipio`),
+  ADD KEY `id_recaudos` (`id_recaudos`),
+  ADD KEY `id_naturaleza_cliente` (`id_naturaleza_cliente`),
+  ADD KEY `id_contacto1` (`id_contacto1`,`id_contacto2`,`id_contacto3`),
+  ADD KEY `id_contacto2` (`id_contacto2`),
+  ADD KEY `id_contacto3` (`id_contacto3`),
+  ADD KEY `id_representate_legal1` (`id_representate_legal1`,`id_representate_legal2`,`id_representate_legal3`),
+  ADD KEY `id_representate_legal2` (`id_representate_legal2`),
+  ADD KEY `id_representate_legal3` (`id_representate_legal3`),
+  ADD KEY `id_banco_cuenta` (`id_banco_cuenta1`),
+  ADD KEY `sector` (`id_sector`),
+  ADD KEY `nacionalidad_3` (`id_nacionalidad`),
+  ADD KEY `id_banco_cuenta2` (`id_banco_cuenta2`,`id_banco_cuenta3`),
+  ADD KEY `id_banco_cuenta_vnz1` (`id_banco_cuenta_vnz1`,`id_banco_cuenta_vnz2`),
+  ADD KEY `id_banco_cuenta_vnz2` (`id_banco_cuenta_vnz2`),
+  ADD KEY `id_banco_cuenta3` (`id_banco_cuenta3`),
+  ADD KEY `id_naturaleza_cliente_2` (`id_naturaleza_cliente`);
 
 --
 -- Indices de la tabla `bdv_empresa_categoria_producto`
 --
 ALTER TABLE `bdv_empresa_categoria_producto`
- ADD PRIMARY KEY (`id_empresa`,`id_categoria_producto`), ADD KEY `id_categoria_producto` (`id_categoria_producto`);
+  ADD PRIMARY KEY (`id_empresa`,`id_categoria_producto`),
+  ADD KEY `id_categoria_producto` (`id_categoria_producto`);
 
 --
 -- Indices de la tabla `bdv_mcbe_ubic_geo`
 --
 ALTER TABLE `bdv_mcbe_ubic_geo`
- ADD PRIMARY KEY (`id_ubic_geo`);
+  ADD PRIMARY KEY (`id_ubic_geo`);
 
 --
 -- Indices de la tabla `bdv_nacionalidad`
 --
 ALTER TABLE `bdv_nacionalidad`
- ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `bdv_naturaleza_cliente`
 --
 ALTER TABLE `bdv_naturaleza_cliente`
- ADD PRIMARY KEY (`id_naturaleza_cliente`);
+  ADD PRIMARY KEY (`id_naturaleza_cliente`);
 
 --
 -- Indices de la tabla `bdv_recaudos`
 --
 ALTER TABLE `bdv_recaudos`
- ADD PRIMARY KEY (`id_recaudos`);
+  ADD PRIMARY KEY (`id_recaudos`);
 
 --
 -- Indices de la tabla `bdv_representate_legal`
 --
 ALTER TABLE `bdv_representate_legal`
- ADD PRIMARY KEY (`id_representate_legal`);
+  ADD PRIMARY KEY (`id_representate_legal`);
 
 --
 -- Indices de la tabla `bdv_role`
 --
 ALTER TABLE `bdv_role`
- ADD PRIMARY KEY (`id_role`), ADD UNIQUE KEY `id_role_3` (`id_role`), ADD KEY `id_role` (`id_role`), ADD KEY `id_role_2` (`id_role`);
+  ADD PRIMARY KEY (`id_role`),
+  ADD UNIQUE KEY `id_role_3` (`id_role`),
+  ADD KEY `id_role` (`id_role`),
+  ADD KEY `id_role_2` (`id_role`);
 
 --
 -- Indices de la tabla `bdv_sector_gremio`
 --
 ALTER TABLE `bdv_sector_gremio`
- ADD PRIMARY KEY (`id_seector`);
+  ADD PRIMARY KEY (`id_seector`);
 
 --
 -- Indices de la tabla `bdv_tipo_cuenta`
 --
 ALTER TABLE `bdv_tipo_cuenta`
- ADD PRIMARY KEY (`id_tipo_cuenta`);
+  ADD PRIMARY KEY (`id_tipo_cuenta`);
 
 --
 -- Indices de la tabla `bdv_user`
 --
 ALTER TABLE `bdv_user`
- ADD PRIMARY KEY (`id_user`), ADD UNIQUE KEY `email` (`email`), ADD UNIQUE KEY `id_user` (`id_user`), ADD KEY `id_empresa` (`id_empresa`);
+  ADD PRIMARY KEY (`id_user`),
+  ADD UNIQUE KEY `email` (`email`),
+  ADD UNIQUE KEY `id_user` (`id_user`),
+  ADD KEY `id_empresa` (`id_empresa`);
 
 --
 -- Indices de la tabla `bdv_user_backend`
 --
 ALTER TABLE `bdv_user_backend`
- ADD PRIMARY KEY (`id_user`), ADD UNIQUE KEY `user` (`userBackend`,`contrasenia`), ADD UNIQUE KEY `id_user_3` (`id_user`), ADD KEY `id_user` (`id_user`), ADD KEY `id_user_2` (`id_user`);
+  ADD PRIMARY KEY (`id_user`),
+  ADD UNIQUE KEY `user` (`userBackend`,`contrasenia`),
+  ADD UNIQUE KEY `id_user_3` (`id_user`),
+  ADD KEY `id_user` (`id_user`),
+  ADD KEY `id_user_2` (`id_user`);
 
 --
 -- Indices de la tabla `bdv_user_roles`
 --
 ALTER TABLE `bdv_user_roles`
- ADD PRIMARY KEY (`id_user`,`id_role`), ADD KEY `id_role` (`id_role`), ADD KEY `id_role_2` (`id_role`), ADD KEY `id_user` (`id_user`,`id_role`), ADD KEY `id_user_2` (`id_user`,`id_role`);
+  ADD PRIMARY KEY (`id_user`,`id_role`),
+  ADD KEY `id_role` (`id_role`),
+  ADD KEY `id_role_2` (`id_role`),
+  ADD KEY `id_user` (`id_user`,`id_role`),
+  ADD KEY `id_user_2` (`id_user`,`id_role`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -2177,72 +2222,72 @@ ALTER TABLE `bdv_user_roles`
 -- AUTO_INCREMENT de la tabla `bdv_banco_cuenta`
 --
 ALTER TABLE `bdv_banco_cuenta`
-MODIFY `id_banco_cuenta` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
+  MODIFY `id_banco_cuenta` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT de la tabla `bdv_banco_cuenta_vnz`
 --
 ALTER TABLE `bdv_banco_cuenta_vnz`
-MODIFY `id_banco_cuenta_vnz` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
+  MODIFY `id_banco_cuenta_vnz` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT de la tabla `bdv_categoria_producto`
 --
 ALTER TABLE `bdv_categoria_producto`
-MODIFY `id_categoria_producto` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=57;
+  MODIFY `id_categoria_producto` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=57;
 --
 -- AUTO_INCREMENT de la tabla `bdv_contacto`
 --
 ALTER TABLE `bdv_contacto`
-MODIFY `id_contacto` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
+  MODIFY `id_contacto` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT de la tabla `bdv_empresa`
 --
 ALTER TABLE `bdv_empresa`
-MODIFY `id_empresa` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
+  MODIFY `id_empresa` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT de la tabla `bdv_nacionalidad`
 --
 ALTER TABLE `bdv_nacionalidad`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `bdv_naturaleza_cliente`
 --
 ALTER TABLE `bdv_naturaleza_cliente`
-MODIFY `id_naturaleza_cliente` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
+  MODIFY `id_naturaleza_cliente` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT de la tabla `bdv_recaudos`
 --
 ALTER TABLE `bdv_recaudos`
-MODIFY `id_recaudos` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+  MODIFY `id_recaudos` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT de la tabla `bdv_representate_legal`
 --
 ALTER TABLE `bdv_representate_legal`
-MODIFY `id_representate_legal` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
+  MODIFY `id_representate_legal` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT de la tabla `bdv_role`
 --
 ALTER TABLE `bdv_role`
-MODIFY `id_role` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+  MODIFY `id_role` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT de la tabla `bdv_sector_gremio`
 --
 ALTER TABLE `bdv_sector_gremio`
-MODIFY `id_seector` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=16;
+  MODIFY `id_seector` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=16;
 --
 -- AUTO_INCREMENT de la tabla `bdv_tipo_cuenta`
 --
 ALTER TABLE `bdv_tipo_cuenta`
-MODIFY `id_tipo_cuenta` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+  MODIFY `id_tipo_cuenta` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `bdv_user`
 --
 ALTER TABLE `bdv_user`
-MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT de la tabla `bdv_user_backend`
 --
 ALTER TABLE `bdv_user_backend`
-MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 --
 -- Restricciones para tablas volcadas
 --
@@ -2251,57 +2296,57 @@ MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 -- Filtros para la tabla `bdv_banco_cuenta`
 --
 ALTER TABLE `bdv_banco_cuenta`
-ADD CONSTRAINT `bdv_banco_cuenta_ibfk_1` FOREIGN KEY (`id_banco`) REFERENCES `bdv_bancos_nac` (`banco_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-ADD CONSTRAINT `bdv_banco_cuenta_ibfk_2` FOREIGN KEY (`id_tipo_cuenta`) REFERENCES `bdv_tipo_cuenta` (`id_tipo_cuenta`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `bdv_banco_cuenta_ibfk_1` FOREIGN KEY (`id_banco`) REFERENCES `bdv_bancos_nac` (`banco_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `bdv_banco_cuenta_ibfk_2` FOREIGN KEY (`id_tipo_cuenta`) REFERENCES `bdv_tipo_cuenta` (`id_tipo_cuenta`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `bdv_banco_cuenta_vnz`
 --
 ALTER TABLE `bdv_banco_cuenta_vnz`
-ADD CONSTRAINT `bdv_banco_cuenta_vnz_ibfk_1` FOREIGN KEY (`id_tipo_cuenta`) REFERENCES `bdv_tipo_cuenta` (`id_tipo_cuenta`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `bdv_banco_cuenta_vnz_ibfk_1` FOREIGN KEY (`id_tipo_cuenta`) REFERENCES `bdv_tipo_cuenta` (`id_tipo_cuenta`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `bdv_empresa`
 --
 ALTER TABLE `bdv_empresa`
-ADD CONSTRAINT `bdv_empresa_ibfk_1` FOREIGN KEY (`id_nacionalidad`) REFERENCES `bdv_nacionalidad` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-ADD CONSTRAINT `bdv_empresa_ibfk_10` FOREIGN KEY (`id_representate_legal1`) REFERENCES `bdv_representate_legal` (`id_representate_legal`) ON DELETE CASCADE ON UPDATE CASCADE,
-ADD CONSTRAINT `bdv_empresa_ibfk_11` FOREIGN KEY (`id_representate_legal2`) REFERENCES `bdv_representate_legal` (`id_representate_legal`) ON DELETE CASCADE ON UPDATE CASCADE,
-ADD CONSTRAINT `bdv_empresa_ibfk_12` FOREIGN KEY (`id_representate_legal3`) REFERENCES `bdv_representate_legal` (`id_representate_legal`) ON DELETE CASCADE ON UPDATE CASCADE,
-ADD CONSTRAINT `bdv_empresa_ibfk_13` FOREIGN KEY (`id_banco_cuenta1`) REFERENCES `bdv_banco_cuenta` (`id_banco_cuenta`) ON DELETE CASCADE ON UPDATE CASCADE,
-ADD CONSTRAINT `bdv_empresa_ibfk_14` FOREIGN KEY (`id_banco_cuenta2`) REFERENCES `bdv_banco_cuenta` (`id_banco_cuenta`) ON DELETE CASCADE ON UPDATE CASCADE,
-ADD CONSTRAINT `bdv_empresa_ibfk_15` FOREIGN KEY (`id_banco_cuenta3`) REFERENCES `bdv_banco_cuenta` (`id_banco_cuenta`) ON DELETE CASCADE ON UPDATE CASCADE,
-ADD CONSTRAINT `bdv_empresa_ibfk_16` FOREIGN KEY (`id_banco_cuenta_vnz1`) REFERENCES `bdv_banco_cuenta_vnz` (`id_banco_cuenta_vnz`) ON DELETE CASCADE ON UPDATE CASCADE,
-ADD CONSTRAINT `bdv_empresa_ibfk_17` FOREIGN KEY (`id_banco_cuenta_vnz2`) REFERENCES `bdv_banco_cuenta_vnz` (`id_banco_cuenta_vnz`) ON DELETE CASCADE ON UPDATE CASCADE,
-ADD CONSTRAINT `bdv_empresa_ibfk_18` FOREIGN KEY (`id_recaudos`) REFERENCES `bdv_recaudos` (`id_recaudos`) ON DELETE CASCADE ON UPDATE CASCADE,
-ADD CONSTRAINT `bdv_empresa_ibfk_2` FOREIGN KEY (`id_naturaleza_cliente`) REFERENCES `bdv_naturaleza_cliente` (`id_naturaleza_cliente`) ON DELETE CASCADE ON UPDATE CASCADE,
-ADD CONSTRAINT `bdv_empresa_ibfk_3` FOREIGN KEY (`id_sector`) REFERENCES `bdv_sector_gremio` (`id_seector`) ON DELETE CASCADE ON UPDATE CASCADE,
-ADD CONSTRAINT `bdv_empresa_ibfk_4` FOREIGN KEY (`estado`) REFERENCES `bdv_mcbe_ubic_geo` (`id_ubic_geo`) ON DELETE CASCADE ON UPDATE CASCADE,
-ADD CONSTRAINT `bdv_empresa_ibfk_5` FOREIGN KEY (`municipio`) REFERENCES `bdv_mcbe_ubic_geo` (`id_ubic_geo`) ON DELETE CASCADE ON UPDATE CASCADE,
-ADD CONSTRAINT `bdv_empresa_ibfk_6` FOREIGN KEY (`parroquia`) REFERENCES `bdv_mcbe_ubic_geo` (`id_ubic_geo`) ON DELETE CASCADE ON UPDATE CASCADE,
-ADD CONSTRAINT `bdv_empresa_ibfk_7` FOREIGN KEY (`id_contacto1`) REFERENCES `bdv_contacto` (`id_contacto`) ON DELETE CASCADE ON UPDATE CASCADE,
-ADD CONSTRAINT `bdv_empresa_ibfk_8` FOREIGN KEY (`id_contacto2`) REFERENCES `bdv_contacto` (`id_contacto`) ON DELETE CASCADE ON UPDATE CASCADE,
-ADD CONSTRAINT `bdv_empresa_ibfk_9` FOREIGN KEY (`id_contacto3`) REFERENCES `bdv_contacto` (`id_contacto`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `bdv_empresa_ibfk_1` FOREIGN KEY (`id_nacionalidad`) REFERENCES `bdv_nacionalidad` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `bdv_empresa_ibfk_10` FOREIGN KEY (`id_representate_legal1`) REFERENCES `bdv_representate_legal` (`id_representate_legal`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `bdv_empresa_ibfk_11` FOREIGN KEY (`id_representate_legal2`) REFERENCES `bdv_representate_legal` (`id_representate_legal`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `bdv_empresa_ibfk_12` FOREIGN KEY (`id_representate_legal3`) REFERENCES `bdv_representate_legal` (`id_representate_legal`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `bdv_empresa_ibfk_13` FOREIGN KEY (`id_banco_cuenta1`) REFERENCES `bdv_banco_cuenta` (`id_banco_cuenta`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `bdv_empresa_ibfk_14` FOREIGN KEY (`id_banco_cuenta2`) REFERENCES `bdv_banco_cuenta` (`id_banco_cuenta`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `bdv_empresa_ibfk_15` FOREIGN KEY (`id_banco_cuenta3`) REFERENCES `bdv_banco_cuenta` (`id_banco_cuenta`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `bdv_empresa_ibfk_16` FOREIGN KEY (`id_banco_cuenta_vnz1`) REFERENCES `bdv_banco_cuenta_vnz` (`id_banco_cuenta_vnz`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `bdv_empresa_ibfk_17` FOREIGN KEY (`id_banco_cuenta_vnz2`) REFERENCES `bdv_banco_cuenta_vnz` (`id_banco_cuenta_vnz`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `bdv_empresa_ibfk_18` FOREIGN KEY (`id_recaudos`) REFERENCES `bdv_recaudos` (`id_recaudos`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `bdv_empresa_ibfk_2` FOREIGN KEY (`id_naturaleza_cliente`) REFERENCES `bdv_naturaleza_cliente` (`id_naturaleza_cliente`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `bdv_empresa_ibfk_3` FOREIGN KEY (`id_sector`) REFERENCES `bdv_sector_gremio` (`id_seector`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `bdv_empresa_ibfk_4` FOREIGN KEY (`estado`) REFERENCES `bdv_mcbe_ubic_geo` (`id_ubic_geo`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `bdv_empresa_ibfk_5` FOREIGN KEY (`municipio`) REFERENCES `bdv_mcbe_ubic_geo` (`id_ubic_geo`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `bdv_empresa_ibfk_6` FOREIGN KEY (`parroquia`) REFERENCES `bdv_mcbe_ubic_geo` (`id_ubic_geo`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `bdv_empresa_ibfk_7` FOREIGN KEY (`id_contacto1`) REFERENCES `bdv_contacto` (`id_contacto`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `bdv_empresa_ibfk_8` FOREIGN KEY (`id_contacto2`) REFERENCES `bdv_contacto` (`id_contacto`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `bdv_empresa_ibfk_9` FOREIGN KEY (`id_contacto3`) REFERENCES `bdv_contacto` (`id_contacto`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `bdv_empresa_categoria_producto`
 --
 ALTER TABLE `bdv_empresa_categoria_producto`
-ADD CONSTRAINT `bdv_empresa_categoria_producto_ibfk_3` FOREIGN KEY (`id_empresa`) REFERENCES `bdv_empresa` (`id_empresa`) ON DELETE CASCADE ON UPDATE CASCADE,
-ADD CONSTRAINT `bdv_empresa_categoria_producto_ibfk_4` FOREIGN KEY (`id_categoria_producto`) REFERENCES `bdv_categoria_producto` (`id_categoria_producto`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `bdv_empresa_categoria_producto_ibfk_3` FOREIGN KEY (`id_empresa`) REFERENCES `bdv_empresa` (`id_empresa`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `bdv_empresa_categoria_producto_ibfk_4` FOREIGN KEY (`id_categoria_producto`) REFERENCES `bdv_categoria_producto` (`id_categoria_producto`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `bdv_user`
 --
 ALTER TABLE `bdv_user`
-ADD CONSTRAINT `bdv_user_ibfk_1` FOREIGN KEY (`id_empresa`) REFERENCES `bdv_empresa` (`id_empresa`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `bdv_user_ibfk_1` FOREIGN KEY (`id_empresa`) REFERENCES `bdv_empresa` (`id_empresa`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `bdv_user_roles`
 --
 ALTER TABLE `bdv_user_roles`
-ADD CONSTRAINT `bdv_user_roles_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `bdv_user_backend` (`id_user`) ON DELETE CASCADE ON UPDATE CASCADE,
-ADD CONSTRAINT `bdv_user_roles_ibfk_2` FOREIGN KEY (`id_role`) REFERENCES `bdv_role` (`id_role`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `bdv_user_roles_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `bdv_user_backend` (`id_user`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `bdv_user_roles_ibfk_2` FOREIGN KEY (`id_role`) REFERENCES `bdv_role` (`id_role`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
